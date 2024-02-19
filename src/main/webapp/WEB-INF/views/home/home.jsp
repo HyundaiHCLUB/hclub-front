@@ -3,54 +3,54 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html>
 	<head>
-	<style>
+<%--	<style>--%>
 
-		main {
-			margin: 0;
-			padding-top: 120px;
-			padding-bottom: 100px;
-			font-family: 'Inter';
-			overflow-y: scroll;
-		}
+<%--		main {--%>
+<%--			margin: 0;--%>
+<%--			padding-top: 120px;--%>
+<%--			padding-bottom: 100px;--%>
+<%--			font-family: 'Inter';--%>
+<%--			overflow-y: scroll;--%>
+<%--		}--%>
 
-		.scroll-container {
-			padding-top: 120px;
-			padding-bottom: 100px;
-			overflow-y: auto;
-			height: 100vh;
-		}
+<%--		.scroll-container {--%>
+<%--			padding-top: 120px;--%>
+<%--			padding-bottom: 100px;--%>
+<%--			overflow-y: auto;--%>
+<%--			height: 100vh;--%>
+<%--		}--%>
 
-		header {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			z-index: 100;
-			height: 60px;
-		}
+<%--		header {--%>
+<%--			position: fixed;--%>
+<%--			top: 0;--%>
+<%--			left: 0;--%>
+<%--			width: 100%;--%>
+<%--			z-index: 100;--%>
+<%--			height: 60px;--%>
+<%--		}--%>
 
-		footer {
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			height: 100px;
-			width: 100%;
-		}
+<%--		footer {--%>
+<%--			position: fixed;--%>
+<%--			bottom: 0;--%>
+<%--			left: 0;--%>
+<%--			height: 100px;--%>
+<%--			width: 100%;--%>
+<%--		}--%>
 
-		@media (max-width: 768px) {
-			header, footer {
-				position: static;
-				width: 100%;
-			}
+<%--		@media (max-width: 768px) {--%>
+<%--			header, footer {--%>
+<%--				position: static;--%>
+<%--				width: 100%;--%>
+<%--			}--%>
 
-			footer {
-				position: relative;
-				margin-top: auto;
-			}
-		}
-	</style>
+<%--			footer {--%>
+<%--				position: relative;--%>
+<%--				margin-top: auto;--%>
+<%--			}--%>
+<%--		}--%>
+<%--	</style>--%>
 
-<%--		<link rel="stylesheet" href="/resources/css/main.css">--%>
+		<link rel="stylesheet" href="/resources/css/main.css">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
