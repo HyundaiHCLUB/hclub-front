@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.hclub.hyndai.mapper.club.ClubMapper">
+    <insert id="save" parameterType="club" >
+        INSERT INTO
+            club(
+                 club_name
+               , club_image
+               , club_info
+               , club_loc
+               , created_at
+               , modified_at
+               , use_yn
+               , category_id
+                )
+        VALUES (
+                 #{clubName}
+               , #{clubImage}
+               , #{clubInfo}
+               , #{clubLoc}
+               , sysdate
+               , sysdate
+               , 'N'
+               , #{categoryId}
+               )
+        <selectKey keyProperty="clubNo" resultType="long" order="AFTER">
+            SELECT club_seq.currval
+            FROM dual
+        </selectKey>
+    </insert>
+
+    <select id="findById" parameterType="long" resultType="club">
+        SELECT club_no AS clubNo
+             , club_name AS clubName
+             , club_image AS clubImage
+             , club_info AS clubInfo
+             , club_loc AS clubNo
+             , category_id AS categoryId
+        FROM club
+        WHERE club_no=#{clubNo}
+    </select>
+
+    <insert id="saveMember" parameterType="memberClub" >
+        INSERT INTO
+            member_club(
+                        member_no
+                       , club_no
+                       , creator_yn
+            )
+        VALUES (
+                #{memberNo}
+              , #{clubNo}
+              , #{creatorYn}
+               )
+    </insert>
+
+    <select id="findAllByCategoryId" parameterType="long" resultType="club">
+        SELECT club_no AS clubNo
+             , club_name AS clubName
+             , club_image AS clubImage
+             , club_info AS clubInfo
+             , club_loc AS clubLoc
+             , created_at AS createdAt
+             , modified_at AS modifiedAt
+             , use_yn AS useYn
+             , category_id AS categoryId
+        FROM club
+        WHERE use_yn = 'Y'
+        AND category_id = #{categoryId}
+    </select>
+
+    <select id="findAll" resultType="club">
+        SELECT club_no AS clubNo
+             , club_name AS clubName
+             , club_image AS clubImage
+             , club_info AS clubInfo
+             , club_loc AS clubLoc
+             , created_at AS createdAt
+             , modified_at AS modifiedAt
+             , use_yn AS useYn
+             , category_id AS categoryId
+        FROM club
+        WHERE use_yn = 'Y'
+    </select>
+
+    <update id="update" parameterType="clubUpdateRequest">
+        UPDATE club
+        SET club_name = #{clubName}
+          , club_image = #{clubImage}
+          , club_info = #{clubInfo}
+          , club_loc = #{clubLoc}
+          , modified_at = sysdate
+          , category_id = #{categoryId}
+        WHERE club_no = #{clubNo}
+        <selectKey keyColumn="club_no" keyProperty="clubNo" resultType="long" order="AFTER">
+            SELECT club_no
+            FROM club
+            WHERE club_no = #{clubNo}
+        </selectKey>
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM club
+        WHERE club_no = #{clubNo}
+    </delete>
+
+    <select id="findAllByKeyword" parameterType="string" resultType="club">
+        SELECT club_no AS clubNo
+             , club_name AS clubName
+             , club_image AS clubImage
+             , club_info AS clubInfo
+             , club_loc AS clubLoc
+             , created_at AS createdAt
+             , modified_at AS modifiedAt
+             , use_yn AS useYn
+             , category_id AS categoryId
+        FROM club
+        WHERE use_yn = 'Y'
+          AND club_name LIKE '%' || #{keyword} || '%'
+    </select>
+
+</mapper>
