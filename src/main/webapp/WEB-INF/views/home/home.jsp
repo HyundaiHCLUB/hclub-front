@@ -27,7 +27,6 @@
 
             var scrollBottom = window.innerHeight + scrollY;
             var documentHeight = document.documentElement.offsetHeight;
-
             if (documentHeight - scrollBottom < footerHeight) {
                 document.body.style.paddingBottom = footerHeight + 'px';
                 document.querySelector('footer').classList.add('fixed-bottom');
