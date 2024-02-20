@@ -2,7 +2,7 @@ main {
     padding-top: 0px;
     padding-bottom: 0px;
     margin-bottom: 16px;
-    font-family: 'Inter';
+    font-family: "Inter";
     overflow-y: auto;
     height: calc(100vh - 240px);
 }
@@ -12,7 +12,6 @@ main {
     justify-content: center;
     margin-top: 20px;
 }
-
 
 .category-item {
     margin: 0 28px;
@@ -79,7 +78,7 @@ main {
 .category_button {
     margin-top: 10px;
     padding: 8px 16px;
-    background-color: #46675C;
+    background-color: #46675c;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -95,7 +94,7 @@ main {
 .content_button {
     margin-top: 10px;
     padding: 8px 16px;
-    background-color: #B31312;
+    background-color: #b31312;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -107,7 +106,8 @@ main {
     margin-left: 8px;
     margin-top: 20px;
 }
-.circle_content{
+
+.circle_content {
     display: flex;
     justify-content: center;
 }
@@ -115,19 +115,54 @@ main {
 .grid-container-hot {
     flex-direction: column;
 }
+
 .grid-hot-item {
     flex: 0 0 calc(50% - 5px);
     box-sizing: border-box;
     text-align: center;
     margin-bottom: 0px;
 }
-.circle_hot_content{
+
+.circle_hot_content {
     display: flex;
     justify-content: center;
     margin-top: 15%;
 }
+
 .circle_hot_loc {
     font-size: 28px;
     text-align: center;
     margin-top: 16px;
+}
+
+.rounded-shape {
+    background: linear-gradient(
+            to right,
+            rgba(70, 103, 92, 1) 25%,
+            rgba(226, 243, 227, 1) 15%,
+            rgba(226, 243, 227, 1) 100%
+    );
+    width: 800px;
+    height: 200px;
+    padding: 10px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 30px;
+}
+
+.matches {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* To allow items to wrap to the next row if needed */
+}
+
+.add-button {
+    position: fixed;
+    bottom: 192px; /* Adjust this value as needed to position the button */
+    right: 67px; /* Adjust this value as needed to position the button */
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }

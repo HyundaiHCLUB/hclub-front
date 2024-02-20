@@ -88,6 +88,7 @@
             padding: 15px;
         }
     </style>
+    
 </head>
 <body>
 <div id="wrapper">
@@ -161,4 +162,5 @@
         });
     })
 </script>
+
 </html>
