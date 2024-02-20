@@ -1,6 +1,8 @@
 body {
-    margin: 0;
     font-family: 'Inter';
+    min-height: 100vh; /* 최소 높이를 지정 */
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -13,8 +15,9 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 12px;
-    height: 140px;
+    padding: 8px 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .navbar_menu {
@@ -22,6 +25,10 @@ a {
     justify-content: center;
     list-style: none;
     padding-left: 0;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .navbar_menu li {
@@ -34,8 +41,7 @@ a {
 }
 
 .navbar_menu_font {
-    font-size: 40px;
-    font-weight: bold;
+    font-size: 10px;
     display: flex;
     align-items: center;
 }
@@ -43,22 +49,16 @@ a {
     display: flex;
     list-style: none;
 }
-
-.navbar_logo {
-    margin-left: 40%;
-}
-
 .navbar_icons li{
     padding: 8px 12px;
 }
 
 .navbar_bottom_menu {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin: 20px 0;
 }
 
 .nav-item {
@@ -78,4 +78,30 @@ a {
 }
 
 @media (max-width: 768px) {
+    .navbar_bottom {
+        position: fixed;
+        width: 100%;
+        background-color: #fff;
+        z-index: 1000;
+    }
+
+    .navbar_bottom_menu {
+        justify-content: space-around;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .nav-item {
+        text-align: center;
+        margin-bottom: 0px;
+    }
+
+    .navbar_bottom_menu span {
+        font-size: 14px;
+        margin-top: 3px;
+    }
+
+    .navbar_bottom_menu i {
+        font-size: 24px;
+    }
 }

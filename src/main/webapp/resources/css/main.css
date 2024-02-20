@@ -1,10 +1,10 @@
 main {
-    margin: 0;
     padding-top: 0px;
     padding-bottom: 0px;
+    margin-bottom: 16px;
     font-family: 'Inter';
     overflow-y: auto;
-    height: calc(100vh - 300px);
+    height: calc(100vh - 240px);
 }
 
 .category {
@@ -12,6 +12,7 @@ main {
     justify-content: center;
     margin-top: 20px;
 }
+
 
 .category-item {
     margin: 0 28px;
@@ -23,7 +24,6 @@ main {
     max-width: 100%;
     height: auto;
 }
-
 
 .title {
     display: flex;
