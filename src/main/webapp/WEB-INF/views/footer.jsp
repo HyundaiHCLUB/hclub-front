@@ -20,7 +20,7 @@
         </a>
         <div class="nav-item">
             <i class="fa-solid fa-bag-shopping fa-4x"></i>
-            <span><a href="localhost:8082/comp/main">경쟁</a></span>
+            <span><a href="/comp">경쟁</a></span>
         </div>
         <a href="club">
             <div class="nav-item">
@@ -28,6 +28,7 @@
                 <span>동아리</span>
             </div>
         </a>
+
         <div class="nav-item">
             <i class="fa-solid fa-gift fa-4x"></i>
             <span>이벤트</span>
@@ -40,18 +41,3 @@
 </nav>
 </body>
 </html>
-
-    <link rel="stylesheet" href="/resources/css/nav.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
-        <a href="main">
-            <div class="nav-item">
-                <i class="fa-solid fa-house fa-4x"></i>
-                <span>홈</span>
-            </div>
-        </a>
-        <a href="club">
-            <div class="nav-item">
-                <i class="fa-solid fa-compass fa-4x"></i>
-                <span>동아리</span>
-            </div>
-        </a>

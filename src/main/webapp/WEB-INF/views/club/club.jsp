@@ -47,7 +47,7 @@
 
     <style>
         .main-container {
-            min-height: 100px; /* 적절한 최소 높이 설정 */
+            min-height: 100px;
         }
 
         .category {
@@ -67,7 +67,7 @@
             text-align: center;
         }
     </style>
-\</head>
+</head>
 
 <body>
     <main class="main-container">
