@@ -60,9 +60,9 @@ public class DataConfig {
 
         sessionFactoryBean.setConfiguration(configuration);
 
-        Resource[] resources = new PathMatchingResourcePatternResolver()
-                .getResources("classpath:mapper/*.xml");
-        sessionFactoryBean.setMapperLocations(resources);
+//        Resource[] resources = new PathMatchingResourcePatternResolver()
+//                .getResources("classpath:mapper/*.xml");
+//        sessionFactoryBean.setMapperLocations(resources);
         return sessionFactoryBean.getObject();
     }
 
