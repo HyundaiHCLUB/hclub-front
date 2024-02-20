@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <html>
 <head>
+    <link rel="stylesheet" href="/resources/css/club.css">
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
@@ -59,21 +60,32 @@
 
         .category-item {
             margin: 5px;
+            justify-content: space-around;
             text-align: center;
         }
 
-        #hiddenList {
-            margin: 5px;
-            text-align: center;
-        }
+
     </style>
 </head>
 
 <body>
     <main class="main-container">
-        <div class="category-item">
+        <div class="category">
             <img id="total" src="/resources/image/category_total.png">
-            <ul id="hiddenList" class="totalList" style="display: none;">
+            <div class="category-item">
+                <img src="/resources/image/category_cooking.png">
+            </div>
+            <div class="category-item">
+                <img src="/resources/image/category_activity.png">
+            </div>
+            <div class="category-item">
+                <img src="/resources/image/category_travel.png">
+            </div>
+            <div class="category-item">
+                <img src="/resources/image/category_self.png">
+            </div>
+        </div>
+        <ul id="hiddenList" class="totalList" style="display: none;">
                 <div class="category">
                     <div class="category-item">
                         <img src="/resources/image/category_foreign.png">
@@ -89,20 +101,91 @@
                     </div>
                 </div>
             </ul>
+
+        <div class="more-clubs">
+            <p class="more-club">기본순</p>
+            <img class="more-arrow" src="/resources/image/bottom-arrow.png">
         </div>
-        <div class="category">
-            <div class="category-item">
-                <img src="/resources/image/category_cooking.png">
+
+        <div class="grid-container">
+            <div class="grid-item">
+                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
+                <div class="circle_content">
+                    <p class="circle_name">난쏘공</p>
+                    <a href="#" class="category_button">액티비티</a>
+                    <a href="#" class="content_button">추천</a>
+                </div>
             </div>
-            <div class="category-item">
-                <img src="/resources/image/category_activity.png">
+            <div class="grid-item">
+                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
+                <div class="circle_content">
+                    <p class="circle_name">난쏘공</p>
+                    <a href="#" class="category_button">액티비티</a>
+                    <a href="#" class="content_button">추천</a>
+                </div>
             </div>
-            <div class="category-item">
-                <img src="/resources/image/category_travel.png">
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
+                <div class="circle_content">
+                    <p class="circle_name">난쏘공</p>
+                    <a href="#" class="category_button">액티비티</a>
+                    <a href="#" class="content_button">추천</a>
+                </div>
             </div>
-            <div class="category-item">
-                <img src="/resources/image/category_self.png">
+            <div class="grid-item">
+                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
+                <div class="circle_content">
+                    <p class="circle_name">난쏘공</p>
+                    <a href="#" class="category_button">액티비티</a>
+                    <a href="#" class="content_button">추천</a>
+                </div>
             </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
+                <div class="circle_content">
+                    <p class="circle_name">난쏘공</p>
+                    <a href="#" class="category_button">액티비티</a>
+                    <a href="#" class="content_button">추천</a>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
+                <div class="circle_content">
+                    <p class="circle_name">난쏘공</p>
+                    <a href="#" class="category_button">액티비티</a>
+                    <a href="#" class="content_button">추천</a>
+                </div>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
+                <div class="circle_content">
+                    <p class="circle_name">난쏘공</p>
+                    <a href="#" class="category_button">액티비티</a>
+                    <a href="#" class="content_button">추천</a>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
+                <div class="circle_content">
+                    <p class="circle_name">난쏘공</p>
+                    <a href="#" class="category_button">액티비티</a>
+                    <a href="#" class="content_button">추천</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="plus-club">
+            <svg width="160" height="160" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
+                <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
         </div>
     </main>
 </body>

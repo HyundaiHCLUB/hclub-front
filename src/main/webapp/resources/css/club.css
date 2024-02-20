@@ -1,0 +1,28 @@
+.more-clubs{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 58px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.more-club {
+    font-size: 28px;
+    text-align: right;
+    margin-right: 8px;
+}
+.more-arrow{
+    width: 25px;
+    height: 25px;
+    color: #777777;
+    margin-top: 8px;
+}
+
+.plus-club{
+    position: fixed;
+    display: flex;
+    bottom: 120px;
+    right: 58px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
