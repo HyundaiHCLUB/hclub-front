@@ -60,6 +60,13 @@ public class ViewController {
         mav.setViewName("comp/matchRecord");
         return mav;
     }
+    /* 메인페이지 - 오늘의 TOP10 랭킹 페이지로 이동 */
+    @GetMapping("/todayRanking")
+    public ModelAndView goTodayRanking(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("home/todayRanking");
+        return mav;
+    }
     /****** 마이페이지 뷰 이동 ******/
     /* 마이페이지로 이동 */
     @GetMapping("/mypage")
