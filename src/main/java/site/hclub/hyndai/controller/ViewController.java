@@ -27,7 +27,7 @@ public class ViewController {
 
         String formattedDate = dateFormat.format(date);
         mav.setViewName("home/home");
-        model.addAttribute("serverTime", formattedDate );
+        model.addAttribute("serverTime", formattedDate);
 
         return mav;
     }
