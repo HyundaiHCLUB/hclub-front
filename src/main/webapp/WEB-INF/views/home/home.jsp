@@ -37,8 +37,8 @@
         });
     </script>
 </head>
-<body>
 
+<body>
 <main>
     <div class="navbar_menu">
         <li><a href="home/home.jsp"> 투데이</a></li>
