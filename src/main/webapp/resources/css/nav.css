@@ -37,16 +37,20 @@ a {
     display: flex;
     align-items: center;
 }
-.navbar_icons{
+
+.navbar_icons {
     display: flex;
     list-style: none;
 }
-.navbar_icons li{
+
+.navbar_icons li {
     padding: 8px 12px;
 }
 
 .navbar_bottom_menu {
     list-style: none;
+    position: fixed;
+    width: 100%;
     margin: 0;
     padding: 0;
     display: flex;
