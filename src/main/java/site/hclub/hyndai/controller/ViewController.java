@@ -31,4 +31,18 @@ public class ViewController {
 
         return mav;
     }
+
+    @GetMapping(value = "comp")
+    public ModelAndView compMain(Locale locale, Model model) {
+        log.info("Welcome home! The client locale is {}.", locale);
+        ModelAndView mav = new ModelAndView();
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+        mav.setViewName("comp/compMain");
+        model.addAttribute("serverTime", formattedDate);
+
+        return mav;
+    }
 }
