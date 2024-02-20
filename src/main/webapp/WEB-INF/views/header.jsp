@@ -22,4 +22,7 @@
     </div>
 </nav>
 </body>
+<script>
+	let accessTokenInfo ="";
+</script>
 </html>

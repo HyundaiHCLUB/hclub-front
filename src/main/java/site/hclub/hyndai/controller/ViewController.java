@@ -93,4 +93,19 @@ public class ViewController {
     public ModelAndView goUpdateProfileView(){
         return new ModelAndView("mypage/updateProfile");
     }
+    /* 로그인 페이지 이동*/
+    @GetMapping("/loginView")
+    public ModelAndView goLoginView(){
+        return new ModelAndView("auth/loginView");
+    }
+    /* 회원가입 첫번째 페이지 이동*/
+    @GetMapping("/registerViewFrst")
+    public ModelAndView goRegisterFrstView(){
+        return new ModelAndView("auth/registerViewFrst");
+    }
+    /* 회원가입 두번째 페이지 이동*/
+    @GetMapping("/registerViewScnd")
+    public ModelAndView goRegisterScndView(){
+        return new ModelAndView("auth/registerViewScnd");
+    }
 }
