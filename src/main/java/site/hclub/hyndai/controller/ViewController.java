@@ -18,7 +18,7 @@ import java.util.Locale;
 @RequestMapping("/")
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class ViewController {
-    @GetMapping(value = "main")
+    @GetMapping()
     public ModelAndView home(Locale locale, Model model) {
         log.info("Welcome home! The client locale is {}.", locale);
         ModelAndView mav = new ModelAndView();

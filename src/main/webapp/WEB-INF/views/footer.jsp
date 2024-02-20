@@ -13,7 +13,7 @@
 <body>
 <nav class="navbar_bottom">
     <div class="navbar_bottom_menu">
-        <a href="/main">
+        <a href="/">
             <div class="nav-item">
                 <i class="fa-solid fa-house fa-4x"></i>
                 <span>홈</span>
