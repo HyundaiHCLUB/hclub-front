@@ -135,34 +135,4 @@ main {
     margin-top: 16px;
 }
 
-.rounded-shape {
-    background: linear-gradient(
-            to right,
-            rgba(70, 103, 92, 1) 25%,
-            rgba(226, 243, 227, 1) 15%,
-            rgba(226, 243, 227, 1) 100%
-    );
-    width: 800px;
-    height: 200px;
-    padding: 10px;
-    text-align: center;
-    margin: 10px;
-    border-radius: 30px;
-}
 
-.matches {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* To allow items to wrap to the next row if needed */
-}
-
-.add-button {
-    position: fixed;
-    bottom: 192px; /* Adjust this value as needed to position the button */
-    right: 67px; /* Adjust this value as needed to position the button */
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 50%;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}

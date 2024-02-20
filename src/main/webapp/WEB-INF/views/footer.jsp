@@ -21,7 +21,7 @@
         </a>
         <div class="nav-item">
             <i class="fa-solid fa-bag-shopping fa-4x"></i>
-            <span><a href="/comp">경쟁</a></span>
+            <span><a href="/competition">경쟁</a></span>
         </div>
 
         <div class="nav-item">

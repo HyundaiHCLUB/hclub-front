@@ -45,7 +45,7 @@ public class ViewController {
         return mav;
     }
 
-    @GetMapping(value = "comp")
+    @GetMapping(value = "competition")
     public ModelAndView compMain(Locale locale, Model model) {
         log.info("Welcome home! The client locale is {}.", locale);
         ModelAndView mav = new ModelAndView();

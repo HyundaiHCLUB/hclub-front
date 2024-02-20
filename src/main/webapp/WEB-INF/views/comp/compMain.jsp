@@ -3,6 +3,7 @@
 <head>
     <title>H-Club</title>
     <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/comp.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
@@ -14,7 +15,11 @@
 
     </div>
     <div class="add-button">
-        <img src="/resources/image/AddButton.png">
+        <svg width="140" height="140" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
+            <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
     </div>
 
 </main>
@@ -33,15 +38,23 @@
                         $(".matches").empty();
                         // Create matches based on data
                         data.forEach(function (item) {
-                            var matchHTML = '<div class="rounded-shape">' +
-                                '<p>Team Name: ' + item.teamName + '</p>' +
-                                '<p>Location: ' + item.teamLoc + '</p>' +
-                                '<p>Match Type: ' + item.matchType + '</p>' +
-                                '<p>Match At: ' + item.matchAt + '</p>' +
-                                '<p>Team Goods: ' + item.teamGoods + '</p>' +
+                            var matchHTML =
+                                '<div class="rounded-shape">' +
+                                '<div class="left-section">' +
+                                '<img src="' +item.matchType+ '" alt="" />' +
+                                '<p>' + item.teamCapacity + '</p>' +
+                                '</div>' +
+                                '<div class="middle-section">' +
+                                '<p>' + item.teamName + '</p>' +
+                                '</div>' +
+                                '<div class="right-section">' +
+                                '<p>' + item.teamLoc + '</p>' +
+                                '<p>' + item.matchAt + '</p>' +
+                                '</div>' +
                                 '</div>';
                             $(".matches").append(matchHTML);
                         });
+
                     } else {
                         console.error("Error:", response.message);
                     }
