@@ -44,4 +44,53 @@ public class ViewController {
 
         return mav;
     }
+
+    @GetMapping(value = "comp")
+    public ModelAndView compMain(Locale locale, Model model) {
+        log.info("Welcome home! The client locale is {}.", locale);
+        ModelAndView mav = new ModelAndView();
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+        mav.setViewName("comp/compMain");
+        model.addAttribute("serverTime", formattedDate);
+
+        return mav;
+    }
+    /* 매칭 상세페이지로 이동 */
+    @GetMapping("/matchDetail")
+    public ModelAndView goMatchDetailPage() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("comp/MatchDetail");
+        return mav;
+    }
+    /* 경기 기록 페이지로 이동*/
+    @GetMapping("/matchRecord")
+    public ModelAndView goMatchRecordPage(){
+        ModelAndView mav = new ModelAndView();
+
+        mav.setViewName("comp/matchRecord");
+        return mav;
+    }
+    /* 메인페이지 - 오늘의 TOP10 랭킹 페이지로 이동 */
+    @GetMapping("/todayRanking")
+    public ModelAndView goTodayRanking(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("home/todayRanking");
+        return mav;
+    }
+    /****** 마이페이지 뷰 이동 ******/
+    /* 마이페이지로 이동 */
+    @GetMapping("/mypage")
+    public ModelAndView goMyPage(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("mypage/mypageMain");
+        return mav;
+    }
+    /* 회원정보 수정페이지로 이동*/
+    @GetMapping("/updateProfileView")
+    public ModelAndView goUpdateProfileView(){
+        return new ModelAndView("mypage/updateProfile");
+    }
 }

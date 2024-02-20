@@ -40,3 +40,18 @@
 </nav>
 </body>
 </html>
+
+    <link rel="stylesheet" href="/resources/css/nav.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
+        <a href="main">
+            <div class="nav-item">
+                <i class="fa-solid fa-house fa-4x"></i>
+                <span>홈</span>
+            </div>
+        </a>
+        <a href="club">
+            <div class="nav-item">
+                <i class="fa-solid fa-compass fa-4x"></i>
+                <span>동아리</span>
+            </div>
+        </a>
