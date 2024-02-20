@@ -43,7 +43,7 @@
         <li><a href="home/home.jsp">투데이</a></li>
         <li><a href="">인기 동아리</a></li>
         <li><a href="">신규 동아리</a></li>
-        <li><a href="">오늘의 랭킹</a></li>
+        <li><a href="/home/todayRanking">오늘의 랭킹</a></li>
         <li><a href="">내 모임</a></li>
     </div>
 

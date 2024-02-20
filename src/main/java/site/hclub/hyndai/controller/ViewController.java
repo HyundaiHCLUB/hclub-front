@@ -59,14 +59,14 @@ public class ViewController {
         return mav;
     }
     /* 매칭 상세페이지로 이동 */
-    @GetMapping("/matchDetail")
+    @GetMapping("comp/matchDetail")
     public ModelAndView goMatchDetailPage() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("comp/MatchDetail");
         return mav;
     }
     /* 경기 기록 페이지로 이동*/
-    @GetMapping("/matchRecord")
+    @GetMapping("comp/matchRecord")
     public ModelAndView goMatchRecordPage(){
         ModelAndView mav = new ModelAndView();
 
@@ -74,7 +74,7 @@ public class ViewController {
         return mav;
     }
     /* 메인페이지 - 오늘의 TOP10 랭킹 페이지로 이동 */
-    @GetMapping("/todayRanking")
+    @GetMapping("home/todayRanking")
     public ModelAndView goTodayRanking(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("home/todayRanking");
@@ -82,17 +82,23 @@ public class ViewController {
     }
     /****** 마이페이지 뷰 이동 ******/
     /* 마이페이지로 이동 */
-    @GetMapping("/mypage")
+    @GetMapping("mypage")
     public ModelAndView goMyPage(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("mypage/mypageMain");
         return mav;
     }
     /* 회원정보 수정페이지로 이동*/
-    @GetMapping("/updateProfileView")
+    @GetMapping("mypage/updateProfileView")
     public ModelAndView goUpdateProfileView(){
         return new ModelAndView("mypage/updateProfile");
     }
+    /* 마이페이지 - 매치 히스토리 페이지로 이동*/
+    @GetMapping("mypage/myMatchHistoryView")
+    public ModelAndView goMyMatchHistory(){
+        return new ModelAndView("mypage/myMatchHistory");
+    }
+    /***** end mypage *****/
     /* 로그인 페이지 이동*/
     @GetMapping("/loginView")
     public ModelAndView goLoginView(){

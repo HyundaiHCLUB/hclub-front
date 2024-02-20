@@ -81,10 +81,8 @@
     </style>
 </head>
 <body>
+<main>
 <div id="wrapper">
-    <header>
-        <%@include file="../header.jsp"%>
-    </header>
     <div class = "container">
         <div class="profile-container">
             <div class="profile-header">
@@ -97,7 +95,7 @@
             <div class="mypage-menus">
                 <div class="menu">
                     <i class="fa-solid fa-user"></i>
-                    <span><a href="/comp/updateProfileView">프로필 수정</a></span>
+                    <span><a href="/mypage/updateProfileView">프로필 수정</a></span>
                 </div>
                 <div class="menu">
                     <i class="fa-regular fa-flag"></i>
@@ -109,15 +107,13 @@
                 </div>
                 <div class="menu">
                     <i class="fa-solid fa-trophy"></i>
-                    <span><a>매치 히스토리</a></span>
+                    <span><a href="/mypage/myMatchHistoryView">매치 히스토리</a></span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<footer>
-    <%@include file="../footer.jsp"%>
-</footer>
+</main>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->

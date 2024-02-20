@@ -15,6 +15,9 @@
             display: flex;
             flex-direction: column;
         }
+        #wrapper h2 {
+            text-align: center;
+        }
         .ranking-container {
             width: 90%;
             margin: 50px auto ;
@@ -51,15 +54,20 @@
         }
         .name-rating {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
         }
 
         .name {
+            margin-right: 20px;
             font-weight: bold;
         }
 
         .rating {
+            margin-right: 20px;
             color: black;
+        }
+        .match-num {
+            margin-right: 20px;
         }
 
         /* Customize the top 3 */
@@ -97,124 +105,50 @@
     </style>
 </head>
 <body>
+<main>
 <div id="wrapper">
-    <header>
-        <%@include file="../header.jsp"%>
-    </header>
-    <div class="ranking-container">
-        <h2>오늘의 TOP 10</h2>
-        <!-- 데이터베이스 데이터 추가되면 jstl 코드로 교체-->
-        <%--<c:forEach var="user" items="${users}" varStatus="status">
-            <li class="${status.index < 3 ? 'top' : ''}">
-                <span class="rank">${status.index + 1}</span>
-                <span class="name">${user.name}</span>
-                <span class="rating">${user.rating}점</span>
-            </li>
-        </c:forEach>--%>
-        <div class="top-users">
-            <div class="user top1">
-                <i class="fas fa-crown crown-icon"></i>
-                <div class="rank">1</div>
-                <div class="profile-picture">
-                    <img src="/resources/image/sample.png" alt="팀 로고"/>
-                </div>
-                <div class="name-rating">
-                    <div class="name">혜연</div>
-                    <div class="rating">1892점</div>
-                </div>
-            </div>
-            <div class="user top2">
-                <i class="fas fa-crown crown-icon"></i>
-                <div class="rank">2</div>
-                <div class="profile-picture">
-                    <img src="/resources/image/sample.png" alt="팀 로고"/>
-                </div>
-                <div class="name-rating">
-                    <div class="name">차은우</div>
-                    <div class="rating">1822점</div>
-                </div>
-            </div>
-            <div class="user top3">
-                <i class="fas fa-crown crown-icon"></i>
-                <div class="rank">3</div>
-                <div class="profile-picture">
-                    <img src="/resources/image/sample.png" alt="팀 로고"/>
-                </div>
-                <div class="name-rating">
-                    <div class="name">홍은채</div>
-                    <div class="rating">1722점</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="user">
-            <div class="rank">4</div>
-            <div class="profile-picture">
-                <img src="/resources/image/sample.png" alt="팀 로고"/>
-            </div>
-            <div class="name-rating">
-                <div class="name">홍은채</div>
-                <div class="rating">1722점</div>
-            </div>
-        </div>
-        <div class="user">
-            <div class="rank">5</div>
-            <div class="profile-picture">
-                <img src="/resources/image/sample.png" alt="팀 로고"/>
-            </div>
-            <div class="name-rating">
-                <div class="name">이름</div>
-                <div class="rating">1500점</div>
-            </div>
-        </div>
-        <div class="user">
-            <div class="rank">6</div>
-            <div class="profile-picture">
-                <img src="/resources/image/sample.png" alt="팀 로고"/>
-            </div>
-            <div class="name-rating">
-                <div class="name">이름</div>
-                <div class="rating">1500점</div>
-            </div>
-        </div>
-        <div class="user">
-            <div class="rank">7</div>
-            <div class="profile-picture">
-                <img src="/resources/image/sample.png" alt="팀 로고"/>
-            </div>
-            <div class="name-rating">
-                <div class="name">이름</div>
-                <div class="rating">1500점</div>
-            </div>
-        </div>
-        <div class="user">
-            <div class="rank">8</div>
-            <div class="profile-picture">
-                <img src="/resources/image/sample.png" alt="팀 로고"/>
-            </div>
-            <div class="name-rating">
-                <div class="name">이름</div>
-                <div class="rating">1500점</div>
-            </div>
-        </div>
-        <div class="user">
-            <div class="rank">9</div>
-            <div class="profile-picture">
-                <img src="/resources/image/sample.png" alt="팀 로고"/>
-            </div>
-            <div class="name-rating">
-                <div class="name">이름</div>
-                <div class="rating">1500점</div>
-            </div>
-        </div>
-    </div>
+    <h2>오늘의 TOP 10</h2>
+    <div class="ranking-container"></div>
 </div>
-<footer>
-    <%@include file="../footer.jsp"%>
-</footer>
+</main>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
+    $(document).ready(function () {
 
+        $.ajax({
+            url: 'https://www.h-club.site/comp/rank?num=10',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                /* 10명의 데이터*/
+                console.log(response)
+                var rankingHTML = '';
+
+                $.each(response.data, function(index, user) {
+                    var rankClass = '';
+                    if (index + 1 <= 3) {
+                        rankClass = " top" + (index + 1);
+                    }
+                    rankingHTML += '<div class="user' + rankClass + '">' +
+                        (index + 1 <= 3 ? '<i class="fas fa-crown crown-icon"></i>' : '') +
+                        '<div class="rank">' + (index + 1) + '</div>' +
+                        '<div class="profile-picture">' +
+                        '<img src="' + user.memberImage + '" alt="사진"/>' +
+                        '</div>' +
+                        '<div class="name-rating">' +
+                        '<div class="name">' + user.memberId + '</div>' +
+                        '<div class="rating">' + user.memberRating + '점</div>' +
+                        '<div class="match-num">' + user.matchNum + '경기</div>' +
+                        '</div>' +
+                        '</div>';
+                });
+                $('.ranking-container').html(rankingHTML);
+            },
+            error: function(error){
+                console.log('Error : ', error);
+            }
+        });
+    });
 </script>
 </html>
