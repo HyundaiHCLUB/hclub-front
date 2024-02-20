@@ -84,51 +84,65 @@
 		  	  <span class="smTitle">액티비티</span><br/>
 		  	 	<div class="smLine">
 			  	 	<div class="checkbox-display">
+			  	 	<input class="label-checked" type="checkbox"  value="클라이밍" name="interest"/>
 				     클라이밍
 				    </div>
 				    <div class="checkbox-display">
+				    <input class="label-checked" type="checkbox" value="워킹" name="interest/">
 				     워킹
 				    </div>
 				    <div class="checkbox-display">
+				    <input class="label-checked" type="checkbox" value="스키/보드" name="interest"/>
 				     스키/보드
 				    </div>
 		  	 	</div>
 		  	 	<div class="smLine">
 			  	 	<div class="checkbox-display">
+			  	 	<input class="label-checked" type="checkbox" value="다이어트" name="interest/">
 				     다이어트
 				    </div>
 				    <div class="checkbox-display">
+				    <input class="label-checked" type="checkbox" value="요가" name="interest/">
 				     요가
 				    </div>
 				    <div class="checkbox-display">
+				    <input class="label-checked" type="checkbox" value="헬스" name="interest/">
 					 헬스
 				    </div>
 				     <div class="checkbox-display">
+				     <input class="label-checked" type="checkbox" value="볼링" name="interest/">
 					 볼링
 				    </div>
 		  	 	</div>
 		  	 	<div class="smLine">
 			  	 	<div class="checkbox-display">
+			  	 	<input class="label-checked" type="checkbox" value="풋살" name="interest/">
 				     풋살
 				    </div>
 				    <div class="checkbox-display">
+				    <input class="label-checked" type="checkbox" value="농구" name="interest/">
 				     농구
 				    </div>
 				    <div class="checkbox-display">
+				    <input class="label-checked" type="checkbox" value="야구" name="interest/">
 					 야구
 				    </div>
 				     <div class="checkbox-display">
+				     <input class="label-checked" type="checkbox" value="축구" name="interest/">
 					 축구
 				    </div>
 		  	 	</div>
 		  	 	<div class="smLine">
 			  	 	<div class="checkbox-display">
+			  	 	<input class="label-checked" type="checkbox" value="플로깅" name="interest/">
 				     플로깅
 				    </div>
 				    <div class="checkbox-display">
+				    <input class="label-checked" type="checkbox" value="수영" name="interest/">
 				     수영
 				    </div>
 				    <div class="checkbox-display">
+				    <input class="label-checked" type="checkbox" value="자전거" name="interest/">
 					 자전거
 				    </div>
 		  	 	</div>
@@ -137,23 +151,29 @@
 		  	<span class="smTitle">문화/예술</span><br/>
 		  	<div class="smLine">
 			 	<div class="checkbox-display">
+			 	<input class="label-checked" type="checkbox" value="영화" name="interest/">
 				     영화
 				 </div>
 				 <div class="checkbox-display">
+				 <input class="label-checked" type="checkbox" value="전시" name="interest/">
 				     전시
 				 </div>
 				 <div class="checkbox-display">
+				 <input class="label-checked" type="checkbox" value="뮤지컬" name="interest/">
 				     뮤지컬
 				  </div>
 		  	 </div>
 		  	 <div class="smLine">
 			  	<div class="checkbox-display">
+			  	<input class="label-checked" type="checkbox" value="공연" name="interest/">
 				     공연
 			    </div>
 			    <div class="checkbox-display">
+			    <input class="label-checked" type="checkbox" value="팝업" name="interest/">
 			    	 팝업
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="콘서트" name="interest/">
 					 콘서트
 				  </div>
 		  	 </div>
@@ -162,15 +182,19 @@
 		  	<span class="smTitle">요리</span><br/>
 		  	<div class="smLine">
 			 	<div class="checkbox-display">
+			 	 <input class="label-checked" type="checkbox" value="와인" name="interest/">
 				     와인
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="베이킹" name="interest/">
 				     베이킹
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="카페" name="interest/">
 				     카페
 				 </div>
 				  <div class="checkbox-display">
+				   <input class="label-checked" type="checkbox" value="요리" name="interest/">
 				     요리
 				 </div>
 		  	 </div>
@@ -179,18 +203,23 @@
 		  	<span class="smTitle">자기계발</span><br/>
 		  	<div class="smLine">
 			 	<div class="checkbox-display">
+			 	 <input class="label-checked" type="checkbox" value="프로그래밍" name="interest/">
 				     프로그래밍
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="자격증" name="interest/">
 				     자격증
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="독서" name="interest/">
 				     독서
 				 </div>
 				  <div class="checkbox-display">
+				   <input class="label-checked" type="checkbox" value="스터디" name="interest/">
 				     스터디
 				 </div>
 				  <div class="checkbox-display">
+				   <input class="label-checked" type="checkbox" value="스피치" name="interest/">
 				     스피치
 				 </div>
 		  	 </div>
@@ -199,12 +228,15 @@
 		  	<span class="smTitle">투자</span><br/>
 		  	<div class="smLine">
 			 	<div class="checkbox-display">
+			 	 <input class="label-checked" type="checkbox" value="주식" name="interest/">
 				     주식
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="경제" name="interest/">
 				     경제
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="부동산" name="interest/">
 				     부동산
 				 </div>
 		  	 </div>
@@ -213,12 +245,15 @@
 		  	<span class="smTitle">외국어</span><br/>
 		  	<div class="smLine">
 			 	<div class="checkbox-display">
+			 	 <input class="label-checked" type="checkbox" value="영어" name="interest/">
 				     영어
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="중국어" name="interest/">
 				     중국어
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="일본어" name="interest/">
 				     일본어
 				 </div>
 		  	 </div>
@@ -227,12 +262,15 @@
 		  	<span class="smTitle">여행</span><br/>
 		  	<div class="smLine">
 			 	<div class="checkbox-display">
+			 	 <input class="label-checked" type="checkbox" value="백패킹" name="interest/">
 				     백패킹
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="로드트립" name="interest/">
 				     로드트립
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="크루즈" name="interest/">
 				     크루즈
 				 </div>
 		  	 </div>
@@ -241,12 +279,15 @@
 		  	<span class="smTitle">게임</span><br/>
 		  	<div class="smLine">
 			 	<div class="checkbox-display">
+			 	 <input class="label-checked" type="checkbox" value="보드게임" name="interest/">
 				     보드게임
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="온라인게임" name="interest/">
 				     온라인게임
 				 </div>
 				 <div class="checkbox-display">
+				  <input class="label-checked" type="checkbox" value="체스" name="interest/">
 				     체스
 				 </div>
 		  	 </div>
@@ -257,5 +298,13 @@
 		</form>
 	</div>
 </main>
+<script>
+$(document).ready(function(){
+    // 각 div를 클릭할 때의 처리
+    $(".checkbox-display").click(function(){
+        $(this).toggleClass("checked");
+    });
+});
+</script>
 </body>
 </html>
