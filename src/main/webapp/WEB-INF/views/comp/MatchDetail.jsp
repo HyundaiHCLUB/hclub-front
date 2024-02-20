@@ -34,7 +34,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center; /* Align items vertically */
-            width: 90%; /* Full width */
+            width: 78%;
         }
         .team {
             text-align: center;
@@ -43,16 +43,18 @@
         .team img {
             width: 80px;
             height: 80px;
-            border-radius: 40px;
+            border-radius: 50%;
+            margin: 50px auto 50px auto;
         }
         .team p {
             margin: 5px 10px;
-            font-size: 12px;
+            font-size: 16px;
         }
         .vs {
             flex: 0; /* Do not grow or shrink */
             padding: 0 20px; /* Spacing around VS */
             color: blue;
+            font-size: 24px;
         }
         .chat-button{
             color:#668C4A;
@@ -60,9 +62,9 @@
             border-color: #668C4A;
             background: none;
             padding: 15px;
-            width: 80%;
+            width: 78%;
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
             margin: 20px 0; /* Spacing for buttons */
@@ -74,7 +76,7 @@
             border-color: black;
             border-radius: 10px; /* 둥근 모서리 */
             display: inline-block; /* 인라인 블록 요소로 만들기 */
-            margin: 0; /* 기본 마진 제거 */
+            margin: 20px auto 20px auto; /* 기본 마진 제거 */
         }
         .btn-match-start{
             border-style: none;
@@ -91,9 +93,6 @@
 </head>
 <body>
 <div id="wrapper">
-    <header>
-        <%@include file="../header.jsp"%>
-    </header>
     <main>
         <div class="container">
             <div class="match-detail">
@@ -148,9 +147,7 @@
         </div>
     </main>
 </div>
-<footer>
-    <%@include file="../footer.jsp"%>
-</footer>
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>

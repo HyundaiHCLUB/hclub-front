@@ -123,9 +123,6 @@
 </head>
 <body>
 <div id="wrapper">
-    <header>
-        <%@include file="../header.jsp"%>
-    </header>
     <main>
             <div class="team-icons">
                 <div class="team">
@@ -146,9 +143,6 @@
         <button class="end-match-button">경기 종료</button>
     </main>
 </div>
-<footer>
-    <%@include file="../footer.jsp"%>
-</footer>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
@@ -176,18 +170,18 @@
                 scoreB : 팀2점수
             };
             // 경기 결과 기록 API 호출 - DB 등록 및 S3 파일 업로드
-            // $.ajax({
-            //     url: 'http://localhost:8082/comp/history',
-            //     type: 'POST',
-            //     contentType: 'application/json',
-            //     data: JSON.stringify(dataToSend),
-            //     success: function(response) {
-            //         console.log('Server response:', response);
-            //     },
-            //     error: function(xhr, status, error) {
-            //         console.error('Error occurred:', error);
-            //     }
-            // })
+            $.ajax({
+                url: 'https://www.h-club.site/comp/history',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(dataToSend),
+                success: function(response) {
+                    console.log('Server response:', response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error occurred:', error);
+                }
+            })
         });
     });
 

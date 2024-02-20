@@ -105,10 +105,8 @@
     </style>
 </head>
 <body>
+<main>
 <div id="wrapper">
-    <header>
-        <%@include file="../header.jsp"%>
-    </header>
     <div class = "container">
         <div class="profile-container">
             <div class="profile-header">
@@ -122,9 +120,9 @@
                 <!-- 이름 필드 -->
                 <div class="form-label">
                     <label for="name">이름</label>
-                    <input type="text" id="name" name="name" placeholder="이름"> <br/>
+                    <input type="text" id="name" name="name" placeholder="이름" readonly> <br/>
                 </div>
-                <!-- 소속(직위) 필드 -->
+                <!-- 소속(직급) 필드 -->
                 <div class="form-label">
                     <label for="affiliation">소속(직급)</label>
                     <input type="text" id="affiliation" name="affiliation" placeholder="IT 인프라 사업부 (선임)"> <br/>
@@ -149,9 +147,7 @@
         </div>
     </div>
 </div>
-<footer>
-    <%@include file="../footer.jsp"%>
-</footer>
+</main>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
