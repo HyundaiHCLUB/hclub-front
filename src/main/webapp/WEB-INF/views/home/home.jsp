@@ -37,7 +37,6 @@
         });
     </script>
 </head>
-
 <body>
 <main>
     <div class="navbar_menu">
