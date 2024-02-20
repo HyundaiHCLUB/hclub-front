@@ -1,55 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인 페이지</title>
 <link rel="stylesheet" href="/resources/css/main.css">
 <style>
  	.form-label {
      	font-family: 'Arial', sans-serif;
         color: #333;
         margin-left: 20px;
-        margin-bottom: 10px; /* Adjust as needed */
+        margin-bottom: 10px; 
         text-algin:center;
      }
 
      .form-label label {
          display: block;
          margin: 5px;
-         font-size: 14px; /* Adjust as needed */
+         font-size: 14px; 
          font-weight: bold;
-         color: black; /* Adjust as needed */
+         color: black;
      }
 
      .form-label input[type="text"], .form-label input[type="password"] {
-	     font-size: 30px; /* Adjust as needed */
-     	 padding: 30px 30px; /* Adjust as needed */
-         border: 1px solid #ccc; /* Adjust as needed */
-       	 border-radius: 10px; /* Adjust as needed */
-         width: 90%; /* Adjust as needed */
-         box-sizing: border-box; /* Keeps padding inside width */
-         margin-bottom: 30px; /* Adjust as needed */
+	     font-size: 30px; 
+     	 padding: 30px 30px; 
+         border: 1px solid #ccc; 
+       	 border-radius: 10px;
+         width: 90%; 
+         box-sizing: border-box;
+         margin-bottom: 30px; 
          height:90px;
          background-color:#F6F6F6;
       }
 
-      /* Placeholder styling */
       .form-label input[type="text"]::placeholder {
-         color: #aaa; /* Adjust as needed */
+         color: #aaa; 
       }
       #loginFrm{
         margin:200px 0px 50px 20px;
       }
       .btn-class{
-         font-size: 30px; /* Adjust as needed */
-     	 padding: 30px 30px; /* Adjust as needed */
-         border: 1px solid #ccc; /* Adjust as needed */
-       	 border-radius: 35px; /* Adjust as needed */
-         width: 90%; /* Adjust as needed */
-         box-sizing: border-box; /* Keeps padding inside width */
+         font-size: 30px; 
+     	 padding: 30px 30px;
+         border: 1px solid #ccc; 
+       	 border-radius: 35px; 
+         width: 90%; 
+         box-sizing: border-box; 
          height:100px;
          margin : 30px 0px 30px 0px;
          background-color: #46675C;
