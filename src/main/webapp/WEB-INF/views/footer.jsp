@@ -27,6 +27,10 @@
         justify-content: center;
         list-style: none;
         padding-left: 0;
+        font-size: 32px;
+        font-weight: bold;
+        margin-top: 16px;
+        margin-bottom: 16px;
     }
 
     .navbar_menu li {
@@ -53,11 +57,11 @@
 
     .navbar_bottom_menu {
         list-style: none;
-        margin: 0;
         padding: 0;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        margin: 20px 0;
     }
 
     .nav-item {
@@ -77,7 +81,34 @@
     }
 
     @media (max-width: 768px) {
+        .navbar_bottom {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff;
+            height: 140px;
+            z-index: 1000;
+        }
 
+        .navbar_bottom_menu {
+            justify-content: space-around;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .nav-item {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .navbar_bottom_menu span {
+            font-size: 14px;
+            margin-top: 3px;
+        }
+
+        .navbar_bottom_menu i {
+            font-size: 24px;
+        }
     }
 </style>
 <%--    <link rel="stylesheet" href="/resources/css/nav.css">--%>

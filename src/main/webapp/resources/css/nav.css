@@ -13,7 +13,8 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
+    padding: 16px 12px;
+    height: 140px;
 }
 
 .navbar_menu {
@@ -33,7 +34,8 @@ a {
 }
 
 .navbar_menu_font {
-    font-size: 10px;
+    font-size: 40px;
+    font-weight: bold;
     display: flex;
     align-items: center;
 }
@@ -41,6 +43,11 @@ a {
     display: flex;
     list-style: none;
 }
+
+.navbar_logo {
+    margin-left: 40%;
+}
+
 .navbar_icons li{
     padding: 8px 12px;
 }
@@ -71,5 +78,4 @@ a {
 }
 
 @media (max-width: 768px) {
-
 }
