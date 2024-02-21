@@ -90,19 +90,19 @@ public class MainController {
 
     /***** end mypage *****/
     /* 로그인 페이지 이동*/
-    @GetMapping("/loginView")
+    @GetMapping("login/loginView")
     public ModelAndView goLoginView() {
         return new ModelAndView("auth/loginView");
     }
 
     /* 회원가입 첫번째 페이지 이동*/
-    @GetMapping("/registerViewFrst")
+    @GetMapping("login/registerViewFrst")
     public ModelAndView goRegisterFrstView() {
         return new ModelAndView("auth/registerViewFrst");
     }
 
     /* 회원가입 두번째 페이지 이동*/
-    @GetMapping("/registerViewScnd")
+    @GetMapping("login/registerViewScnd")
     public ModelAndView goRegisterScndView() {
         return new ModelAndView("auth/registerViewScnd");
     }

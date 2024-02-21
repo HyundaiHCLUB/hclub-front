@@ -59,13 +59,14 @@
      	margin: 0px 0px 50px 30px;
      }
    	.checkbox-display{
-   		border: 1px solid  darkslategray;
+   		border: 2px solid  darkslategray;
    		color: darkslategrey;
    		border-radius:15px;
-   		padding:20px 15px 15px 20px;
+   		padding:15px 10px 10px 15px;
    		width:fit-content;
-   		margin: 15px 0px 0px 10px;
+   		margin: 15px 0px 0px 15px;
    		display: inline-block;
+   		font-size: 30px;
    	}
 </style>
 </head>
