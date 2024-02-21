@@ -63,40 +63,74 @@
             justify-content: space-around;
             text-align: center;
         }
-
-
     </style>
+    <script>
+            function getClubList(categoryId) {
+                $.ajax({
+                    url: "https://www.h-club.site/club/"+categoryId,
+                    method: "GET",
+                    success: function (response) {
+                        if (response.success) {
+                            var data = response.data;
+                            $(".matches").empty();
+                            for (var i = 0; i < data.length; i += 2) {
+                                var group = data.slice(i, i + 2);
+
+                                var matchHTML = '<div class="grid-container">';
+                                group.forEach(function (item) {
+                                    matchHTML += '<div class="grid-item">' +
+                                        '<img class="circle_recommend" src="'+item.clubImage+'">' +
+                                        '<div class="circle_content">' +
+                                        '<p>' + item.clubNo + '</p>' +
+                                        '<p class="circle_name">' + item.clubName + '</p>' +
+                                        '<p>동아리 지역: ' + item.clubLoc + '</p>' +
+                                        '<a href="#" className="category_button">'+item.categoryId+'</a>' +
+                                    '</div></div>';
+                                });
+                                matchHTML += '</div>';
+                                $(".matches").append(matchHTML);
+                            }
+                        } else {
+                            console.error("Error:", response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error fetching data:", error);
+                    }
+                });
+            }
+    </script>
 </head>
 
 <body>
     <main class="main-container">
         <div class="category">
             <img id="total" src="/resources/image/category_total.png">
-            <div class="category-item">
+            <div class="category-item" onclick="getClubList(1)">
                 <img src="/resources/image/category_cooking.png">
             </div>
-            <div class="category-item">
+            <div class="category-item" onclick="getClubList(3)">
                 <img src="/resources/image/category_activity.png">
             </div>
-            <div class="category-item">
+            <div class="category-item" onclick="getClubList(7)">
                 <img src="/resources/image/category_travel.png">
             </div>
-            <div class="category-item">
+            <div class="category-item" onclick="getClubList(8)">
                 <img src="/resources/image/category_self.png">
             </div>
         </div>
         <ul id="hiddenList" class="totalList" style="display: none;">
                 <div class="category">
-                    <div class="category-item">
+                    <div class="category-item" onclick="getClubList(6)">
                         <img src="/resources/image/category_foreign.png">
                     </div>
-                    <div class="category-item">
+                    <div class="category-item" onclick="getClubList(4)">
                         <img src="/resources/image/category_game.png">
                     </div>
-                    <div class="category-item">
+                    <div class="category-item" onclick="getClubList(5)">
                         <img src="/resources/image/category_culture.png">
                     </div>
-                    <div class="category-item">
+                    <div class="category-item" onclick="getClubList(2)">
                         <img src="/resources/image/category_money.png">
                     </div>
                 </div>
@@ -107,6 +141,8 @@
             <img class="more-arrow" src="/resources/image/bottom-arrow.png">
         </div>
 
+        <div class="matches">
+        </div>
         <div class="grid-container">
             <div class="grid-item">
                 <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
@@ -181,11 +217,13 @@
         </div>
 
         <div class="plus-club">
-            <svg width="160" height="160" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
-                <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-                <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
+            <a href="club/add">
+               <svg width="160" height="160" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
+                 <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+                 <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+             </svg>
+            </a>
         </div>
     </main>
 </body>

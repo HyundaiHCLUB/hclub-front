@@ -45,6 +45,19 @@ public class ViewController {
         return mav;
     }
 
+    @GetMapping(value = "club/add")
+    public ModelAndView clubAdd(Locale locale, Model model) {
+        ModelAndView mav = new ModelAndView();
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+        mav.setViewName("club/plusClub");
+        model.addAttribute("serverTime", formattedDate);
+
+        return mav;
+    }
+
     @GetMapping(value = "comp")
     public ModelAndView compMain(Locale locale, Model model) {
         log.info("Welcome home! The client locale is {}.", locale);
