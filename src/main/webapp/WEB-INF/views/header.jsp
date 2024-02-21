@@ -13,7 +13,7 @@
 <body>
 <nav class="navbar">
     <div class="navbar_logo">
-        <a href="/main"><img src="/resources/image/logo.png"></a>
+        <a href="/"><img src="/resources/image/logo.png"></a>
     </div>
     <div class="navbar_icons">
         <li><i class="fa-solid fa-magnifying-glass fa-3x"></i></li>

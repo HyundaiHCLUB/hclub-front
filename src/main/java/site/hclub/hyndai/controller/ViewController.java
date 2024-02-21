@@ -18,7 +18,7 @@ import java.util.Locale;
 @RequestMapping("/")
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class ViewController {
-    @GetMapping(value = "main")
+    @GetMapping()
     public ModelAndView home(Locale locale, Model model) {
         log.info("Welcome home! The client locale is {}.", locale);
         ModelAndView mav = new ModelAndView();
@@ -58,7 +58,7 @@ public class ViewController {
         return mav;
     }
 
-    @GetMapping(value = "comp")
+    @GetMapping(value = "competition")
     public ModelAndView compMain(Locale locale, Model model) {
         log.info("Welcome home! The client locale is {}.", locale);
         ModelAndView mav = new ModelAndView();
