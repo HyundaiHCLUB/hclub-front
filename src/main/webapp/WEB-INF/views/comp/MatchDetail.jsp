@@ -14,6 +14,7 @@
         #wrapper {
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
         body {
             font-family: 'Arial', sans-serif;
@@ -21,26 +22,16 @@
             padding: 0;
             background: #ffffff;
         }
-        .container {
-            background: white;
-            display: flex;
-            flex-direction: column; /* Stack children vertically */
-            justify-content: center; /* Align children vertically in the center */
-            align-items: center; /* Align children horizontally in the center */
-            min-height: 100vh; /* Full viewport height */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+
         .match-detail {
-            border: solid 2px;
+            border: solid 2px #668C4A;
             border-radius: 30px;
-            border-color: #668C4A;
             padding: 20px;
             display: flex;
             justify-content: space-around;
             align-items: center; /* Align items vertically */
             width: 70%;
-            height: 60%;
+            height: 100%;
             margin: 20px 0; /* 상단과 하단에 마진 추가 */
         }
         .team {
@@ -119,7 +110,6 @@
 <body>
 <main>
 <div id="wrapper">
-        <div class="container">
             <div class="detail-title">
                 <i class="fas fa-crown crown-icon"></i>
                     <h1>경기 상세정보</h1>
@@ -174,7 +164,6 @@
             </div>
             <button class="chat-button">채팅하기</button>
             <button class="btn-match-start">경기시작</button>
-        </div>
     </div>
 </main>
 </body>
