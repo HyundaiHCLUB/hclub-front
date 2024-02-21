@@ -37,12 +37,14 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            margin-top: 50px;
+            margin-top: 0;
+            font-size: 2em;
+            font-weight: bold;
         }
         .team-icons img {
-            width: 60px; /* 원하는 너비로 설정 */
-            height: 60px; /* 원하는 높이로 설정 */
-            border-radius: 20%;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
             object-fit: cover; /* 이미지 비율을 유지하면서 요소에 맞게 조정 */
         }
         .team-icons div {
@@ -63,6 +65,8 @@
         .score-separator {
             flex: 0; /* ':' 기호는 공간을 차지하지 않도록 설정 */
             margin: 0 10px; /* 좌우 여백 조정 */
+            font-size: 2em;
+            font-weight: bold;
         }
         .match-image {
             border-style: solid;
@@ -87,11 +91,11 @@
             background-color: #c3ea6d;
             border: black;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            width: 200px;
+            height: 200px;
             line-height: 60px;
             text-align: center;
-            font-size: 30px;
+            font-size: 100px;
             color: #000;
         }
         .end-match-button {
@@ -99,16 +103,18 @@
             color: #fff;
             border: none;
             border-radius: 20px;
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 30px 100px;
+            font-size: 3em;
+            font-weight: bold;
             margin-bottom: 20px;
         }
         .score-input {
-            width: 50px;
-            height: 50px;
+            width: 300px;
+            height: 150px;
             margin: 0 auto;
-            border-radius: 15px;
+            border-radius: 30px;
             text-align: center;
+            font-size: 2em;
             font-weight: bold;
         }
         .score-separator {
@@ -118,21 +124,30 @@
             justify-content: center;
             align-items: center;
         }
-
+        .detail-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            margin-top: 100px;
+        }
     </style>
 </head>
 <body>
 <div id="wrapper">
     <main>
+        <div class="detail-title">
+            <h1>경기 결과 기록</h1>
+        </div>
             <div class="team-icons">
                 <div class="team">
-                    <img src="${path}/resources/image/team_logo_sample_1.png" alt="팀1 로고"/>
+                    <img src="${path}/resources/image/sample.png" alt="팀1 로고"/>
                     <h4>한반두</h4>
                     <input type="number" class="score-input" name="score1"/>
                 </div>
                 <div class="score-separator">:</div> <!-- 여기에 추가 -->
                 <div class="team">
-                    <img src="${path}/resources/image/team_logo_sample_2.png" alt="팀2 로고"/>
+                    <img src="${path}/resources/image/sample2.png" alt="팀2 로고"/>
                     <h4>장한평핫스퍼</h4>
                     <input type="number" class="score-input" name="score2"/>
                 </div>
