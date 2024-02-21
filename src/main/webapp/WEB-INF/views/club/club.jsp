@@ -67,7 +67,7 @@
     <script>
             function getClubList(categoryId) {
                 $.ajax({
-                    url: "https://www.h-club.site/club/"+categoryId,
+                    url: "https://www.h-club.site/clubs/"+categoryId,
                     method: "GET",
                     success: function (response) {
                         if (response.success) {

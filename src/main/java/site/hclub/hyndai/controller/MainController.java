@@ -32,31 +32,7 @@ public class MainController {
         return mav;
     }
 
-    @GetMapping(value = "club")
-    public ModelAndView club(Locale locale, Model model) {
-        ModelAndView mav = new ModelAndView();
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
-        String formattedDate = dateFormat.format(date);
-        mav.setViewName("club/club");
-        model.addAttribute("serverTime", formattedDate);
-
-        return mav;
-    }
-
-    @GetMapping(value = "club/add")
-    public ModelAndView clubAdd(Locale locale, Model model) {
-        ModelAndView mav = new ModelAndView();
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-        String formattedDate = dateFormat.format(date);
-        mav.setViewName("club/plusClub");
-        model.addAttribute("serverTime", formattedDate);
-
-        return mav;
-    }
 
     /* 메인페이지 - 오늘의 TOP10 랭킹 페이지로 이동 */
     @GetMapping("home/todayRanking")
