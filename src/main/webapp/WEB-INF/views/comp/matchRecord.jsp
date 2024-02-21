@@ -14,7 +14,7 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f0f0f0;
+            background: #ffffff;
         }
         #wrapper {
             display: flex;
