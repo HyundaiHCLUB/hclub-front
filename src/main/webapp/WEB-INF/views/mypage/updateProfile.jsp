@@ -4,6 +4,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="${path}/resources/css/main.css">
+    <link rel="stylesheet" href="${path}/resources/css/mypage.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,13 +29,14 @@
         .profile-header {
             width: 80%;
             height: 400px;
-            margin: 100px auto 50px;
+            margin: 10px auto 50px;
             display: flex;
             align-items: center;
+            /*border: 2px solid #E2FFD4;*/
+            /*background-color: #E2FFD4;*/
+            border-radius: 5%;
             padding-left: 30px;
             font-size: 36px;
-            border : 2px solid #6FC173;
-            border-radius: 5%;
         }
 
         .profile-pic {
@@ -107,6 +109,10 @@
 <body>
 <main>
 <div id="wrapper">
+    <div class="mypage-top-menu">
+        <img src="/resources/image/left-arrow.png"
+             onclick="window.history.back()"/>
+    </div>
             <div class="profile-header">
                 <img src="/resources/image/sample.png" alt="프로필 이미지" class="profile-pic">
                 <div class="user-info">

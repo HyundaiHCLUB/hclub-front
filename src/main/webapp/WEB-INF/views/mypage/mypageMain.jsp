@@ -4,6 +4,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="${path}/resources/css/main.css">
+    <link rel="stylesheet" href="${path}/resources/css/mypage.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,17 +24,18 @@
             padding: 0;
             background-color: #ffffff
         }
-        a:active {
+        span:active {
             color: #4CAF50;
         }
 
         .profile-header {
             width: 80%;
             height: 400px;
-            margin: 100px auto 50px;
+            margin: 10px auto 50px;
             display: flex;
             align-items: center;
-            border: 2px solid #6FC173;
+            /*border: 2px solid #E2FFD4;*/
+            /*background-color: #E2FFD4;*/
             border-radius: 5%;
             padding-left: 30px;
             font-size: 36px;
@@ -43,7 +45,7 @@
             width: 250px;
             height: 250px;
             border-radius: 50%;
-            margin: auto 50px;
+            margin: auto 30px;
         }
 
         .mypage-menus {
@@ -67,6 +69,7 @@
             margin-top: auto;
             margin-bottom: auto;
             margin-left: 50px;
+            font-weight: bold;
         }
         .fas fa-user-circle icon {
             margin : auto 10px auto 30px;
@@ -79,6 +82,10 @@
 <body>
 <main>
 <div id="wrapper">
+            <div class="mypage-top-menu">
+                <img src="/resources/image/left-arrow.png"
+                onclick="window.history.back()"/>
+            </div>
             <div class="profile-header">
                 <img src="/resources/image/sample.png" alt="프로필 이미지" class="profile-pic">
                 <div class="user-info">
@@ -86,10 +93,10 @@
                     <p>IT 인프라 사업부 (선임)</p>
                 </div>
             </div>
-            <div class="mypage-menus">
+            <div class="mypage-menus" onclick="location.href='/mypage/updateProfileView'">
                 <div class="menu">
                     <i class="fa-solid fa-user"></i>
-                    <span><a href="/mypage/updateProfileView">프로필 수정</a></span>
+                    <span>프로필 수정</span>
                 </div>
                 <div class="menu">
                     <i class="fa-regular fa-flag"></i>
@@ -99,9 +106,9 @@
                     <i class="fa-solid fa-heart"></i>
                     <span><a>즐겨찾기</a></span>
                 </div>
-                <div class="menu">
+                <div class="menu" onclick="location.href='/mypage/myMatchHistoryView'">
                     <i class="fa-solid fa-trophy"></i>
-                    <span><a href="/mypage/myMatchHistoryView">매치 히스토리</a></span>
+                    <span>매치 히스토리</span>
                 </div>
             </div>
         </div>
