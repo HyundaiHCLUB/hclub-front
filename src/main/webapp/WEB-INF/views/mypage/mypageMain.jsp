@@ -93,8 +93,8 @@
                     <p>IT 인프라 사업부 (선임)</p>
                 </div>
             </div>
-            <div class="mypage-menus" onclick="location.href='/mypage/updateProfileView'">
-                <div class="menu">
+            <div class="mypage-menus">
+                <div class="menu" onclick="location.href='/mypage/updateProfileView'">
                     <i class="fa-solid fa-user"></i>
                     <span>프로필 수정</span>
                 </div>
