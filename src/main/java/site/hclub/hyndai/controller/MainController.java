@@ -17,7 +17,7 @@ import java.util.Locale;
 @RestController
 @RequestMapping("/")
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-public class ViewController {
+public class MainController {
     @GetMapping()
     public ModelAndView home(Locale locale, Model model) {
         log.info("Welcome home! The client locale is {}.", locale);
@@ -58,73 +58,52 @@ public class ViewController {
         return mav;
     }
 
-    @GetMapping(value = "competition")
-    public ModelAndView compMain(Locale locale, Model model) {
-        log.info("Welcome home! The client locale is {}.", locale);
-        ModelAndView mav = new ModelAndView();
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-        String formattedDate = dateFormat.format(date);
-        mav.setViewName("comp/compMain");
-        model.addAttribute("serverTime", formattedDate);
-
-        return mav;
-    }
-    /* 매칭 상세페이지로 이동 */
-    @GetMapping("comp/matchDetail")
-    public ModelAndView goMatchDetailPage() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("comp/MatchDetail");
-        return mav;
-    }
-    /* 경기 기록 페이지로 이동*/
-    @GetMapping("comp/matchRecord")
-    public ModelAndView goMatchRecordPage(){
-        ModelAndView mav = new ModelAndView();
-
-        mav.setViewName("comp/matchRecord");
-        return mav;
-    }
     /* 메인페이지 - 오늘의 TOP10 랭킹 페이지로 이동 */
     @GetMapping("home/todayRanking")
-    public ModelAndView goTodayRanking(){
+    public ModelAndView goTodayRanking() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("home/todayRanking");
         return mav;
     }
+
+
     /****** 마이페이지 뷰 이동 ******/
     /* 마이페이지로 이동 */
     @GetMapping("mypage")
-    public ModelAndView goMyPage(){
+    public ModelAndView goMyPage() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("mypage/mypageMain");
         return mav;
     }
+
     /* 회원정보 수정페이지로 이동*/
     @GetMapping("mypage/updateProfileView")
-    public ModelAndView goUpdateProfileView(){
+    public ModelAndView goUpdateProfileView() {
         return new ModelAndView("mypage/updateProfile");
     }
+
     /* 마이페이지 - 매치 히스토리 페이지로 이동*/
     @GetMapping("mypage/myMatchHistoryView")
-    public ModelAndView goMyMatchHistory(){
+    public ModelAndView goMyMatchHistory() {
         return new ModelAndView("mypage/myMatchHistory");
     }
+
     /***** end mypage *****/
     /* 로그인 페이지 이동*/
     @GetMapping("/loginView")
-    public ModelAndView goLoginView(){
+    public ModelAndView goLoginView() {
         return new ModelAndView("auth/loginView");
     }
+
     /* 회원가입 첫번째 페이지 이동*/
     @GetMapping("/registerViewFrst")
-    public ModelAndView goRegisterFrstView(){
+    public ModelAndView goRegisterFrstView() {
         return new ModelAndView("auth/registerViewFrst");
     }
+
     /* 회원가입 두번째 페이지 이동*/
     @GetMapping("/registerViewScnd")
-    public ModelAndView goRegisterScndView(){
+    public ModelAndView goRegisterScndView() {
         return new ModelAndView("auth/registerViewScnd");
     }
 }
