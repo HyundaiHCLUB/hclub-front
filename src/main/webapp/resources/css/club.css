@@ -28,22 +28,83 @@
 }
 
 .plus-title{
-    margin-top: 20px;
     margin-left: 58px;
     font-size: 56px;
     font-weight: bold;
+    height: 120px;
 }
 .category-container{
-    left: 58px;
+    width:fit-content;
+    height:140px;
+    float:left;
+    margin-left: 58px;
+    margin-top: 20px;
 }
 
+.text-container{
+    width: 700px;
+    float:left;
+    margin-left: 60px;
+}
 .category_name{
     font-weight: bold;
     font-size: 40px;
-    margin-top: 10px;
-    margin-bottom: 8px;
+    margin-top: 40px;
+    margin-bottom: 4px;
+}
+.category_desc {
+    font-weight: normal;
+    font-size: 32px;
+    color: #777777;
+    margin-top: 4px;
 }
 
-.category_content{
-    display: flex;
+.next_button {
+    margin-left: 150px;
+    margin-bottom: 100px;
+}
+
+input[type="radio"] {display: none;}
+input[type="radio"] + label {display: inline-block;padding: 20px; color: #46675C;font-size: 14px;cursor: pointer;}
+input[type="radio"]:checked + label {color: #46675C;}
+input[id="tab01"]:checked ~ .con1 {display: block;}
+input[id="tab02"]:checked ~ .con2 {display: block;}
+input[id="tab03"]:checked ~ .con3 {display: block;}
+
+
+.conbox {
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+    display: none;
+}
+
+.input-group {
+    font-size: 44px;
+    margin-left: 58px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.club-image{
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+input[type=file]::file-selector-button {
+    width: 150px;
+    height: 50px;
+    background: #fff;
+    border: 1px solid #46675c;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        background: #46675c;
+        color: #fff;
+
+    }
 }
