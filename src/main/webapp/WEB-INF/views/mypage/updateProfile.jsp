@@ -16,47 +16,41 @@
             display: flex;
             flex-direction: column;
         }
-        .container {
-            width: 100%;
-        }
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
         }
         a:active {
             color: #4CAF50;
         }
-        .profile-container {
-            background-color: #fff;
-            max-width: 600px;
-            max-height: 100%;
-            margin: 50px auto;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
 
         .profile-header {
-            width: 100%;
+            width: 80%;
+            height: 400px;
+            margin: 100px auto 50px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #e1e1e1;
-            padding: 16px;
+            padding-left: 30px;
+            font-size: 36px;
+            border : 2px solid #6FC173;
+            border-radius: 5%;
         }
 
         .profile-pic {
-            width: 70px;
-            height: 70px;
-            border-radius: 35px;
-            margin-right: 16px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin: auto 50px;
         }
 
         .profile-form{
-            margin-top: 30px;
-            width: 100%;
+            margin: 30px auto;
+            width: 80%;
         }
         .form-label {
             font-family: 'Arial', sans-serif;
+            font-size: 2em;
             color: #333;
             margin-left: 20px;
             margin-bottom: 10px; /* Adjust as needed */
@@ -64,18 +58,19 @@
 
         .form-label label {
             display: block;
-            margin: 5px;
-            font-size: 14px; /* Adjust as needed */
+            font-size: 1.5em; /* Adjust as needed */
             font-weight: bold;
             color: black; /* Adjust as needed */
+            margin-bottom: 10px;
         }
 
         .form-label input[type="text"], .form-label input[type="password"] {
-            font-size: 16px; /* Adjust as needed */
+            font-size: 1em; /* Adjust as needed */
             padding: 8px 12px; /* Adjust as needed */
-            border: 1px solid #ccc; /* Adjust as needed */
+            border: 1px solid #000000; /* Adjust as needed */
             border-radius: 4px; /* Adjust as needed */
-            width: 70%; /* Adjust as needed */
+            width: 90%; /* Adjust as needed */
+            height: 100px;
             box-sizing: border-box; /* Keeps padding inside width */
             margin-bottom: 10px; /* Adjust as needed */
         }
@@ -83,22 +78,27 @@
         /* Placeholder styling */
         .form-label input[type="text"]::placeholder {
             color: #aaa; /* Adjust as needed */
+            font-size: 1em;
         }
 
         /* Focus state styling */
         .form-label input[type="text"]:focus {
             outline: none;
-            border-color: #777; /* Adjust as needed */
+            border-color: #000000; /* Adjust as needed */
         }
-
+        .form-label input {
+            border-radius: 30%;
+        }
         .btn-submit {
             display: block;
+            width: 40%;
+            font-size: 2em;
             text-align: center;
             font-weight: bold;
             border-style: none;
             border-radius: 30px;
-            padding: 10px;
-            margin :5px auto;
+            padding: 30px;
+            margin :50px auto 10px;
             background: #46675C;
             color: white;
         }
@@ -107,8 +107,6 @@
 <body>
 <main>
 <div id="wrapper">
-    <div class = "container">
-        <div class="profile-container">
             <div class="profile-header">
                 <img src="/resources/image/sample.png" alt="프로필 이미지" class="profile-pic">
                 <div class="user-info">
@@ -144,8 +142,6 @@
                 <!-- 제출 버튼 -->
                 <input type="submit" value="정보 업데이트" class="btn-submit"><br/>
             </form>
-        </div>
-    </div>
 </div>
 </main>
 </body>

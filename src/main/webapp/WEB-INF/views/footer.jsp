@@ -34,7 +34,7 @@
             <i class="fa-solid fa-gift fa-4x"></i>
             <span>이벤트</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="location.href='/mypage'">
             <i class="fa-solid fa-user fa-4x"></i>
             <span>마이페이지</span>
         </div>

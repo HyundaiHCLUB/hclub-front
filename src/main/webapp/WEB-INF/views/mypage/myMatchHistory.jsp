@@ -1,18 +1,42 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="${path}/resources/css/main.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>매치 히스토리</title>
+    <title>H-Club</title>
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/mypage.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
+    <style>
+    </style>
 </head>
 <body>
+<main>
+    <div class="mypage-header">
+        <i class="fa-solid fa-trophy"></i>
+        <h1>매치 히스토리</h1>
+        <i class="fa-solid fa-trophy"></i>
+    </div>
+    <div class="matches">
 
+        <% for (int i = 0; i < 20; i++ ) {%>
+        <div class="rounded-shape">
+            <div class="left-section">
+                <img src="/resources/image/comp/soccer.png" alt="이미지" />
+                <p>3 ON 3</p>
+            </div>
+            <div class="middle-section">
+                <p>블루 드래곤즈</p>
+            </div>
+            <div class="right-section">
+                <p>서울시 강남구 코트</p>
+                <p>2024/03/04 16:03</p>
+            </div>
+        </div>
+        <%} %>
+    </div>
+
+</main>
 </body>
 </html>

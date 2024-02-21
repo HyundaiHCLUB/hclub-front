@@ -11,11 +11,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>메인 페이지</title>
     <style>
+        #wrapper {
+            display: flex;
+            flex-direction: column;
+        }
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f0f0f0;
+            background: #ffffff;
         }
         .container {
             background: white;
@@ -24,17 +28,20 @@
             justify-content: center; /* Align children vertically in the center */
             align-items: center; /* Align children horizontally in the center */
             min-height: 100vh; /* Full viewport height */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         .match-detail {
-            border-style: solid;
-            border-radius: 20px;
+            border: solid 2px;
+            border-radius: 30px;
             border-color: #668C4A;
-            padding: 10px;
+            padding: 20px;
             display: flex;
             justify-content: space-around;
             align-items: center; /* Align items vertically */
-            width: 78%;
+            width: 70%;
+            height: 60%;
+            margin: 20px 0; /* 상단과 하단에 마진 추가 */
         }
         .team {
             text-align: center;
@@ -44,30 +51,32 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            margin: 50px auto 50px auto;
+            margin: 20px auto;
         }
         .team p {
             margin: 5px 10px;
             font-size: 16px;
         }
         .vs {
-            flex: 0; /* Do not grow or shrink */
-            padding: 0 20px; /* Spacing around VS */
+            flex: 0;
+            padding: 0 20px;
             color: blue;
-            font-size: 24px;
+            font-size: 20px;
+            font-weight: bold;
         }
         .chat-button{
-            color:#668C4A;
-            border-style: solid;
-            border-color: #668C4A;
-            background: none;
+            color: white; /* 버튼 글자색 변경 */
+            border: none; /* 버튼 테두리 제거 */
+            background: #668C4A;
             padding: 15px;
-            width: 78%;
-            border-radius: 10px;
+            width: calc(90% - 60px);
+            border-radius: 25px;
             font-size: 20px;
             font-weight: bold;
             cursor: pointer;
-            margin: 20px 0; /* Spacing for buttons */
+            margin: 20px auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: block;
         }
         .team-detail h5 {
             color: black; /* 글자색 */
@@ -89,13 +98,33 @@
             margin-right: 35px;
             padding: 15px;
         }
+        .btn-team-detail {
+            background: #e7e7e7;
+            color: #333;
+            border: none;
+        }
+        .detail-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .crown-icon {
+            color: gold;
+            margin : 0 5px;
+        }
+
     </style>
     
 </head>
 <body>
+<main>
 <div id="wrapper">
-    <main>
         <div class="container">
+            <div class="detail-title">
+                <i class="fas fa-crown crown-icon"></i>
+                    <h1>경기 상세정보</h1>
+                <i class="fas fa-crown crown-icon"></i>
+            </div>
             <div class="match-detail">
                 <div class="team">
                     <img src="/resources/image/team_logo_sample_1.png" alt="팀 로고"/>
@@ -146,10 +175,10 @@
             <button class="chat-button">채팅하기</button>
             <button class="btn-match-start">경기시작</button>
         </div>
-    </main>
-</div>
-
+    </div>
+</main>
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
     $(document).ready(function() {
@@ -157,7 +186,18 @@
             e.preventDefault();
             window.location.href = "${path}/comp/matchRecord";
         });
-    })
+
+        $.ajax({
+            url: 'https://www.h-club.site/comp/match/13', //샘플데이터
+            type: 'GET',
+            dataType: 'json',
+            success: function (response){
+                console.log(response);
+            }, error: function (error){
+                console.log('Error : ' + error);
+            }
+        });
+    });
 </script>
 
 </html>

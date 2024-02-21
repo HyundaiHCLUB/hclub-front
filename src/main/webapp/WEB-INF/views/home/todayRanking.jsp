@@ -14,12 +14,13 @@
         #wrapper {
             display: flex;
             flex-direction: column;
+            font-size: 1.5em;
         }
         #wrapper h2 {
             text-align: center;
         }
         .ranking-container {
-            width: 90%;
+            width: 80%;
             margin: 50px auto ;
         }
         .ranking-container h2 {
@@ -31,8 +32,10 @@
             align-items: center;
             margin-bottom: 10px;
             border-radius: 25px;
-            padding: 10px;
+            padding: 50px 20px 50px 40px;
             background-color: #f5f5f5;
+            position: relative;
+            font-size: 1.5em;
         }
 
         .top1, .top2, .top3 {
@@ -58,16 +61,27 @@
         }
 
         .name {
-            margin-right: 20px;
+            position: absolute;
+            right: 450px;
             font-weight: bold;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .rating {
-            margin-right: 20px;
+            position: absolute;
+            right: 250px;
             color: black;
+            font-weight: bold;
+            top: 50%;
+            transform: translateY(-50%);
         }
         .match-num {
-            margin-right: 20px;
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
         }
 
         /* Customize the top 3 */
@@ -93,8 +107,9 @@
 
         /* 왕관 아이콘 스타일링 */
         .crown-icon {
-            font-size: 24px; /* 아이콘 크기 조정 */
-            margin-right: 10px; /* 아이콘과 텍스트 사이의 간격 조정 */
+            font-size: 36px; /* 아이콘 크기 조정 */
+            margin-right: 20px;
+            padding-left: 20px;
         }
 
         /* 1위, 2위, 3위에 대한 왕관 색상 */

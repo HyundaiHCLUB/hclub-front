@@ -16,61 +16,57 @@
             display: flex;
             flex-direction: column;
         }
-        .container {
-            width: 100%;
-        }
         body {
             font-family: 'Arial', sans-serif;
+            font-size: 1.5em;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #ffffff
         }
         a:active {
             color: #4CAF50;
         }
-        .profile-container {
-            background-color: #fff;
-            max-width: 600px;
-            max-height: 100%;
-            margin: 50px auto;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
 
         .profile-header {
-            width: 100%;
+            width: 80%;
+            height: 400px;
+            margin: 100px auto 50px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #e1e1e1;
-            padding: 16px;
+            border: 2px solid #6FC173;
+            border-radius: 5%;
+            padding-left: 30px;
+            font-size: 36px;
         }
 
         .profile-pic {
-            width: 70px;
-            height: 70px;
-            border-radius: 35px;
-            margin-right: 16px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin: auto 50px;
         }
 
         .mypage-menus {
             margin-top: 30px;
             padding-bottom: 30px;
+            width: 100%;
         }
         .menu {
             display: flex;
             align-items: center;
             width: 70%;
-            height: 50px;
-            padding: 10px;
-            padding-left: 30px;
-            background-color: #f0f0f0;
-            border-radius: 20px;
-            margin: 10px auto;
+            height: 120px;
+            padding: 20px;
+            padding-left: 50px;
+            background-color: #E2FFD4;
+            border-radius: 30px;
+            margin: 40px auto;
+            font-size: 2em;
         }
         .menu span {
             margin-top: auto;
             margin-bottom: auto;
-            margin-left: 20px;
-            font-weight: bold;
+            margin-left: 50px;
         }
         .fas fa-user-circle icon {
             margin : auto 10px auto 30px;
@@ -83,8 +79,6 @@
 <body>
 <main>
 <div id="wrapper">
-    <div class = "container">
-        <div class="profile-container">
             <div class="profile-header">
                 <img src="/resources/image/sample.png" alt="프로필 이미지" class="profile-pic">
                 <div class="user-info">
@@ -111,8 +105,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 </main>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->

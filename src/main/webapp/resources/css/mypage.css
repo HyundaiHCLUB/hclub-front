@@ -1,0 +1,96 @@
+.rounded-shape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(
+            to right,
+            rgba(111, 193, 115, 1) 25%,
+            rgba(226, 243, 227, 1) 15%,
+            rgba(226, 255, 212, 1) 100%
+    );
+    width: 800px;
+    height: 200px;
+    padding: 10px;
+    margin: 10px auto; // Center the rounded shape horizontally
+border-radius: 30px;
+    box-sizing: border-box; // Include padding in the width and height\
+p{
+    margin: 5px 0;
+    color: #000000;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+}
+.rounded-shape img {
+    font-size: 48px;
+}
+
+.left-section, .right-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; // Stack the children vertically
+}
+.left-section img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px; // Add some space below the icon
+}
+.middle-section {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.matches {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* To allow items to wrap to the next row if needed */
+}
+
+.add-button {
+    position: fixed;
+    bottom: 192px; /* Adjust this value as needed to position the button */
+    right: 67px; /* Adjust this value as needed to position the button */
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.matches {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* To allow items to wrap to the next row if needed */
+}
+
+.matches {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* To allow items to wrap to the next row if needed */
+}
+
+.mypage-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 100px auto;
+}
+
+.mypage-header i {
+    font-size: 2em;
+    color: gold;
+    margin: 0 20px;
+}
+
+.mypage-header h1 {
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 2em;
+}
