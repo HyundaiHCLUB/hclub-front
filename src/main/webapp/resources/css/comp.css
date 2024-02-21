@@ -24,8 +24,9 @@
 }
 
 .left-section img {
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
   margin-bottom: 10px;
 }
 
@@ -35,6 +36,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.middle-section p {
+  font-size: 30px;
 }
 
 .matches {

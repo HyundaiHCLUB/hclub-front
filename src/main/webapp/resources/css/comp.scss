@@ -14,7 +14,7 @@
   margin: 10px auto; // Center the rounded shape horizontally
   border-radius: 30px;
   box-sizing: border-box; // Include padding in the width and height\
-  p{
+  p {
     margin: 5px 0;
     color: #000000;
   }
@@ -27,17 +27,25 @@
   justify-content: center;
   flex-direction: column; // Stack the children vertically
 }
+
 .left-section img {
-  width: 30px;
-  height: 30px;
+
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
   margin-bottom: 10px; // Add some space below the icon
 }
+
 .middle-section {
   flex: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  p {
+    font-size: 30px;
+  }
 }
 
 .matches {

@@ -33,6 +33,15 @@ public class CompController {
         return mav;
     }
 
+    @GetMapping("/create")
+    public ModelAndView createTeam(Locale locale, Model model) {
+        log.info("Create Team", locale);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("comp/createTeam");
+
+        return mav;
+    }
+
     /* 매칭 상세페이지로 이동 */
     @GetMapping("/matchDetail")
     public ModelAndView goMatchDetailPage() {
