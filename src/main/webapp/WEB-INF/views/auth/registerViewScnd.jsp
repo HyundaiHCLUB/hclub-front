@@ -327,7 +327,6 @@ $(".checkbox-display").click(function() {
         $(this).css("background-color", "darkslategrey");
         $(this).css("color", "white");
     }
-    console.log(interestObj);
 });
 
 function registerData(){
@@ -338,7 +337,6 @@ function registerData(){
 	var userData = JSON.parse(storedData); //userData.memberId ex
 	userData.memberInterest= makeInterestString();
 	userData.adminYn = 'N';
-	console.log(userData);
 	
     $.ajax({
         type: 'POST',

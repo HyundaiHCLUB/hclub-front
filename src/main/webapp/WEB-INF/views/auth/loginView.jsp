@@ -91,13 +91,16 @@
 <script>
 $(document).ready(function() {
     $('#loginButton').click(function() {
-        var username = $('#userId').val();
+    	
+        if(!validateForm())
+        	 return false;
+    	var username = $('#userId').val();
         var password = $('#userPw').val();
-
+     
         $.ajax({
             type: 'POST',
-            url: 'https://www.h-club.site/auth/login',  
-           // url: 'http://localhost/hyndai/auth/login',
+            //url: 'https://www.h-club.site/auth/login',  
+            url: 'http://localhost/hyndai/auth/login',
             contentType: 'application/json',
             data: JSON.stringify({ username: username, password: password }),
             success: function(response) { 
@@ -105,12 +108,28 @@ $(document).ready(function() {
                  getUserInfo2(accessTokenInfo);
             },
             error: function(xhr, status, error) {
-                console.error('로그인 실패:', error);
-                // 여기에 로그인 실패 시의 처리를 추가할 수 있습니다.
+                // console.error('로그인 실패:', error);
+             	alert("로그인에 실패했습니다. 아이디 혹은 비밀번호를 확인해주세요.");
             }
         });
     });
 });
+function validateForm() {
+    var username = $('#userId').val();
+    var password = $('#userPw').val();
+
+    if (username.trim() === '') {
+        alert('사용자 아이디를 입력해주세요.');
+        return false;
+    }
+
+    if (password.trim() === '') {
+        alert('비밀번호를 입력해주세요.');
+        return false;
+    }
+
+    return true;
+}
 
 function getUserInfo2(accessToken) { // refreshToken이 아닌 accessToken으로 변경
     $.ajax({
