@@ -295,14 +295,14 @@
 		  	 </div>
 		  </div>
 		  <div class="btnDiv">
-		  	<input id="registerBtn" class="btn-class" type="button" value="회원가입"/>
+		  	<input id="registerBtn" class="btn-class" type="button" value="회원가입" onclick="registerData()"/>
 		  </div>
 		</form>
 	</div>
 </main>
 <script>
 //obj 배열 선언
-var obj = [];
+var interestObj = [];
 
 // checkbox-display 클래스를 가진 요소를 클릭할 때 실행될 함수
 $(".checkbox-display").click(function() {
@@ -313,22 +313,65 @@ $(".checkbox-display").click(function() {
     var value = inputElement.val();
     
     // obj에 해당 값이 존재하는지 확인합니다.
-    var existingValueIndex = obj.indexOf(value);
+    var existingValueIndex = interestObj.indexOf(value);
     
     // obj에 해당 값이 존재하는 경우
     if (existingValueIndex !== -1) {
         // 해당 값이 obj에 있으므로 제거합니다.
-        obj.splice(existingValueIndex, 1);
+        interestObj.splice(existingValueIndex, 1);
         $(this).css("background-color", "white");
         $(this).css("color", "darkslategrey");
     } else {
         // 해당 값이 obj에 없으므로 추가합니다.
-        obj.push(value);
+        interestObj.push(value);
         $(this).css("background-color", "darkslategrey");
         $(this).css("color", "white");
     }
-    console.log(obj);
+    console.log(interestObj);
 });
+
+function registerData(){
+	//세션 스토리지에서 데이터 가져오기
+	var storedData = sessionStorage.getItem('userData');
+
+	// JSON 형태의 문자열을 다시 객체로 변환
+	var userData = JSON.parse(storedData); //userData.memberId ex
+	userData.memberInterest= makeInterestString();
+	userData.adminYn = 'N';
+	console.log(userData);
+	
+    $.ajax({
+        type: 'POST',
+        url: 'https://www.h-club.site/auth/register',
+        //url: '/hyndai/auth/register',
+        /*headers: {
+            'Authorization': 'Bearer ' + accessTokenInfo // accessToken 사용
+        },*/
+        contentType: 'application/json',
+        data: JSON.stringify(userData),
+        success: function(response) { 
+             console.log(response);
+        },
+        error: function(xhr, status, error) {
+            console.error('회원가입 실패:', error);
+           
+        }
+    });
+}
+
+function makeInterestString(){
+	var resultString = "";
+	for (var i = 0; i < interestObj.length; i++) {
+	    resultString += interestObj[i];
+	    if (i < interestObj.length - 1) {
+	        resultString += ", ";
+	    }
+	}
+	
+	console.log(resultString);
+	return resultString;
+}
+
 
 
 </script>

@@ -95,5 +95,71 @@
 		</form>
 	</div>
 </main>
+<script>
+$(document).ready(function() {
+    // 다음 버튼 클릭 시 실행될 함수
+    $("#nextBtn").click(function() {
+        // 아이디 필드 유효성 검사
+        var id = $("#id").val();
+        if (id === "") {
+            alert("아이디를 입력하세요.");
+            $("#id").focus(); // 해당 필드로 포커스 이동
+            return;
+        }
+
+        // 이름 필드 유효성 검사
+        var name = $("#name").val();
+        if (name === "") {
+            alert("이름을 입력하세요.");
+            $("#name").focus(); // 해당 필드로 포커스 이동
+            return;
+        }
+
+        // 사번 필드 유효성 검사
+        var employeeNo = $("#employeeNo").val();
+        if (employeeNo === "") {
+            alert("사번을 입력하세요.");
+            $("#employeeNo").focus(); // 해당 필드로 포커스 이동
+            return;
+        }
+
+        // 비밀번호 필드 유효성 검사
+        var password = $("#password").val();
+        if (password === "") {
+            alert("비밀번호를 입력하세요.");
+            $("#password").focus(); // 해당 필드로 포커스 이동
+            return;
+        }
+
+        // 비밀번호 확인 필드 유효성 검사
+        var passwordConfirm = $("#passwordConfirm").val();
+        if (passwordConfirm === "") {
+            alert("비밀번호 확인을 입력하세요.");
+            $("#passwordConfirm").focus(); // 해당 필드로 포커스 이동
+            return;
+        }
+
+        // 비밀번호 일치 여부 확인
+        if (password !== passwordConfirm) {
+            alert("비밀번호가 일치하지 않습니다.");
+            $("#passwordConfirm").focus(); // 해당 필드로 포커스 이동
+            return;
+        }
+
+       //validation체크가 끝난다면 => setStorageItem
+        setStorageItem(); 
+    });
+});
+var obj ={};
+function setStorageItem(){
+	obj.memberId = $("#id").val();
+	obj.employeeNo= $("#employeeNo").val();
+	obj.memberPw = $("#password").val();
+	console.log(obj);
+	
+	sessionStorage.setItem('userData', JSON.stringify(obj));
+	location.href='/login/registerViewScnd' ;
+}
+</script>
 </body>
 </html>
