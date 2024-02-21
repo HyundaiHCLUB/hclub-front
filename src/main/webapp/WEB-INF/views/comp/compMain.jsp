@@ -14,14 +14,15 @@
         <!-- Content will be dynamically added here -->
 
     </div>
-    <div class="add-button">
-        <svg width="140" height="140" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
-            <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-    </div>
-
+    <a href="/competition/create" class="add-button">
+        <div class="add-button">
+            <svg width="140" height="140" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
+                <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </a>
 </main>
 </body>
 <script>
@@ -41,7 +42,7 @@
                             var matchHTML =
                                 '<div class="rounded-shape">' +
                                 '<div class="left-section">' +
-                                '<img src="' +item.matchType+ '" alt="" />' +
+                                '<img src="' + item.matchType + '" alt="" />' +
                                 '<p>' + item.teamCapacity + '</p>' +
                                 '</div>' +
                                 '<div class="middle-section">' +
@@ -64,6 +65,7 @@
                 }
             });
         }
+
 
         // Call the function when the document is ready
         fetchDataAndCreateMatches();

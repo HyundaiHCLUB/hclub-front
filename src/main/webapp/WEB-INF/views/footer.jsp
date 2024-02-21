@@ -19,25 +19,30 @@
                 <span>홈</span>
             </div>
         </a>
-        <div class="nav-item">
-            <i class="fa-solid fa-bag-shopping fa-4x"></i>
-            <span><a href="/competition">경쟁</a></span>
-        </div>
+        <a href="/competition">
+            <div class="nav-item">
+                <i class="fa-solid fa-bag-shopping fa-4x"></i>
+                <span>경쟁</span>
+            </div>
+        </a>
+        <a href="/club">
+            <div class="nav-item">
+                <i class="fa-solid fa-compass fa-4x"></i>
+                <span>동아리</span>
+            </div>
+        </a>
+        <a href="#">
+            <div class="nav-item">
+                <i class="fa-solid fa-gift fa-4x"></i>
+                <span>이벤트</span>
+            </div>
+        </a>
 
-        <div class="nav-item">
-            <i class="fa-solid fa-compass fa-4x"></i>
-            <span><a href="/club">동아리</a></span>
-        </div>
+            <div class="nav-item" onclick="location.href='/mypage'">
+                <i class="fa-solid fa-user fa-4x"></i>
+                <span>마이페이지</span>
+            </div>
 
-
-        <div class="nav-item">
-            <i class="fa-solid fa-gift fa-4x"></i>
-            <span>이벤트</span>
-        </div>
-        <div class="nav-item" onclick="location.href='/mypage'">
-            <i class="fa-solid fa-user fa-4x"></i>
-            <span>마이페이지</span>
-        </div>
     </div>
 </nav>
 </body>
