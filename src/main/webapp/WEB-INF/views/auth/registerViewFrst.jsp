@@ -212,8 +212,8 @@ function confirmEmployeeYn(){
 	userData.employeeName = employeeName;
 	$.ajax({
         type: 'POST',
-       // url: 'https://www.h-club.site/auth/getEmployeeYn',
-        url: '/hyndai/auth/getEmployeeYn',
+        url: 'https://www.h-club.site/auth/getEmployeeYn',
+      //  url: '/hyndai/auth/getEmployeeYn',
         /*headers: {
             'Authorization': 'Bearer ' + accessTokenInfo // accessToken 사용
         },*/
