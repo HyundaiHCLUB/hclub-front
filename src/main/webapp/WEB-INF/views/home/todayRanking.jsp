@@ -4,6 +4,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="${path}/resources/css/main.css">
+    <link rel="stylesheet" href="${path}/resources/css/mypage.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -101,8 +102,13 @@
             background-color: #4CAF50; /* A darker green color for the top user */
         }
 
-        .top2, .top3 {
+        .top2{
             background-color: #8BC34A; /* A lighter green color for 2nd and 3rd place */
+        }
+
+        .top3 {
+            background-color: #d5fcc2;
+            color: black;
         }
 
         /* 왕관 아이콘 스타일링 */
@@ -122,6 +128,10 @@
 <body>
 <main>
 <div id="wrapper">
+    <div class="mypage-top-menu">
+        <img src="/resources/image/left-arrow.png"
+             onclick="window.history.back()"/>
+    </div>
     <h2>오늘의 TOP 10</h2>
     <div class="ranking-container"></div>
 </div>

@@ -75,14 +75,24 @@
             background-color: white;
             border-radius: 20px;
             padding: 20px;
-            width: 90%;
+            height: 30%;
+            width: 80%;
             position: relative;
+            overflow: hidden;
         }
-        .match-image:before {
-            content: '';
-            display: block;
-            padding-top: 100%; /* 1:1 Aspect Ratio */
+        .match-image img {
+            /* 이미지가 div를 가득 채우도록 하되, 비율이 유지되도록 설정 */
+            /*max-height: 100%; !* 최대 높이는 div의 100%까지만 *!*/
+            width: 100%;      /* 너비는 자동으로 설정되도록 하여 비율 유지 */
+            /*height: auto;     !* 높이도 자동으로 설정되도록 하여 비율 유지 *!*/
+            object-fit: cover; /* 이미지가 div에 꽉 차게 하면서도 비율이 유지되도록 */
+            object-position: center; /* 이미지가 div 중앙에 위치하도록 설정 */
         }
+        /*.match-image:before {*/
+        /*    content: '';*/
+        /*    display: block;*/
+        /*    padding-top: 100%; !* 1:1 Aspect Ratio *!*/
+        /*}*/
         .add-button {
             position: absolute;
             top: 50%;
@@ -111,7 +121,7 @@
         .score-input {
             width: 300px;
             height: 150px;
-            margin: 0 auto;
+            margin: 20px auto;
             border-radius: 30px;
             text-align: center;
             font-size: 2em;
@@ -152,8 +162,10 @@
                     <input type="number" class="score-input" name="score2"/>
                 </div>
             </div>
-            <div class="match-image">
+            <div class="match-image" onclick="triggerUpload()">
+                <img id="preview-img" style="display: none"/>
                 <button class="add-button">+</button>
+                <input type="file" id="fileUpload" style="display:none;" onchange="handleFiles(this.files)">
             </div>
         <button class="end-match-button">경기 종료</button>
     </main>
@@ -200,5 +212,26 @@
         });
     });
 
+    function triggerUpload() {
+        document.getElementById('fileUpload').click();
+    }
+    function handleFiles(files) {
+        var preview = document.getElementById('preview-img');
+        if (files.length > 0) {
+            var file = files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block'; // 이미지를 보여줍니다.
+            };
+
+            reader.readAsDataURL(file);
+            console.log(files[0].name);
+        } else {
+            console.log("No files selected.");
+            preview.style.display = 'none';
+        }
+    }
 </script>
 </html>
