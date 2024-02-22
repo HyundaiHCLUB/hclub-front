@@ -74,18 +74,18 @@
 
 <h1 id="title">회원가입</h1>
 </div>
-	<div id="registerDiv">
-		<form id="registerFrm">
-		  <div class="form-label">
-		     <label for="id">아이디</label>
+	<div id="registerDiv">     
+		<form id="registerFrm" style="margin: 200px 0px 50px 0px;">
+		  <div class="form-label" style="display: flex;flex-wrap: wrap;flex-direction: column;justify-content: center;align-items: center;">
+		     <label for="id" style="width: 90%;">아이디</label>
 		     <input type="text" id="id" name="id" placeholder="아이디"> <br/>
-		     <label for="employeeNo">사번</label>
+		     <label for="employeeNo" style="width: 90%;">사번</label>
 		     <input type="text" id="employeeNo" name="employeeNo" placeholder="사번"> <br/>
-		     <label for="name">이름</label>
+		     <label for="name" style="width: 90%;">이름</label>
 		     <input type="text" id="name" name="name" placeholder="이름"> <br/>
-		     <label for="password">비밀번호</label>
+		     <label for="password" style="width: 90%;">비밀번호</label>
 		     <input type="password" id="password" name="password" placeholder="비밀번호"> <br/>
-		     <label for="passwordConfirm">비밀번호 확인</label>
+		     <label for="passwordConfirm" style="width: 90%;">비밀번호 확인</label>
 		     <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="비밀번호 확인"> <br/>
 		  </div>
 		  <div class="btnDiv">

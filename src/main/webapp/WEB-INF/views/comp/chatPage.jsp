@@ -24,8 +24,8 @@
      	margin: 0px 50px 0px 0px;
      }
      #chatArea{
-     	margin: 50px 50px 0px 0px;
-     	font-size: 30px;
+     	margin: 20px 20px 0px 0px;
+     	font-size: 30px;     
      }
      .myContent{
      	background-color: #D5D5D5;
@@ -109,7 +109,7 @@
 		<span>버튼버튼</span>
 	</div>
 </div>
-<div id="chatArea">
+<div id="chatArea"  style="height: 1389px;overflow: overlay;">
 
 	<div class="myContent basChat">
 	 어느 장소가 좋으신지요.
@@ -131,6 +131,18 @@
 	</div>
 	<div class="myDate basDate">
 	 3:12 PM
+	</div>
+	<div class="otherContent basChat">
+	 네네 ~~
+	</div>
+	<div class="ohterDate basDate">
+		 3:20 PM
+	</div>	
+	<div class="myContent basChat">
+	 그러면 그때 뵙겠습니다.
+	</div>
+	<div class="myDate basDate">
+	 3:34 PM
 	</div>
 	<div class="otherContent basChat">
 	 네네 ~~

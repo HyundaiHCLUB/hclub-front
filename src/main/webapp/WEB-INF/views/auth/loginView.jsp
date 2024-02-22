@@ -76,7 +76,7 @@
 	</div>
 	<div id="loginDiv">
 		<form id="loginFrm">
-		  <div class="form-label">
+		  <div class="form-label" style="text-align: center;margin-left:0px">
 		     <input type="text" id="userId" name="userId" placeholder="아이디"> <br/>
 		     <input type="text" id="userPw" name="userPw" placeholder="비밀번호"> <br/>
 		  </div>
@@ -85,7 +85,7 @@
 		    <input id="registerButton" class="btn-class" type="button" value="회원가입"/>
 		  </div>
 		</form>
-	</div>
+	</div>   
 </main>
 </body>
 <script>

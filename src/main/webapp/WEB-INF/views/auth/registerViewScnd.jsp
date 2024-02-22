@@ -54,7 +54,7 @@
      	margin: 0px 0px 0px 10px;
      }
      .smDiv{
-     	font-size: 25px;
+     	font-size: 33px;
      	font-wiehgt: bold;
      	margin: 0px 0px 50px 30px;
      }
@@ -62,7 +62,7 @@
    		border: 2px solid  darkslategray;
    		color: darkslategrey;
    		border-radius:15px;
-   		padding:15px 10px 10px 15px;
+   		padding: 15px 35px 10px 27px;
    		width:fit-content;
    		margin: 15px 0px 0px 15px;
    		display: inline-block;
@@ -79,8 +79,8 @@
 	<div id="registerDiv">
 		<form id="registerFrm">
 		  <div id="titleDiv">
-		  	<div class="scndTitle">관심사를 선택해주세요!</div><br/>
-		    <div class="thrdTitle">취향에 맞는 동아리를 선택해주세요!</div>
+		  	<div class="scndTitle" style="font-size: 41px;">관심사를 선택해주세요!</div><br/>
+		    <div class="thrdTitle" style="font-size: 29px;">취향에 맞는 동아리를 선택해주세요!</div>
 		  </div>
 		  <div class="smDiv">
 		  	  <span class="smTitle">액티비티</span><br/>
@@ -212,7 +212,10 @@
 				  <input class="label-checked" type="hidden" value="자격증" name="interest/">
 				     자격증
 				 </div>
-				 <div class="checkbox-display">
+				 
+		  	 </div>
+		  	 <div class="smLine">
+		  	 	<div class="checkbox-display">
 				  <input class="label-checked" type="hidden" value="독서" name="interest/">
 				     독서
 				 </div>
