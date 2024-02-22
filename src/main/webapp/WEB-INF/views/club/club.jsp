@@ -76,19 +76,19 @@
                             for (var i = 0; i < data.length; i += 2) {
                                 var group = data.slice(i, i + 2);
 
-                                var matchHTML = '<div class="grid-container">';
+                                var clubHTML = '<div class="grid-container">';
                                 group.forEach(function (item) {
-                                    matchHTML += '<div class="grid-item">' +
+                                    clubHTML += '<a href="/club/detail/'+item.clubNo+'"><div class="grid-item">' +
                                         '<img class="circle_recommend" src="'+item.clubImage+'">' +
                                         '<div class="circle_content">' +
                                         '<p>' + item.clubNo + '</p>' +
                                         '<p class="circle_name">' + item.clubName + '</p>' +
                                         '<p>동아리 지역: ' + item.clubLoc + '</p>' +
                                         '<a href="#" className="category_button">'+item.categoryId+'</a>' +
-                                    '</div></div>';
+                                    '</div></div></a>';
                                 });
-                                matchHTML += '</div>';
-                                $(".matches").append(matchHTML);
+                                clubHTML += '</div>';
+                                $(".clubs").append(clubHTML);
                             }
                         } else {
                             console.error("Error:", response.message);
@@ -141,8 +141,10 @@
             <img class="more-arrow" src="/resources/image/bottom-arrow.png">
         </div>
 
-        <div class="matches">
+
+        <div class="clubs">
         </div>
+
         <div class="grid-container">
             <div class="grid-item">
                 <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
