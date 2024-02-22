@@ -89,8 +89,8 @@
             <div class="profile-header">
                 <img src="/resources/image/sample.png" alt="프로필 이미지" class="profile-pic">
                 <div class="user-info">
-                    <h3>김은채</h3>
-                    <p>IT 인프라 사업부 (선임)</p>
+                    <h3 id="userName">김은채</h3>
+                    <p id="userDept">IT 인프라 사업부 (선임)</p>
                 </div>
             </div>
             <div class="mypage-menus">
@@ -100,11 +100,15 @@
                 </div>
                 <div class="menu">
                     <i class="fa-regular fa-flag"></i>
-                    <span><a>내가 개설한 동아리</a></span>
+                    <span><a>내 동아리</a></span>
                 </div>
                 <div class="menu">
                     <i class="fa-solid fa-heart"></i>
                     <span><a>즐겨찾기</a></span>
+                </div>
+                <div class="menu">
+                    <i class="fa-solid fa-gift"></i>
+                    <span><a>받은 선물함</a></span>
                 </div>
                 <div class="menu" onclick="location.href='/mypage/myMatchHistoryView'">
                     <i class="fa-solid fa-trophy"></i>
@@ -117,6 +121,40 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
 <script>
+    $(document).ready(function() {
+        // 로컬 스토리지에서 JWT 가져오기
+        let accessToken = localStorage.getItem("accessTokenInfo");
+
+        // 가져온 JWT를 사용하여 사용자 정보 가져오기
+        getUserInfo2(accessToken).then(memberInfo => {
+            console.log("memberID : " + memberInfo.memberId);
+            $('#userName').text(memberInfo.employeeName); // 이름 설정
+            $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
+        }).catch(error => {
+            console.error('사용자 정보 가져오기 실패:', error);
+        });
+    });
+
+    function getUserInfo2(accessToken) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                /* 테스트시 각자 설정한 auth 서버 포트번호로 대체하세요 */
+                url: 'http://localhost:8080/auth/mypage/info',
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken, // accessToken 사용
+                },
+                success: function (response) {
+                    console.log('사용자 정보:', response);
+                    resolve(response); // 성공 시 response 객체를 resolve 합니다.
+                },
+                error: function (xhr, status, error) {
+                    console.error('사용자 정보 가져오기 실패:', error);
+                    reject(error); // 실패 시 error 객체를 reject 합니다.
+                }
+            });
+        });
+    }
 
 </script>
 </html>
