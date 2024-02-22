@@ -24,7 +24,7 @@
 </body>
 <script>
 
-    // 로컬 스토리지에서 JWT 가져오기
+    // 로그인 이후 로컬 스토리지에서 JWT 가져오기
     let accessTokenInfo = localStorage.getItem("accessTokenInfo");
  
 </script>
