@@ -81,7 +81,7 @@ input[id="tab03"]:checked ~ .con3 {display: block;}
 
 .input-group {
     font-size: 44px;
-    margin-left: 58px;
+    margin-left: 84px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -107,4 +107,65 @@ input[type=file]::file-selector-button {
         color: #fff;
 
     }
+}
+
+.club-detail {
+    margin-left: 58px;
+    margin-right: 58px;
+}
+.club-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.club-preview {
+    font-size: 16px;
+    font-weight: bold;
+    color: #777777;
+}
+
+.club-content {
+    font-size: 16px;
+    color: #777777;
+}
+
+.notice_bar {
+    display: flex;
+
+}
+
+.apply_button {
+    padding: 8px 16px;
+    background-color: #b31312;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 16px;
+    text-decoration: none;
+    display: inline-block;
+    height: fit-content;
+    width: 110px;
+    margin-left: 58px;
+    margin-top: 20px;
+    margin-right: 660px;
+    font-size: 24px;
+}
+
+.notice_content {
+    padding: 8px 16px;
+    background-color: #fff;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    border-radius: 9px;
+    text-decoration: none;
+    display: inline-block;
+    height: fit-content;
+    width: 820px;
+    text-align: center;
+    font-size: 32px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

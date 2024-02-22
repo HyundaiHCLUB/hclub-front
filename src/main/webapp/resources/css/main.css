@@ -92,7 +92,6 @@ main {
 }
 
 .content_button {
-    margin-top: 10px;
     padding: 8px 16px;
     background-color: #b31312;
     color: #fff;
@@ -134,5 +133,3 @@ main {
     text-align: center;
     margin-top: 16px;
 }
-
-
