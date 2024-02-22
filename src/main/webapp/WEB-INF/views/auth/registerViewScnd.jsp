@@ -349,6 +349,7 @@ function registerData(){
         data: JSON.stringify(userData),
         success: function(response) { 
              console.log(response);
+             alert("회원가입이 완료되었습니다.");
              //회원가입 완료시 로그인 페이지로 이동
          	 location.href='/login/loginView' ;
         },

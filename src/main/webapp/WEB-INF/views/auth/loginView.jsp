@@ -82,7 +82,7 @@
 		  </div>
 		  <div class="btnDiv">
 		  	<input id="loginButton" class="btn-class" type="button" value="로그인"/>
-		    <input class="btn-class" type="button" value="회원가입"/>
+		    <input id="registerButton" class="btn-class" type="button" value="회원가입"/>
 		  </div>
 		</form>
 	</div>
@@ -90,6 +90,7 @@
 </body>
 <script>
 $(document).ready(function() {
+	let pageLocFlag = false;
     $('#loginButton').click(function() {
     	
         if(!validateForm())
@@ -99,16 +100,21 @@ $(document).ready(function() {
      
         $.ajax({
             type: 'POST',
-            //url: 'https://www.h-club.site/auth/login',  
-            url: 'http://localhost/hyndai/auth/login',
+            url: 'https://www.h-club.site/auth/login',  
+            //url: 'http://localhost/hyndai/auth/login',
             contentType: 'application/json',
             data: JSON.stringify({ username: username, password: password }),
             success: function(response) { 
                  accessTokenInfo = response.accessToken;
+                 localStorage.setItem("accessTokenInfo", accessTokenInfo);
                  getUserInfo2(accessTokenInfo);
+                 pageLocFlag = true;
                  
-                 //로그인 완료시 메인페이지로 이동
-             	 location.href='/' ;
+                 if(pageLocFlag){
+                	//로그인 완료시 메인페이지로 이동
+                 	 location.href='/' ;
+                 }
+                 
             },
             error: function(xhr, status, error) {
                 // console.error('로그인 실패:', error);
@@ -116,6 +122,11 @@ $(document).ready(function() {
             }
         });
     });
+    $('#registerButton').click(function() {
+    	location.href="/login/registerViewFrst";
+    });
+    
+    
 });
 function validateForm() {
     var username = $('#userId').val();

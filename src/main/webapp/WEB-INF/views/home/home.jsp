@@ -35,6 +35,7 @@
                 document.querySelector('footer').classList.remove('fixed-bottom');
             }
         });
+    
     </script>
 </head>
 <body>
