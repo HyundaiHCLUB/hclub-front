@@ -70,7 +70,7 @@
         input[type="radio"] + label {display: inline-block;padding: 20px;background: #F5F6F7;color: #000000;font-size: 36px;cursor: pointer; width:400px; border-radius:16px; text-align: center;}
         input[type="radio"]:checked + label {background: #46675c; color: #ffffff;}
 
-        .conbox {width: 100%;height: 1700px;background: #F1F5E8;margin: 0 auto;display: none;border-radius: 80px}
+        .conbox {width: 100%;height: 1700px;background: #F1F5E8;margin: 0 auto;display: none;border-radius: 80px; padding-top: 40px;}
         input[id="tab01"]:checked ~ .con1 {display: block;}
         input[id="tab02"]:checked ~ .con2 {display: block;}
 
@@ -97,10 +97,69 @@
                 </svg>
             </div>
             <a href="#" class="notice_content">3월의 공지사항입니다!</a>
+        </div>
+
+
+        <div class="conbox con2">
+            <div class="grid-container">
+                <div class="grid-item">
+                    <img class="circle_recommend" src="/resources/image/sample3.png" alt="Example Image">
+                    <div class="circle_content">
+                        <p class="circle_name">행복해요~</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img class="circle_recommend" src="/resources/image/sample3.png" alt="Example Image">
+                    <div class="circle_content">
+                        <p class="circle_name">행복해요~</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <img class="circle_recommend" src="/resources/image/sample3.png" alt="Example Image">
+                    <div class="circle_content">
+                        <p class="circle_name">행복해요~</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img class="circle_recommend" src="/resources/image/sample3.png" alt="Example Image">
+                    <div class="circle_content">
+                        <p class="circle_name">행복해요~</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <img class="circle_recommend" src="/resources/image/sample3.png" alt="Example Image">
+                    <div class="circle_content">
+                        <p class="circle_name">행복해요~</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img class="circle_recommend" src="/resources/image/sample3.png" alt="Example Image">
+                    <div class="circle_content">
+                        <p class="circle_name">행복해요~</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <img class="circle_recommend" src="/resources/image/sample3.png" alt="Example Image">
+                    <div class="circle_content">
+                        <p class="circle_name">행복해요~</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img class="circle_recommend" src="/resources/image/sample3.png" alt="Example Image">
+                    <div class="circle_content">
+                        <p class="circle_name">행복해요~</p>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
-        <div class="conbox con2">추억앨범</div>
-
     </div>
 
 </main>
