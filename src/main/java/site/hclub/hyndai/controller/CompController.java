@@ -64,5 +64,9 @@ public class CompController {
         return new ModelAndView("comp/chatPage");
     }
 
-
+    /* 패배팀 결제 페이지 이동*/
+    @GetMapping("/loseTeam")
+    public ModelAndView goLoseTeamPage(){
+        return new ModelAndView("comp/loseTeamResult");
+    }
 }

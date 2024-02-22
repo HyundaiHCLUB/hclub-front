@@ -36,8 +36,8 @@
             padding: 20px;
             padding-top: 50px;
             justify-content: space-around;
-            background-color: #F1F5E8;
-            width: 80%;
+            /*background-color: #F1F5E8;*/
+            width: 90%;
             height: 100%;
             margin: 50px 0; /* 상단과 하단에 마진 추가 */
         }
@@ -81,14 +81,24 @@
             display: block;
         }
         .team-detail h5 {
-            background-color: #46675C;
-            color: white; /* 글자색 */
-            padding: 10px 20px; /* 상하좌우 패딩 */
-            font-size: 1em;
+            color: #46675C; /* 글자색 */
+            padding: 10px 10px; /* 상하좌우 패딩 */
+            font-size: 1.3em;
+            font-weight: bold;
             border-style: none;
             border-radius: 10px; /* 둥근 모서리 */
             display: inline-block; /* 인라인 블록 요소로 만들기 */
-            margin: 20px auto 20px auto; /* 기본 마진 제거 */
+            margin: 20px 0 20px 0; /* 기본 마진 제거 */
+        }
+        .team-detail-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .team-detail-header img {
+            width: 45px;
+            height: 45px;
+            margin : auto 5px;
         }
         .btn-match-start{
             border-style: none;
@@ -140,23 +150,38 @@
                 <div class="team">
                     <img src="/resources/image/sample.png" alt="팀 로고"/>
                     <div class="team-detail">
-                        <h5>팀명</h5>
+                        <div class="team-detail-header">
+                            <img src="/resources/image/comp/comp_crwon.png">
+                            <h5>팀명</h5>
+                        </div>
                         <p>한반두</p>
                     </div>
                     <div class="team-detail">
-                        <h5>팀장</h5>
-                        <p>호날두</p>
+                        <div class="team-detail-header">
+                            <img src="/resources/image/comp/comp_location.png">
+                            <h5>장소</h5>
+                        </div>
+                        <p>새싹 농구장</p>
                     </div>
                     <div class="team-detail">
-                        <h5>장소</h5>
-                        <p>서울특별시 강남구 00로 00길</p>
+                        <div class="team-detail-header">
+                        <img src="/resources/image/comp/comp_calendar.png">
+                        <h5>일시</h5>
+                    </div>
+                        <p>2023년 3월 2일 18:30</p>
                     </div>
                     <div class="team-detail">
-                        <h5>상품</h5>
+                        <div class="team-detail-header">
+                            <img src="/resources/image/comp/comp_trophy.png">
+                            <h5>상품</h5>
+                        </div>
                         <p>H-cafe 5000원 상품권</p>
                     </div>
                     <div class="team-detail">
-                        <h5>팀 레이팅</h5>
+                        <div class="team-detail-header">
+                            <img src="/resources/image/comp/comp_rating.png">
+                            <h5>레이팅</h5>
+                        </div>
                         <p>1500</p>
                     </div>
                     <button class="btn-team-detail">상세정보</button>
@@ -167,24 +192,39 @@
                 <div class="team">
                     <img src="/resources/image/sample2.png" alt="팀 로고"/>
                     <div class="team-detail">
-                        <h5>팀명</h5>
+                        <div class="team-detail-header">
+                            <img src="/resources/image/comp/comp_crwon.png">
+                            <h5>팀명</h5>
+                        </div>
                         <p>장한평핫스퍼</p>
                     </div>
                     <div class="team-detail">
-                        <h5>팀장</h5>
-                        <p>손흥민</p>
+                        <div class="team-detail-header">
+                            <img src="/resources/image/comp/comp_location.png">
+                            <h5>장소</h5>
+                        </div>
+                        <p>새싹 농구장</p>
                     </div>
                     <div class="team-detail">
-                        <h5>장소</h5>
-                        <p>장한평 농구장</p>
+                        <div class="team-detail-header">
+                            <img src="/resources/image/comp/comp_calendar.png">
+                            <h5>일시</h5>
+                        </div>
+                        <p>2023년 3월 2일 18:30</p>
                     </div>
                     <div class="team-detail">
-                        <h5>상품</h5>
-                        <p>H-cafe 10000원 상품권</p>
+                        <div class="team-detail-header">
+                            <img src="/resources/image/comp/comp_trophy.png">
+                            <h5>상품</h5>
+                        </div>
+                        <p>H-cafe 5000원 상품권</p>
                     </div>
                     <div class="team-detail">
-                        <h5>팀 레이팅</h5>
-                        <p>1400</p>
+                        <div class="team-detail-header">
+                            <img src="/resources/image/comp/comp_rating.png">
+                            <h5>레이팅</h5>
+                        </div>
+                        <p>1500</p>
                     </div>
                     <button class="btn-team-detail">상세정보</button>
                 </div>

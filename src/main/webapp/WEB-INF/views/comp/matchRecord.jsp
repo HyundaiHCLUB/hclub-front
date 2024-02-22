@@ -147,7 +147,7 @@
 <div id="wrapper">
     <main>
         <div class="detail-title">
-            <h1>경기 결과 기록</h1>
+            <h1>경기 결과 입력</h1>
         </div>
             <div class="team-icons">
                 <div class="team">
