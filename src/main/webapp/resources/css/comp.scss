@@ -6,33 +6,47 @@
                   to right,
                   rgba(70, 103, 92, 1) 25%,
                   rgba(226, 243, 227, 1) 15%,
-                  rgba(226, 243, 227, 1) 100%
+                  rgba(226, 243, 227, 1) 100% //rgba(255, 255, 255, 1) 15%,
+    //rgba(255, 255, 255, 1) 100%
   );
   width: 800px;
-  height: 200px;
+  height: 300px;
   padding: 10px;
-  margin: 10px auto; // Center the rounded shape horizontally
+  margin: 10px;
+  margin-bottom: 30px;
   border-radius: 30px;
-  box-sizing: border-box; // Include padding in the width and height\
+  box-sizing: border-box;
+
   p {
     margin: 5px 0;
     color: #000000;
   }
 }
 
-.left-section, .right-section {
+.left-section {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; // Stack the children vertically
+  flex-direction: column;
 
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .right-section {
   p {
     margin-right: 10px;
+    text-align: center;
+    font-size: 30px;
     color: #000000;
+    margin-bottom: 5px;
   }
 
 }
@@ -41,6 +55,7 @@
   p {
     margin-right: 10px;
     color: #ffffff;
+    font-weight: bolder;
     font-size: 35px;
   }
 
@@ -62,9 +77,24 @@
   flex-direction: column;
 
   p {
-    margin-top: -85px;
-    font-size: 30px;
+    font-size: 35px;
+    color: #000000;
   }
+}
+
+.middle-section-up, .middle-section-down {
+  margin-bottom: 10px; /* 아래쪽 여백 추가 */
+
+}
+
+.middle-section-up {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.middle-section-down {
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 .matches {
@@ -126,6 +156,7 @@
   display: flex;
   justify-content: space-around;
 
+
   .comp-select-container {
 
     justify-items: center;
@@ -137,9 +168,15 @@
   }
 }
 
+.custom-select {
+  width: 1000px;
+  height: 500px;
+}
+
 
 /* 팀 생성 */
 .select-game-type-container {
+  margin-top: 35px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -149,4 +186,24 @@
 
 .rounded-shape-gametype {
   background: #D9DCDE;
+  display: flex;
+  justify-content: space-around;
+
+  .round-shape {
+    background-color: #D9DCDE;
+    width: 200px;
+    height: 100px;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+
 }

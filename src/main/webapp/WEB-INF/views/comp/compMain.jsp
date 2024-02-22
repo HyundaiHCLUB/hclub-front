@@ -9,11 +9,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
 <body>
 <main>
 
-    
+
     <div class="comp-select">
         <div class="comp-select-container">
             <p>매칭</p>
@@ -31,7 +32,6 @@
         <option value="option2">농구</option>
         <option value="option3">볼링</option>
         <option value="option3">다트</option>
-        <!-- other options -->
     </select>
 
 
@@ -41,7 +41,7 @@
     </div>
     <a href="/competition/create" class="add-button">
         <div class="add-button">
-            <svg width="140" height="140" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="80" height="80" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
                 <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
                 <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
@@ -71,10 +71,16 @@
                                 '<p>' + item.teamCapacity + '</p>' +
                                 '</div>' +
                                 '<div class="middle-section">' +
+                                '<div class="middle-section-up">' +
                                 '<p>' + item.teamName + '</p>' +
                                 '</div>' +
-                                '<div class="right-section">' +
+                                '<div class="middle-section-down">' +
                                 '<p>' + item.teamLoc + '</p>' +
+                                '<p style="color: #717070">' + 'Rating \: ' + item.teamRating + '</p>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="right-section">' +
+
                                 '<p>' + item.matchAt + '</p>' +
                                 '</div>' +
                                 '</div>';

@@ -5,9 +5,10 @@
   justify-content: space-between;
   background: linear-gradient(to right, rgb(70, 103, 92) 25%, rgb(226, 243, 227) 15%, rgb(226, 243, 227) 100%);
   width: 800px;
-  height: 200px;
+  height: 300px;
   padding: 10px;
-  margin: 10px auto;
+  margin: 10px;
+  margin-bottom: 30px;
   border-radius: 30px;
   box-sizing: border-box;
 }
@@ -16,7 +17,15 @@
   color: #000000;
 }
 
-.left-section, .right-section {
+.left-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.right-section {
   flex: 1;
   display: flex;
   align-items: center;
@@ -26,12 +35,16 @@
 
 .right-section p {
   margin-right: 10px;
+  text-align: center;
+  font-size: 30px;
   color: #000000;
+  margin-bottom: 5px;
 }
 
 .left-section p {
   margin-right: 10px;
   color: #ffffff;
+  font-weight: bolder;
   font-size: 35px;
 }
 
@@ -50,8 +63,22 @@
   flex-direction: column;
 }
 .middle-section p {
-  margin-top: -85px;
-  font-size: 30px;
+  font-size: 35px;
+  color: #000000;
+}
+
+.middle-section-up, .middle-section-down {
+  margin-bottom: 10px; /* 아래쪽 여백 추가 */
+}
+
+.middle-section-up {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.middle-section-down {
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 .matches {
@@ -119,8 +146,14 @@
   font-size: 40px;
 }
 
+.custom-select {
+  width: 1000px;
+  height: 500px;
+}
+
 /* 팀 생성 */
 .select-game-type-container {
+  margin-top: 35px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -128,6 +161,21 @@
 
 .rounded-shape-gametype {
   background: #D9DCDE;
+  display: flex;
+  justify-content: space-around;
+}
+.rounded-shape-gametype .round-shape {
+  background-color: #D9DCDE;
+  width: 200px;
+  height: 100px;
+  border-radius: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rounded-shape-gametype .round-shape img {
+  width: 80px;
+  height: 80px;
 }
 
 /*# sourceMappingURL=comp.css.map */
