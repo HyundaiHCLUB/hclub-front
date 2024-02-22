@@ -188,12 +188,13 @@
   background: #D9DCDE;
   display: flex;
   justify-content: space-around;
+  border-radius: 100px;
 
   .round-shape {
     background-color: #D9DCDE;
+    border-radius: inherit;
     width: 200px;
     height: 100px;
-    border-radius: 200px;
     display: flex;
     justify-content: center;
     align-items: center;

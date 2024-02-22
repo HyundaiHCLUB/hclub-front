@@ -21,6 +21,7 @@
         <div class="rounded-shape-gametype">
             <div class="round-shape">
                 <img src="/resources/image/comp/soccer.png"/>
+
             </div>
         </div>
         <div class="rounded-shape-gametype">
