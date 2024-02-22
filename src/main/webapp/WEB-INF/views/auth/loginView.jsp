@@ -106,6 +106,9 @@ $(document).ready(function() {
             success: function(response) { 
                  accessTokenInfo = response.accessToken;
                  getUserInfo2(accessTokenInfo);
+                 
+                 //로그인 완료시 메인페이지로 이동
+             	 location.href='/' ;
             },
             error: function(xhr, status, error) {
                 // console.error('로그인 실패:', error);

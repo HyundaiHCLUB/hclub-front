@@ -58,6 +58,11 @@ public class CompController {
         mav.setViewName("comp/matchRecord");
         return mav;
     }
+    /* 회원가입 두번째 페이지 이동*/
+    @GetMapping("/chatPageView")
+    public ModelAndView goChatPage() {
+        return new ModelAndView("comp/chatPage");
+    }
 
 
 }

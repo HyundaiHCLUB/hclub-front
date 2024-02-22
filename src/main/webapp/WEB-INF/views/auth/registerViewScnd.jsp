@@ -349,6 +349,8 @@ function registerData(){
         data: JSON.stringify(userData),
         success: function(response) { 
              console.log(response);
+             //회원가입 완료시 로그인 페이지로 이동
+         	 location.href='/login/loginView' ;
         },
         error: function(xhr, status, error) {
             console.error('회원가입 실패:', error);
@@ -362,7 +364,7 @@ function makeInterestString(){
 	for (var i = 0; i < interestObj.length; i++) {
 	    resultString += interestObj[i];
 	    if (i < interestObj.length - 1) {
-	        resultString += ", ";
+	        resultString += ",";
 	    }
 	}
 	
