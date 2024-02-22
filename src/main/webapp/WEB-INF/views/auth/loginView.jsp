@@ -100,14 +100,13 @@ $(document).ready(function() {
      
         $.ajax({
             type: 'POST',
-            url: 'https://www.h-club.site/auth/login',  
-            //url: 'http://localhost/hyndai/auth/login',
+            //url: 'https://www.h-club.site/auth/login',  
+            url: 'http://localhost/hyndai/auth/login',
             contentType: 'application/json',
             data: JSON.stringify({ username: username, password: password }),
             success: function(response) { 
-                 accessTokenInfo = response.accessToken;
-                 localStorage.setItem("accessTokenInfo", accessTokenInfo);
-                 getUserInfo2(accessTokenInfo);
+                 localStorage.setItem("accessTokenInfo", response.accessToken);
+                 getUserInfo2(response.accessToken);
                  pageLocFlag = true;
                  
                  if(pageLocFlag){
