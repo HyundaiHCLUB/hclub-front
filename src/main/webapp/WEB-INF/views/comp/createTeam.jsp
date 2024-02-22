@@ -18,8 +18,26 @@
 <body>
 <main>
     <div class="select-game-type-container">
-        <div class="rounded-shape-gametype"><p>농구</p></div>
-
+        <div class="rounded-shape-gametype">
+            <div class="round-shape">
+                <img src="/resources/image/comp/soccer.png"/>
+            </div>
+        </div>
+        <div class="rounded-shape-gametype">
+            <div class="round-shape">
+                <img src="/resources/image/comp/basketball.png"/>
+            </div>
+        </div>
+        <div class="rounded-shape-gametype">
+            <div class="round-shape">
+                <img src="/resources/image/comp/bowling.png"/>
+            </div>
+        </div>
+        <div class="rounded-shape-gametype">
+            <div class="round-shape">
+                <img src="/resources/image/comp/dart.png"/>
+            </div>
+        </div>
     </div>
 
 </main>
