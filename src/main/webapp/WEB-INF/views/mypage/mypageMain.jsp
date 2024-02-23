@@ -1,6 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
     <link rel="stylesheet" href="${path}/resources/css/main.css">
@@ -13,17 +11,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>마이페이지</title>
     <style>
-        #wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            font-size: 1.5em;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff
-        }
         span:active {
             color: #4CAF50;
         }
@@ -37,7 +24,6 @@
             /*border: 2px solid #E2FFD4;*/
             /*background-color: #E2FFD4;*/
             border-radius: 5%;
-            padding-left: 30px;
             font-size: 36px;
         }
 
@@ -47,11 +33,23 @@
             border-radius: 50%;
             margin: auto 30px;
         }
-
+        .user-info {
+            margin-left: 20px;
+        }
+        .user-info h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .user-info p {
+            font-size: 1.1em;
+            margin-top: 0;
+        }
         .mypage-menus {
-            margin-top: 30px;
-            padding-bottom: 30px;
-            width: 100%;
+            margin: 30px auto;
+            padding: 20px;
+            width: 80%;
+            background-color: #F1F5E8;
+            border-radius: 30px;
         }
         .menu {
             display: flex;
@@ -60,7 +58,7 @@
             height: 120px;
             padding: 20px;
             padding-left: 50px;
-            background-color: #E2FFD4;
+            background-color: #F1F5E8;
             border-radius: 30px;
             margin: 40px auto;
             font-size: 2em;
@@ -70,18 +68,15 @@
             margin-bottom: auto;
             margin-left: 50px;
             font-weight: bold;
+            font-size: 1.5em;
         }
         .fas fa-user-circle icon {
             margin : auto 10px auto 30px;
         }
-
-
-
     </style>
 </head>
 <body>
 <main>
-<div id="wrapper">
             <div class="mypage-top-menu">
                 <img src="/resources/image/left-arrow.png"
                 onclick="window.history.back()"/>
@@ -89,8 +84,8 @@
             <div class="profile-header">
                 <img src="/resources/image/sample.png" alt="프로필 이미지" class="profile-pic">
                 <div class="user-info">
-                    <h3 id="userName">김은채</h3>
-                    <p id="userDept">IT 인프라 사업부 (선임)</p>
+                    <h3 id="userName"></h3>
+                    <p id="userDept"></p>
                 </div>
             </div>
             <div class="mypage-menus">
@@ -115,7 +110,6 @@
                     <span>매치 히스토리</span>
                 </div>
             </div>
-        </div>
 </main>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
@@ -126,7 +120,7 @@
         let accessToken = localStorage.getItem("accessTokenInfo");
 
         // 가져온 JWT를 사용하여 사용자 정보 가져오기
-        getUserInfo2(accessToken).then(memberInfo => {
+        getUserInfo(accessToken).then(memberInfo => {
             console.log("memberID : " + memberInfo.memberId);
             $('#userName').text(memberInfo.employeeName); // 이름 설정
             $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
@@ -135,7 +129,7 @@
         });
     });
 
-    function getUserInfo2(accessToken) {
+    function getUserInfo(accessToken) {
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: 'GET',

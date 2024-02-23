@@ -75,8 +75,8 @@
             background-color: white;
             border-radius: 20px;
             padding: 20px;
-            height: 30%;
-            width: 80%;
+            height: 25%;
+            width: 70%;
             position: relative;
             overflow: hidden;
         }
@@ -98,7 +98,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #c3ea6d;
+                background-color: #c3ea6d;
             border: black;
             border-radius: 50%;
             width: 200px;
@@ -119,9 +119,10 @@
             margin-bottom: 20px;
         }
         .score-input {
-            width: 300px;
+            width: 200px;
             height: 150px;
             margin: 20px auto;
+            border: 2px solid black;
             border-radius: 30px;
             text-align: center;
             font-size: 2em;
@@ -173,6 +174,7 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
+
     $(document).ready(function() {
         $('.end-match-button').click(function() {
             var scoreValueTeam1 = $('input[name="score1"]').val().trim();
@@ -224,6 +226,9 @@
             reader.onload = function (e) {
                 preview.src = e.target.result;
                 preview.style.display = 'block'; // 이미지를 보여줍니다.
+                $('#preview-img').attr('src', e.target.result).show();
+                $('.add-button').hide(); // 추가 버튼 숨김
+                $('.match-image').css('border', 'none'); // match-image 테두리 제거
             };
 
             reader.readAsDataURL(file);
@@ -233,5 +238,8 @@
             preview.style.display = 'none';
         }
     }
+    document.getElementById('fileUpload').addEventListener('change', function() {
+        handleFiles(this.files);
+    });
 </script>
 </html>
