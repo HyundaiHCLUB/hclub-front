@@ -114,13 +114,14 @@
             padding: 30px;
         }
         .btn-team-detail {
-            background: #e7e7e7;
+            background: rgba(111, 193, 115, 0.2);
             color: #333;
             margin-top: 50px;
             font-size: 1em;
+            font-weight: bold;
             border-style: none;
             border-radius: 15px;
-            padding: 30px;
+            padding: 30px 0;
         }
         .detail-title {
             display: flex;
