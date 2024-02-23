@@ -64,9 +64,18 @@ public class MainController {
         return new ModelAndView("mypage/myMatchHistory");
     }
 
+    /* 마이페이지 - 내 동아리 */
+    @GetMapping("/mypage/myClubs")
+    public ModelAndView goMyClubsView() {return new ModelAndView("mypage/myClubs");}
+
     /* 마이페이지 - 받은 선물함 */
     @GetMapping("mypage/myGifts")
     public ModelAndView goMyGiftsView() {return new ModelAndView("mypage/myPageGifts");}
+
+    /* 마이페이지 - 즐겨찾기 */
+    @GetMapping("mypage/myFavorites")
+    public ModelAndView goMyFavoritesView() {return new ModelAndView("mypage/myFavorites");}
+
     /***** end mypage *****/
     /* 로그인 페이지 이동*/
     @GetMapping("login/loginView")
