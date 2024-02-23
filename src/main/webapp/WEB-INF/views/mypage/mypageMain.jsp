@@ -101,7 +101,7 @@
                     <i class="fa-solid fa-heart"></i>
                     <span><a>즐겨찾기</a></span>
                 </div>
-                <div class="menu">
+                <div class="menu" onclick="location.href='/mypage/myGifts'">
                     <i class="fa-solid fa-gift"></i>
                     <span><a>받은 선물함</a></span>
                 </div>
