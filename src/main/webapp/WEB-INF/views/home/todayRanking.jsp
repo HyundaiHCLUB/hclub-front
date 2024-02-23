@@ -44,11 +44,11 @@
         }
 
         .profile-picture {
-            width: 50px;
-            height: 50px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             margin-right: 15px;
-            margin-left: 15px;
+            margin-left: 30px;
         }
         .profile-picture img {
             width: 100%; /* 이미지의 너비를 div의 너비와 같게 설정 */
@@ -122,7 +122,11 @@
         .top1 .crown-icon { color: gold; }
         .top2 .crown-icon { color: silver; }
         .top3 .crown-icon { color: #cd7f32; } /* Bronze color */
-
+        .today-rankin-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -132,7 +136,12 @@
         <img src="/resources/image/left-arrow.png"
              onclick="window.history.back()"/>
     </div>
-    <h2>오늘의 TOP 10</h2>
+    <div class="today-rankin-title">
+        <i class="fas fa-crown crown-icon"></i>
+        <h2>오늘의 TOP 10</h2>
+        <i class="fas fa-crown crown-icon"></i>
+    </div>
+
     <div class="ranking-container"></div>
 </div>
 </main>
@@ -159,7 +168,7 @@
                         (index + 1 <= 3 ? '<i class="fas fa-crown crown-icon"></i>' : '') +
                         '<div class="rank">' + (index + 1) + '</div>' +
                         '<div class="profile-picture">' +
-                        '<img src="' + user.memberImage + '" alt="사진"/>' +
+                        '<img src="' + user.memberImage + '" alt="사진" onerror="this.onerror=null; this.src=\'/resources/image/default-image.jpg\'"/>' +
                         '</div>' +
                         '<div class="name-rating">' +
                         '<div class="name">' + user.memberId + '</div>' +

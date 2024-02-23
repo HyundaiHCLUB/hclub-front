@@ -64,6 +64,9 @@ public class MainController {
         return new ModelAndView("mypage/myMatchHistory");
     }
 
+    /* 마이페이지 - 받은 선물함 */
+    @GetMapping("mypage/myGifts")
+    public ModelAndView goMyGiftsView() {return new ModelAndView("mypage/myPageGifts");}
     /***** end mypage *****/
     /* 로그인 페이지 이동*/
     @GetMapping("login/loginView")
