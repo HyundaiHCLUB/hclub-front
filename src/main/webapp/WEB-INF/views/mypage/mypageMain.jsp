@@ -82,7 +82,7 @@
                 onclick="window.history.back()"/>
             </div>
             <div class="profile-header">
-                <img src="/resources/image/sample.png" alt="프로필 이미지" class="profile-pic">
+                <img src="" class="profile-pic">
                 <div class="user-info">
                     <h3 id="userName"></h3>
                     <p id="userDept"></p>
@@ -121,9 +121,10 @@
 
         // 가져온 JWT를 사용하여 사용자 정보 가져오기
         getUserInfo(accessToken).then(memberInfo => {
-            console.log("memberID : " + memberInfo.memberId);
+            console.log("memberID : " + memberInfo.member_id);
             $('#userName').text(memberInfo.employeeName); // 이름 설정
             $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
+            $('.profile-pic').attr('src', memberInfo.memberImage);
         }).catch(error => {
             console.error('사용자 정보 가져오기 실패:', error);
         });
@@ -133,8 +134,9 @@
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: 'GET',
-                /* 테스트시 각자 설정한 auth 서버 포트번호로 대체하세요 */
-                url: 'http://localhost:8080/auth/mypage/info',
+                /* 로컬에서 테스트시 각자 설정한 auth 서버 포트번호로 대체하세요 */
+                // url: 'http://localhost:8080/auth/mypage/info',
+                url: 'https://www.h-club.site/auth/mypage/info',
                 headers: {
                     'Authorization': 'Bearer ' + accessToken, // accessToken 사용
                 },

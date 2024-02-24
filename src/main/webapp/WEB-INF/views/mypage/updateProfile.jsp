@@ -114,10 +114,14 @@
              onclick="window.history.back()"/>
     </div>
             <div class="profile-header">
-                <img src="/resources/image/sample.png" alt="프로필 이미지" class="profile-pic">
+                <div id="profileImageContainer" onclick="document.getElementById('profileImageInput').click();">
+                    <input type="file" id="profileImageInput" style="display: none;" accept="image/*" />
+                    <img src="" class="profile-pic">
+                </div>
                 <div class="user-info">
-                    <h3>김은채</h3>
-                    <p>IT 인프라 사업부 (선임)</p>
+                    <h3 id="userName"></h3>
+                    <p id="userDept"></p>
+                    <p id="userRating"></p>
                 </div>
             </div>
             <form class="profile-form">
@@ -129,12 +133,12 @@
                 <!-- 소속(직급) 필드 -->
                 <div class="form-label">
                     <label for="dept">소속(직급)</label>
-                    <input type="text" id="dept" name="dept" placeholder="IT 인프라 사업부 (선임)"> <br/>
+                    <input type="text" id="dept" name="dept" placeholder="IT 인프라 사업부 (선임)" readonly> <br/>
                 </div>
-                <!-- 사번 필드 -->
+                <!-- 아이디 필드 -->
                 <div class="form-label">
-                    <label for="employee-number">사번</label>
-                    <input type="text" id="employee-number" name="employee_number" placeholder="20241111"> <br/>
+                    <label for="userId">아이디</label>
+                    <input type="text" id="userId" name="userId" placeholder="ID" readonly> <br/>
                 </div>
                 <!-- 비밀번호 필드 -->
                 <div class="form-label">
@@ -154,15 +158,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
 <script>
+    var memberId;
     $(document).ready(function() {
         // 로컬 스토리지에서 JWT 가져오기
         let accessToken = localStorage.getItem("accessTokenInfo");
 
         // 가져온 JWT를 사용하여 사용자 정보 가져오기
         getUserInfo(accessToken).then(memberInfo => {
-            console.log("memberID : " + memberInfo.memberId);
-            $('#name').text(memberInfo.employeeName); // 이름 설정
-            $('#dept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
+            console.log("memberID : " + memberInfo.member_id);
+            memberId = memberInfo.member_id;
+            $('#userName').text(memberInfo.employeeName); // 이름 설정
+            $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
+            $('#userRating').text('레이팅 ' + memberInfo.memberRating); // 부서와 직급 설정
+            $('.profile-pic').attr('src', memberInfo.memberImage); // 프로필 사진
+            $('#name').val(memberInfo.employeeName);
+            $('#dept').val(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')');
+            $('#userId').val(memberInfo.member_id);
         }).catch(error => {
             console.error('사용자 정보 가져오기 실패:', error);
         });
@@ -188,5 +199,33 @@
             });
         });
     }
+
+    document.getElementById('profileImageInput').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        var formData = new FormData();
+        var memberInfo = JSON.stringify({ memberId: memberId });
+
+        formData.append('image', file);
+        formData.append('memberId', new Blob([memberInfo], { type: 'application/json'}));
+        $.ajax({
+            // url: 'http://localhost:8080/auth/mypage/profile',
+            url: 'https://www.h-club.site/auth/mypage/profile',
+            type: 'POST',
+            data: formData,
+            dataType: 'text',
+            processData: false, // FormData는 processData를 false로 설정해야 함
+            contentType: false, // contentType도 false로 설정해야 함
+            success: function(response) {
+                // 성공 시, 프로필 이미지를 새로운 이미지로 변경
+                $('.profile-pic').attr('src', response);
+                console.log(response)
+            },
+            error: function(error) {
+                alert('프로필 이미지 변경에 실패했습니다.');
+                console.error("Error thrown:", error);
+            }
+        });
+    });
+
 </script>
 </html>
