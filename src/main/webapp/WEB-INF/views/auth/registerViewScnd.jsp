@@ -352,12 +352,12 @@ function registerData(){
         data: JSON.stringify(userData),
         success: function(response) { 
              console.log(response);
-             alert("회원가입이 완료되었습니다.");
-             //회원가입 완료시 로그인 페이지로 이동
-         	 location.href='/login/loginView' ;
+          
+             //회원가입 기본정보 넣기 완료시 interest정보 넣기
+             registerIntrest();
         },
         error: function(xhr, status, error) {
-            console.error('회원가입 실패:', error);
+            console.error('회원가입 기본정보 넣기 실패:', error);
            
         }
     });
@@ -375,7 +375,36 @@ function makeInterestString(){
 	console.log(resultString);
 	return resultString;
 }
+function registerIntrest(){
+	//세션 스토리지에서 데이터 가져오기
+	var storedData = sessionStorage.getItem('userData');
 
+	// JSON 형태의 문자열을 다시 객체로 변환
+	var userData = JSON.parse(storedData); //userData.memberId ex
+	userData.memberInterest= makeInterestString();
+	userData.adminYn = 'N';
+	
+    $.ajax({
+        type: 'POST',
+        url: 'https://www.h-club.site/auth/interest',
+        //url: '/hyndai/auth/register',
+        /*headers: {
+            'Authorization': 'Bearer ' + accessTokenInfo // accessToken 사용
+        },*/
+        contentType: 'application/json',
+        data: JSON.stringify(userData),
+        success: function(response) { 
+             console.log(response);
+             alert("회원가입이 완료되었습니다.");
+             //회원가입 완료시 로그인 페이지로 이동
+         	 location.href='/login/loginView' ;
+        },
+        error: function(xhr, status, error) {
+            console.error('회원가입 interset정보 넣기 실패:', error);
+           
+        }
+    });
+}
 
 
 </script>
