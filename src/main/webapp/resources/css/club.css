@@ -5,6 +5,22 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.more-clubs li ul {
+    background: rgb(109,109,109);
+    display:none;
+    height:auto;
+    padding:0px;
+    margin:0px;
+    border:0px;
+    position:absolute;
+    width:200px;
+    z-index:200;
+}
+.more-clubs li:hover ul {
+    display:block;
+}
+
 .more-club {
     font-size: 28px;
     text-align: right;
@@ -146,8 +162,8 @@ input[type=file]::file-selector-button {
     text-decoration: none;
     display: inline-block;
     height: fit-content;
-    width: 110px;
-    margin-left: 58px;
+    width: 120px;
+    margin-left: 80px;
     margin-top: 20px;
     margin-right: 660px;
     font-size: 24px;
@@ -168,4 +184,65 @@ input[type=file]::file-selector-button {
     font-size: 32px;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.club-loc {
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 16px;
+}
+
+.club-info {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: #777777;
+    margin-left: 58px;
+    margin-right: 58px;
+}
+
+.apply-title {
+    margin-left: 58px;
+    font-size: 56px;
+    font-weight: bold;
+    height: 120px;
+    margin-top: 44px;
+}
+
+.apply-notice {
+    margin-left: 58px;
+    margin-top: 10px;
+    margin-bottom: 120px;
+    font-size: 52px;
+    font-weight: bold;
+}
+
+.apply-notice-content {
+    margin-left: 20px;
+    margin-bottom: 60px;
+    font-size: 40px;
+}
+
+.apply-check {
+    margin-left: 20px;
+    font-size: 52px;
+    font-weight: bold;
+}
+
+.apply_box {
+    padding: 100px 16px;
+    background-color: #F4B5B7;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    border-radius: 16px;
+    text-decoration: none;
+    display: inline-block;
+    width: 870px;
+    height: 500px;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 100px;
+    margin-left: 58px;
 }
