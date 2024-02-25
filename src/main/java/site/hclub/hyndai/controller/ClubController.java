@@ -90,4 +90,23 @@ public class ClubController {
 
         return mav;
     }
+
+    @GetMapping(value = "/apply/{clubNo}")
+    public ModelAndView clubApply(Model model, @PathVariable Long clubNo) {
+        ModelAndView mav = new ModelAndView();
+
+        mav.setViewName("club/applyClub");
+        model.addAttribute("clubNo", clubNo);
+
+        return mav;
+    }
+
+    @GetMapping(value = "/hot")
+    public ModelAndView getHotClub(Model model) {
+        ModelAndView mav = new ModelAndView();
+
+        mav.setViewName("home/hotClub");
+
+        return mav;
+    }
 }
