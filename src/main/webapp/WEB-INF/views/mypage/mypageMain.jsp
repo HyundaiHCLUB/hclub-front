@@ -134,9 +134,8 @@
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: 'GET',
-                /* 로컬에서 테스트시 각자 설정한 auth 서버 포트번호로 대체하세요 */
-                // url: 'http://localhost:8080/auth/mypage/info',
-                url: 'https://www.h-club.site/auth/mypage/info',
+                // url: 'http://localhost:8080/auth/mypage/info',   // 로컬
+                url: 'https://www.h-club.site/auth/mypage/info', // 배포판
                 headers: {
                     'Authorization': 'Bearer ' + accessToken, // accessToken 사용
                 },
