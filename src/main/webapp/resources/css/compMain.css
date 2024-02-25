@@ -1,14 +1,9 @@
+@charset "UTF-8";
 .rounded-shape {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(
-                  to right,
-                  rgba(70, 103, 92, 1) 25%,
-                  rgba(226, 243, 227, 1) 15%,
-                  rgba(226, 243, 227, 1) 100% //rgba(255, 255, 255, 1) 15%,
-    //rgba(255, 255, 255, 1) 100%
-  );
+  background: linear-gradient(to right, rgb(70, 103, 92) 25%, rgb(226, 243, 227) 15%, rgb(226, 243, 227) 100%);
   width: 800px;
   height: 260px;
   padding: 10px;
@@ -16,11 +11,10 @@
   margin-bottom: 30px;
   border-radius: 30px;
   box-sizing: border-box;
-
-  p {
-    margin: 5px 0;
-    color: #000000;
-  }
+}
+.rounded-shape p {
+  margin: 5px 0;
+  color: #000000;
 }
 
 .left-section {
@@ -29,7 +23,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
 
 .right-section {
@@ -40,33 +33,26 @@
   flex-direction: column;
 }
 
-.right-section {
-  p {
-    margin-right: 10px;
-    text-align: center;
-    font-size: 30px;
-    color: #000000;
-    margin-bottom: 5px;
-  }
-
+.right-section p {
+  margin-right: 10px;
+  text-align: center;
+  font-size: 30px;
+  color: #000000;
+  margin-bottom: 5px;
 }
 
-.left-section {
-  p {
-    margin-right: 10px;
-    color: #ffffff;
-    font-weight: bolder;
-    font-size: 35px;
-  }
-
+.left-section p {
+  margin-right: 10px;
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 35px;
 }
 
 .left-section img {
-
   width: 60px;
   height: 60px;
   margin-right: 10px;
-  margin-bottom: 10px; // Add some space below the icon
+  margin-bottom: 10px;
 }
 
 .middle-section {
@@ -75,16 +61,14 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
-  p {
-    font-size: 35px;
-    color: #000000;
-  }
+}
+.middle-section p {
+  font-size: 35px;
+  color: #000000;
 }
 
 .middle-section-up, .middle-section-down {
   margin-bottom: 10px; /* 아래쪽 여백 추가 */
-
 }
 
 .middle-section-up {
@@ -148,24 +132,21 @@
   cursor: pointer;
 }
 
-
 /* 검색 바 CSS */
-
 .comp-select {
   margin-top: 30px;
   display: flex;
   justify-content: space-around;
-
-
-  .comp-select-container, .comp-select-container {
-
-    justify-items: center;
-    height: 100%;
-
-    p {
-      font-size: 40px;
-    }
-  }
+}
+.comp-select .comp-select-container {
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+}
+.comp-select .comp-select-container p {
+  text-align: center;
+  font-size: 40px;
 }
 
 .custom-select-container {
@@ -173,8 +154,16 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 25px;
+}
 
-
+.half-screen-line {
+  width: 50vw; /* Sets the width to 50% of the viewport width */
+  height: 2px; /* Sets the thickness of the line */
+  background-color: #46675c; /* Sets the color of the line */
+  margin-top: 10px; /* Adds some space above the line */
+  margin-bottom: 50px; /* Adds some space below the line */
+  margin-left: 0; /* Centers the line by pushing it equally from both sides */
+  margin-right: auto;
 }
 
 .sport-select, .date-select, .match-type-select {
@@ -206,7 +195,7 @@
 }
 
 .custom-select {
-  background-image: url('/resources/image/bottom-arrow.png');
+  background-image: url("/resources/image/bottom-arrow.png");
   background-position: right 10px center;
   background-repeat: no-repeat;
   background-size: 30px;
@@ -244,40 +233,4 @@ select {
   margin-top: -12px;
 }
 
-
-/* 팀 생성 */
-.select-game-type-container {
-  margin-top: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-
-}
-
-.rounded-shape-gametype {
-  background: #D9DCDE;
-  display: flex;
-  justify-content: space-around;
-  border-radius: 100px;
-
-  .round-shape {
-    background-color: #D9DCDE;
-    border-radius: inherit;
-    width: 200px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img {
-
-      width: 80px;
-      height: 80px;
-    }
-  }
-
-
-}
-
-
+/*# sourceMappingURL=compMain.css.map */
