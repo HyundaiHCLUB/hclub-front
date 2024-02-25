@@ -239,7 +239,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
-    $(document).ready(function() {
+	localStorage.setItem("otherUserNo", "5"); //나중에 채팅에 상대방 번호 넣기
+	
+	$(document).ready(function() {
         $('.btn-match-start').click(function(e) {
             e.preventDefault();
             window.location.href = "${path}/competition/matchRecord";
@@ -255,6 +257,10 @@
                 console.log('Error : ' + error);
             }
         });
+        
+        $('.btn-match-start').click(function(e) {
+        	
+        }
     });
 </script>
 
