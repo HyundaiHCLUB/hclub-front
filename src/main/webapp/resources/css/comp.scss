@@ -157,12 +157,14 @@
   justify-content: space-around;
 
 
-  .comp-select-container, .comp-select-container {
-
+  .comp-select-container {
+    width: 100%;
     justify-items: center;
+    align-items: center;
     height: 100%;
 
     p {
+      text-align: center;
       font-size: 40px;
     }
   }
@@ -175,6 +177,16 @@
   margin-bottom: 25px;
 
 
+}
+
+.half-screen-line {
+  width: 50vw; /* Sets the width to 50% of the viewport width */
+  height: 2px; /* Sets the thickness of the line */
+  background-color: #46675c; /* Sets the color of the line */
+  margin-top: 10px; /* Adds some space above the line */
+  margin-bottom: 50px; /* Adds some space below the line */
+  margin-left: 0; /* Centers the line by pushing it equally from both sides */
+  margin-right: auto;
 }
 
 .sport-select, .date-select, .match-type-select {

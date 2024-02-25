@@ -16,14 +16,19 @@
 
 
     <div class="comp-select">
+        <a href="/competition">
+            <div class="comp-select-container">
+                <p style="color: #46675c">목록</p>
 
-        <div class="comp-select-container">
-            <p>목록</p>
-        </div>
-        <div class="comp-select-container">
-            <p>랭킹</p>
-        </div>
+            </div>
+        </a>
+        <a href="/home/todayRanking">
+            <div class="comp-select-container">
+                <p>랭킹</p>
+            </div>
+        </a>
     </div>
+    <div class="half-screen-line"></div>
     <div class="custom-select-container">
         <select class="sport-select">
             <option value="soccer">축구</option>
@@ -39,6 +44,10 @@
 
         <select class="match-type-select">
             <option value="">인원 선택</option>
+            <option value="3">3 vs 3</option>
+            <option value="5">5 vs 5</option>
+            <option value="6">6 vs 6</option>
+            <option value="11">11 vs 11</option>
         </select>
     </div>
 
