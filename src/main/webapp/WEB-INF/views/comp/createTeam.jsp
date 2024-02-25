@@ -9,7 +9,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="stylesheet" href="/resources/css/compMain.css">
+    <link rel="stylesheet" href="/resources/css/compCreateTeam.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -40,6 +40,15 @@
             </div>
         </div>
     </div>
+
+    <div class="plus-button"></div>
+    <div class="team-name-container">
+
+        <input type="text" class="search-input" placeholder="팀 이름">
+
+    </div>
+    <img src="/resources/image/comp/pencil.png" alt="팀 이름"
+         class="search-icon">
 
 </main>
 </body>

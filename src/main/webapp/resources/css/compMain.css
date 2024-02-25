@@ -233,32 +233,4 @@ select {
   margin-top: -12px;
 }
 
-/* 팀 생성 */
-.select-game-type-container {
-  margin-top: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.rounded-shape-gametype {
-  background: #D9DCDE;
-  display: flex;
-  justify-content: space-around;
-  border-radius: 100px;
-}
-.rounded-shape-gametype .round-shape {
-  background-color: #D9DCDE;
-  border-radius: inherit;
-  width: 200px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.rounded-shape-gametype .round-shape img {
-  width: 80px;
-  height: 80px;
-}
-
 /*# sourceMappingURL=compMain.css.map */
