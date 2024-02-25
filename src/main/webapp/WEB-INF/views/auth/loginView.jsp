@@ -100,8 +100,8 @@ $(document).ready(function() {
      
         $.ajax({
             type: 'POST',
-            // url: 'https://www.h-club.site/auth/login',
-            url: 'http://localhost:8080/auth/login',
+             url: 'https://www.h-club.site/auth/login',
+           // url: 'http://localhost:8080/auth/login',
             contentType: 'application/json',
             data: JSON.stringify({ username: username, password: password }),
             success: function(response) { 
