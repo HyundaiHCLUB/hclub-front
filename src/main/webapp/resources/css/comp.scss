@@ -10,7 +10,7 @@
     //rgba(255, 255, 255, 1) 100%
   );
   width: 800px;
-  height: 300px;
+  height: 260px;
   padding: 10px;
   margin: 10px;
   margin-bottom: 30px;
@@ -89,7 +89,7 @@
 
 .middle-section-up {
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .middle-section-down {
@@ -157,7 +157,7 @@
   justify-content: space-around;
 
 
-  .comp-select-container {
+  .comp-select-container, .comp-select-container {
 
     justify-items: center;
     height: 100%;
@@ -168,9 +168,80 @@
   }
 }
 
+.custom-select-container {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+
+
+}
+
+.sport-select, .date-select, .match-type-select {
+  margin: 0 50px 50px 0; /* Adds space to the right and bottom of each select box */
+  font-size: 27px;
+  color: #ffffff;
+  height: 60px;
+  background: #46675c;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.sport-select {
+  margin-left: 76px;
+}
+
+.match-type-select {
+  margin-right: 87px;
+}
+
+.order-select {
+  margin-left: 0px;
+  font-size: 27px;
+  color: #ffffff;
+  height: 60px;
+  background: #46675c;
+  text-align: center;
+  border-radius: 12px;
+}
+
 .custom-select {
-  width: 1000px;
-  height: 500px;
+  background-image: url('/resources/image/bottom-arrow.png');
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+
+select {
+  width: 200px;
+}
+
+.custom-search-container {
+  margin-top: -25px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 45px;
+}
+
+.search-input {
+  width: 470px;
+  padding: 30px;
+  height: 59px;
+  border: 1px solid #cccccc; /* Border color, adjust as needed */
+  border-radius: 40px; /* Rounded corners for the input field */
+  background-color: #DEDFE1; /* Background color of the input */
+  font-size: 25px; /* Adjust font size as needed */
+  color: #333333; /* Text color */
+  outline: none; /* Removes the outline to match the design */
+  margin-left: -166px;
+}
+
+.search-icon {
+  width: 79px;
+  height: auto;
+  cursor: pointer;
+  margin-left: -166px;
+  margin-top: -12px;
 }
 
 
@@ -208,3 +279,5 @@
 
 
 }
+
+
