@@ -76,7 +76,7 @@ public class CompController {
     public ModelAndView goTeamDetail(@PathVariable Long teamNo) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("teamNo", teamNo);
-        mav.setViewName("comp/detail/teamDetail");
+        mav.setViewName("comp/teamDetail");
 
         return mav;
     }

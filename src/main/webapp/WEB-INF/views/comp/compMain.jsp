@@ -16,17 +16,13 @@
 
 
     <div class="comp-select">
-        <a href="/competition">
-            <div class="comp-select-container">
-                <p style="color: #46675c">목록</p>
+        <div class="comp-select-container" onclick="navigateToCompetition()">
+            <p style="color: #46675c">목록</p>
+        </div>
 
-            </div>
-        </a>
-        <a href="/home/todayRanking">
-            <div class="comp-select-container">
-                <p>랭킹</p>
-            </div>
-        </a>
+        <div class="comp-select-container" onclick="navigateToTodayRanking()">
+            <p>랭킹</p>
+        </div>
     </div>
     <div class="half-screen-line"></div>
     <div class="custom-select-container">
@@ -91,8 +87,7 @@
 
                         data.forEach(function (item) {
                             var matchHTML =
-                                '<a href="/competition/teamDetail/' + item.teamNo + '">' +
-                                '<div class="rounded-shape">' +
+                                '<div class="rounded-shape" onclick="navigateToTeamDetail(\'' + item.teamNo + '\')">' +
                                 '<div class="left-section">' +
                                 '<img src="' + item.matchType + '" alt="" />' +
                                 '<p>' + item.teamCapacity + '</p>' +
@@ -103,15 +98,16 @@
                                 '</div>' +
                                 '<div class="middle-section-down">' +
                                 '<p>' + item.teamLoc + '</p>' +
-                                '<p style="color: #717070">Rating: ' + item.teamRating + '점</p>' + // 여기 수정됨
+                                '<p style="color: #717070">Rating: ' + item.teamRating + '점</p>' +
                                 '</div>' +
                                 '</div>' +
                                 '<div class="right-section">' +
                                 '<p>' + item.matchAt + '</p>' +
                                 '</div>' +
-                                '</div>' +
-                                '</a>';
+                                '</div>';
+
                             $(".matches").append(matchHTML);
+
                         });
 
 
@@ -204,6 +200,18 @@
 
 
         return month + '월 ' + day + '일';
+    }
+
+    function navigateToCompetition() {
+        window.location.href = "/competition";
+    }
+
+    function navigateToTodayRanking() {
+        window.location.href = "/home/todayRanking";
+    }
+
+    function navigateToTeamDetail(teamNo) {
+        window.location.href = "/competition/teamDetail/" + teamNo;
     }
 
 
