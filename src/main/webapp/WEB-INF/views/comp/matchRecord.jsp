@@ -199,12 +199,17 @@
     console.log("matchHistoryNo from controller : " + ${matchHistoryNo})
     $(document).ready(function() {
         $.ajax({
-            url: 'https://www.h-club.site/comp/match/13', //샘플데이터
+            url: 'https://www.h-club.site/comp/match/${matchHistoryNo}', //샘플데이터
             type: 'GET',
             dataType: 'json',
             success: function (response){
                 matchHistorytNo = response.data.matchHistoryNo;
                 console.log(response);
+                // 팀 정보 업데이트
+                $('.team').eq(0).find('img').attr('src', response.data.team1.teamImage);
+                $('.team').eq(0).find('h4').text(response.data.team1.teamName);
+                $('.team').eq(1).find('img').attr('src', response.data.team2.teamImage);
+                $('.team').eq(1).find('h4').text(response.data.team2.teamName);
             }, error: function (error){
                 console.log('Error : ' + error);
             }
