@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html>
 <head>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/reset.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!--CDN 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -14,7 +15,7 @@
         var headerHeight = document.querySelector('header').offsetHeight;
         var footerHeight = document.querySelector('footer').offsetHeight;
 
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             var scrollY = window.scrollY || document.documentElement.scrollTop;
 
             if (scrollY > headerHeight) {
@@ -35,7 +36,7 @@
                 document.querySelector('footer').classList.remove('fixed-bottom');
             }
         });
-    
+
     </script>
 </head>
 <body>
@@ -44,8 +45,9 @@
         <li><a href="home/home.jsp">투데이</a></li>
         <li><a href="">인기 동아리</a></li>
         <li><a href="">신규 동아리</a></li>
-        <li><a href="/home/todayRanking">오늘의 랭킹</a></li>
+
         <li><a href="">내 모임</a></li>
+        <li><a href="#">#토너먼트</a></li>
     </div>
 
     <div class="slidebox">
