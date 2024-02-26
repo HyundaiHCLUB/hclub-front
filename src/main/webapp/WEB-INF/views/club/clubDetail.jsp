@@ -75,48 +75,7 @@
         console.log(clubNo);
         getClub(clubNo);
     </script>
-    <%--<script>
-        $(document).ready(function () {
-            function createNotice() {
-                var noticeTitle = document.getElementById("noticeTitle").value;
-                var noticeContent = document.getElementById("noticeContent").value;
-                var clubNo = <%= request.getAttribute("clubNo") %>;
-                console.log(noticeTitle, noticeContent, clubNo);
 
-                var NoticeCreateRequest = {
-                    noticeTitle: noticeTitle,
-                    noticeContent: noticeContent,
-                    clubNo: clubNo
-                };
-
-                $.ajax({
-                    url: 'https://www.h-club.site/clubs/notice',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(NoticeCreateRequest),
-                    success: function (response) {
-                        console.log('Server response:', response);
-
-                        var noticeHTML =
-                            '<div class="notice">' +
-                            '<h2>' + response.noticeTitle + '</h2>' +
-                            '<p>' + response.noticeContent + '</p>' +
-                            '<p>' + 'Club Number: ' + response.clubNo + '</p>' +
-                            '</div>';
-
-                        $(".notices").append(noticeHTML);
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Error occurred:', error);
-                    }
-                });
-            }
-
-            $('#create').click(function () {
-                createNotice(); // 함수 호출
-            });
-        });
-    </script>--%>
     <script>
         function createNotice() {
             var noticeTitle = document.getElementById("noticeTitle").value;
@@ -132,7 +91,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "https://www.h-club.site/clubs/notice",
+                url: "http://localhost:8081/clubs/notice",
                 contentType: "application/json",
                 data: JSON.stringify(NoticeCreateRequest),
                 success: function(response) {
@@ -143,39 +102,47 @@
                 }
             });
         }
-
+    </script>
+    <script>
         function getClubNotices(clubNo) {
             $.ajax({
-                type: "GET",
+                method: "GET",
                 url: "https://www.h-club.site/clubs/" + clubNo + "/notice",
 
-                success: function(response) {
-                    updateNoticeList(response.data);
+                success: function (response) {
+                    if (response.success) {
+                        var data = response.data;
+
+                        $(".noticeListContainer").empty();
+
+                        var noticeHTML = "";
+                        data.forEach(function (item) {
+                            if (item.noticeTitle !== undefined && item.noticeTitle !== null) {
+                                noticeHTML += '<a href="#" class="notice_content">' + item.noticeTitle + '</a>';
+                            }
+                        });
+
+                        $(".noticeListContainer").append(noticeHTML);
+
+                    } else {
+                        console.error("Error:", response.message);
+                    }
                 },
-                error: function(error) {
-                    console.error("Error fetching club notices: ", error);
+                error: function (xhr, status, error) {
+                    console.error("Error fetching data:", error);
                 }
             });
         }
 
-        function updateNoticeList(notices) {
-            var noticeListContainer = document.getElementById("noticeListContainer");
-
-            noticeListContainer.innerHTML = "";
-
-            notices.forEach(function(notice) {
-                var noticeElement = document.createElement("div");
-                noticeElement.innerHTML = "<strong>" + notice.noticeTitle + "</strong>: " + notice.noticeContent;
-                noticeListContainer.appendChild(noticeElement);
-            });
-        }
+        var clubNo = "<%= request.getAttribute("clubNo") %>" || "";
+        getClubNotices(clubNo);
     </script>
 
     <script>
         function fetchData() {
             var clubNo = <%= request.getAttribute("clubNo") %>;
             $.ajax({
-                url: 'https://www.h-club.site/clubs/' + clubNo + '/history',
+                url: 'http://www.h-club.site/clubs/' + clubNo + '/history',
                 type: 'GET',
                 dataType: 'json',
                 success: function (responseData) {
@@ -262,9 +229,8 @@
                 </svg>
                 </div>
             </div>
-            <div id="noticeListContainer">
+            <div class="noticeListContainer">
             </div>
-            <a href="#" class="notice_content">3월의 공지사항입니다!</a>
 
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" style="max-width: none" role="document">
@@ -289,7 +255,7 @@
                                 <textarea id="noticeContent" name="noticeContent" style="width: 90%;height: 700px;font-size: 36px;" placeholder="내용을 상세히 입력해주세요." ></textarea>
                             </div>
                         </div>
-                        <a id="create" onclick="createNotice()">
+                        <a id="create" onclick="createNotice()" data-dismiss="modal" aria-label="Close">
                             <div style="text-align: center;margin-bottom:40px;">
                                 <svg width="600" height="60" viewBox="0 0 347 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g filter="url(#filter0_d_662_7594)">
