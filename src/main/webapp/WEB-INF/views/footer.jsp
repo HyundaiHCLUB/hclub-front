@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar_bottom">
-    <div class="navbar_bottom_menu">
+    <div class="navbar_bottom_menu" style="height:100px;">
         <a href="/">
             <div class="nav-item">
                 <i class="fa-solid fa-house fa-4x"></i>
@@ -33,15 +33,15 @@
         </a>
         <a href="#">
             <div class="nav-item">
-                <i class="fa-solid fa-gift fa-4x"></i>
-                <span>이벤트</span>
+                <i class="fa fa-heart fa-4x"></i>
+                <span>즐겨찾기</span>
             </div>
         </a>
 
-            <div class="nav-item" onclick="location.href='/mypage'">
-                <i class="fa-solid fa-user fa-4x"></i>
-                <span>마이페이지</span>
-            </div>
+        <div class="nav-item" onclick="location.href='/mypage'">
+            <i class="fa-solid fa-user fa-4x"></i>
+            <span>마이페이지</span>
+        </div>
 
     </div>
 </nav>
