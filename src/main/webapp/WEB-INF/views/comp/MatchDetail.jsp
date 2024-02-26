@@ -137,7 +137,37 @@
             margin : 0 15px;
         }
 
+        .location-checkbox {
+            appearance: none; /* 혹은 -webkit-appearance: none; -moz-appearance: none; */
+            background-color: #fff;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.3em;
+            height: 1.3em;
+            border: 0.1em solid #cacece;
+            border-radius: 50%; /* 둥근 테두리를 만들기 위해 */
+            transform: translateY(-0.075em);
 
+            display: grid;
+            place-content: center;
+        }
+
+        .location-checkbox::before {
+            content: "";
+            width: 0.65em;
+            height: 0.65em;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em #007bff;
+            /* Replace --form-control-color with the color of your choice */
+            background-color: #cacece; /* 체크박스의 배경색 */
+        }
+
+        .location-checkbox:checked::before {
+            transform: scale(1);
+        }
     </style>
     
 </head>
@@ -151,41 +181,42 @@
             </div>
             <div class="match-detail">
                 <div class="team">
-                    <img src="/resources/image/sample.png" alt="팀 로고" class="team-logo"/>
+                    <img src="" class="team-logo"/>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_crwon.png">
                             <h5>팀명</h5>
                         </div>
-                        <p>한반두</p>
+                        <p></p>
                     </div>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_location.png">
                             <h5>장소</h5>
+                            <input type="checkbox" class="location-checkbox" name="location"/>
                         </div>
-                        <p>새싹 농구장 <input type="checkbox" id="location1" name="location"></p>
+                        <p></p>
                     </div>
                     <div class="team-detail">
                         <div class="team-detail-header">
                         <img src="/resources/image/comp/comp_calendar.png">
                         <h5>일시</h5>
                     </div>
-                        <p>2023년 3월 2일 18:30</p>
+                        <p></p>
                     </div>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_trophy.png">
                             <h5>상품</h5>
                         </div>
-                        <p>H-cafe 5000원 상품권</p>
+                        <p></p>
                     </div>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_rating.png">
                             <h5>레이팅</h5>
                         </div>
-                        <p>1500</p>
+                        <p></p>
                     </div>
                     <button class="btn-team-detail">상세정보</button>
                 </div>
@@ -193,41 +224,42 @@
                     <h3>VS</h3>
                 </div>
                 <div class="team">
-                    <img src="/resources/image/sample2.png" alt="팀 로고" class="team-logo"/>
+                    <img src="" class="team-logo"/>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_crwon.png">
                             <h5>팀명</h5>
                         </div>
-                        <p>장한평핫스퍼</p>
+                        <p></p>
                     </div>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_location.png">
                             <h5>장소</h5>
+                            <input type="checkbox" class="location-checkbox" name="location" />
                         </div>
-                        <p>새싹 농구장<input type="checkbox" id="location2" name="location"></p>
+                        <p></p>
                     </div>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_calendar.png">
                             <h5>일시</h5>
                         </div>
-                        <p>2023년 3월 2일 18:30</p>
+                        <p></p>
                     </div>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_trophy.png">
                             <h5>상품</h5>
                         </div>
-                        <p>H-cafe 5000원 상품권</p>
+                        <p></p>
                     </div>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_rating.png">
                             <h5>레이팅</h5>
                         </div>
-                        <p>1500</p>
+                        <p></p>
                     </div>
                     <button class="btn-team-detail">상세정보</button>
                 </div>
@@ -243,7 +275,6 @@
 <script>
     var matchHistorytNo;
 
-
 	$(document).ready(function() {
         $('.btn-match-start').click(function(e) {
             e.preventDefault();
@@ -255,6 +286,7 @@
             type: 'GET',
             dataType: 'json',
             success: function (response){
+                updateMatchDetails(response.data);
                 matchHistorytNo = response.data.matchHistoryNo;
                 localStorage.setItem("otherUserNo", response.data.team2.leader.memberNo); // 채팅 상대방 번호
                 localStorage.setItem("otherUserName", response.data.team2.leader.memberId); // 채팅 상대방 이름
@@ -270,7 +302,52 @@
         $('.btn-match-start').click(function(e) {
 
         });
+
+        // 페이지 DOM 업데이트 함수
+        function updateMatchDetails(data) {
+            // 팀1 정보 업데이트
+            $('.team:eq(0) .team-logo').attr('src', data.team1.teamImage);
+            $('.team:eq(0) .team-detail').eq(0).find('p').text(data.team1.teamName);
+            $('.team:eq(0) .team-detail').eq(1).find('p').text(data.team1.teamLoc);
+            $('.team:eq(0) .team-detail').eq(2).find('p').text(data.team1.matchDate);
+            $('.team:eq(0) .team-detail').eq(3).find('p').text(data.team1.teamGoods);
+            $('.team:eq(0) .team-detail').eq(4).find('p').text(data.team1.teamRating);
+
+            // 팀2 정보 업데이트
+            $('.team:eq(1) .team-logo').attr('src', data.team2.teamImage);
+            $('.team:eq(1) .team-detail').eq(0).find('p').text(data.team2.teamName);
+            $('.team:eq(1) .team-detail').eq(1).find('p').text(data.team2.teamLoc);
+            $('.team:eq(1) .team-detail').eq(2).find('p').text(data.team2.matchDate);
+            $('.team:eq(1) .team-detail').eq(3).find('p').text(data.team2.teamGoods);
+            $('.team:eq(1) .team-detail').eq(4).find('p').text(data.team2.teamRating);
+            // 팀2에 대한 정보 업데이트도 같은 방식으로 수행
+        }
+
+        // 체크박스 둘 중 하나만 선택되게 하는 로직
+        $('input[type="checkbox"]').on('change', function() {
+            $('input[type="checkbox"]').not(this).prop('checked', false);
+        });
+
     });
+
+    // 체크박스의 상태 변화를 감지하고, 체크되었을 때 실행될 함수를 설정합니다.
+    document.addEventListener('DOMContentLoaded', function() {
+        var locationInformation; // 정보를 저장할 변수 선언
+
+        // 체크박스에 이벤트 리스너를 추가합니다.
+        document.querySelectorAll('.location-checkbox').forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                // 체크박스가 체크되었는지 확인합니다.
+                if (this.checked) {
+                    // 체크된 체크박스의 부모 요소인 .team-detail-header을 찾고,
+                    // 그 다음 형제 요소인 <p> 태그의 텍스트를 변수에 저장합니다.
+                    locationInformation = this.closest('.team-detail').querySelector('p').textContent.trim();
+                    console.log(locationInformation); // 콘솔에 출력하여 확인
+                }
+            });
+        });
+    });
+
 </script>
 
 </html>

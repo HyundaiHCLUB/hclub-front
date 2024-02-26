@@ -169,7 +169,7 @@
         </div>
         <div class="match-notice">
             <span>경기는 즐거우셨나요?</span><br/>
-            <span>경기 결과와 사진을 입력해주세요!</span>
+            <span>경기 진행 후 결과를 입력해주세요!</span>
         </div>
             <div class="team-icons">
                 <div class="team">
@@ -198,6 +198,17 @@
 <script>
     console.log("matchHistoryNo from controller : " + ${matchHistoryNo})
     $(document).ready(function() {
+        $.ajax({
+            url: 'https://www.h-club.site/comp/match/13', //샘플데이터
+            type: 'GET',
+            dataType: 'json',
+            success: function (response){
+                matchHistorytNo = response.data.matchHistoryNo;
+                console.log(response);
+            }, error: function (error){
+                console.log('Error : ' + error);
+            }
+        });
         $('.end-match-button').click(function() { // 경기종료버튼 리스너 등록
             var scoreValueTeam1 = $('input[name="score1"]').val().trim();
             var scoreValueTeam2 = $('input[name="score2"]').val().trim();
