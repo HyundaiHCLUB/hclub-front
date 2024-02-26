@@ -90,8 +90,9 @@
 
                                 var clubHTML = '<div class="grid-container">';
                                 group.forEach(function (item) {
-                                    clubHTML += '<a href="/club/detail/' + item.clubNo + '"><div class="grid-item">' +
+                                    clubHTML += '<a href="/club/detail/' + item.clubNo + '"><div class="grid-item"><div class="club-image-container">' +
                                         '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                        '<span class="like-icon" data-club-id="' + item.clubNo + '"><i class="far fa-heart" style="color: #ffffff;"></i></span></div>' +
                                         '<div class="circle_content">' +
                                         '<p class="circle_name">' + item.clubName + '</p>' +
                                         '<a href="#" class="category_button">'+getCategoryName(item.categoryId)+'</a>' +
@@ -100,6 +101,7 @@
                                 clubHTML += '</div>';
                                 $(".clubs").append(clubHTML);
                             }
+                            updateLikedClubs();
                         } else {
                             console.error("Error:", response.message);
                         }
@@ -110,6 +112,38 @@
                 });
             }
     </script>
+
+    <script>
+        function updateLikedClubs(){
+            $.ajax({
+                url: "https://www.h-club.site/clubs/like/exist/3",
+                method: "GET",
+                success: function (response) {
+                    var likedClubs = response.data;
+                    likedClubs.forEach(function (club) {
+                        var clubNo = club.clubNo;
+                        var isLiked = club.isLiked;
+
+                        if (isLiked === 'Y') {
+                            $('[data-club-id="' + clubNo + '"]').addClass('liked');
+                            $('[data-club-id="' + clubNo + '"]').html('<i class="fa-solid fa-heart" style="color: #ff2e2e;"></i>');
+                        } else {
+                            $('[data-club-id="' + clubNo + '"]').addClass('unliked');
+                            $('[data-club-id="' + clubNo + '"]').html('<i class="fa-regular fa-heart" style="color: #ffffff;"></i>');
+                        }
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching data:", error);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            updateLikedClubs();
+        });
+    </script>
+
     <script>
         function getClubLikeList(categoryName) {
             $.ajax({
