@@ -274,11 +274,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
     var matchHistorytNo;
+    var locationInformation; // 정보를 저장할 변수 선언
 
 	$(document).ready(function() {
         $('.btn-match-start').click(function(e) {
             e.preventDefault();
-            window.location.href = "${path}/competition/matchRecord/" + matchHistorytNo;
+            // 경기 장소 업데이트(선택된 장소로 DB 에 저장)
+            $.ajax({
+                url: 'https://www.h-club.site/comp/matchLocation',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    'matchHistoryNo' : matchHistorytNo,
+                    'matchLoc': locationInformation
+                }),
+                success: function(response) {
+                    window.location.href = "${path}/competition/matchRecord/" + matchHistorytNo;
+                },error: function (error){
+                    console.log(error);
+                }
+            });
+
         });
 
         $.ajax({
@@ -332,8 +348,6 @@
 
     // 체크박스의 상태 변화를 감지하고, 체크되었을 때 실행될 함수를 설정합니다.
     document.addEventListener('DOMContentLoaded', function() {
-        var locationInformation; // 정보를 저장할 변수 선언
-
         // 체크박스에 이벤트 리스너를 추가합니다.
         document.querySelectorAll('.location-checkbox').forEach(function(checkbox) {
             checkbox.addEventListener('change', function() {
