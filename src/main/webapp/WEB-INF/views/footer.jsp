@@ -31,7 +31,7 @@
                 <span>동아리</span>
             </div>
         </a>
-        <a href="#">
+        <a href="/mypage/myFavorites">
             <div class="nav-item">
                 <i class="fa fa-heart fa-4x"></i>
                 <span>즐겨찾기</span>

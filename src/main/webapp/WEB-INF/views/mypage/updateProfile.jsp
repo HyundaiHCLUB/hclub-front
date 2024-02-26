@@ -162,7 +162,6 @@
     $(document).ready(function() {
         // 로컬 스토리지에서 JWT 가져오기
         let accessToken = localStorage.getItem("accessTokenInfo");
-
         // 가져온 JWT를 사용하여 사용자 정보 가져오기
         getUserInfo(accessToken).then(memberInfo => {
             console.log("memberID : " + memberInfo.member_id);
@@ -184,7 +183,7 @@
             $.ajax({
                 type: 'GET',
                 /* 테스트시 각자 설정한 auth 서버 포트번호로 대체하세요 */
-                url: 'http://localhost:8080/auth/mypage/info',
+                url: 'https://www.h-club.site/auth/mypage/info',
                 headers: {
                     'Authorization': 'Bearer ' + accessToken, // accessToken 사용
                 },
@@ -208,7 +207,6 @@
         formData.append('image', file);
         formData.append('memberId', new Blob([memberInfo], { type: 'application/json'}));
         $.ajax({
-            // url: 'http://localhost:8080/auth/mypage/profile',
             url: 'https://www.h-club.site/auth/mypage/profile',
             type: 'POST',
             data: formData,
