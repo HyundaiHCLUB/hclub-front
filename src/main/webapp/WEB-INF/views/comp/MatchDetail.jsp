@@ -242,7 +242,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
     var matchHistorytNo;
-	localStorage.setItem("otherUserNo", "5"); //나중에 채팅에 상대방 번호 넣기
+
 
 	$(document).ready(function() {
         $('.btn-match-start').click(function(e) {
@@ -256,8 +256,12 @@
             dataType: 'json',
             success: function (response){
                 matchHistorytNo = response.data.matchHistoryNo;
+                localStorage.setItem("otherUserNo", response.data.team2.leader.memberNo); // 채팅 상대방 번호
+                localStorage.setItem("otherUserName", response.data.team2.leader.memberId); // 채팅 상대방 이름
                 console.log(response);
-                console.log("matchHistNo -> " + matchHistorytNo)
+                console.log('otherUserNo : ' + response.data.team2.leader.memberNo);
+                console.log('otherUserId : ' + response.data.team2.leader.memberId);
+                console.log("matchHistNo -> " + matchHistorytNo);
             }, error: function (error){
                 console.log('Error : ' + error);
             }
