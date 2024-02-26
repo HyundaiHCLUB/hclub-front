@@ -5,6 +5,7 @@
 <head>
     <link rel="stylesheet" href="${path}/resources/css/main.css">
     <link rel="stylesheet" href="${path}/resources/css/mypage.css">
+    <link rel="stylesheet" href="/resources/css/compMain.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +22,7 @@
             text-align: center;
         }
         .ranking-container {
-            width: 80%;
+            width: 88%;
             margin: 50px auto ;
         }
         .ranking-container h2 {
@@ -31,39 +32,43 @@
         .user {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             margin-bottom: 10px;
             border-radius: 25px;
-            padding: 50px 20px 50px 40px;
-            background-color: #f5f5f5;
+            padding: 20px;
+            /*background-color: #f5f5f5;*/
+            background-color: #F7FFE5;
             position: relative;
             font-size: 1.5em;
-        }
-
-        .top1, .top2, .top3 {
-            background-color: #e0e0e0;
+            min-height: 120px;
         }
 
         .profile-picture {
+            position: absolute;
+            left: 150px;
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            margin-right: 15px;
-            margin-left: 30px;
+            margin3: 30px 30px;
         }
         .profile-picture img {
             width: 100%; /* 이미지의 너비를 div의 너비와 같게 설정 */
             height: 100%; /* 이미지의 높이를 div의 높이와 같게 설정 */
             border-radius: 50%; /* 이미지를 원형으로 만듬 */
             object-fit: cover; /* 이미지의 비율을 유지하면서 div를 꽉 채움 */
+
         }
         .name-rating {
             display: flex;
-            flex-direction: row;
+            flex: 1;
+            align-items: center;
+            justify-content: flex-start;
+            margin-left: 10px;
         }
 
         .name {
             position: absolute;
-            right: 450px;
+            right: 380px;
             font-weight: bold;
             top: 50%;
             transform: translateY(-50%);
@@ -71,7 +76,7 @@
 
         .rating {
             position: absolute;
-            right: 250px;
+            right: 180px;
             color: black;
             font-weight: bold;
             top: 50%;
@@ -94,20 +99,20 @@
             margin: auto;
         }
         .top1, .top2, .top3 {
-            background-color: #76b852; /* A green color for the top 3 users */
-            color: white;
+            background-color: #A5DD9B; /* A green color for the top 3 users */
+            /*color: white;*/
         }
 
         .top1 {
-            background-color: #4CAF50; /* A darker green color for the top user */
+            background-color: #A0C49D; /* A darker green color for the top user */
         }
 
         .top2{
-            background-color: #8BC34A; /* A lighter green color for 2nd and 3rd place */
+            background-color: #C4D7B2; /* A lighter green color for 2nd and 3rd place */
         }
 
         .top3 {
-            background-color: #d5fcc2;
+            background-color: #E1ECC8;
             color: black;
         }
 
@@ -127,23 +132,42 @@
             justify-content: center;
             align-items: center;
         }
+        .half-screen-line {
+            width: 50vw; /* Sets the width to 50% of the viewport width */
+            height: 2px; /* Sets the thickness of the line */
+            background-color: #46675c; /* Sets the color of the line */
+            margin-top: 10px; /* Adds some space above the line */
+            margin-bottom: 50px; /* Adds some space below the line */
+            margin-left: auto; /* Centers the line by pushing it equally from both sides */
+            margin-right: 0;
+        }
+        .comp-select {
+            height: 76px;
+        }
+        .comp-select p {
+            margin: 0 0 16px;
+        }
     </style>
 </head>
 <body>
 <main>
-<div id="wrapper">
-    <div class="mypage-top-menu">
-        <img src="/resources/image/left-arrow.png"
-             onclick="window.history.back()"/>
-    </div>
-    <div class="today-rankin-title">
-        <i class="fas fa-crown crown-icon"></i>
-        <h2>오늘의 TOP 10</h2>
-        <i class="fas fa-crown crown-icon"></i>
-    </div>
 
-    <div class="ranking-container"></div>
-</div>
+    <div class="comp-select">
+        <a href="/competition">
+            <div class="comp-select-container">
+                <p style="color: #46675c">목록</p>
+            </div>
+        </a>
+        <a href="/home/todayRanking">
+            <div class="comp-select-container">
+                <p class="comp-select-ranking">랭킹</p>
+            </div>
+        </a>
+    </div>
+    <div class="half-screen-line"></div>
+    <div id="wrapper">
+        <div class="ranking-container"></div>
+    </div>
 </main>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
@@ -173,7 +197,7 @@
                         '<div class="name-rating">' +
                         '<div class="name">' + user.memberId + '</div>' +
                         '<div class="rating">' + user.memberRating + '점</div>' +
-                        '<div class="match-num">' + user.matchNum + '경기</div>' +
+                        '<div class="match-num">' + user.matchNum + ' 경기</div>' +
                         '</div>' +
                         '</div>';
                 });
