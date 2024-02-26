@@ -45,10 +45,10 @@
     <div class="team-name-container">
 
         <input type="text" class="search-input" placeholder="팀 이름">
-
+        <img src="/resources/image/comp/pencil.png" alt="팀 이름"
+             class="search-icon">
     </div>
-    <img src="/resources/image/comp/pencil.png" alt="팀 이름"
-         class="search-icon">
+
 
 </main>
 </body>
