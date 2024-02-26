@@ -27,6 +27,10 @@
   height: 80px;
 }
 
+.selected-game-type {
+  background-color: #46675C; /* New color for selected game type */
+}
+
 .plus-button {
   display: flex;
   justify-content: center;
@@ -70,34 +74,74 @@
 .team-name-container {
   display: flex;
   justify-content: center;
-  border: none;
   margin: 100px auto;
 }
 
+.input-icon-container {
+  display: flex; /* Makes sure input and icon are in a row */
+  align-items: center; /* Aligns items vertically in the center */
+  /* Border moved here from input */
+  position: relative;
+}
+
 .search-input {
-  width: 30%;
+  width: 50%;
   height: 50px;
   border: none;
-  border-bottom: 2px solid #DBDBDB;
   outline: none;
   padding: 10px 0;
   font-size: 45px;
   color: #000000;
-  text-align: center;
+  background: transparent; /* Ensures the input has no background */
+  margin-left: 175px;
 }
 
 .search-icon {
-  width: 79px;
-  height: auto;
+  width: 63px;
   padding: 0 10px;
-  margin-top: -5px;
+  cursor: pointer; /* Adds a pointer cursor to the icon */
 }
 
-/* Removes the default input styles */
+/* Adjust the appearance of input to remove default styles */
 input[type=text] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  margin-bottom: 20px;
+}
+
+.input-icon-container::after {
+  content: "";
+  position: absolute;
+  left: 50%; /* Center the pseudo-element */
+  bottom: 0; /* Align it at the bottom of the container */
+  width: 58%; /* Adjust this value to control the border length */
+  height: 7px; /* Border thickness */
+  background-color: #DBDBDB; /* Border color */
+  transform: translateX(-50%); /* Center the pseudo-element horizontally */
+}
+
+/* 게임 타입*/
+.game-type-select {
+  display: flex;
+  justify-content: center;
+}
+.game-type-select img {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
+.game-type-select span {
+  font-size: 45px;
+}
+
+.game-type-select-container {
+  display: flex;
+}
+
+.game-type-num {
+  display: flex;
+  justify-content: space-around;
 }
 
 /*# sourceMappingURL=compCreateTeam.css.map */
