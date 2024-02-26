@@ -49,10 +49,12 @@
             flex: 1; /* Flex grow to take available space */
             font-size: 2em;
         }
+        .team-logo {
+            border-radius: 50%;
+        }
         .team img {
             width: 180px;
             height: 180px;
-            border-radius: 50%;
             margin: 20px auto;
         }
         .team p {
@@ -149,7 +151,7 @@
             </div>
             <div class="match-detail">
                 <div class="team">
-                    <img src="/resources/image/sample.png" alt="팀 로고"/>
+                    <img src="/resources/image/sample.png" alt="팀 로고" class="team-logo"/>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_crwon.png">
@@ -162,7 +164,7 @@
                             <img src="/resources/image/comp/comp_location.png">
                             <h5>장소</h5>
                         </div>
-                        <p>새싹 농구장</p>
+                        <p>새싹 농구장 <input type="checkbox" id="location1" name="location"></p>
                     </div>
                     <div class="team-detail">
                         <div class="team-detail-header">
@@ -191,7 +193,7 @@
                     <h3>VS</h3>
                 </div>
                 <div class="team">
-                    <img src="/resources/image/sample2.png" alt="팀 로고"/>
+                    <img src="/resources/image/sample2.png" alt="팀 로고" class="team-logo"/>
                     <div class="team-detail">
                         <div class="team-detail-header">
                             <img src="/resources/image/comp/comp_crwon.png">
@@ -204,7 +206,7 @@
                             <img src="/resources/image/comp/comp_location.png">
                             <h5>장소</h5>
                         </div>
-                        <p>새싹 농구장</p>
+                        <p>새싹 농구장<input type="checkbox" id="location2" name="location"></p>
                     </div>
                     <div class="team-detail">
                         <div class="team-detail-header">
@@ -239,10 +241,13 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
-    $(document).ready(function() {
+    var matchHistorytNo;
+
+
+	$(document).ready(function() {
         $('.btn-match-start').click(function(e) {
             e.preventDefault();
-            window.location.href = "${path}/competition/matchRecord";
+            window.location.href = "${path}/competition/matchRecord/" + matchHistorytNo;
         });
 
         $.ajax({
@@ -250,10 +255,20 @@
             type: 'GET',
             dataType: 'json',
             success: function (response){
+                matchHistorytNo = response.data.matchHistoryNo;
+                localStorage.setItem("otherUserNo", response.data.team2.leader.memberNo); // 채팅 상대방 번호
+                localStorage.setItem("otherUserName", response.data.team2.leader.memberId); // 채팅 상대방 이름
                 console.log(response);
+                console.log('otherUserNo : ' + response.data.team2.leader.memberNo);
+                console.log('otherUserId : ' + response.data.team2.leader.memberId);
+                console.log("matchHistNo -> " + matchHistorytNo);
             }, error: function (error){
                 console.log('Error : ' + error);
             }
+        });
+
+        $('.btn-match-start').click(function(e) {
+
         });
     });
 </script>

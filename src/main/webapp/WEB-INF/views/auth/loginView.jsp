@@ -78,7 +78,7 @@
 		<form id="loginFrm">
 		  <div class="form-label" style="text-align: center;margin-left:0px">
 		     <input type="text" id="userId" name="userId" placeholder="아이디"> <br/>
-		     <input type="text" id="userPw" name="userPw" placeholder="비밀번호"> <br/>
+		     <input type="password" id="userPw" name="userPw" placeholder="비밀번호"> <br/>
 		  </div>
 		  <div class="btnDiv">
 		  	<input id="loginButton" class="btn-class" type="button" value="로그인"/>
@@ -101,7 +101,7 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
              url: 'https://www.h-club.site/auth/login',
-           // url: 'http://localhost:8080/auth/login',
+           // url: 'http://localhost/hyndai/auth/login',
             contentType: 'application/json',
             data: JSON.stringify({ username: username, password: password }),
             success: function(response) { 

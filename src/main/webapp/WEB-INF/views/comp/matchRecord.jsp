@@ -21,8 +21,18 @@
             flex-direction: column;
             height: 100vh;
         }
-        header {
-            /* 헤더 스타일 */
+        .detail-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+        .detail-title i {
+            font-size: 50px;
+            padding: 0 20px;
+            color: gold;
         }
         main {
             flex-grow: 1;
@@ -69,9 +79,7 @@
             font-weight: bold;
         }
         .match-image {
-            border-style: solid;
-            border-width: 1px;
-            border-color: black;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
             background-color: white;
             border-radius: 20px;
             padding: 20px;
@@ -121,16 +129,17 @@
         .score-input {
             width: 200px;
             height: 150px;
-            margin: 20px auto;
-            border: 2px solid black;
-            border-radius: 30px;
+            margin: 20px auto 0 auto;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
             font-size: 2em;
             font-weight: bold;
         }
         .score-separator {
             align-self: center; /* 수직 중앙 정렬 */
-            font-size: 30px; /* ":" 크기 조정 */
+            font-size: 3em; /* ":" 크기 조정 */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -142,13 +151,25 @@
             font-size: 2em;
             margin-top: 100px;
         }
+        .match-notice {
+            font-size: 2.5em;
+            margin: 0 auto;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
 <div id="wrapper">
     <main>
         <div class="detail-title">
+            <i class="fa-solid fa-trophy"></i>
             <h1>경기 결과 입력</h1>
+            <i class="fa-solid fa-trophy"></i><br/>
+        </div>
+        <div class="match-notice">
+            <span>경기는 즐거우셨나요?</span><br/>
+            <span>경기 결과와 사진을 입력해주세요!</span>
         </div>
             <div class="team-icons">
                 <div class="team">
@@ -163,6 +184,7 @@
                     <input type="number" class="score-input" name="score2"/>
                 </div>
             </div>
+            <p class="match-notice"> ▼ 사진을 등록해주세요 ▼</p>
             <div class="match-image" onclick="triggerUpload()">
                 <img id="preview-img" style="display: none"/>
                 <button class="add-button">+</button>
@@ -174,9 +196,9 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
-
+    console.log("matchHistoryNo from controller : " + ${matchHistoryNo})
     $(document).ready(function() {
-        $('.end-match-button').click(function() {
+        $('.end-match-button').click(function() { // 경기종료버튼 리스너 등록
             var scoreValueTeam1 = $('input[name="score1"]').val().trim();
             var scoreValueTeam2 = $('input[name="score2"]').val().trim();
             if (scoreValueTeam1 === '' || scoreValueTeam2 === '') {

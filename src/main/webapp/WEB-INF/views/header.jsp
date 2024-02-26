@@ -11,14 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar">
+<nav style="height:82px;display: flex; justify-content: center" class="navbar">
     <div class="navbar_logo">
-        <a href="/"><img src="/resources/image/logo.png"></a>
+        <a href="/"><img src="/resources/image/logo.png" style="height: 100px;margin-top: -14px"></a>
     </div>
-    <div class="navbar_icons">
-        <li><i class="fa-solid fa-magnifying-glass fa-3x"></i></li>
-        <li><i class="fa-regular fa-heart fa-3x"></i></li>
-        <li><i class="fa-regular fa-bell fa-3x"></i></li>
+    <div class=" navbar_icons">
+        <%--        <li><i class="fa-solid fa-magnifying-glass fa-3x"></i></li>--%>
+        <%--        <li><i class="fa-regular fa-heart fa-3x"></i></li>--%>
+        <%--        <li><i class="fa-regular fa-bell fa-3x"></i></li>--%>
     </div>
 </nav>
 </body>
@@ -26,6 +26,6 @@
 
     // 로그인 이후 로컬 스토리지에서 JWT 가져오기
     let accessTokenInfo = localStorage.getItem("accessTokenInfo");
- 
+
 </script>
 </html>
