@@ -91,6 +91,7 @@
 
                         data.forEach(function (item) {
                             var matchHTML =
+                                '<a href="/competition/teamDetail/' + item.teamNo + '">' +
                                 '<div class="rounded-shape">' +
                                 '<div class="left-section">' +
                                 '<img src="' + item.matchType + '" alt="" />' +
@@ -102,15 +103,14 @@
                                 '</div>' +
                                 '<div class="middle-section-down">' +
                                 '<p>' + item.teamLoc + '</p>' +
-
-                                '<p style="color: #717070">' + 'Rating \: ' + item.teamRating + '점' + '</p>' +
+                                '<p style="color: #717070">Rating: ' + item.teamRating + '점</p>' + // 여기 수정됨
                                 '</div>' +
                                 '</div>' +
                                 '<div class="right-section">' +
-
                                 '<p>' + item.matchAt + '</p>' +
                                 '</div>' +
-                                '</div>';
+                                '</div>' +
+                                '</a>';
                             $(".matches").append(matchHTML);
                         });
 

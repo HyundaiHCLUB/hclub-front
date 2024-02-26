@@ -13,7 +13,14 @@
         crossorigin="anonymous"></script>
 <body>
 <main>
-
+    <div class="detail-top-menu-container">
+        <div class="detail-top-menu">
+            <img src="/resources/image/left-arrow.png"
+                 onclick="window.history.back()"/>
+            <span>ss</span>
+        </div>
+    </div>
+    <jsp:include page=""></jsp:include>
 </main>
 <script>
     let num =

@@ -59,6 +59,7 @@ public class CompController {
         mav.setViewName("comp/matchRecord");
         return mav;
     }
+
     /* 회원가입 두번째 페이지 이동*/
     @GetMapping("/chatPageView")
     public ModelAndView goChatPage() {
@@ -67,7 +68,16 @@ public class CompController {
 
     /* 패배팀 결제 페이지 이동*/
     @GetMapping("/loseTeam")
-    public ModelAndView goLoseTeamPage(){
+    public ModelAndView goLoseTeamPage() {
         return new ModelAndView("comp/loseTeamResult");
+    }
+
+    @GetMapping("/teamDetail/{teamNo}")
+    public ModelAndView goTeamDetail(@PathVariable Long teamNo) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("teamNo", teamNo);
+        mav.setViewName("comp/detail/teamDetail");
+
+        return mav;
     }
 }
