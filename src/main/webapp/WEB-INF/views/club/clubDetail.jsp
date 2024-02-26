@@ -170,6 +170,65 @@
             });
         }
     </script>
+
+    <script>
+        function fetchData() {
+            var clubNo = <%= request.getAttribute("clubNo") %>;
+            $.ajax({
+                url: 'https://www.h-club.site/clubs/' + clubNo + '/history',
+                type: 'GET',
+                dataType: 'json',
+                success: function (responseData) {
+                    displayHistory(responseData);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching data:', error);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            fetchData();
+        });
+
+        function displayHistory(responseData) {
+            var historyMap = {};
+
+            responseData.data.forEach(function (history) {
+                if (!(history.historyNo in historyMap)) {
+                    historyMap[history.historyNo] = history;
+                }
+            });
+
+            var historyContainer = $('#historyContainer');
+            var counter = 0;
+
+            var html = '<div class="grid-container">';
+
+            for (var historyNo in historyMap) {
+                if (historyMap.hasOwnProperty(historyNo)) {
+                    var history = historyMap[historyNo];
+
+                    html += '<a href="#"><div class="grid-item" style="margin-left: 16px;">';
+                    html += '<img class="circle_recommend" src="' + history.imageUrl + '" alt="Image">';
+                    html += '<div class="circle_content"><p class="circle_name">' + history.title + '</p></div>';
+                    html += '</div></a>';
+
+                    counter++;
+
+                    if (counter % 2 === 0) {
+                        html += '</div><div class="grid-container">';
+                    }
+                }
+            }
+
+            if (counter % 2 !== 0) {
+                html += '</div>';
+            }
+
+            historyContainer.append(html);
+        }
+    </script>
     <style>
         input[type="radio"] {display: none; }
         input[type="radio"] + label {display: inline-block;padding: 20px;background: #F5F6F7;color: #000000;font-size: 36px;cursor: pointer; width:400px; border-radius:16px; text-align: center;}
@@ -259,6 +318,8 @@
 
 
         <div class="conbox con2">
+            <div id="historyContainer"></div>
+
             <div class="grid-container">
                 <div class="grid-item">
                     <img class="circle_recommend" src="/resources/image/sample3.png" alt="Example Image">
