@@ -113,7 +113,7 @@
 </div>
 <div id="chatArea"  style="height: 1389px;overflow: overlay;">
 
-	<div class="myContent basChat">
+	<!-- <div class="myContent basChat">
 	 어느 장소가 좋으신지요.
 	</div>
 	<div class="myDate basDate">
@@ -126,7 +126,7 @@
 	</div>
 	<div class="ohterDate basDate">
 		 3:08 PM
-	</div>	
+	</div>	 -->
 	<div id="message"></div>
 </div>
 <div id="inputArea">
@@ -153,8 +153,9 @@
 	    
 	    var urdata =  accessTokenInfo;
 	    
-	    localStorage.setItem("otherUserNo", "5"); // 추후 주석처리
+	  //  localStorage.setItem("otherUserNo", "5"); // 추후 주석처리
 	    let otherUserNo = localStorage.getItem("otherUserNo");
+	    let otherUserName = localStorage.getItem("otherUserName");
 	    
 	    if(urdata == null){
 	    	urdata = getRandomNumber(1, 100);//"${uuIdx}"; =>회원의 번호로 대체
@@ -291,8 +292,8 @@
 	    function getUserInfo(accessToken) { //accessToken
 	        $.ajax({
 	            type: 'POST',
-	            //url: 'https://www.h-club.site/auth/getMemberId',
-	            url: 'http://localhost/hyndai/auth/getMemberId',
+	            url: 'https://www.h-club.site/auth/getMemberId',
+	            //url: 'http://localhost/hyndai/auth/getMemberId',
 	            headers: {
 	                'Authorization': 'Bearer ' + accessTokenInfo // accessToken 사용
 	            },
