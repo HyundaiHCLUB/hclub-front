@@ -19,9 +19,11 @@
             <img src="/resources/image/left-arrow.png"
                  onclick="window.history.back()"/>
             <span>ss</span>
+            <img src="https://h-clubbucket.s3.ap-northeast-2.amazonaws.com/profile/KakaoTalk_20240225_125308814.jpg"
+                 alt="">
         </div>
     </div>
-    
+
 </main>
 <script>
     let num =
