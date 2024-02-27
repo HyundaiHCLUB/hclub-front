@@ -7,7 +7,10 @@
 <script>
 
 function pay(){
+	//테스트용 데이터. 추후에 진짜 데이터 담기
     var params = {};
+    params.settleName="cafe 5000won";
+    params.settleAmount= 5000;
     
     $.ajax({
         type: 'POST',
