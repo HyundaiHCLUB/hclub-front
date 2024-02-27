@@ -94,4 +94,22 @@ public class MainController {
     public ModelAndView goRegisterScndView() {
         return new ModelAndView("auth/registerViewScnd");
     }
+
+    @GetMapping(value = "/home/hot")
+    public ModelAndView getHotClub(Model model) {
+        ModelAndView mav = new ModelAndView();
+
+        mav.setViewName("home/hotClub");
+
+        return mav;
+    }
+
+    @GetMapping(value = "/home/district")
+    public ModelAndView getClubDistrict(Model model) {
+        ModelAndView mav = new ModelAndView();
+
+        mav.setViewName("home/clubDistrict");
+
+        return mav;
+    }
 }

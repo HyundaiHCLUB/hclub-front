@@ -134,3 +134,23 @@ main {
     text-align: center;
     margin-top: 16px;
 }
+
+.district-container {
+    display: flex;
+    justify-content: center;
+}
+
+.left-district{
+    margin-left: 58px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 450px;
+    border-radius: 16px;
+}
+.right-district{
+    margin-right: 58px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 450px;
+    border-radius: 16px;
+}

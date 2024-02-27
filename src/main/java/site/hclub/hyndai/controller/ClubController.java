@@ -101,12 +101,5 @@ public class ClubController {
         return mav;
     }
 
-    @GetMapping(value = "/hot")
-    public ModelAndView getHotClub(Model model) {
-        ModelAndView mav = new ModelAndView();
 
-        mav.setViewName("home/hotClub");
-
-        return mav;
-    }
 }

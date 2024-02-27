@@ -91,6 +91,10 @@
         <li style="list-style: none; text-align: center; margin-top: 40px">
             <input type = "text" id ="keyword" placeholder = "장소를 검색해주세요." style="font-size: 40px; text-align: center;">
         </li>
+        <li style="list-style: none; text-align: center; margin-top: 40px">
+            <input type = "text" id ="address" style="font-size: 40px; text-align: center;border:0px;
+"></input>
+        </li>
     </ul>
     <ul id = "placesList"></ul>
 
@@ -129,6 +133,7 @@
 
                 displayPlaces(data);
 
+
             } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
                 removeAllChildNods(listEl);
                 alert('검색 결과가 존재하지 않습니다.');
@@ -148,19 +153,20 @@
 
             removeAllChildNods(listEl);
 
-            for ( var i=0; i<places.length; i++ ) {
-
+            for (var i = 0; i < places.length; i++) {
                 var itemEl = getListItem(i, places[i]);
 
-                (function(name){
-                    itemEl.onclick = function(){
+                (function (place) {
+                    itemEl.onclick = function () {
                         var key = document.getElementById('keyword');
+                        var address = document.getElementById('address');
 
-                        key.value = name;
+                        key.value = place.place_name;
+                        address.value = place.road_address_name || place.address_name;
 
                         removeAllChildNods(listEl);
-                    }
-                })(places[i].place_name);
+                    };
+                })(places[i]);
 
                 fragment.appendChild(itemEl);
             }
