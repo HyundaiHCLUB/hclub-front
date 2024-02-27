@@ -157,12 +157,10 @@
             },
             success: function (response) {
                 console.log('사용자 정보:', response);
-                resolve(response); // 성공 시 response 객체를 resolve 합니다.
                 displayClubs(response); // 동아리 목록 표시 함수 호출
             },
             error: function (xhr, status, error) {
                 console.error('사용자 정보 가져오기 실패:', error);
-                reject(error); // 실패 시 error 객체를 reject 합니다.
             }
         });
     });
