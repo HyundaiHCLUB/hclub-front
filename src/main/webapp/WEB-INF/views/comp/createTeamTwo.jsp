@@ -23,6 +23,10 @@
             </div>
         </div>
     </div>
+
+    <div class="team-border-line">
+        
+    </div>
 </main>
 </body>
 </html>

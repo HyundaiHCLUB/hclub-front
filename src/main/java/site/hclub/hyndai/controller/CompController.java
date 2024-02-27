@@ -52,11 +52,18 @@ public class CompController {
         return mav;
     }
     @GetMapping("/create/3")
-    public ModelAndView test(){
+    public ModelAndView createTeamThree(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("comp/createTeamThree");
         return mav;
     }
+    @GetMapping("/create/4")
+    public ModelAndView createTeamFour(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("comp/createTeamFour");
+        return mav;
+    }
+
     /* 매칭 상세페이지로 이동 */
     @GetMapping("/matchDetail")
     public ModelAndView goMatchDetailPage() {
