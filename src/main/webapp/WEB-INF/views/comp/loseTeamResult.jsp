@@ -1,6 +1,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
+<script>
+
+function pay(){
+	var params= {};
+	
+	$.ajax({
+		url:'https://www.h-club.site/comp/kakaopay' ,
+		//url:'/hyndai/comp/kakaopay' ,
+		dataType : 'json',
+		success:function(response){
+
+			var returnData = JSON.parse(response.data);		
+			var box = returnData.next_redirect_pc_url;
+			window.open(box);
+		},
+		error: function(error){
+			alert(error);
+		}
+	});	
+}
+</script>
 <html>
 <head>
     <link rel="stylesheet" href="${path}/resources/css/main.css">
@@ -45,8 +69,9 @@
         <img src="/resources/image/comp/lose_team_result.png">
         <p>저런... 경기에서 지셨군요?</p>
         <p>다음 번엔 이기실 수 있을거에요! </p>
-        <button class="btn-payment">결제하기</button>
+        <input type="button" class="btn-payment" onclick="pay()" value="결제하기">
     </div>
 </main>
+
 </body>
 </html>
