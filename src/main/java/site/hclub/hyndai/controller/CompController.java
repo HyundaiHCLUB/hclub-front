@@ -47,7 +47,7 @@ public class CompController {
     public ModelAndView createTeamTwo(Locale locale, Model model) {
         log.info("Create Team", locale);
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("comp/createTeamSecond");
+        mav.setViewName("createTeamTwo");
 
         return mav;
     }
