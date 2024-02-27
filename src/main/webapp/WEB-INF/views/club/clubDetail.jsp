@@ -91,7 +91,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8081/clubs/notice",
+                url: "https://www.h-club.site/clubs/notice",
                 contentType: "application/json",
                 data: JSON.stringify(NoticeCreateRequest),
                 success: function(response) {
