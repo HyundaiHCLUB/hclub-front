@@ -1,4 +1,4 @@
-.more-clubs{
+.more-clubs {
     display: flex;
     justify-content: flex-end;
     margin-right: 58px;
@@ -7,18 +7,19 @@
 }
 
 .more-clubs li ul {
-    background: rgb(109,109,109);
-    display:none;
-    height:auto;
-    padding:0px;
-    margin:0px;
-    border:0px;
-    position:absolute;
-    width:200px;
-    z-index:200;
+    background: rgb(109, 109, 109);
+    display: none;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    position: absolute;
+    width: 200px;
+    z-index: 200;
 }
+
 .more-clubs li:hover ul {
-    display:block;
+    display: block;
 }
 
 .more-club {
@@ -26,48 +27,52 @@
     text-align: right;
     margin-right: 8px;
 }
-.more-arrow{
+
+.more-arrow {
     width: 25px;
     height: 25px;
     color: #777777;
     margin-top: 8px;
 }
 
-.plus-club{
+.plus-club {
     position: fixed;
     display: flex;
-    bottom: 120px;
-    right: 58px;
+    bottom: 150px;
+    right: 23px;
     justify-content: flex-end;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.plus-title{
+.plus-title {
     margin-left: 58px;
     font-size: 56px;
     font-weight: bold;
     height: 120px;
 }
-.category-container{
-    width:fit-content;
-    height:140px;
-    float:left;
+
+.category-container {
+    width: fit-content;
+    height: 140px;
+    float: left;
     margin-left: 58px;
     margin-top: 20px;
 }
 
-.text-container{
+.text-container {
     width: 700px;
-    float:left;
+    float: left;
     margin-left: 60px;
 }
-.category_name{
+
+.category_name {
     font-weight: bold;
     font-size: 40px;
     margin-top: 40px;
     margin-bottom: 4px;
 }
+
 .category_desc {
     font-weight: normal;
     font-size: 32px;
@@ -80,12 +85,33 @@
     margin-bottom: 100px;
 }
 
-input[type="radio"] {display: none;}
-input[type="radio"] + label {display: inline-block;padding: 20px; color: #46675C;font-size: 14px;cursor: pointer;}
-input[type="radio"]:checked + label {color: #46675C;}
-input[id="tab01"]:checked ~ .con1 {display: block;}
-input[id="tab02"]:checked ~ .con2 {display: block;}
-input[id="tab03"]:checked ~ .con3 {display: block;}
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label {
+    display: inline-block;
+    padding: 20px;
+    color: #46675C;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+    color: #46675C;
+}
+
+input[id="tab01"]:checked ~ .con1 {
+    display: block;
+}
+
+input[id="tab02"]:checked ~ .con2 {
+    display: block;
+}
+
+input[id="tab03"]:checked ~ .con3 {
+    display: block;
+}
 
 
 .conbox {
@@ -102,7 +128,7 @@ input[id="tab03"]:checked ~ .con3 {display: block;}
     margin-bottom: 20px;
 }
 
-.club-image{
+.club-image {
     width: 500px;
     height: 500px;
     margin: auto;
@@ -118,6 +144,7 @@ input[type=file]::file-selector-button {
     border: 1px solid #46675c;
     border-radius: 10px;
     cursor: pointer;
+
     &:hover {
         background: #46675c;
         color: #fff;
@@ -129,6 +156,7 @@ input[type=file]::file-selector-button {
     margin-left: 58px;
     margin-right: 58px;
 }
+
 .club-title {
     font-size: 40px;
     font-weight: bold;
@@ -247,7 +275,7 @@ input[type=file]::file-selector-button {
     margin-left: 58px;
 }
 
-.club-image-container{
+.club-image-container {
     position: relative;
     display: inline-block;
 }

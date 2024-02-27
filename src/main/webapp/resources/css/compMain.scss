@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'happiness';
+  src: url('/resources/font/happinessSans/ttf/Happiness-Sans-Regular.ttf')
+}
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 .rounded-shape {
   display: flex;
   align-items: center;
@@ -20,6 +33,7 @@
   p {
     margin: 5px 0;
     color: #000000;
+    font-family: Pretendard-Regular;
   }
 }
 
@@ -105,13 +119,12 @@
 
 .add-button {
   position: fixed;
-  bottom: 192px; /* Adjust this value as needed to position the button */
-  right: 67px; /* Adjust this value as needed to position the button */
-  background-color: #ffffff;
-  padding: 10px;
-  border-radius: 50%;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+  display: flex;
+  bottom: 150px;
+  right: 23px;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .matches {
@@ -120,16 +133,6 @@
   flex-wrap: wrap; /* To allow items to wrap to the next row if needed */
 }
 
-.add-button {
-  position: fixed;
-  bottom: 192px; /* Adjust this value as needed to position the button */
-  right: 67px; /* Adjust this value as needed to position the button */
-  background-color: #ffffff;
-  padding: 10px;
-  border-radius: 50%;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
 
 .matches {
   display: flex;
@@ -137,16 +140,16 @@
   flex-wrap: wrap; /* To allow items to wrap to the next row if needed */
 }
 
-.add-button {
-  position: fixed;
-  bottom: 192px; /* Adjust this value as needed to position the button */
-  right: 67px; /* Adjust this value as needed to position the button */
-  background-color: #ffffff;
-  padding: 10px;
-  border-radius: 50%;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
+//.add-button {
+//  position: fixed;
+//  bottom: 192px; /* Adjust this value as needed to position the button */
+//  right: 67px; /* Adjust this value as needed to position the button */
+//  background-color: #ffffff;
+//  padding: 10px;
+//  border-radius: 50%;
+//  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+//  cursor: pointer;
+//}
 
 
 /* 검색 바 CSS */
