@@ -78,10 +78,7 @@
     document.addEventListener('DOMContentLoaded', function () {
 
         let gameType = 'SOCCER';
-        var soccerElement = document.querySelector('[data-game-type="SOCCER"]');
-        if (soccerElement) {
-            selectGameType(soccerElement);
-        }
+        
         window.selectGameType = function (element) {
             // 모든 gameType div 요소를 찾음
             var allGameTypes = document.querySelectorAll('.rounded-shape-gametype');
