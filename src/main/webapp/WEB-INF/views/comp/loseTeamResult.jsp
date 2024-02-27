@@ -7,23 +7,32 @@
 <script>
 
 function pay(){
-	var params= {};
-	
-	$.ajax({
-		url:'https://www.h-club.site/comp/kakaopay' ,
-		//url:'/hyndai/comp/kakaopay' ,
-		dataType : 'json',
-		success:function(response){
-
-			var returnData = JSON.parse(response.data);		
-			var box = returnData.next_redirect_pc_url;
-			window.open(box);
-		},
-		error: function(error){
-			alert(error);
-		}
-	});	
+    var params = {};
+    
+    $.ajax({
+        type: 'POST',
+        url: 'https://www.h-club.site/comp/kakaopay',
+        //url: '/hyndai/comp/kakaopay',
+        data: JSON.stringify(params),
+        dataType: 'json',
+        contentType: 'application/json', // 추가: 요청의 Content-Type 설정
+        success: function(response){
+            if(response.success){
+                var returnData = JSON.parse(response.data);      
+                var box = returnData.next_redirect_pc_url;
+                window.open(box);
+            } else {
+                // 실패 시 처리
+                alert(response.message);
+            }
+        },
+        error: function(xhr, status, error){
+            // 에러 처리
+            alert("Error: " + error);
+        }
+    }); 
 }
+
 </script>
 <html>
 <head>
