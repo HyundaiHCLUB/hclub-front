@@ -188,7 +188,6 @@
     }
 
     /* 동아리 목록을 화면에 표시하는 함수 */
-    /* 동아리 목록을 화면에 표시하는 함수 */
     function displayClubs(clubs) {
         clubs.forEach(club => {
             // 각 동아리 정보로 HTML 요소 생성
