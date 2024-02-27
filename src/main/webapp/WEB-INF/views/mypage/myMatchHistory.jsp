@@ -92,27 +92,27 @@
             });
         });
     }
-
-
-    function getUserInfo(accessToken) {
-        return new Promise((resolve, reject) => {
-            $.ajax({
-                type: 'GET',
-                url: 'https://www.h-club.site/auth/mypage/comp', // 배포판
-                headers: {
-                    'Authorization': 'Bearer ' + accessToken, // accessToken 사용
-                },
-                success: function (response) {
-                    console.log('사용자 정보:', response);
-                    resolve(response); // 성공 시 response 객체를 resolve 합니다.
-                },
-                error: function (xhr, status, error) {
-                    console.error('사용자 정보 가져오기 실패:', error);
-                    reject(error); // 실패 시 error 객체를 reject 합니다.
-                }
-            });
-        });
-    }
+    //
+    //
+    // function getUserInfo(accessToken) {
+    //     return new Promise((resolve, reject) => {
+    //         $.ajax({
+    //             type: 'GET',
+    //             url: 'https://www.h-club.site/auth/mypage/', // 배포판
+    //             headers: {
+    //                 'Authorization': 'Bearer ' + accessToken, // accessToken 사용
+    //             },
+    //             success: function (response) {
+    //                 console.log('사용자 정보:', response);
+    //                 resolve(response); // 성공 시 response 객체를 resolve 합니다.
+    //             },
+    //             error: function (xhr, status, error) {
+    //                 console.error('사용자 정보 가져오기 실패:', error);
+    //                 reject(error); // 실패 시 error 객체를 reject 합니다.
+    //             }
+    //         });
+    //     });
+    // }
     function displayMatches(matches) {
         const matchesContainer = $('.matches');
         matchesContainer.empty(); // 기존 매치 내용을 지웁니다.
@@ -122,10 +122,11 @@
             var matchElement = $('<div/>', { class: 'rounded-shape' }).append(
                 $('<div/>', { class: 'left-section' }).append(
                     $('<img/>', { src: '/resources/image/comp/' + match.matchType.toLowerCase() + '.png', alt: '이미지' }),
-                    $('<p/>').text(match.score1 + ' vs ' + match.score2)
+                    $('<p/>').text(match.matchCapacity + ' vs ' + match.matchCapacity)
                 ),
                 $('<div/>', { class: 'middle-section' }).append(
-                    $('<p/>').text(match.teamName)
+                    $('<p/>').text(match.teamName),
+                    $('<p/>').text(match.score1 + ' vs ' + match.score2)
                 ),
                 $('<div/>', { class: 'right-section' }).append(
                     $('<p/>').text(match.matchLoc),
