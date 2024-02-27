@@ -69,6 +69,17 @@
             margin-top: 100px;
             margin-left: 10%;
         }
+        .product-category {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 35%; /* New category width */
+            border-left: 1px solid #ddd; /* Separating line if needed */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
@@ -83,67 +94,131 @@
         <h1>내 동아리</h1>
         <i class="fa-regular fa-flag"></i>
     </div>
+    <!-- 가입 완료된 동아리 -->
     <div class="mypage-subheader">
         <h2>가입 완료</h2>
     </div>
-    <!-- 샘플 데이터 -->
-    <div class="product-card">
-        <img src="/resources/image/sample3.png" alt="사진" class="product-image">
-        <div class="product-details">
-            <div class="product-title">난쏘공</div>
-            <div class="product-date"> 가입일 </div>
-            <div class="product-price">2023-04-12</div>
+    <div class="approved-clubs">
+        <!-- 샘플데이터 -->
+        <div class="product-card">
+            <img src="/resources/image/sample3.png" alt="사진" class="product-image">
+            <div class="product-details">
+                <div class="product-title">난쏘공</div>
+                <div class="product-date"> 개설일 </div>
+                <div class="product-price">2023-04-12</div>
+            </div>
+            <div class="product-category">
+                <div class="category-title">카테고리명</div>
+            </div>
         </div>
     </div>
-
-    <div class="product-card">
-        <img src="/resources/image/sample2.png" alt="사진" class="product-image">
-        <div class="product-details">
-            <div class="product-title">자바랑</div>
-            <div class="product-date"> 가입일 </div>
-            <div class="product-price">2023-06-24</div>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <img src="/resources/image/sample.png" alt="사진" class="product-image">
-        <div class="product-details">
-            <div class="product-title">보울링</div>
-            <div class="product-date"> 가입일 </div>
-            <div class="product-price">2021-03-14</div>
-        </div>
-    </div>
+   <!-- 승인 대기중인 동아리-->
     <div class="mypage-subheader">
         <h2>승인 대기중</h2>
     </div>
-
-    <div class="product-card">
-        <img src="/resources/image/sample3.png" alt="사진" class="product-image">
-        <div class="product-details">
-            <div class="product-title">난쏘공</div>
-            <div class="product-date"> 가입일 </div>
-            <div class="product-price">2023-04-12</div>
+    <div class="waiting-clubs">
+        <!-- 샘플데이터 -->
+        <div class="product-card">
+            <img src="/resources/image/sample3.png" alt="사진" class="product-image">
+            <div class="product-details">
+                <div class="product-title">난쏘공</div>
+                <div class="product-date"> 개설일 : <span>2023-04-12 </span></div>
+                <div class="product-price"> 활동 지역 <h4>서울시 강남구 테헤란로123</h4></div>
+            </div>
+            <div class="product-category">
+                <div class="category-title">카테고리명</div>
+            </div>
         </div>
     </div>
 
-    <div class="product-card">
-        <img src="/resources/image/sample2.png" alt="사진" class="product-image">
-        <div class="product-details">
-            <div class="product-title">자바랑</div>
-            <div class="product-date"> 가입일 </div>
-            <div class="product-price">2023-06-24</div>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <img src="/resources/image/sample.png" alt="사진" class="product-image">
-        <div class="product-details">
-            <div class="product-title">보울링</div>
-            <div class="product-date"> 가입일 </div>
-            <div class="product-price">2021-03-14</div>
-        </div>
-    </div>
 
 </main>
 </body>
+<script>
+    var memberId;
+
+    $(document).ready(function() {
+        // 로컬 스토리지에서 JWT 가져오기
+        let accessToken = localStorage.getItem("accessTokenInfo");
+        // 가져온 JWT를 사용하여 사용자 정보 가져오기
+        getUserInfo(accessToken).then(memberInfo => {
+            memberId = memberInfo.member_id;
+            console.log("memberID : " + memberId);
+        }).catch(error => {
+            console.error('사용자 정보 가져오기 실패:', error);
+        });
+        // 동아리 목록 ajax 요청
+        $.ajax({
+            type: 'GET',
+            url: 'https://www.h-club.site/auth/mypage/clubs',
+            dataType: 'json',
+            headers: {
+                'Authorization': 'Bearer ' + accessToken, // accessToken 사용
+            },
+            success: function (response) {
+                console.log('사용자 정보:', response);
+                resolve(response); // 성공 시 response 객체를 resolve 합니다.
+                displayClubs(response); // 동아리 목록 표시 함수 호출
+            },
+            error: function (xhr, status, error) {
+                console.error('사용자 정보 가져오기 실패:', error);
+                reject(error); // 실패 시 error 객체를 reject 합니다.
+            }
+        });
+    });
+
+    /* accessToken 으로 유저 정보 받아오는 함수 */
+    function getUserInfo(accessToken) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                // url: 'http://localhost:8080/auth/mypage/info',   // 로컬
+                url: 'https://www.h-club.site/auth/mypage/info', // 배포판
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken, // accessToken 사용
+                },
+                success: function (response) {
+                    console.log('사용자 정보:', response);
+                    resolve(response); // 성공 시 response 객체를 resolve 합니다.
+                },
+                error: function (xhr, status, error) {
+                    console.error('사용자 정보 가져오기 실패:', error);
+                    reject(error); // 실패 시 error 객체를 reject 합니다.
+                }
+            });
+        });
+    }
+
+    /* 동아리 목록을 화면에 표시하는 함수 */
+    /* 동아리 목록을 화면에 표시하는 함수 */
+    function displayClubs(clubs) {
+        clubs.forEach(club => {
+            // 각 동아리 정보로 HTML 요소 생성
+            var clubCard = $('<div/>', { class: 'product-card' }).append(
+                $('<img/>', { src: club.clubImage, alt: '사진', class: 'product-image' }),
+                $('<div/>', { class: 'product-details' }).append(
+                    $('<div/>', { class: 'product-title', text: club.clubName }),
+                    $('<div/>', { class: 'product-date' }).append(
+                        '개설일 : ', $('<span/>', { text: club.createdAt })
+                    ),
+                    $('<div/>', { class: 'product-price' }).append(
+                        '활동 지역 ', $('<h4/>', { text: club.clubLoc })
+                    )
+                ),
+                $('<div/>', { class: 'product-category' }).append(
+                    $('<div/>', { class: 'category-title', text: club.categoryName })
+                )
+            );
+
+            // useYN 값에 따라 적절한 위치에 동아리 카드 추가
+            if (club.useYN === 'Y') {
+                $('.approved-clubs').append(clubCard);
+            } else if (club.useYN === 'N') {
+                $('.waiting-clubs').append(clubCard);
+            }
+        });
+    }
+
+
+</script>
 </html>

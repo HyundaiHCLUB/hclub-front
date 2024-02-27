@@ -274,11 +274,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
     var matchHistorytNo;
-    var locationInformation; // 정보를 저장할 변수 선언
+    var locationInformation; // 장소 저장할 변수
+    let accessToken = localStorage.getItem("accessTokenInfo");
 
 	$(document).ready(function() {
         $('.btn-match-start').click(function(e) {
             e.preventDefault();
+            // JWT 를 사용해 사용자 정보 가져오기
+            getUserInfo(accessToken).then(memberInfo => {
+                console.log("memberID : " + memberInfo.member_id);
+                $('#userName').text(memberInfo.employeeName); // 이름 설정
+                $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
+                $('.profile-pic').attr('src', memberInfo.memberImage);
+             }).catch(error => {
+                console.error('사용자 정보 가져오기 실패:', error);
+            });
+
             // 경기 장소 업데이트(선택된 장소로 DB 에 저장)
             $.ajax({
                 url: 'https://www.h-club.site/comp/matchLocation',
@@ -296,7 +307,7 @@
             });
 
         });
-
+        // 경기상세정보 API 호출
         $.ajax({
             url: 'https://www.h-club.site/comp/match/13', //샘플데이터
             type: 'GET',
@@ -346,7 +357,7 @@
 
     });
 
-    // 체크박스의 상태 변화를 감지하고, 체크되었을 때 실행될 함수를 설정합니다.
+    /* 체크된 체크박스에 해당하는 "장소" 데이터 저장 */
     document.addEventListener('DOMContentLoaded', function() {
         // 체크박스에 이벤트 리스너를 추가합니다.
         document.querySelectorAll('.location-checkbox').forEach(function(checkbox) {
@@ -361,7 +372,27 @@
             });
         });
     });
-
+    /* accessToken 으로부터 유저 정보 추출하는 함수 */
+    function getUserInfo(accessToken) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                // url: 'http://localhost:8080/auth/mypage/info',   // 로컬
+                url: 'https://www.h-club.site/auth/mypage/info', // 배포판
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken, // accessToken 사용
+                },
+                success: function (response) {
+                    console.log('사용자 정보:', response);
+                    resolve(response); // 성공 시 response 객체를 resolve 합니다.
+                },
+                error: function (xhr, status, error) {
+                    console.error('사용자 정보 가져오기 실패:', error);
+                    reject(error); // 실패 시 error 객체를 reject 합니다.
+                }
+            });
+        });
+    }
 </script>
 
 </html>
