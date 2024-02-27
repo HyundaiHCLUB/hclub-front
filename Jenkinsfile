@@ -7,7 +7,7 @@ pipeline {
         steps{
            git branch : 'prod', credentialsId : 'git-token' ,url : 'https://github.com/HyndaiFinalProject/hclub-front.git'
             sh '''
-            cd /var/jenkins_home/workspace/hclub-front 
+            cd /var/jenkins_home/workspace/hclub-front
             '''
         }
            
