@@ -16,7 +16,6 @@
   border-radius: 100px;
 }
 .rounded-shape-gametype .round-shape {
-  background-color: #D9DCDE;
   border-radius: inherit;
   width: 200px;
   height: 100px;
@@ -184,7 +183,7 @@ input[type=text] {
   padding: 8px; /* 내부 여백 추가 */
   margin: 10px 0; /* 상하 마진 추가 */
   box-sizing: border-box; /* 패딩과 테두리가 너비에 포함되도록 설정 */
-  font-size: 45px;
+  font-size: 38px;
 }
 
 /* 장소 검색 */

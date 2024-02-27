@@ -74,22 +74,31 @@
     </div>
 </main>
 <script>
+
     document.addEventListener('DOMContentLoaded', function () {
+
         let gameType = 'SOCCER';
-
+        var soccerElement = document.querySelector('[data-game-type="SOCCER"]');
+        if (soccerElement) {
+            selectGameType(soccerElement);
+        }
         window.selectGameType = function (element) {
-            // Remove the class from any previously selected game type
-            var previouslySelected = document.querySelector('.selected-game-type');
-            if (previouslySelected) {
-                previouslySelected.classList.remove('selected-game-type');
-            }
+            // 모든 gameType div 요소를 찾음
+            var allGameTypes = document.querySelectorAll('.rounded-shape-gametype');
 
-            // Add the class to the clicked game type
+            // 모든 gameType div 요소에 대해 selected-game-type 클래스 제거
+            allGameTypes.forEach(function(gameType) {
+                gameType.classList.remove('selected-game-type');
+                gameType.style.backgroundColor = "#DBDBDB"; // 기본 배경 색상으로 설정
+            });
+
+            // 클릭한 요소에만 selected-game-type 클래스 추가 및 색상 변경
             element.classList.add('selected-game-type');
+            element.style.backgroundColor = "#46675C"; // 여기서 원하는 색상으로 변경
 
             // Save the selected game type
             var selectedGameType = element.getAttribute('data-game-type');
-            console.log("Selected Game Type:", selectedGameType); // Example action: log to console
+            console.log("Selected Game Type:", selectedGameType);
             gameType = selectedGameType;
 
             // Update the game-type-num div based on the selected game type
