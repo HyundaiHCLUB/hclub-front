@@ -118,23 +118,25 @@
         matchesContainer.empty(); // 기존 매치 내용을 지웁니다.
 
         matches.forEach(match => {
-            const matchElement = `
-            <div class="rounded-shape">
-                <div class="left-section">
-                    <img src="/resources/image/comp/${match.matchType.toLowerCase()}.png" alt="이미지" />
-                    <p>${match.score1} vs ${match.score2}</p>
-                </div>
-                <div class="middle-section">
-                    <p>${match.teamName}</p>
-                </div>
-                <div class="right-section">
-                    <p>${match.matchLoc}</p>
-                    <p>${match.matchDate}</p>
-                </div>
-            </div>
-        `;
+            // 각 매치 정보로 HTML 요소 생성
+            var matchElement = $('<div/>', { class: 'rounded-shape' }).append(
+                $('<div/>', { class: 'left-section' }).append(
+                    $('<img/>', { src: '/resources/image/comp/' + match.matchType.toLowerCase() + '.png', alt: '이미지' }),
+                    $('<p/>').text(match.score1 + ' vs ' + match.score2)
+                ),
+                $('<div/>', { class: 'middle-section' }).append(
+                    $('<p/>').text(match.teamName)
+                ),
+                $('<div/>', { class: 'right-section' }).append(
+                    $('<p/>').text(match.matchLoc),
+                    $('<p/>').text(match.matchDate)
+                )
+            );
+
+            // matchesContainer에 매치 요소 추가
             matchesContainer.append(matchElement);
         });
     }
+
 </script>
 </html>
