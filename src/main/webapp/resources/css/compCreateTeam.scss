@@ -1,6 +1,8 @@
 /* 팀 생성 */
 .select-game-type-container {
   margin-top: 35px;
+  margin-left: 20px;
+  margin-right: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,7 +36,7 @@
 }
 
 .selected-game-type {
-  background-color: #46675C; /* New color for selected game type */
+  background-color: #46675C;
 }
 
 
@@ -90,7 +92,7 @@
 .input-icon-container {
   display: flex; /* Makes sure input and icon are in a row */
   align-items: center; /* Aligns items vertically in the center */
-   /* Border moved here from input */
+  /* Border moved here from input */
 
   position: relative;
 }
@@ -122,6 +124,7 @@ input[type="text"] {
   appearance: none;
   margin-bottom: 20px;
 }
+
 .input-icon-container::after {
   content: '';
   position: absolute;
@@ -136,24 +139,141 @@ input[type="text"] {
 
 /* 게임 타입*/
 
-.game-type-select{
+.game-type-select {
   display: flex;
   justify-content: center;
-  img{
+
+  img {
     width: 100px;
     height: auto;
-    margin-right:20px;
+    margin-right: 20px;
   }
-  span{
-    font-size:45px;
+
+  span {
+    font-size: 45px;
+    margin-top: 10px;
 
   }
 }
-.game-type-select-container{
-  display:flex;
+
+.game-type-select-container {
+  display: flex;
 }
 
-.game-type-num{
-  display:flex;
+.game-type-num {
+  margin-top: 50px;
+  display: flex;
   justify-content: space-around;
+
+  div {
+    border: 2px solid #46675C; /* Example border color */
+    border-radius: 10%;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    cursor: pointer;
+    width: 150px;
+    height: 70px;
+    transition: background-color 0.3s;
+    font-size: 30px;
+  }
+
+
+}
+
+.game-type-num div.selected {
+  background-color: #46675C; /* Example background color for selected div */
+  color: white; /* Change text color to maintain contrast */
+}
+
+/* 팀원 검색 */
+
+.team-mate-add-container, .location-add-container {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 70px;
+
+  p {
+    font-size: 50px;
+    margin-left: 20px;
+  }
+}
+
+.team-mate-search input#memberSearchInput, input#locationSearchInput {
+  border: 4px solid #46675C; /* 테두리 색상과 두께 설정 */
+  border-radius: 10px;
+  width: 100%; /* 너비 설정 */
+  height: 70px;
+  padding: 8px; /* 내부 여백 추가 */
+  margin: 10px 0; /* 상하 마진 추가 */
+  box-sizing: border-box; /* 패딩과 테두리가 너비에 포함되도록 설정 */
+  font-size: 45px;
+
+
+}
+
+/* 장소 검색 */
+.location-add-container {
+  margin-top: 200px;
+
+  p {
+    font-size: 50px;
+    margin-left: 20px;
+  }
+}
+
+/* 이전 다음 버튼 */
+.team-create-button-container {
+  margin-top: 150px;
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    width: 300px;
+    height: 75px;
+    border-radius: 10px;
+    border: 3px solid #46675C;
+    background: #ffffff;
+    font-size: 35px;
+    color: #46675c;
+
+  }
+}
+
+
+/* 팀생성 - 2 */
+
+.team-caption-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-caption-image {
+
+  img {
+    width: 300px;
+
+  }
+
+
+}
+
+.team-captain-name {
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    width: 50px;
+  }
+
+  p {
+    font-size: 30px;
+  }
+}
+
+.captain-caption {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
