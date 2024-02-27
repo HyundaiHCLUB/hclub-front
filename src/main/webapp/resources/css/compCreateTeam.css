@@ -212,4 +212,32 @@ input[type=text] {
   color: #46675c;
 }
 
+/* 팀생성 - 2 */
+.team-caption-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-caption-image img {
+  width: 300px;
+}
+
+.team-captain-name {
+  display: flex;
+  justify-content: space-between;
+}
+.team-captain-name img {
+  width: 50px;
+}
+.team-captain-name p {
+  font-size: 30px;
+}
+
+.captain-caption {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 /*# sourceMappingURL=compCreateTeam.css.map */
