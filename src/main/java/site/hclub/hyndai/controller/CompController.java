@@ -34,11 +34,20 @@ public class CompController {
         return mav;
     }
 
-    @GetMapping("/create")
-    public ModelAndView createTeam(Locale locale, Model model) {
+    @GetMapping("/create/1")
+    public ModelAndView createTeamOne(Locale locale, Model model) {
         log.info("Create Team", locale);
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("comp/createTeam");
+        mav.setViewName("comp/createTeamOne");
+
+        return mav;
+    }
+
+    @GetMapping("/create/2")
+    public ModelAndView createTeamTwo(Locale locale, Model model) {
+        log.info("Create Team", locale);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("comp/createTeamSecond");
 
         return mav;
     }

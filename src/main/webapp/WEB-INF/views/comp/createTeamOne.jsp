@@ -11,7 +11,7 @@
 <body>
 <main>
     <div class="select-game-type-container">
-        <div class="rounded-shape-gametype" data-game-type="SOCCER" onclick="selectGameType(this)">
+        <div class="rounded-shape-gametype selected-game-type" data-game-type="SOCCER" onclick="selectGameType(this)">
             <div class="round-shape">
                 <img src="/resources/image/comp/soccer.png"/>
             </div>
@@ -49,12 +49,33 @@
     <div class="game-type-num">
 
     </div>
+    <div class="team-mate-add-container">
+        <p>팀원</p>
+        <div class="team-mate-search">
+            <input type="text" id="memberSearchInput" placeholder="팀원을 검색하세요"/>
+            <button id="searchMemberButton">검색</button>
+        </div>
+    </div>
 
+    <div class="location-add-container">
+        <p>장소</p>
+        <div class="team-mate-search">
+            <input id="locationSearchInput" type="text" placeholder="장소를 입력해주세요"/>
 
+        </div>
+    </div>
+    <div class="team-create-button-container">
+        <div class="move-next-button">
+            <button id="goBackButton">이전</button>
+        </div>
+        <div class="move-next-button">
+            <button id="goNextButton">다음</button>
+        </div>
+    </div>
 </main>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        let gameType = '';
+        let gameType = 'SOCCER';
 
         window.selectGameType = function (element) {
             // Remove the class from any previously selected game type
@@ -77,13 +98,40 @@
 
         function updateGameTypeNum(gameType) {
             var gameTypeNumDiv = document.querySelector('.game-type-num');
+            gameTypeNumDiv.innerHTML = ''; // Clear existing content
 
-            if (gameType === 'SOCCER') {
-                gameTypeNumDiv.innerHTML = '<div>3 vs 3</div><div>5 vs 5</div><div>6 vs 6</div><div>11 vs 11</div>';
-            } else {
-                gameTypeNumDiv.innerHTML = ''; // Clear or update with other game types' info as needed
+            let gameFormats = [];
+            switch (gameType) {
+                case 'SOCCER':
+                    gameFormats = ['3 vs 3', '5 vs 5', '6 vs 6', '11 vs 11'];
+                    break;
+                case 'BASKETBALL':
+                    gameFormats = ['1 vs 1', '2 vs 2', '3 vs 3', '5 vs 5'];
+                    break;
+                case 'BOWLING':
+                    gameFormats = ['1 vs 1', '2 vs 2', '3 vs 3', '4 vs 4'];
+                    break;
+                case 'DART':
+                    gameFormats = ['1 vs 1', '2 vs 2', '3 vs 3', '4 vs 4'];
+                    break;
+                // Add more cases as needed
             }
+
+            gameFormats.forEach(function (format) {
+                var div = document.createElement('div');
+                div.textContent = format;
+                div.className = 'game-format-option'; // Assign a class for styling
+                div.onclick = function () {
+                    var siblings = gameTypeNumDiv.querySelectorAll('.game-format-option');
+                    siblings.forEach(function (sibling) {
+                        sibling.classList.remove('selected');
+                    });
+                    div.classList.add('selected');
+                };
+                gameTypeNumDiv.appendChild(div);
+            });
         }
+
 
         var saveButton = document.getElementById('saveTeamName');
         var teamNameInput = document.getElementById('teamNameInput');
@@ -102,9 +150,40 @@
 
         // Add click event listener to the image to toggle editing
         saveButton.addEventListener('click', toggleEdit);
+
+        //팀원 검색
+        var memberSearchInput = document.getElementById('memberSearchInput');
+        var searchMemberButton = document.getElementById('searchMemberButton');
+        searchMemberButton.addEventListener('click', function () {
+            var memberName = memberSearchInput.value;
+            if (memberName.length > 0) { // 빈 문자열로 요청을 보내지 않도록 함
+                searchMemberByName(memberName);
+            }
+        });
+
+
+        function displaySearchResults(data) {
+            // This function should update your HTML to display the search results.
+            // For example, if data is an array of member objects, you could iterate
+            // through them and append them to a list under the search input.
+            console.log(data); // Log data for debugging. Replace this with actual display logic.
+        }
+
     });
-
-
+    // 이전
+    document.addEventListener('DOMContentLoaded', function () {
+        var goBackButton = document.getElementById('goBackButton');
+        goBackButton.addEventListener('click', function () {
+            window.history.back();
+        });
+    });
+    // 다음 페이지 이동
+    document.addEventListener('DOMContentLoaded', function () {
+        var goNextButton = document.getElementById('goNextButton');
+        goNextButton.addEventListener('click', function () {
+            window.location.href = '/competition/create/2';
+        });
+    });
 </script>
 </body>
 </html>
