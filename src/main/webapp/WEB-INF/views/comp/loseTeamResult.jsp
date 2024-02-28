@@ -1,16 +1,43 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-
 <script>
+    /* 세팅해야될 데이터*/
+    var matchHistNo = ${matchHistoryNo};
+    console.log('matchHistoryNo from Controller => ' + matchHistNo);
+    var params = {}; // =>  settleName, settleAmount
+    var settleName;
+    var settleAmount;
+    var productsNo;
+    var settleMemberId;
+    var recipentMemberNo;
 
+    $(document).ready(function(){
+         $.ajax({
+             <%--url: 'https://www.h-club.site/comp/settle/${matchHistoryNo}',--%>
+             url: 'https://www.h-club.site/comp/settle/12',
+             type: 'GET',
+             dataType: 'json',
+             success: function(response) {
+                console.log(response);
+                settleName = response.settleName;
+                settleAmount = response.settleAmount;
+                productsNo = response.productsNo;
+                settleMemberId = response.settleMemberId;
+                recipentMemberNo = response.recipentMemberNo;
+             },
+             error: function (error) {
+                console.log(error);
+             }
+
+         });
+    });
 function pay(){
-	//테스트용 데이터. 추후에 진짜 데이터 담기
+	// //테스트용 데이터. 추후에 진짜 데이터 담기
     var params = {};
-    params.settleName="cafe 5000won";
-    params.settleAmount= 5000;
+    params.settleName= settleName;
+    params.settleAmount= settleAmount;
     
     setSessionInfo();
  
@@ -24,7 +51,7 @@ function pay(){
         success: function(response){
             if(response.success){
                 var returnData = JSON.parse(response.data);      
-                var nextRedirectPcUrl = returnData.next_redirect_pc_url;
+                var nextRedirectPcUrl = 'https://www.h-club.site/competition/paySuccess';
                // window.open(box);
                 window.location.href = nextRedirectPcUrl;
             } else {
@@ -40,14 +67,13 @@ function pay(){
 }
 
 function setSessionInfo(){
-	  sessionStorage.setItem('matchHistNo', '12');
-      sessionStorage.setItem('settleAmount', '5000');
-      sessionStorage.setItem('productsNo', '1');
-      sessionStorage.setItem('settleMemberId', '6');
-      sessionStorage.setItem('recipentMemberNo', '11');
+    <%--sessionStorage.setItem('matchHistNo', '${matchHistoryNo}');--%>
+    sessionStorage.setItem('matchHistNo', '12');
+    sessionStorage.setItem('settleAmount', response.settleAmount);
+    sessionStorage.setItem('productsNo', response.productsNo);
+    sessionStorage.setItem('settleMemberId', response.settleMemberId);
+    sessionStorage.setItem('recipentMemberNo', response.recipentMemberNo);
 }
-
-
 </script>
 <html>
 <head>
