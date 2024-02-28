@@ -21,7 +21,6 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery.twbsPagination.js"></script>
 <!-- Custom scripts -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.twbsPagination.min.js"></script>
-
 <style>
 	#deleteButton
 	{
@@ -205,29 +204,29 @@
 	    });
 }
 
- function getClubSize(){
-	 var params = {}; // 
-	    params.searchParams= $("#search").val();
+function getClubSize(){
+	var params = {}; // 
+    params.searchParams= $("#search").val();
 	    
-		$.ajax({
-			type: 'POST',
-			/* headers: {
+	$.ajax({
+		type: 'POST',
+		/* headers: {
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
-			}, */
-			//url: '/hyndai/admin/clubCnt', 
-			url: '/admin/clubCnt', 
-		    data: JSON.stringify(params),
-			contentType: 'application/json', 
-			success: function(response) {
+		}, */
+		//url: '/hyndai/admin/clubCnt', 
+		url: '/admin/clubCnt', 
+	    data: JSON.stringify(params),
+		contentType: 'application/json', 
+		success: function(response) {
 	          
-	            clubListSize = response.data;
-	            setupPagination();
+	    clubListSize = response.data;
+	    setupPagination();
 	           
-	        },
-	        error: function(xhr, status, error) {
-	            console.error('동아리 리스트 정보 가져오기 실패:', error);
-	        }
-	    });
+	  },
+	      error: function(xhr, status, error) {
+	          console.error('동아리 리스트 정보 가져오기 실패:', error);
+	      }
+	  });
  }
  function appendDataToTable(data) {
 	    var tbody = $('#dataTbody');
@@ -288,7 +287,7 @@
             currentPage = i;
             
             //페이징 범위 계산
-            setClubStartIndex = i * itemsPerPage +1;
+            setClubStartIndex = (i-1) * itemsPerPage +1;
             setClubEndIndex =  (i+1)* itemsPerPage;
            
             console.log("setClubStartIndex: "+setClubStartIndex +", setClubEndIndex: "+setClubEndIndex);
@@ -314,9 +313,6 @@ function highlightCurrentPage() {
 
     links[currentPage - 1].classList.add('active');
 }
-
-
-
  </script>
 </body>
 </html>
