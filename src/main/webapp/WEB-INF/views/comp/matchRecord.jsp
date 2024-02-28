@@ -197,6 +197,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
     console.log("matchHistoryNo from controller : " + ${matchHistoryNo})
+    var team1No;
+    var team2No;
+    var matchLoc;
     $(document).ready(function() {
         $.ajax({
             url: 'https://www.h-club.site/comp/match/${matchHistoryNo}', //샘플데이터
@@ -206,6 +209,9 @@
                 matchHistorytNo = response.data.matchHistoryNo;
                 console.log(response);
                 // 팀 정보 업데이트
+                team1No = response.data.team1.teamNo;
+                team2No = response.data.team2.teamNo;
+                matchLoc = response.data.team1.matchLoc;
                 $('.team').eq(0).find('img').attr('src', response.data.team1.teamImage);
                 $('.team').eq(0).find('h4').text(response.data.team1.teamName);
                 $('.team').eq(1).find('img').attr('src', response.data.team2.teamImage);
@@ -229,12 +235,12 @@
             }
             // 경기 결과 기록 request dto
             var dataToSend = {
-                matchHistNo: 경기번호,
-                matchLoc : 경기장소,
-                teamANo : 팀1번호,
-                scoreA : 팀1점수,
-                teamBNo : 팀2번호,
-                scoreB : 팀2점수
+                matchHistNo: 13,
+                matchLoc : matchLoc,
+                teamANo : team1No,
+                scoreA : scoreValueTeam1,
+                teamBNo : team1No,
+                scoreB : scoreValueTeam2
             };
             // 경기 결과 기록 API 호출 - DB 등록 및 S3 파일 업로드
             $.ajax({
@@ -249,6 +255,12 @@
                     console.error('Error occurred:', error);
                 }
             })
+            // 여기에 점수 비교 로직 추가
+            if (scoreTeam1 < scoreTeam2) {
+                // 팀1의 점수가 팀2의 점수보다 작으면 loseTeamResult.jsp로 리다이렉트
+                window.location.href = '${path}/competition/loseTeam/${matchHistoryNo}';
+                return; // 추가된 부분
+            }
         });
     });
 
