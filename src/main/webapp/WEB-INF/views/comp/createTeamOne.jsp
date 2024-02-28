@@ -5,6 +5,15 @@
     <link rel="stylesheet" href="/resources/css/compCreateTeam.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- jquery -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>CreateTeam</title>
 </head>
@@ -32,6 +41,8 @@
             </div>
         </div>
     </div>
+    <!-- 파일 업로드 -->
+    <input type="file" id="fileInput" style="display: none;" multiple>
 
     <div class="plus-button"></div>
     <div class="team-name-container">
@@ -78,13 +89,13 @@
     document.addEventListener('DOMContentLoaded', function () {
 
         let gameType = 'SOCCER';
-        
+
         window.selectGameType = function (element) {
             // 모든 gameType div 요소를 찾음
             var allGameTypes = document.querySelectorAll('.rounded-shape-gametype');
 
             // 모든 gameType div 요소에 대해 selected-game-type 클래스 제거
-            allGameTypes.forEach(function(gameType) {
+            allGameTypes.forEach(function (gameType) {
                 gameType.classList.remove('selected-game-type');
                 gameType.style.backgroundColor = "#DBDBDB"; // 기본 배경 색상으로 설정
             });
@@ -175,6 +186,40 @@
             console.log(data); // Log data for debugging. Replace this with actual display logic.
         }
 
+
+        // 파일 업로드
+        var plusButton = document.querySelector('.plus-button');
+        var fileInput = document.getElementById('fileInput');
+
+        // When the plus button is clicked, programmatically click the file input
+        plusButton.addEventListener('click', function () {
+            fileInput.click();
+        });
+        fileInput.addEventListener('change', function () {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    // Replace the plus button with the uploaded image
+                    plusButton.style.backgroundImage = `url(${e.target.result})`;
+                    // Adjust the size to match the plus button
+                    plusButton.style.width = '100px'; // Adjust based on your plus button's size
+                    plusButton.style.height = '100px'; // Adjust based on your plus button's size
+                    plusButton.style.backgroundSize = 'cover';
+                    plusButton.style.backgroundPosition = 'center center';
+                    // Remove any content or styling that makes it look like a button, if necessary
+                    plusButton.innerHTML = ''; // Remove text or icons
+                    plusButton.style.border = 'none'; // Remove border if it exists
+                };
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        // Optional: Handle file selection
+        fileInput.addEventListener('change', function () {
+            var files = fileInput.files;
+
+            console.log(files);
+        });
     });
     // 이전
     document.addEventListener('DOMContentLoaded', function () {
@@ -190,6 +235,8 @@
             window.location.href = '/competition/create/2';
         });
     });
+    
+
 </script>
 </body>
 </html>
