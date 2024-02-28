@@ -15,32 +15,39 @@
         padding: 0;
 
     }
+
     .event-image {
         width: 95%;
         height: 40%;
         margin: 30px auto;
     }
+
     .event-image img {
         width: 100%;
         height: 100%;
     }
+
     .event-details {
         width: 90%;
         border-radius: 10px;
         padding: 20px;
         margin: 30px auto;
     }
+
     .event-details h2, .event-details p {
         margin: 10px 0; /* 위아래 여백 수정 */
     }
+
     .event-details h2 {
         color: #333; /* 제목 색상 설정 */
         font-size: 3em; /* 제목 글꼴 크기 설정 */
     }
+
     .event-details p {
         color: #666; /* 문단 색상 설정 */
         font-size: 24px; /* 문단 글꼴 크기 설정 */
     }
+
     .team-detail { /* 아이콘과 팀명 가로로 배치 */
         display: flex;
         align-items: center;
@@ -49,10 +56,12 @@
         padding-bottom: 10px;
         border-bottom: 1px solid black;
     }
+
     .team-detail img {
         width: 50px; /* 이미지 너비 조절 */
         height: auto; /* 이미지 높이를 자동으로 조절하여 비율 유지 */
     }
+
     .detail-component-header {
         margin-top: 20px;
         display: flex;
@@ -97,12 +106,14 @@
         color: #666;
         font-size: 2em; /* 본문 텍스트 크기 조절 */
     }
+
     .button-container {
         width: 100%;
         display: flex;
         justify-content: center;
         margin-bottom: 30px;
     }
+
     .team-button {
         width: 85%;
         font-size: 2em;
@@ -115,7 +126,7 @@
 </style>
 <body>
 <main>
-    <div  class="event-image">
+    <div class="event-image">
         <img src="/resources/image/comp/messi.png" alt="이벤트 이미지">
     </div>
 
@@ -184,5 +195,15 @@
         <button class="team-button">팀 생성</button>
     </div>
 </main>
+<script>
+    // 팀 상세정보 매칭페이지 이동
+    document.addEventListener('DOMContentLoaded', function () {
+        var goNextButton = document.querySelector('.team-button');
+        goNextButton.addEventListener('click', function () {
+            window.location.href = '/competition/create/4';
+        });
+    });
+
+</script>
 </body>
 </html>
