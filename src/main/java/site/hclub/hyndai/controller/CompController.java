@@ -101,4 +101,9 @@ public class CompController {
 
         return mav;
     }
+    /* 결제 성공페이지*/
+    @GetMapping("/paySuccess")
+    public ModelAndView gopaySuccessPage() {
+        return new ModelAndView("comp/paySuccess");
+    }
 }

@@ -12,6 +12,8 @@ function pay(){
     params.settleName="cafe 5000won";
     params.settleAmount= 5000;
     
+    setSessionInfo();
+ 
     $.ajax({
         type: 'POST',
         url: 'https://www.h-club.site/comp/kakaopay',
@@ -22,8 +24,9 @@ function pay(){
         success: function(response){
             if(response.success){
                 var returnData = JSON.parse(response.data);      
-                var box = returnData.next_redirect_pc_url;
-                window.open(box);
+                var nextRedirectPcUrl = returnData.next_redirect_pc_url;
+               // window.open(box);
+                window.location.href = nextRedirectPcUrl;
             } else {
                 // 실패 시 처리
                 alert(response.message);
@@ -35,6 +38,15 @@ function pay(){
         }
     }); 
 }
+
+function setSessionInfo(){
+	  sessionStorage.setItem('matchHistNo', '12');
+      sessionStorage.setItem('settleAmount', '5000');
+      sessionStorage.setItem('productsNo', '1');
+      sessionStorage.setItem('settleMemberId', '6');
+      sessionStorage.setItem('recipentMemberNo', '11');
+}
+
 
 </script>
 <html>
