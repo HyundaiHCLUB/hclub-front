@@ -206,4 +206,16 @@
 
 </script>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select the button by its class name
+        var button = document.querySelector('.team-button');
+
+        // Add a click event listener to the button
+        button.addEventListener('click', function() {
+            // Navigate to the /competition/matchDetail page
+            window.location.href = '/competition/create/4';
+        });
+    });
+</script>
 </html>
