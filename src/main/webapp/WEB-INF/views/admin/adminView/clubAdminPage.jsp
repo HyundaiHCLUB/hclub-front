@@ -18,7 +18,10 @@
 <!-- Icons library -->
 <script src="${pageContext.request.contextPath}/resources/plugins/feather.min.js"></script>
 <!-- Custom scripts -->
-<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.twbsPagination.js"></script>
+<!-- Custom scripts -->
+<script src="${pageContext.request.contextPath}/resources/js/jquery.twbsPagination.min.js"></script>
+
 <style>
 	#deleteButton
 	{
@@ -31,6 +34,29 @@
     	color: white;
     	background-color: #F15F5F;
 	}
+	#pagination {
+	    display: flex;
+	    justify-content: center;
+	    margin: 20px 0px 20px 0px;
+	}
+   
+	#pagination a {
+	    color: #333;
+	    text-decoration: none;
+	    padding: 8px 12px;
+	    margin: 0 5px;
+	    border: 1px solid #ccc;
+	    border-radius: 5px;
+	    transition: background-color 0.3s, color 0.3s;
+	}
+	
+	#pagination a.active,
+	#pagination a:hover {
+	    background-color: #007bff;
+	    color: #fff;
+	    border-color: #007bff;
+	}
+
 </style>
 <body>
 <body>
@@ -110,8 +136,9 @@
             </div>
     	</div>
     </div>
-     <div id="paging">
-    </div>
+	<div id="pagination">
+	
+	</div>
   </div>
  <script>
  $(document).ready(function() {
@@ -122,13 +149,36 @@
 	            getClubList();
 	        }
 	    });
+	 /* window.pagObj = $('#pagination').twbsPagination({
+	        totalPages: [[20]], // 전체 페이지
+	        startPage: parseInt([[0]] + 1), // 시작(현재) 페이지
+	        visiblePages: 10, // 최대로 보여줄 페이지
+	        prev: "‹", // Previous Button Label
+	        next: "›", // Next Button Label
+	        first: '«', // First Button Label
+	        last: '»', // Last Button Label
+	        onPageClick: function (event, page) { // Page Click event
+	            console.info("current page : " + page);
+	        }
+	    }).on('page', function (event, page) {
+	        searchDataList(page);
+	    }); */
  });
+ let setClubStartIndex = 1;
+ let setClubEndIndex = 10;
+ getClubSize();
  getClubList(); //초기 화면 로딩
+ const itemsPerPage = 10; // 페이지 당 아이템 수
+ let currentPage = 1; // 현재 페이지
  
+ let clubListSize = 0;
+
  function getClubList() { 
 	    var params = {}; // 
 	    params.searchParams= $("#search").val();
-	    
+	    params.startIndex = setClubStartIndex;
+	    params.endIndex= setClubEndIndex;
+	    console.log(params);
 		$.ajax({
 			type: 'POST',
 			/* headers: {
@@ -140,9 +190,11 @@
 			contentType: 'application/json', 
 			success: function(response) {
 	            console.log('동아리 리스트 정보 가져오기 성공');
+	            //그리드 재로딩
 	            $('#dataTbody').empty();//재로딩을 위해 tbody안의 요소를 비운다음에 append
-	            
+	         
 	            var list = response.data;
+	       
 	            for(var i = 0 ; i < list.length; i++){
 	            	appendDataToTable(list[i]);
 	            }
@@ -152,6 +204,31 @@
 	        }
 	    });
 }
+
+ function getClubSize(){
+	 var params = {}; // 
+	    params.searchParams= $("#search").val();
+	    
+		$.ajax({
+			type: 'POST',
+			/* headers: {
+		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
+			}, */
+			//url: '/hyndai/admin/clubCnt', 
+			url: '/admin/clubCnt', 
+		    data: JSON.stringify(params),
+			contentType: 'application/json', 
+			success: function(response) {
+	          
+	            clubListSize = response.data;
+	            setupPagination();
+	           
+	        },
+	        error: function(xhr, status, error) {
+	            console.error('동아리 리스트 정보 가져오기 실패:', error);
+	        }
+	    });
+ }
  function appendDataToTable(data) {
 	    var tbody = $('#dataTbody');
 	   
@@ -174,7 +251,6 @@
 	    tbody.append(tr); 
 }
  function updateUseYn(clubNo){
-	 console.log("clubNo: "+ clubNo);
 	 var result = window.confirm("해당 동아리를 승인 하시겠습니까??");
 
 	if (result) {
@@ -195,33 +271,50 @@
 	    });
 	} 
  }
- function deleteClub() {
-	    var clubNoList = [];
-	    
-	    var checkArr = $("[name='check']:checked");
-	    for(var i = 0 ; i < checkArr.length; i++) {
-	        clubNoList.push(checkArr[i].value);
-	    }
-	    
-	    var result = window.confirm("해당 동아리를 삭제 하시겠습니까??");
 
-		if (result) {	    
-		    $.ajax({
-		        type: 'DELETE',
-		        url: '/admin/club',
-		        data: JSON.stringify(clubNoList),
-		        contentType: 'application/json',
-		        success: function(response) {
-		            console.log('동아리 정보 삭제 성공');
-		            
-		            getClubList();//동아리목록 삭제 후 재 로딩
-		        },
-		        error: function(xhr, status, error) {
-		            console.error('동아리 정보 삭제 실패:', error);
-	        	}
-         });
-		}
+
+ function setupPagination() {
+    const totalPages = Math.ceil(clubListSize / itemsPerPage);
+    const paginationElement = document.getElementById('pagination');
+    paginationElement.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        const link = document.createElement('a');
+        link.href = '#';
+        link.textContent = i;
+
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            currentPage = i;
+            
+            //페이징 범위 계산
+            setClubStartIndex = i * itemsPerPage +1;
+            setClubEndIndex =  (i+1)* itemsPerPage;
+           
+            console.log("setClubStartIndex: "+setClubStartIndex +", setClubEndIndex: "+setClubEndIndex);
+            
+            //클럽 리스트 재로딩
+            getClubList();
+            highlightCurrentPage();
+        });
+
+        paginationElement.appendChild(link);
+    }
+
+    highlightCurrentPage();
 }
+
+function highlightCurrentPage() {
+    const paginationElement = document.getElementById('pagination');
+    const links = paginationElement.getElementsByTagName('a');
+
+    for (let i = 0; i < links.length; i++) {
+        links[i].classList.remove('active');
+    }
+
+    links[currentPage - 1].classList.add('active');
+}
+
 
 
  </script>
