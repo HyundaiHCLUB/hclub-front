@@ -286,3 +286,7 @@ input[type=file]::file-selector-button {
     right: 5px;
     font-size: 70px;
 }
+
+.category-selection{
+    display: flex;
+}
