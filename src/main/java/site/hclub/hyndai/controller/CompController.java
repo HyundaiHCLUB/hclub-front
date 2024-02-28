@@ -88,9 +88,12 @@ public class CompController {
     }
 
     /* 패배팀 결제 페이지 이동*/
-    @GetMapping("/loseTeam")
-    public ModelAndView goLoseTeamPage() {
-        return new ModelAndView("comp/loseTeamResult");
+    @GetMapping("/loseTeam/{matchHistoryNo}")
+    public ModelAndView goLoseTeamPage(@PathVariable("matchHistoryNo") Long matchHistoryNo) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("matchHistoryNo", matchHistoryNo);
+        mav.setViewName("comp/loseTeamResult");
+        return mav;
     }
 
     @GetMapping("/teamDetail/{teamNo}")
@@ -100,5 +103,10 @@ public class CompController {
         mav.setViewName("comp/teamDetail");
 
         return mav;
+    }
+    /* 결제 성공페이지*/
+    @GetMapping("/paySuccess")
+    public ModelAndView gopaySuccessPage() {
+        return new ModelAndView("comp/paySuccess");
     }
 }
