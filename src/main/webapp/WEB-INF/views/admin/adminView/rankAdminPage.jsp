@@ -19,10 +19,32 @@
 <script src="${pageContext.request.contextPath}/resources/plugins/feather.min.js"></script>
 <!-- Custom scripts -->
 <script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
-
+<style>
+	#pagination {
+	    display: flex;
+	    justify-content: center;
+	    margin: 20px 0px 20px 0px;
+	}
+   
+	#pagination a {
+	    color: #333;
+	    text-decoration: none;
+	    padding: 8px 12px;
+	    margin: 0 5px;
+	    border: 1px solid #ccc;
+	    border-radius: 5px;
+	    transition: background-color 0.3s, color 0.3s;
+	}
+	
+	#pagination a.active,
+	#pagination a:hover {
+	    background-color: #007bff;
+	    color: #fff;
+	    border-color: #007bff;
+	}
+</style>
 <body>
-<body>
-  <div class="layer"></div>
+<div class="layer"></div>
 <!-- ! Body -->
 <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
 <div class="page-flex">
@@ -93,8 +115,9 @@
             </div>
     	</div>
     </div>
-    <div id="paging">
-    </div>
+    <div id="pagination">
+	
+	</div>
   </div>
  <script>
  $(document).ready(function() {
@@ -106,11 +129,22 @@
 	  });
  
  });
+ 
+ let setClubStartIndex = 1;
+ let setClubEndIndex = 10;
+ getRankSize();
+
+ const itemsPerPage = 10; // 페이지 당 아이템 수
+ let currentPage = 1; // 현재 페이지
+ 
+ let rankListSize = 0;
  getRankingList(); //초기 랭킹리스트 조회
  
  function getRankingList() { 
 	    var params = {}; // 
 	    params.searchParams= $("#search").val();
+	    params.startIndex = setClubStartIndex;
+	    params.endIndex= setClubEndIndex;
 	    
 	    console.log(params);
 		$.ajax({
@@ -123,8 +157,6 @@
 		    data: JSON.stringify(params),
 			contentType: 'application/json',
 			success: function(response) {
-	            console.log('개인 랭킹 리스트 정보 가져오기 성공');
-	            //console.log(response.data);
 	            var list = response.data;
 	            $('#dataTbody').empty();
 	            for(var i = 0 ; i < list.length; i++){
@@ -135,22 +167,85 @@
 	            console.error('개인 랭킹 리스트 정보 가져오기 실패:', error);
 	        }
 	    });
-	}
- function appendDataToTable(data) {
-	    var tbody = $('#dataTbody'); 
+ }
+ function getRankSize(){
+	 var params = {}; // 
+	    params.searchParams= $("#search").val();
+	    
+		$.ajax({
+			type: 'POST',
+			/* headers: {
+		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
+			}, */
+			//url: '/hyndai/admin/rankCnt', 
+			url: '/admin/rankCnt', 
+		    data: JSON.stringify(params),
+			contentType: 'application/json', 
+			success: function(response) {
+			
+				rankListSize = response.data;
+	            setupPagination();
+	           
+	        },
+	        error: function(xhr, status, error) {
+	            console.error('랭크 수 가져오기 실패:', error);
+	        }
+	    });
 	 
-	    var tr = $('<tr>'); 
+ }
+ function appendDataToTable(data) {
+    var tbody = $('#dataTbody'); 
+	 
+    var tr = $('<tr>'); 
 
-	   /*  tr.append('<td><label class="users-table__checkbox"><input type="checkbox" class="check"></label></td>'); // 체크박스 열 추가 */
-	    tr.append('<td>'+data.employeeNo+'</td>'); // 사원번호
-	    tr.append('<td><div class="categories-table-img"><img src="'+data.memberImage+'" alt="category"></div></td>');
-	    tr.append('<td>'+data.memberId+'</td>'); // 아이디
-	    tr.append('<td>'+data.employeeName+'</td>'); // 이름
-	    tr.append('<td>'+data.memberRating+'</td>'); // 카테고리
-	    tr.append('<td>'+data.matchNum+'</td>'); // 회원가입일 
+   /*  tr.append('<td><label class="users-table__checkbox"><input type="checkbox" class="check"></label></td>'); // 체크박스 열 추가 */
+    tr.append('<td>'+data.employeeNo+'</td>'); // 사원번호
+    tr.append('<td><div class="categories-table-img"><img src="'+data.memberImage+'" alt="category"></div></td>');
+    tr.append('<td>'+data.memberId+'</td>'); // 아이디
+    tr.append('<td>'+data.employeeName+'</td>'); // 이름
+    tr.append('<td>'+data.memberRating+'</td>'); // 카테고리
+    tr.append('<td>'+data.matchNum+'</td>'); // 회원가입일 
 	   
-	    tbody.append(tr); 
-	}
+    tbody.append(tr); 
+}
+ 
+function setupPagination() {
+    const totalPages = Math.ceil(rankListSize / itemsPerPage);
+    const paginationElement = document.getElementById('pagination');
+    paginationElement.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        const link = document.createElement('a');
+        link.href = '#';
+        link.textContent = i;
+
+        link.addEventListener('click', function(event) {
+           event.preventDefault();
+           currentPage = i;
+	            
+           //페이징 범위 계산
+           setClubStartIndex = (i-1) * itemsPerPage +1;
+           setClubEndIndex =  (i+1)* itemsPerPage;
+	                 
+           //랭크 리스트 재로딩
+           getRankingList()
+           highlightCurrentPage();
+        });
+
+        paginationElement.appendChild(link);
+    }
+    highlightCurrentPage();
+}
+
+function highlightCurrentPage() {
+    const paginationElement = document.getElementById('pagination');
+    const links = paginationElement.getElementsByTagName('a');
+
+    for (let i = 0; i < links.length; i++) {
+        links[i].classList.remove('active');
+    }
+    links[currentPage - 1].classList.add('active');
+}
 
 
  </script>
