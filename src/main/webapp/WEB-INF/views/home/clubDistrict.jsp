@@ -160,32 +160,31 @@
         <input type="radio" name="slide" id="slide03">
         <input type="radio" name="slide" id="slide04">
 
-
         <div class="slidewrap">
             <ul class="slidelist">
                 <li>
-                    <a>
+                    <a href="/club/district/1">
                         <label for="slide04" class="left"></label>
                         <img src="/resources/image/gangnam.png">
                         <label for="slide02" class="right"></label>
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a href="/club/district/3">
                         <label for="slide01" class="left"></label>
                         <img src="/resources/image/mapo.png">
                         <label for="slide03" class="right"></label>
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a href="/club/district/2">
                         <label for="slide02" class="left"></label>
                         <img src="/resources/image/gangdong.png">
                         <label for="slide04" class="right"></label>
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a href="/club/district/4">
                         <label for="slide03" class="left"></label>
                         <img src="/resources/image/junggu.png">
                         <label for="slide01" class="right"></label>

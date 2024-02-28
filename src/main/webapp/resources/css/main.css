@@ -51,6 +51,15 @@ main {
     margin-bottom: 10px;
 }
 
+.sub-desc-district {
+    font-size: 28px;
+    color: #5F5F5F;
+    text-align: left;
+    margin-left: 58px;
+    margin-top: 10px;
+    margin-bottom: 36px;
+}
+
 .more {
     font-size: 28px;
     text-align: right;

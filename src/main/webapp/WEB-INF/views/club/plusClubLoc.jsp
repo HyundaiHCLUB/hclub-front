@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>동아리 개설</title>
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>
@@ -75,6 +75,7 @@
         #pagination a {display:inline-block;margin-right:10px;}
         #pagination .on {font-weight: bold; cursor: default;color:#777;}
     </style>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9a9cfd814dc94ab10ad564b4959ffe28&libraries=services"></script>
 </head>
 
 <body>
@@ -105,7 +106,6 @@
         </svg>
     </a>
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d982da073ff566260c8f1e3196d49817&libraries=services"></script>
     <script>
         $('#keyword').change(function(){
             searchPlaces();
@@ -163,6 +163,9 @@
 
                         key.value = place.place_name;
                         address.value = place.road_address_name || place.address_name;
+
+                        sessionStorage.setItem('clubLoc', key.value);
+                        sessionStorage.setItem('clubAddress', address.value);
 
                         removeAllChildNods(listEl);
                     };

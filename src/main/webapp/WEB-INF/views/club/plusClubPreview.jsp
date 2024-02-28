@@ -37,7 +37,74 @@
             }
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            accessToken = localStorage.getItem("accessTokenInfo");
+            console.log(accessToken)
+            var categoryId = getCategoryId(sessionStorage.getItem('selectedCategory'));
+            var clubLoc = sessionStorage.getItem('clubLoc');
+            var clubAddress = sessionStorage.getItem('clubAddress');
+            var clubTitle = sessionStorage.getItem('clubTitle');
+            var clubInfo = sessionStorage.getItem('clubInfo');
+            var clubFile = sessionStorage.getItem('clubFile');
+            var clubFileBlob = new Blob([clubFile], { type: 'image/png' });
+            var clubFileObj = new File([clubFileBlob], 'hclub.png');
 
+            var clubRequest = {
+                clubName: clubTitle,
+                clubImage: 'aa',
+                clubInfo: clubInfo,
+                clubLoc: clubLoc,
+                categoryId: categoryId,
+                creatorYn: 'Y',
+                clubAddress: clubAddress
+            }
+
+            var formData = new FormData();
+            formData.append("clubRequest", new Blob([JSON.stringify(clubRequest)], {type: "application/json"}));
+            formData.append('image', clubFileObj);
+
+            $.ajax({
+                url: 'https://www.h-club.site/clubs',
+                type: 'POST',
+                headers: {
+                    'accessTokenInfo': accessToken,
+                },
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    console.log('통신 성공', response);
+                },
+                error: function(error) {
+                    console.error('통신 실패', error);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function getCategoryId(categoryName) {
+            switch (categoryName) {
+                case '요리':
+                    return 1;
+                case '재테크':
+                    return 2;
+                case '액티비티':
+                    return 3;
+                case '게임':
+                    return 4;
+                case '문화·예술':
+                    return 5;
+                case '외국어':
+                    return 6;
+                case '여행':
+                    return 7;
+                case '자기계발':
+                    return 8;
+            }
+        }
+    </script>
 </head>
 
 <body>
