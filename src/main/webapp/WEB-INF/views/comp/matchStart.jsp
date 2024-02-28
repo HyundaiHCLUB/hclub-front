@@ -116,5 +116,27 @@
         teamRating: teamRating
      };
      * */
+    var teamNo = ${teamNo}; // 이전페이지에서(create/4) 팀 번호 넘어온다 가정
+    var matchingRequest;
+    console.log("teamNo from Controller : " + teamNo);
+    $(document).ready(function (){
+        $.ajax({
+           type: 'GET',
+           url: 'https://h-club.site/comp/${teamNo}',
+            success: function(response) {
+               console.log(response);
+               matchingRequest = {
+                    teamNo: teamNo, // 실제 response에 맞춰 수정 필요
+                    teamMemberNo: data.teamMemberNo,
+                    matchType: data.matchType,
+                    matchCapacity: data.matchCapacity,
+                    teamRating: data.teamRating
+                };
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        });
+    });
 </script>
 </html>

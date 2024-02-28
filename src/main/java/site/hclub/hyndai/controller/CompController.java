@@ -64,9 +64,10 @@ public class CompController {
         return mav;
     }
 
-    @GetMapping("/start")
-    public ModelAndView goMatchStart(){
+    @GetMapping("/start/{teamNo}")
+    public ModelAndView goMatchStart(@PathVariable("teamNo")Long teamNo){
         ModelAndView mav = new ModelAndView();
+        mav.addObject("teamNo", teamNo);
         mav.setViewName("comp/matchStart");
         return mav;
     }
