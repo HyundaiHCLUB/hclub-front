@@ -165,13 +165,13 @@ input[type=file]::file-selector-button {
 }
 
 .club-preview {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     color: #777777;
 }
 
 .club-content {
-    font-size: 16px;
+    font-size: 20px;
     color: #777777;
 }
 
