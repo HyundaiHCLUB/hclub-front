@@ -141,8 +141,8 @@
 <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=643e03d7f19df83b3f4191ad" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>    
 <script type="text/javascript">
 	    var servername = '<%=request.getServerName()%>';
-	    var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!!
-	    
+	    <%-- var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
+	    var wsUriToWeb = "wss://<%=request.getServerName()%>/ws/chat"; //주소 확인!!
 	    //if(servername == "localhost")
 <%-- 	    wsUriToWeb = "ws://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
 	    if(servername == "localhost")	 
@@ -266,7 +266,7 @@
 	    //서버에다가 채팅방 create선언 패킷 전송
 	    function createRoom(otherUseridx) {
 	   
-	        let obj = new Object;
+	        let obj = new Object; 
 	        obj.protocol = "createRoom";
 	        //상대 회원번호 l
 	        obj.otherUseridx = otherUseridx;
