@@ -112,21 +112,21 @@ public class MainController {
 
         return mav;
     }
-    @GetMapping("adminView/clubAdminPage")
+    @GetMapping("dashboard/clubAdminPage")
 	 public ModelAndView clubAdminPage() {
 		   ModelAndView mv  = new ModelAndView();
 		   mv.setViewName("admin/adminView/clubAdminPage");
 		   
 		  return mv;
 	 }
-	 @GetMapping("dashbord/rankAdminPage")
+	 @GetMapping("dashboard/rankAdminPage")
 	 public ModelAndView rankAdminPage() {
 		   ModelAndView mv  = new ModelAndView();
 		   mv.setViewName("admin/adminView/rankAdminPage");
 		   
 		  return mv;
 	 }
-	 @GetMapping("dashbord/adminLoginPage")
+	 @GetMapping("dashboard/adminLoginPage")
 	 public ModelAndView loginPage() {
 		   ModelAndView mv  = new ModelAndView();
 		   mv.setViewName("admin/adminView/adminLoginPage");
