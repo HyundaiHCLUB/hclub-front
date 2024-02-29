@@ -115,9 +115,21 @@
     </div>
 
     <!-- 샘플 데이터 끝-->
-
-
-
 </main>
 </body>
+<script>
+    $(document).ready(function() {
+        $.ajax({
+           url: 'https://h-club.site/auth/products',
+           type: 'GET',
+           dataType: 'json',
+            success:function(response) {
+               console.log(response);
+            },
+            error: function(error){
+               console.log(error);
+            }
+        });
+    });
+</script>
 </html>
