@@ -134,7 +134,7 @@ function adminLogin() {
             $("#sidebarLocation").show();
             if(pageLocFlag){
            	    //로그인 완료시 관리자 메인페이지로 이동
-            	 location.href='/adminView/clubAdminPage' ;
+            	 location.href='/dashboard/clubAdminPage' ;
             }
             
        },
