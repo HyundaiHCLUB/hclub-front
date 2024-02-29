@@ -45,12 +45,12 @@ function checkAccessAdminTokenInfo() {
         <div class="sidebar-body" id="sidebarLocation" >
 			<ul class="sidebar-body-menu">
                 <li>
-                    <a class="active" href="/adminView/clubAdminPage"><span class="icon home" aria-hidden="true"></span>동아리 관리</a>
+                    <a class="active" href="/dashboard/clubAdminPage"><span class="icon home" aria-hidden="true"></span>동아리 관리</a>
                 </li>
             </ul>
             <ul class="sidebar-body-menu">
                 <li>
-                    <a class="active" href="/adminView/rankAdminPage"><span class="icon user-3" aria-hidden="true"></span>회원목록 관리</a>
+                    <a class="active" href="/dashboard/rankAdminPage"><span class="icon user-3" aria-hidden="true"></span>회원목록 관리</a>
                 </li>
             </ul>      
         </div>
