@@ -288,7 +288,7 @@ function getClubSize(){
             
             //페이징 범위 계산
             setClubStartIndex = (i-1) * itemsPerPage +1;
-            setClubEndIndex =  (i+1)* itemsPerPage;
+            setClubEndIndex =  (i)* itemsPerPage;
            
             console.log("setClubStartIndex: "+setClubStartIndex +", setClubEndIndex: "+setClubEndIndex);
             
