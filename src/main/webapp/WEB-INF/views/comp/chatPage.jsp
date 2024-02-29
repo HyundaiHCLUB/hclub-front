@@ -142,7 +142,7 @@
 <script type="text/javascript">
 	    var servername = '<%=request.getServerName()%>';
 	    <%-- var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
-	    var wsUriToWeb = "ws://<%=request.getServerName()%>/ws/chat"; //주소 확인!!
+	    var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!!
 	    //if(servername == "localhost")
 <%-- 	    wsUriToWeb = "ws://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
 	    if(servername == "localhost")	 

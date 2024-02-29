@@ -119,14 +119,14 @@ public class MainController {
 		   
 		  return mv;
 	 }
-	 @GetMapping("adminView/rankAdminPage")
+	 @GetMapping("dashbord/rankAdminPage")
 	 public ModelAndView rankAdminPage() {
 		   ModelAndView mv  = new ModelAndView();
 		   mv.setViewName("admin/adminView/rankAdminPage");
 		   
 		  return mv;
 	 }
-	 @GetMapping("adminView/adminLoginPage")
+	 @GetMapping("dashbord/adminLoginPage")
 	 public ModelAndView loginPage() {
 		   ModelAndView mv  = new ModelAndView();
 		   mv.setViewName("admin/adminView/adminLoginPage");

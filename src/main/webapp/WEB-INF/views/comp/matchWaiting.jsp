@@ -81,6 +81,9 @@
         <div class="btn-test">
             <button>test</button>
         </div>
+        <div>
+            <button>경쟁 홈으로</button>
+        </div>
     </div>
 </main>
 </body>

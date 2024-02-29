@@ -184,7 +184,7 @@
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 			}, */
 			//url: '/hyndai/admin/club', 
-			url: '/admin/club', 
+			url: 'https://www.h-club.site/admin/club', 
 		    data: JSON.stringify(params),
 			contentType: 'application/json', 
 			success: function(response) {
@@ -214,7 +214,7 @@ function getClubSize(){
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 		}, */
 		//url: '/hyndai/admin/clubCnt', 
-		url: '/admin/clubCnt', 
+		url: 'https://www.h-club.site/admin/clubCnt', 
 	    data: JSON.stringify(params),
 		contentType: 'application/json', 
 		success: function(response) {
@@ -258,7 +258,7 @@ function getClubSize(){
 			/* headers: {
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 			}, */
-		    url: '/admin/club/updateUseYn/'+clubNo, 
+		    url: 'https://www.h-club.site/admin/club/updateUseYn/'+clubNo, 
 			contentType: 'application/json', 
 			success: function(response) {
 	         	console.log('동아리 승인 업데이트 성공: '+response);
