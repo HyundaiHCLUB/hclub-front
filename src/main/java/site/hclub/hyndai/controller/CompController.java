@@ -64,10 +64,32 @@ public class CompController {
         return mav;
     }
 
-    /* 매칭 상세페이지로 이동 */
-    @GetMapping("/matchDetail")
-    public ModelAndView goMatchDetailPage() {
+    @GetMapping("/start/{teamNo}")
+    public ModelAndView goMatchStart(@PathVariable("teamNo")Long teamNo){
         ModelAndView mav = new ModelAndView();
+        mav.addObject("teamNo", teamNo);
+        mav.setViewName("comp/matchStart");
+        return mav;
+    }
+
+    @GetMapping("/waiting")
+    public ModelAndView watingPage(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("comp/matchWaiting");
+        return mav;
+    }
+
+    @GetMapping("/success")
+    public ModelAndView successPage(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("comp/matchSuccess");
+        return mav;
+    }
+    /* 매칭 상세페이지로 이동 */
+    @GetMapping("/matchDetail/{matchHistoryNo}")
+    public ModelAndView goMatchDetailPage(@PathVariable("matchHistoryNo")Long matchHistoryNo) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("matchHistoryNo", matchHistoryNo);
         mav.setViewName("comp/MatchDetail");
         return mav;
     }

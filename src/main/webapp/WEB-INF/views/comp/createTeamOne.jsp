@@ -45,6 +45,9 @@
     <input type="file" id="fileInput" style="display: none;" multiple>
 
     <div class="plus-button"></div>
+    <div class="image-upload-container"
+    ></div>
+
     <div class="team-name-container">
         <div class="input-icon-container">
             <input type="text" id="teamNameInput" class="search-input" placeholder="팀 이름">
@@ -62,9 +65,9 @@
     </div>
     <div class="team-mate-add-container">
         <p>팀원</p>
-        <div class="team-mate-search">
+        <div class="team-mate-search" style="position: relative">
             <input type="text" id="memberSearchInput" placeholder="팀원을 검색하세요"/>
-            <button id="searchMemberButton">검색</button>
+            <div class="search-results-dropdown" style="position: absolute"></div>
         </div>
     </div>
 
@@ -85,6 +88,72 @@
     </div>
 </main>
 <script>
+    $(document).ready(function () {
+        // Assuming your existing code to generate game format options is here
+        // ...
+
+        // Function to update the selected game type number in localStorage
+        function updateSelectedGameTypeNum(selectedFormat) {
+            // Extract the first number from the format (e.g., "1 vs 1" becomes "1")
+            const num = selectedFormat.charAt(0);
+
+            // Save to localStorage
+            localStorage.setItem('selectedGameTypeNum', num);
+        }
+
+        // Attach click event listener to each game format option
+        $('.game-type-num').on('click', '.game-format-option', function () {
+            // Remove 'selected' class from all options
+            $('.game-format-option').removeClass('selected');
+            // Add 'selected' class to clicked option
+            $(this).addClass('selected');
+
+            // Get the text of the clicked option
+            const selectedFormat = $(this).text();
+
+            // Update the selected game type number in localStorage
+            updateSelectedGameTypeNum(selectedFormat);
+        });
+
+        // Load and set the selected game type number from localStorage on page load
+        function setSelectedGameTypeNumFromLocalStorage() {
+            const selectedNum = localStorage.getItem('selectedGameTypeNum');
+            if (selectedNum) {
+                // Find the option that starts with the selected number and click it programmatically
+                $('.game-format-option').each(function () {
+                    if ($(this).text().charAt(0) === selectedNum) {
+                        $(this).click();
+                        return false; // break the loop
+                    }
+                });
+            }
+        }
+
+        setSelectedGameTypeNumFromLocalStorage();
+
+        // Your other JavaScript code...
+    });
+    $(document).ready(function () {
+        // Function to clear all localStorage items except for accessTokenInfo
+        function clearLocalStorageExceptAccessTokenInfo() {
+            // Get all keys in localStorage
+            const keys = Object.keys(localStorage);
+
+            // Iterate over all keys
+            keys.forEach(function (key) {
+                // Check if the current key is not accessTokenInfo
+                if (key !== 'accessTokenInfo') {
+                    // Remove the item from localStorage
+                    localStorage.removeItem(key);
+                }
+            });
+        }
+
+        // Call the function when the page loads
+        clearLocalStorageExceptAccessTokenInfo();
+
+        // Your existing code...
+    });
 
     document.addEventListener('DOMContentLoaded', function () {
 
@@ -106,10 +175,11 @@
 
             // Save the selected game type
             var selectedGameType = element.getAttribute('data-game-type');
-            console.log("Selected Game Type:", selectedGameType);
             gameType = selectedGameType;
+            localStorage.removeItem("gameType");
+            localStorage.setItem("gameType", selectedGameType);
+            console.log(localStorage.getItem("gameType"))
 
-            // Update the game-type-num div based on the selected game type
             updateGameTypeNum(selectedGameType);
         };
 
@@ -153,13 +223,16 @@
         var saveButton = document.getElementById('saveTeamName');
         var teamNameInput = document.getElementById('teamNameInput');
 
-        // Function to enable/disable editing
+
         function toggleEdit() {
             if (teamNameInput.disabled) {
                 teamNameInput.disabled = false;
                 teamNameInput.focus();
             } else {
                 var teamName = teamNameInput.value;
+
+                localStorage.removeItem("teamName");
+                localStorage.setItem("teamName", teamName);
                 console.log("Team Name Saved:", teamName);
                 teamNameInput.disabled = true;
             }
@@ -169,29 +242,101 @@
         saveButton.addEventListener('click', toggleEdit);
 
         //팀원 검색
-        var memberSearchInput = document.getElementById('memberSearchInput');
-        var searchMemberButton = document.getElementById('searchMemberButton');
-        searchMemberButton.addEventListener('click', function () {
-            var memberName = memberSearchInput.value;
-            if (memberName.length > 0) { // 빈 문자열로 요청을 보내지 않도록 함
-                searchMemberByName(memberName);
+        $(document).ready(function () {
+            var memberSearchInput = $('#memberSearchInput');
+            var searchResultsDropdown = $('.search-results-dropdown');
+
+            // Function to search member by name
+            function searchMemberByName(memberName) {
+                $.ajax({
+                    url: 'https://www.h-club.site/comp/member?memberName=' + encodeURIComponent(memberName),
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        // Clear previous search results
+                        searchResultsDropdown.empty();
+                        let memberList = response.data.memberList;
+
+                        // Check if there are any results
+                        if (memberList && memberList.length > 0) {
+                            searchResultsDropdown.show(); // Show the dropdown if there are results
+                            memberList.forEach(function (member) {
+                                var memberItem = $('<div class="search-result-item"></div>');
+
+                                var nameSpan = $('<span></span>').text(member.memberName).css('margin-right', '10px');
+                                var deptSpan = $('<span></span>').text(member.memberDept).css('margin-right', '5px');
+                                var positionSpan = $('<span></span>').text(member.memberPosition);
+
+                                memberItem.append(nameSpan, deptSpan, positionSpan);
+                                searchResultsDropdown.append(memberItem);
+
+                                memberItem.on('click', function () {
+                                    memberSearchInput.val(member.memberName); // Use member.memberName
+                                    searchResultsDropdown.empty().hide(); // Clear and hide the dropdown after selection
+                                    saveSelectedMemberToLocalStorage(member);
+                                    memberSearchInput.val('');
+                                });
+                            });
+                        } else {
+                            // Optionally hide the dropdown if there are no results
+                            searchResultsDropdown.hide();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error fetching members:", error);
+                        searchResultsDropdown.empty().append('<div class="search-result-item">에러</div>').show();
+                    }
+                });
             }
+
+            function saveSelectedMemberToLocalStorage(member) {
+                // Check if the 'selectedMembers' array exists in localStorage
+                if (localStorage.getItem('selectedMembers')) {
+                    var selectedMembers = JSON.parse(localStorage.getItem('selectedMembers'));
+                    // Add the new member to the array
+                    selectedMembers.push(member);
+                    // Save the updated array back to localStorage
+                    localStorage.setItem('selectedMembers', JSON.stringify(selectedMembers));
+                } else {
+                    // If 'selectedMembers' doesn't exist, create a new array with the member
+                    localStorage.setItem('selectedMembers', JSON.stringify([member]));
+                }
+            }
+
+            // Show the dropdown when the input field is focused
+            memberSearchInput.focus(function () {
+                if (searchResultsDropdown.children().length > 0) {
+                    searchResultsDropdown.show();
+                }
+            });
+
+            // Hide the dropdown when clicking elsewhere, including a delay for blur
+            $(document).click(function () {
+                searchResultsDropdown.hide();
+            });
+            memberSearchInput.click(function (event) {
+                event.stopPropagation(); // Prevent the document click event from hiding the dropdown immediately
+            });
+            searchResultsDropdown.click(function (event) {
+                event.stopPropagation(); // Prevent click inside the dropdown from propagating
+            });
+
+            // Trigger search when typing
+            memberSearchInput.on('input', function () {
+                var memberName = $(this).val();
+                if (memberName.length > 1) { // Prevent searching for too short strings
+                    searchMemberByName(memberName);
+                } else {
+                    searchResultsDropdown.empty().hide(); // Clear and hide the dropdown if input is cleared or too short
+                }
+            });
         });
-
-
-        function displaySearchResults(data) {
-            // This function should update your HTML to display the search results.
-            // For example, if data is an array of member objects, you could iterate
-            // through them and append them to a list under the search input.
-            console.log(data); // Log data for debugging. Replace this with actual display logic.
-        }
-
 
         // 파일 업로드
         var plusButton = document.querySelector('.plus-button');
         var fileInput = document.getElementById('fileInput');
+        var imageUploadContainer = document.querySelector('.image-upload-container');
 
-        // When the plus button is clicked, programmatically click the file input
         plusButton.addEventListener('click', function () {
             fileInput.click();
         });
@@ -199,20 +344,34 @@
             if (this.files && this.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    // Replace the plus button with the uploaded image
-                    plusButton.style.backgroundImage = `url(${e.target.result})`;
-                    // Adjust the size to match the plus button
-                    plusButton.style.width = '100px'; // Adjust based on your plus button's size
-                    plusButton.style.height = '100px'; // Adjust based on your plus button's size
-                    plusButton.style.backgroundSize = 'cover';
-                    plusButton.style.backgroundPosition = 'center center';
-                    // Remove any content or styling that makes it look like a button, if necessary
-                    plusButton.innerHTML = ''; // Remove text or icons
-                    plusButton.style.border = 'none'; // Remove border if it exists
+                    try {
+                        let imgDataUrl = e.target.result;
+                        plusButton.style.display = 'none'; // Hide the plus button
+                        console.log(e.target)
+                        let img = document.createElement("img");
+                        img.setAttribute("src", imgDataUrl);
+                        img.style.width = "500px";
+                        img.style.height = "500px";
+                        img.style.border = "none";
+                        img.style.borderRadius = "40%";
+
+                        imageUploadContainer.appendChild(img);
+
+                        localStorage.setItem('multipartFile', imgDataUrl);
+                        console.log("Image saved to localStorage.");
+                    } catch (error) {
+                        if (e == QUOTA_EXCEEDED_ERR) {
+                            alert("Error: Local Storage limit exceeds.");
+                        } else {
+                            console.log("Error saving image to localStorage.", e);
+                        }
+                    }
+
                 };
                 reader.readAsDataURL(this.files[0]);
             }
         });
+
 
         // Optional: Handle file selection
         fileInput.addEventListener('change', function () {
@@ -220,6 +379,20 @@
 
             console.log(files);
         });
+    });
+    // 장소 저장
+
+    $(document).ready(function () {
+        // Event listener for the "Next" button click
+        $('#goNextButton').click(function () {
+            // Retrieve the value from the location search input
+            var locationInputValue = $('#locationSearchInput').val();
+
+            // Save the value to localStorage
+            localStorage.setItem('teamLoc', locationInputValue);
+
+        });
+
     });
     // 이전
     document.addEventListener('DOMContentLoaded', function () {
@@ -235,7 +408,7 @@
             window.location.href = '/competition/create/2';
         });
     });
-    
+
 
 </script>
 </body>

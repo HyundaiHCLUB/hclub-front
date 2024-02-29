@@ -145,12 +145,19 @@
 
 
     $(document).ready(function () {
+        let inputWidth = $('dateSelectInput').outerWidth();
         // Initialize the datepicker on #dateSelectInput
         $('#dateSelectInput').datepicker({
             dateFormat: 'yy년 mm월 dd일', // Set the format of the date
             onSelect: function (dateText) {
                 // Update the input value to the selected date
                 $('#dateSelectInput').val(dateText);
+            },
+            beforeShow: function (input, inst) {
+                let calendar = inst.dpDiv;
+                setTimeout(function () {
+                    calendar.outerWidth(inputWidth);
+                }, 0);
             }
         });
 

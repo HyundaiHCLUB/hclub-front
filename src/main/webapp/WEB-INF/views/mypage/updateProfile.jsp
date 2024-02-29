@@ -199,7 +199,7 @@
         });
     }
 
-    document.getElementById('profileImageInput').addEventListener('change', function(event) {
+    document.getElementsByClassName('profileImageInput').addEventListener('change', function(event) {
         var file = event.target.files[0];
         var formData = new FormData();
         var memberInfo = JSON.stringify({ memberId: memberId });
@@ -225,5 +225,51 @@
         });
     });
 
+    document.getElementById('profile-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // 폼의 기본 제출 동작을 중단
+
+        // 비밀번호 필드의 값 가져오기
+        var password = document.getElementById('password').value;
+        var passwordCheck = document.getElementById('password-check').value;
+
+        // 비밀번호 일치 여부 확인
+        if (password !== passwordCheck) {
+            alert("비밀번호 확인이 일치하지 않습니다");
+            return; // 함수 실행 중단
+        }
+
+        // 비밀번호 변경 API 호출 (예시)
+        updatePassword(password, function(success) {
+            if (success) {
+                // 비밀번호 변경 성공시 다른 페이지로 이동
+                window.location.href = '/mypage';
+            } else {
+                // 실패 메시지 띄우기
+                alert("비밀번호 변경에 실패했습니다");
+            }
+        });
+    });
+
+    function updatePassword(password, callback) {
+        fetch('https://www.h-club.site/auth/mypage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({memberId:memberId, memberPw: password})
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    callback(true); // 성공 콜백 호출
+                } else {
+                    callback(false); // 실패 콜백 호출
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                callback(false); // 실패 콜백 호출
+            });
+    }
 </script>
 </html>

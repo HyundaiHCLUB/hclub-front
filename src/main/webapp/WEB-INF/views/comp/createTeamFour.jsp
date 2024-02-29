@@ -185,4 +185,18 @@
     </div>
 </main>
 </body>
+<script>
+    /* 다음 페이지에 teamNo 넘겨주는거 가능한지 ? */
+    var teamNo = 61; // 샘플 데이터
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select the button by its class name
+        var button = document.querySelector('.team-button');
+
+        // Add a click event listener to the button
+        button.addEventListener('click', function() {
+            // Navigate to the /competition/matchDetail page
+            window.location.href = '/competition/start/' + teamNo;
+        });
+    });
+</script>
 </html>

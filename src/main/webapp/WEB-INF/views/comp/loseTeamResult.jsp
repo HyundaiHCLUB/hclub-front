@@ -15,8 +15,8 @@
 
     $(document).ready(function(){
          $.ajax({
-             <%--url: 'https://www.h-club.site/comp/settle/${matchHistoryNo}',--%>
-             url: 'https://www.h-club.site/comp/settle/12',
+             url: 'https://www.h-club.site/comp/settle/${matchHistoryNo}',
+             // url: 'https://www.h-club.site/comp/settle/12',
              type: 'GET',
              dataType: 'json',
              success: function(response) {
