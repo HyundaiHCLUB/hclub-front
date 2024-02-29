@@ -118,10 +118,15 @@
 </main>
 </body>
 <script>
+    let accessToken = localStorage.getItem("accessTokenInfo");
+
     $(document).ready(function() {
         $.ajax({
            url: 'https://www.h-club.site/auth/products',
            type: 'GET',
+            headers : {
+                'Authorization': 'Bearer ' + accessToken,
+            },
            dataType: 'json',
             success:function(response) {
                console.log(response);
