@@ -120,7 +120,7 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-           url: 'https://h-club.site/auth/products',
+           url: 'https://www.h-club.site/auth/products',
            type: 'GET',
            dataType: 'json',
             success:function(response) {
