@@ -142,7 +142,7 @@
 <script type="text/javascript">
 	    var servername = '<%=request.getServerName()%>';
 	    <%-- var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
-	     var wsUriToWeb = "ws://13.209.23.148:8082/comp/ws/chat"; 
+	     var wsUriToWeb = "ws://http:13.209.23.148:8082/comp/ws/chat"; 
 	 /* 	var wsUriToWeb = "wss://http://13.209.23.148:8083/comp/ws/chat"; */
 	  /*   //http://13.209.23.148:8083/comp/ws/chat */
 	    //if(servername == "localhost")
