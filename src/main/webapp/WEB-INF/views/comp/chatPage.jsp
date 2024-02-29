@@ -142,11 +142,11 @@
 <script type="text/javascript">
 	    var servername = '<%=request.getServerName()%>';
 	    <%-- var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
-	    var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!!
+	    var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/comp/ws/chat"; //주소 확인!!
 	    //if(servername == "localhost")
 <%-- 	    wsUriToWeb = "ws://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
 	    if(servername == "localhost")	 
-	    	wsUriToWeb = "ws://<%=request.getServerName()%>:<%=request.getServerPort()%>/test/ws/chat"; //주소 확인!!
+	    	wsUriToWeb = "ws://<%=request.getServerName()%>:<%=request.getServerPort()%>/compTest/comp/ws/chat"; //주소 확인!!
 
 	    let websocketToWeb = null;
 	
