@@ -153,7 +153,7 @@
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 			}, */
 			//url: '/hyndai/admin/rank', 
-			url: '/admin/rank', 
+			url: 'https://www.h-club.site/admin/rank', 
 		    data: JSON.stringify(params),
 			contentType: 'application/json',
 			success: function(response) {
@@ -178,7 +178,7 @@
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 			}, */
 			//url: '/hyndai/admin/rankCnt', 
-			url: '/admin/rankCnt', 
+			url: 'https://www.h-club.site/admin/rankCnt', 
 		    data: JSON.stringify(params),
 			contentType: 'application/json', 
 			success: function(response) {
