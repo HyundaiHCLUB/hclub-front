@@ -31,21 +31,6 @@
     </div>
     <div class="matches">
 
-        <% for (int i = 0; i < 5; i++ ) {%>
-        <div class="rounded-shape">
-            <div class="left-section">
-                <img src="/resources/image/comp/soccer.png" alt="이미지" />
-                <p>3 vs 3</p>
-            </div>
-            <div class="middle-section">
-                <p>블루 드래곤즈</p>
-            </div>
-            <div class="right-section">
-                <p>서울시 강남구 코트</p>
-                <p>2024/03/04 16:03</p>
-            </div>
-        </div>
-        <%} %>
     </div>
 
 </main>

@@ -87,7 +87,7 @@
     </div>
     <div class="buttons">
         <button class="start-match">매치 시작</button>
-        <button class="end-match">매치 종료</button>
+        <button class="end-match" onclick="window.location.href='/competition'">매치 취소</button>
     </div>
 </div>
 </main>
