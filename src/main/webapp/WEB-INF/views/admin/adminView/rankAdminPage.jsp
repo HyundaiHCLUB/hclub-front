@@ -225,7 +225,7 @@ function setupPagination() {
 	            
            //페이징 범위 계산
            setClubStartIndex = (i-1) * itemsPerPage +1;
-           setClubEndIndex =  (i+1)* itemsPerPage;
+           setClubEndIndex =  (i)* itemsPerPage;
 	                 
            //랭크 리스트 재로딩
            getRankingList()

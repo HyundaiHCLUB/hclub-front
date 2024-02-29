@@ -106,10 +106,11 @@
 
             // Save the selected game type
             var selectedGameType = element.getAttribute('data-game-type');
-            console.log("Selected Game Type:", selectedGameType);
             gameType = selectedGameType;
+            localStorage.removeItem("gameType");
+            localStorage.setItem("gameType", selectedGameType);
+            console.log(localStorage.getItem("gameType"))
 
-            // Update the game-type-num div based on the selected game type
             updateGameTypeNum(selectedGameType);
         };
 
@@ -153,13 +154,16 @@
         var saveButton = document.getElementById('saveTeamName');
         var teamNameInput = document.getElementById('teamNameInput');
 
-        // Function to enable/disable editing
+
         function toggleEdit() {
             if (teamNameInput.disabled) {
                 teamNameInput.disabled = false;
                 teamNameInput.focus();
             } else {
                 var teamName = teamNameInput.value;
+
+                localStorage.removeItem("teamName");
+                localStorage.setItem("teamName", teamName);
                 console.log("Team Name Saved:", teamName);
                 teamNameInput.disabled = true;
             }
@@ -190,8 +194,8 @@
         // 파일 업로드
         var plusButton = document.querySelector('.plus-button');
         var fileInput = document.getElementById('fileInput');
+        var imageUploadContainer = document.querySelector('.image-upload-container'); // Reference to the container
 
-        // When the plus button is clicked, programmatically click the file input
         plusButton.addEventListener('click', function () {
             fileInput.click();
         });
@@ -199,16 +203,16 @@
             if (this.files && this.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    // Replace the plus button with the uploaded image
-                    plusButton.style.backgroundImage = `url(${e.target.result})`;
-                    // Adjust the size to match the plus button
-                    plusButton.style.width = '100px'; // Adjust based on your plus button's size
-                    plusButton.style.height = '100px'; // Adjust based on your plus button's size
-                    plusButton.style.backgroundSize = 'cover';
-                    plusButton.style.backgroundPosition = 'center center';
-                    // Remove any content or styling that makes it look like a button, if necessary
-                    plusButton.innerHTML = ''; // Remove text or icons
-                    plusButton.style.border = 'none'; // Remove border if it exists
+                    // Hide the plus button
+                    plusButton.style.display = 'none'; // Hide the plus button
+                    console.log(e.target)
+                    // Set the uploaded image as the background of the container
+                    imageUploadContainer.style.backgroundImage = `url(${e.target.result})`;
+                    imageUploadContainer.style.width = '100px'; // Adjust based on your desired preview size
+                    imageUploadContainer.style.height = '100px'; // Adjust based on your desired preview size
+                    imageUploadContainer.style.backgroundSize = 'cover';
+                    imageUploadContainer.style.backgroundPosition = 'center center';
+                    imageUploadContainer.style.border = 'none'; // Optional: Remove border if exists
                 };
                 reader.readAsDataURL(this.files[0]);
             }
@@ -235,7 +239,7 @@
             window.location.href = '/competition/create/2';
         });
     });
-    
+
 
 </script>
 </body>
