@@ -135,7 +135,7 @@
             </svg>
         </div>
         <div class="text-container">
-            <p class="category_name">여행·나들이</p>
+            <p class="category_name">여행</p>
             <p class="category_desc">국내여행·해외여행·캠핑·드라이브·테마파크 등</p>
         </div>
     </div>
@@ -148,7 +148,7 @@
             </svg>
         </div>
         <div class="text-container">
-            <p class="category_name">자기개발</p>
+            <p class="category_name">자기계발</p>
             <p class="category_desc">독서·스터디·커리어·글쓰기·드로잉·영상편집·DIY 등</p>
         </div>
     </div>

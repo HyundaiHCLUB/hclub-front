@@ -42,6 +42,14 @@
     document.addEventListener('DOMContentLoaded', function () {
       function handleFileInputChange() {
         var fileInput = document.getElementById('file');
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var fileBlob = e.target.result;
+          localStorage.setItem('clubFile', fileBlob);
+          localStorage.setItem('clubFileName', fileInput.files[0].name);
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+
         var previewImage = document.getElementById('previewImage');
         var defaultImage = document.getElementById('defaultImage');
 
@@ -77,22 +85,6 @@
 
       window.location.href = '/club/add/preview';
     }
-  </script>
-
-  <script>
-    document.getElementById('file').addEventListener('change', function(event) {
-      var fileInput = event.target;
-      var file = fileInput.files[0];
-
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        var fileBlob = new Blob([e.target.result], { type: file.type });
-
-        sessionStorage.setItem('clubFile', fileBlob);
-      };
-
-      reader.readAsArrayBuffer(file);
-    });
   </script>
 </head>
 

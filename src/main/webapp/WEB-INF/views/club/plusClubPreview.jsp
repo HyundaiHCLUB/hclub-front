@@ -46,9 +46,25 @@
             var clubAddress = sessionStorage.getItem('clubAddress');
             var clubTitle = sessionStorage.getItem('clubTitle');
             var clubInfo = sessionStorage.getItem('clubInfo');
-            var clubFile = sessionStorage.getItem('clubFile');
-            var clubFileBlob = new Blob([clubFile], { type: 'image/png' });
-            var clubFileObj = new File([clubFileBlob], 'hclub.png');
+            var clubFile = localStorage.getItem('clubFile');
+            var clubFileName = localStorage.getItem('clubFileName'); // 파일 이름 가져오기
+
+            console.log(categoryId);
+            console.log(clubTitle);
+            console.log(clubInfo);
+            console.log(clubFile);
+            console.log(clubFileName);
+
+            document.querySelector('.club-title').innerText = clubTitle;
+            document.querySelector('.content_button').innerText = sessionStorage.getItem('selectedCategory');
+            document.querySelector('.club-content').innerText = clubInfo;
+
+            var clubImage = document.querySelector('.club-image');
+            if (clubFile) {
+                clubImage.src = clubFile;
+            } else {
+                clubImage.src = "/resources/image/default-image.jpg";
+            }
 
             var clubRequest = {
                 clubName: clubTitle,
@@ -62,25 +78,39 @@
 
             var formData = new FormData();
             formData.append("clubRequest", new Blob([JSON.stringify(clubRequest)], {type: "application/json"}));
-            formData.append('image', clubFileObj);
+            var fileBlob = dataURLtoFile(clubFile, clubFileName);
+            formData.append('image', fileBlob, clubFileName);
 
-            $.ajax({
-                url: 'https://www.h-club.site/clubs',
-                type: 'POST',
-                headers: {
-                    'accessTokenInfo': accessToken,
-                },
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    console.log('통신 성공', response);
-                },
-                error: function(error) {
-                    console.error('통신 실패', error);
-                }
+            $('.next_button').on('click', function () {
+                $.ajax({
+                    url: 'https://www.h-club.site/clubs',
+                    type: 'POST',
+                    headers: {
+                        'accessTokenInfo': accessToken,
+                    },
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        console.log('통신 성공', response);
+                    },
+                    error: function (error) {
+                        console.error('통신 실패', error);
+                    }
+                });
             });
         });
+
+        function dataURLtoFile(dataURL, fileName) {
+            var arr = dataURL.split(','), mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new File([u8arr], fileName, { type: mime });
+        }
+    </script>
+
     </script>
 
     <script>
@@ -121,18 +151,11 @@
 
     <div class="club-detail">
         <div class="circle_content">
-            <p class="club-title">뚝섬유원지 러닝팟</p>
-            <a href="#" class="content_button">액티비티</a>
+            <p class="club-title"></p>
+            <a href="#" class="content_button"></a>
         </div>
         <p class="club-preview">상세 내용</p>
-        <p class="club-content">사람들이 뜁니다.
-            잠시 멈춰 쓰레기를 줍더니, 또 뜁니다.
-            가벼운 운동과 청소가 결합 된 환경정화 활동, 플로깅입니다.
-            플로깅은 '이삭을 줍는다'는 스웨덴어와 영어의 '조깅'을 합친 말로, 2016년 스웨덴에서 시작돼 국내에서도 확산 중입니다.
-            주말을 맞아 서울 송파구 주민들이 플로깅에 나섰습니다.
-            요즘처럼 기온이 높을 땐 무리하게 뛰지 않고 천천히 걸으며 청소합니다.
-            국내에서 플로깅은 '줍깅'이란 말로도 잘 알려져 있는데 쪼그려앉았다가 일어서는 동작이 하체 운동법인 스쾃과 비슷해 쓰레기를 많이 주울수록 운동 효과도 커지는 셈입니다.
-        </p>
+        <p class="club-content"></p>
     </div>
 
     <a href="/club">
