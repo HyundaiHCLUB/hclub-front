@@ -264,7 +264,7 @@
                     <button class="btn-team-detail">상세정보</button>
                 </div>
             </div>
-                <button class="chat-button">채팅하기</button>
+                <button class="chat-button" onclick="goChatPage()">채팅하기</button>
                 <button class="btn-match-start">경기시작</button>
 
     </div>
@@ -392,6 +392,9 @@
                 }
             });
         });
+    }
+    function goChatPage(){
+    	location.href="/competition/chatPageView"
     }
 </script>
 
