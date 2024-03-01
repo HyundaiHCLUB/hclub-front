@@ -94,6 +94,8 @@
 		  </div>
 		</form>
 	</div>
+<!-- 공통 모달 페이지 -->
+<%@ include file="../common/modal.jsp" %>
 </main>
 <script>
 let employeeYn="reqConfirm";
@@ -104,14 +106,18 @@ $(document).ready(function() {
         // 아이디 필드 유효성 검사
         var id = $("#id").val();
         if (id === "") {
-            alert("아이디를 입력하세요.");
+        	setModalMsg("아이디를 입력하세요.");
+            getModalMesage(); 
+            //alert("아이디를 입력하세요.");
             $("#id").focus(); // 해당 필드로 포커스 이동
             return false;
         } 
         // 사번 필드 유효성 검사
         var employeeNo = $("#employeeNo").val();
         if (employeeNo === "") {
-            alert("사번을 입력하세요.");
+            //alert("사번을 입력하세요.");
+        	setModalMsg("사번을 입력하세요.");
+            getModalMesage(); 
             $("#employeeNo").focus(); // 해당 필드로 포커스 이동
             return false;
         }
@@ -119,7 +125,9 @@ $(document).ready(function() {
 		 // 이름 필드 유효성 검사
         var name = $("#name").val();
         if (name === "") {
-            alert("이름을 입력하세요.");
+            //alert("이름을 입력하세요.");
+            setModalMsg("이름을 입력하세요.");
+            getModalMesage(); 
             $("#name").focus(); // 해당 필드로 포커스 이동
             return false;
         }
@@ -127,7 +135,8 @@ $(document).ready(function() {
         // 비밀번호 필드 유효성 검사
         var password = $("#password").val();
         if (password === "") {
-            alert("비밀번호를 입력하세요.");
+            setModalMsg("비밀번호를 입력하세요.");
+            getModalMesage(); 
             $("#password").focus(); // 해당 필드로 포커스 이동
             return false;
         }
@@ -135,24 +144,33 @@ $(document).ready(function() {
         // 비밀번호 확인 필드 유효성 검사
         var passwordConfirm = $("#passwordConfirm").val();
         if (passwordConfirm === "") {
-            alert("비밀번호 확인을 입력하세요.");
+            // alert("비밀번호 확인을 입력하세요.");
+            setModalMsg("비밀번호 확인을 입력하세요.");
+            getModalMesage(); 
             $("#passwordConfirm").focus(); // 해당 필드로 포커스 이동
             return false;
         }
 
         // 비밀번호 일치 여부 확인
         if (password !== passwordConfirm) {
-            alert("비밀번호가 일치하지 않습니다.");
+            //alert("비밀번호가 일치하지 않습니다.");
+            setModalMsg("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+            getModalMesage(); 
             $("#passwordConfirm").focus(); // 해당 필드로 포커스 이동
             return false;
         }
         if(employeeYn === "reqConfirm"){
-			alert("사원여부를 조회해주세요.");
+			//alert("사원여부를 조회해주세요.");
+			setModalMsg("사원여부를 조회해주세요.");
+	        getModalMesage(); 
             $("#employeeNo").focus(); // 해당 필드로 포커스 이동
             return false;
 		}
 		if(employeeYn === "N"){
-			alert("사원이 아닙니다. 사번을 확인해주세요.");
+			//alert("사원이 아닙니다. 사번을 확인해주세요.");
+			setModalMsg("사원이 아닙니다. 사번을 확인해주세요.");
+	        getModalMesage(); 
+	        
             $("#employeeNo").focus(); // 해당 필드로 포커스 이동
             return false;
 		}
@@ -199,11 +217,15 @@ function confirmEmployeeYn(){
 	 var employeeNo = $("#employeeNo").val();
 	 var employeeName = $("#name").val();
      if (employeeNo === "") {
-         alert("사번을 입력한 후, 사원여부를 조회해주세요.");
+         //alert("사번을 입력한 후, 사원여부를 조회해주세요.");
+         setModalMsg("사번을 입력한 후, 사원여부를 조회해주세요.");
+         getModalMesage(); 
          return;
      }
      if (employeeName === "") {
-         alert("이름을 입력한 후, 사원여부를 조회해주세요.");
+         //alert("이름을 입력한 후, 사원여부를 조회해주세요.");
+         setModalMsg("이름을 입력한 후, 사원여부를 조회해주세요.");
+         getModalMesage(); 
          return;
      }
   
@@ -212,8 +234,8 @@ function confirmEmployeeYn(){
 	userData.employeeName = employeeName;
 	$.ajax({
         type: 'POST',
-        url: 'https://www.h-club.site/auth/getEmployeeYn',
-       // url: '/hyndai/auth/getEmployeeYn',
+        //url: 'https://www.h-club.site/auth/getEmployeeYn',
+         url: '/hyndai/auth/getEmployeeYn',
         /*headers: {
             'Authorization': 'Bearer ' + accessTokenInfo // accessToken 사용
         },*/
@@ -222,6 +244,10 @@ function confirmEmployeeYn(){
         success: function(response) { 
              console.log(response);
              employeeYn =  response.data.isEmployee;
+             //alert('사원여부 조회에 성공 하였습니다.');
+             setModalMsg("사원여부 조회에 성공하셨습니다.");
+             getModalMesage(); 
+             moveLoc="/"; //history.bach();혹은 이동 이벤트 막는거 추가하기
         },
         error: function(xhr, status, error) {
             console.error('사원여부 조회 실패:', error);

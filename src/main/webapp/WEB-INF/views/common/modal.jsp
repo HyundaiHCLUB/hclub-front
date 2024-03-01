@@ -70,7 +70,7 @@ let moveLoc="";
 //모달창을 click Trigger을 건다. => 호출할 위치에서 셋팅함.
 //getModalMesage(); 
 //모달창 확인 클릭시 이동할 위치를 지정한다.
-//moveLoc="/login/loginView"; 
+//moveLoc="/modal"; 
 
 function setModalMsg(msg){
 	$("#modalMsg").text(msg);
