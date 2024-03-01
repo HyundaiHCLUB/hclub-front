@@ -71,6 +71,7 @@
 </head>
 <body>
 <main>
+
 	<div id="mainLogoDiv">
 		<img id="logo" src="/resources/image/logo.png">
 	</div>
@@ -86,6 +87,8 @@
 		  </div>
 		</form>
 	</div>   
+	<!-- 공통 모달 페이지 -->
+ 	<%@ include file="../common/modal.jsp" %>
 </main>
 </body>
 <script>
@@ -100,23 +103,29 @@ $(document).ready(function() {
      
         $.ajax({
             type: 'POST',
-			url: 'https://www.h-club.site/auth/login',
+            //url: '/hyndai/auth/login',
+            url: 'https://www.h-club.site/auth/login',
             contentType: 'application/json',
             data: JSON.stringify({ username: username, password: password }),
             success: function(response) { 
                  localStorage.setItem("accessTokenInfo", response.accessToken);
-                 getUserInfo2(response.accessToken);
+                /*  getUserInfo2(response.accessToken); */
                  pageLocFlag = true;
-                 
+               
+             	//로그인 완료시 모달 띄우고, 이동
                  if(pageLocFlag){
-                	//로그인 완료시 메인페이지로 이동
-                 	 location.href='/' ;
-                 }
+                 	 setModalMsg("로그인에 성공하셨습니다.");
+	                 getModalMesage(); 
+	                 moveLoc="/"; 
+                	// location.href='/' ;
+                 } 
                  
             },
             error: function(xhr, status, error) {
                 // console.error('로그인 실패:', error);
-             	alert("로그인에 실패했습니다. 아이디 혹은 비밀번호를 확인해주세요.");
+             	//alert("로그인에 실패했습니다. 아이디 혹은 비밀번호를 확인해주세요.");
+             	setModalMsg("로그인에 실패했습니다. 아이디 혹은 비밀번호를 확인해주세요.");
+                getModalMesage(); 
             }
         });
     });

@@ -46,7 +46,7 @@
             margin: auto 50px;
         }
 
-        .profile-form{
+        #profile-form{
             margin: 30px auto;
             width: 80%;
         }
@@ -124,7 +124,7 @@
                     <p id="userRating"></p>
                 </div>
             </div>
-            <form class="profile-form">
+            <form id="profile-form">
                 <!-- 이름 필드 -->
                 <div class="form-label">
                     <label for="name">이름</label>
@@ -199,7 +199,7 @@
         });
     }
 
-    document.getElementsByClassName('profileImageInput').addEventListener('change', function(event) {
+    document.getElementById('profileImageInput').addEventListener('change', function(event) {
         var file = event.target.files[0];
         var formData = new FormData();
         var memberInfo = JSON.stringify({ memberId: memberId });
@@ -232,6 +232,12 @@
         var password = document.getElementById('password').value;
         var passwordCheck = document.getElementById('password-check').value;
 
+        // null  체크
+        if (password === '' && passwordCheck === '') {
+            window.location.href = '/mypage';
+            return; // 함수 실행 중단
+        }
+
         // 비밀번호 일치 여부 확인
         if (password !== passwordCheck) {
             alert("비밀번호 확인이 일치하지 않습니다");
@@ -240,6 +246,7 @@
 
         // 비밀번호 변경 API 호출 (예시)
         updatePassword(password, function(success) {
+            console.log('input password : ' + password);
             if (success) {
                 // 비밀번호 변경 성공시 다른 페이지로 이동
                 window.location.href = '/mypage';
@@ -251,23 +258,31 @@
     });
 
     function updatePassword(password, callback) {
-        fetch('https://www.h-club.site/auth/mypage', {
+        fetch(
+            // 'https://www.h-club.site/auth/mypage',
+            'http://localhost:8080/auth/mypage',
+            {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({memberId:memberId, memberPw: password})
         })
-            .then(response => response.json())
+            .then(response => {
+                if(response.ok) {
+                    return response.text(); // 응답을 텍스트로 처리
+                } else {
+                    throw new Error('Network response was not ok.'); // 오류 처리
+                }
+            })
             .then(data => {
-                if (data.success) {
+                if (data == 'success') {
                     callback(true); // 성공 콜백 호출
                 } else {
                     callback(false); // 실패 콜백 호출
                 }
             })
             .catch(error => {
-                console.error('Error:', error);
                 callback(false); // 실패 콜백 호출
             });
     }
