@@ -69,7 +69,9 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Define the URL to fetch from
+        // Define a global variable to store fetched product data
+        let globalProductData = [];
+
         const apiUrl = 'https://www.h-club.site/comp/products';
 
         // Use fetch API to get the products
@@ -77,6 +79,7 @@
             .then(response => response.json()) // Convert the response to JSON
             .then(data => {
                 console.log(data);
+                globalProductData = data.data; // Store the fetched data globally
                 const container = document.querySelector('.select-product-container');
 
                 // Loop through the data and create a radio button for each product
@@ -87,13 +90,13 @@
                     const radioInput = document.createElement('input');
                     radioInput.setAttribute('type', 'radio');
                     radioInput.setAttribute('name', 'product');
-                    radioInput.setAttribute('value', product.productId); // Assuming the response has a 'productId' field
+                    radioInput.setAttribute('value', product.productId);
                     radioInput.setAttribute('id', `product-${product.productId}`);
 
                     // Create label for radio input
                     const label = document.createElement('label');
                     label.setAttribute('for', `product-${product.productId}`);
-                    label.textContent = product.productName; // Adjust according to the actual response structure
+                    label.textContent = product.productName;
 
                     // Append the radio input and label to the container
                     container.appendChild(radioInput);
@@ -101,6 +104,34 @@
                 });
             })
             .catch(error => console.error('Error fetching products:', error));
+
+        $('#goNextButton').click(function () {
+            const selectedDate = $('#dateSelectInput').val();
+            const selectedTime = $('#timeSelectInput').val();
+
+            // Retrieve the selected product ID
+            const selectedProductId = $('input[name="product"]:checked').val();
+            // Find the selected product data by matching the selectedProductId with the product ID in the globalProductData
+            const selectedProduct = globalProductData.find(product => product.productId == selectedProductId);
+
+            if (selectedProduct) {
+                // Create an object with the product details
+                const teamProduct = {
+                    productId: selectedProduct.productId,
+                    productName: selectedProduct.productName,
+                    productPrice: selectedProduct.productPrice // Assuming productPrice is a property of your products
+                };
+
+                // Save the product details object as a JSON string in localStorage
+                localStorage.setItem('teamProduct', JSON.stringify(teamProduct));
+            }
+
+            // Save the match date and time to localStorage
+            localStorage.setItem('matchDate', selectedDate);
+            localStorage.setItem('matchTime', selectedTime);
+
+            // Optionally, navigate to the next page or perform another action
+        });
     });
 
 
@@ -130,18 +161,17 @@
             // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시) 위와 같은 형태로 보인다.
         });
 
-    $('.timepicker')
-        .timepicker({
-            timeFormat: 'HH:mm',
-            interval: 10,
-            minTime: '10',
-            maxTime: '6:00pm',
-            defaultTime: '11',
-            startTime: '10:00',
-            dynamic: false,
-            dropdown: true,
-            scrollbar: true
-        });
+    $('#timeSelectInput').timepicker({
+        timeFormat: 'HH:mm', // 24-hour format
+        interval: 30, // Interval can be adjusted as needed
+        minTime: '00:00', // Minimum time can be adjusted as needed
+        maxTime: '23:30', // Maximum time can be adjusted as needed
+        defaultTime: '11', // Default time can be adjusted as needed
+        startTime: '00:00', // Start time adjusted for 24-hour format
+        dynamic: true,
+        dropdown: true,
+        scrollbar: true
+    });
 
 
     $(document).ready(function () {
@@ -173,27 +203,6 @@
         });
     });
 
-    // 값 저장
-
-    document.addEventListener('DOMContentLoaded', function () {
-        // Event listener for the "Next" button click
-        $('#goNextButton').click(function () {
-            // Retrieve the date and time input values
-            const selectedDate = $('#dateSelectInput').val();
-            const selectedTime = $('#timeSelectInput').val();
-
-            // Retrieve the selected product value
-            const selectedProductId = $('input[name="product"]:checked').val();
-
-            // Save the retrieved values to localStorage
-            localStorage.setItem('selectedDate', selectedDate);
-            localStorage.setItem('selectedTime', selectedTime);
-            localStorage.setItem('selectedProductId', selectedProductId);
-
-            // Optionally, navigate to the next page or perform another action
-            // window.location.href = '/nextPage'; // Uncomment and modify this line as needed
-        });
-    });
 
 </script>
 
