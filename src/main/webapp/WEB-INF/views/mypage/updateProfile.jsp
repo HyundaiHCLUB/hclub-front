@@ -232,6 +232,12 @@
         var password = document.getElementById('password').value;
         var passwordCheck = document.getElementById('password-check').value;
 
+        // null  체크
+        if (password === '' && passwordCheck === '') {
+            window.location.href = '/mypage';
+            return; // 함수 실행 중단
+        }
+
         // 비밀번호 일치 여부 확인
         if (password !== passwordCheck) {
             alert("비밀번호 확인이 일치하지 않습니다");
@@ -253,8 +259,7 @@
 
     function updatePassword(password, callback) {
         fetch(
-            // 'https://www.h-club.site/auth/mypage',
-            'http://localhost:8080/auth/mypage',
+            'https://www.h-club.site/auth/mypage',
             {
             method: 'POST',
             headers: {
@@ -263,25 +268,20 @@
             body: JSON.stringify({memberId:memberId, memberPw: password})
         })
             .then(response => {
-                if(response.ok) { // HTTP 상태 코드가 200-299인 경우
-                    console.log('http status 200 - 299')
+                if(response.ok) {
                     return response.text(); // 응답을 텍스트로 처리
                 } else {
                     throw new Error('Network response was not ok.'); // 오류 처리
                 }
             })
             .then(data => {
-                console.log("data : " + data);
                 if (data == 'success') {
-                    console.log('data => success');
                     callback(true); // 성공 콜백 호출
                 } else {
-                    console.log('data => failed');
                     callback(false); // 실패 콜백 호출
                 }
             })
             .catch(error => {
-                console.error('Error:', error);
                 callback(false); // 실패 콜백 호출
             });
     }
