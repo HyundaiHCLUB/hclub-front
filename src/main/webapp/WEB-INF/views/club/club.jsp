@@ -90,13 +90,13 @@
 
                                 var clubHTML = '<div class="grid-container">';
                                 group.forEach(function (item) {
-                                    clubHTML += '<a href="/club/detail/' + item.clubNo + '"><div class="grid-item"><div class="club-image-container">' +
-                                        '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                    clubHTML += '<div class="grid-item"><div class="club-image-container">' +
+                                        '<a href="/club/detail/' + item.clubNo + '"><img class="circle_recommend" src="' + item.clubImage + '"></a>' +
                                         '<span class="like-icon" data-club-id="' + item.clubNo + '"><i class="far fa-heart" style="color: #ffffff;"></i></span></div>' +
                                         '<div class="circle_content">' +
                                         '<p class="circle_name">' + item.clubName + '</p>' +
                                         '<a href="#" class="category_button">'+getCategoryName(item.categoryId)+'</a>' +
-                                    '</div></div></a>';
+                                    '</div></div>';
                                 });
                                 clubHTML += '</div>';
                                 $(".clubs").append(clubHTML);
@@ -115,9 +115,15 @@
 
     <script>
         function updateLikedClubs(){
+            accessToken = localStorage.getItem("accessTokenInfo");
+
             $.ajax({
-                url: "https://www.h-club.site/clubs/like/exist/3",
+                //url: "http://localhost:8081/clubs/like/exist",
+                url: "https://www.h-club.site/clubs/like/exist",
                 method: "GET",
+                headers: {
+                    'accessTokenInfo': accessToken,
+                },
                 success: function (response) {
                     var likedClubs = response.data;
                     likedClubs.forEach(function (club) {
@@ -143,6 +149,72 @@
             updateLikedClubs();
         });
     </script>
+    <script>
+        function toggleLikeButton(clubNo, isLiked) {
+            var likeButton = $('[data-club-id="' + clubNo + '"]');
+
+            if (isLiked === 'Y') {
+                // 좋아요가 되어 있는 상태에서 클릭했을 때
+                likeButton.removeClass('liked');
+                likeButton.html('<i class="fa-regular fa-heart" style="color: #ffffff;"></i>');
+            } else {
+                // 좋아요가 되어 있지 않은 상태에서 클릭했을 때
+                likeButton.addClass('liked');
+                likeButton.html('<i class="fa-solid fa-heart" style="color: #ff2e2e;"></i>');
+            }
+        }
+
+        function addLike(clubNo) {
+            accessToken = localStorage.getItem("accessTokenInfo");
+
+            $.ajax({
+                //url: "http://localhost:8081/clubs/"+clubNo+"/like",
+                url: "https://www.h-club.site/clubs/"+clubNo+"/like",
+                method: "POST",
+                headers: {
+                    'accessTokenInfo': accessToken,
+                },
+                success: function (response) {
+                    console.log("좋아요 추가 성공");
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error updating like status:", error);
+                }
+            });
+        }
+
+        function removeLike(clubNo) {
+            accessToken = localStorage.getItem("accessTokenInfo");
+
+            $.ajax({
+                //url: "http://localhost:8081/clubs/"+clubNo+"/like",
+                url: "https://www.h-club.site/clubs/"+clubNo+"/like",
+                method: "DELETE",
+                headers: {
+                    'accessTokenInfo': accessToken,
+                },
+                success: function (response) {
+                    console.log("좋아요 추가 성공");
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error updating like status:", error);
+                }
+            });
+        }
+
+        $(document).on('click', '.like-icon', function () {
+            var clubNo = $(this).data('club-id');
+            var isLiked = $(this).hasClass('liked') ? 'Y' : 'N';
+
+            toggleLikeButton(clubNo, isLiked);
+            if(isLiked === 'Y'){
+                removeLike(clubNo)
+            } else {
+                addLike(clubNo)
+            }
+        });
+    </script>
+
 
     <script>
         function getClubLikeList(categoryName) {
