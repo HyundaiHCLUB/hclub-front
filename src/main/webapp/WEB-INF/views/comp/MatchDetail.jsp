@@ -51,6 +51,7 @@
         }
         .team-logo {
             border-radius: 50%;
+            box-sizing: border-box; /* 테두리와 패딩을 요소의 크기 계산에 포함 */
         }
         .team img {
             width: 180px;
@@ -168,6 +169,14 @@
         .location-checkbox:checked::before {
             transform: scale(1);
         }
+        .highlighted-team {
+            border: 13px solid #ffa500;
+            border-radius: 50%;
+        }
+        .not-highlighted-team {
+            border: 13px solid #ffffff;
+            border-radius: 50%;
+        }
     </style>
     
 </head>
@@ -280,6 +289,8 @@
     var teamNo2;
 
 	$(document).ready(function() {
+        $('.team:eq(0) .team-logo').addClass('highlighted-team');
+        $('.team:eq(1) .team-logo').addClass('not-highlighted-team');
         $('.btn-match-start').click(function(e) {
             e.preventDefault();
             // JWT 를 사용해 사용자 정보 가져오기
