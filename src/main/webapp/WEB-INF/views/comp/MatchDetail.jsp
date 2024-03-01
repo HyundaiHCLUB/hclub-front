@@ -218,7 +218,7 @@
                         </div>
                         <p></p>
                     </div>
-                    <button class="btn-team-detail">상세정보</button>
+                    <button class="btn-team-detail" data-team-no="">상세정보</button>
                 </div>
                 <div class="vs">
                     <h3>VS</h3>
@@ -261,7 +261,7 @@
                         </div>
                         <p></p>
                     </div>
-                    <button class="btn-team-detail">상세정보</button>
+                    <button class="btn-team-detail" data-team-no="">상세정보</button>
                 </div>
             </div>
                 <button class="chat-button" onclick="goChatPage()">채팅하기</button>
@@ -276,6 +276,8 @@
     var matchHistorytNo = ${matchHistoryNo};
     var locationInformation; // 장소 저장할 변수
     let accessToken = localStorage.getItem("accessTokenInfo");
+    var teamNo1;
+    var teamNo2;
 
 	$(document).ready(function() {
         $('.btn-match-start').click(function(e) {
@@ -305,11 +307,11 @@
                     console.log(error);
                 }
             });
-
         });
+
         // 경기상세정보 API 호출
         $.ajax({
-            url: 'https://www.h-club.site/comp/match/13', //샘플데이터
+            url: 'https://www.h-club.site/comp/match/13', //샘플데이터 <- 컨트롤러에서 넘어온 경기번호로 대체해야됨
             type: 'GET',
             dataType: 'json',
             success: function (response){
@@ -321,6 +323,11 @@
                 console.log('otherUserNo : ' + response.data.team2.leader.memberNo);
                 console.log('otherUserId : ' + response.data.team2.leader.memberId);
                 console.log("matchHistNo -> " + matchHistorytNo);
+                temaNo1 = response.data.team1.teamNo;
+                temaNo2 = response.data.team2.teamNo;
+                // 버튼에 data-team-no 속성 설정
+                $('.btn-team-detail').eq(0).attr('data-team-no', temaNo1);
+                $('.btn-team-detail').eq(1).attr('data-team-no', temaNo2);
             }, error: function (error){
                 console.log('Error : ' + error);
             }
@@ -355,6 +362,10 @@
             $('input[type="checkbox"]').not(this).prop('checked', false);
         });
 
+        $('.btn-team-detail').on('click', function() {
+            var teamNo = $(this).data('team-no');
+            goTeamDetailPage(teamNo);
+        });
     });
 
     /* 체크된 체크박스에 해당하는 "장소" 데이터 저장 */
@@ -395,6 +406,10 @@
     }
     function goChatPage(){
     	location.href="/competition/chatPageView"
+    }
+
+    function goTeamDetailPage(teamNo) {
+        location.href = "/competition/matchDetail/teamDetail/" + teamNo;
     }
 </script>
 

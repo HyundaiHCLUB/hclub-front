@@ -93,6 +93,15 @@ public class CompController {
         mav.setViewName("comp/MatchDetail");
         return mav;
     }
+    /* 팀 상세정보 페이지로 이동 (경기 상세정보 -> [상세정보] 클릭 */
+    @GetMapping("/matchDetail/teamDetail/{teamNo}")
+    public ModelAndView goTeamDetailPage(@PathVariable("teamNo") Long teamNo) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("teamNo", teamNo);
+        mav.setViewName("comp/teamDetail");
+        return mav;
+    }
+
 
     /* 경기 기록 페이지로 이동*/
     @GetMapping("/matchRecord/{matchHistoryNo}")
