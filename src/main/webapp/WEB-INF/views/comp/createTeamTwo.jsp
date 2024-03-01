@@ -145,32 +145,53 @@
 
 
     $(document).ready(function () {
-        let inputWidth = $('dateSelectInput').outerWidth();
+        let inputWidth = $('#dateSelectInput').outerWidth(); // Get the outer width of the dateSelectInput
+
+        // Optionally, calculate a desired height based on the new width
+        // This is a simple proportion, adjust according to your needs
+        let desiredHeight = inputWidth * 0.8; // Example proportion, adjust as needed
+
         // Initialize the datepicker on #dateSelectInput
         $('#dateSelectInput').datepicker({
             dateFormat: 'yy년 mm월 dd일', // Set the format of the date
             onSelect: function (dateText) {
-                // Update the input value to the selected date
                 $('#dateSelectInput').val(dateText);
             },
             beforeShow: function (input, inst) {
                 let calendar = inst.dpDiv;
                 setTimeout(function () {
-                    calendar.outerWidth(inputWidth);
+                    calendar.outerWidth(inputWidth); // Set the width of the datepicker to match the input
+                    // Apply dynamic height adjustment here if necessary
+                    calendar.outerHeight(500);
                 }, 0);
             }
         });
 
-        // Optional: Initialize the timepicker on #timeSelectInput if you added it
+        // Adjustments for timepicker as needed
         $('#timeSelectInput').timepicker({
-            timeFormat: 'HH시 mm분',
-            interval: 30, // Adjust the time interval options
-            minTime: '10:00am', // Set minimum time limit
-            maxTime: '10:00pm', // Set maximum time limit
-            startTime: '10:00am', // Set start time for the timepicker
-            dynamic: false,
-            dropdown: true,
-            scrollbar: true
+            // Timepicker configuration
+        });
+    });
+
+    // 값 저장
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Event listener for the "Next" button click
+        $('#goNextButton').click(function () {
+            // Retrieve the date and time input values
+            const selectedDate = $('#dateSelectInput').val();
+            const selectedTime = $('#timeSelectInput').val();
+
+            // Retrieve the selected product value
+            const selectedProductId = $('input[name="product"]:checked').val();
+
+            // Save the retrieved values to localStorage
+            localStorage.setItem('selectedDate', selectedDate);
+            localStorage.setItem('selectedTime', selectedTime);
+            localStorage.setItem('selectedProductId', selectedProductId);
+
+            // Optionally, navigate to the next page or perform another action
+            // window.location.href = '/nextPage'; // Uncomment and modify this line as needed
         });
     });
 

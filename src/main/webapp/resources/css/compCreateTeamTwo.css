@@ -54,22 +54,47 @@
   font-size: 38px;
 }
 
+/* Increase the font size for the entire datepicker for larger text */
 .ui-datepicker {
-  width: auto; /* Adjust this value based on your input size or desired width */
+  font-size: 16px; /* Adjust this value as needed */
 }
 
-/* Optional: Adjust the size of the datepicker cells if needed */
+/* Adjust the table layout to accommodate larger text and padding */
 .ui-datepicker table {
   width: 100%;
 }
 
+/* Increase the size of each date cell */
 .ui-datepicker td {
-  padding: 4px; /* Adjust padding for better alignment with your design */
+  padding: 10px; /* Adjust padding for larger cells */
 }
 
-.ui-datepicker a {
-  text-align: center;
-  display: block;
+/* Enlarge the header part */
+.ui-datepicker .ui-datepicker-header {
+  font-size: 50px; /* Larger text for the header */
+  padding: 10px 0; /* More padding around the header elements */
+}
+
+/* Adjust the prev/next buttons if needed */
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+  cursor: pointer;
+  /* Adjust size, padding, or add custom icons as needed */
+}
+
+/* Customize the dropdown list of the timepicker */
+.ui-timepicker-list {
+  font-size: 50px; /* Increase font size for the list */
+}
+
+.ui-timepicker-list li {
+  padding: 10px; /* Increase padding to make each item taller */
+  height: auto; /* Adjust height automatically based on padding and font size */
+}
+
+/* If you want to increase the space inside the input field as well */
+.ui-timepicker-input {
+  height: 200px; /* Example height, adjust as needed */
+  font-size: 50px; /* Match the font size with the dropdown */
 }
 
 /* 상품 선택 */
