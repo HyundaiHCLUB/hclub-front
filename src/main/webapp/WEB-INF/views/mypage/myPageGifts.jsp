@@ -92,16 +92,18 @@
 
                 // 받은 데이터로 동적으로 HTML을 생성합니다.
                 response.forEach(function(product) {
-                    let productHTML = `<div class="product-card">
-                        <img src="${product.productImage}" alt="${product.productName}" class="product-image">
-                        <div class="product-details">
-                            <div class="product-title">${product.productName}</div>
-                            <div class="product-price">${product.productPrice.toLocaleString()}원</div>
-                        </div>
-                    </div>`;
+                    var productHTML = '<div class="product-card">' +
+                        '<img src="' + product.productImage + '" alt="' + product.productName + '" class="product-image">' +
+                        '<div class="product-details">' +
+                        '<div class="product-title">' + product.productName + '</div>' +
+                        // 발급일 정보가 응답 데이터에 포함되어 있다면, 해당 정보를 사용합니다.
+                        // '<div class="product-date">발급일: ' + product.issueDate + '</div>' +
+                        '<div class="product-price">' + product.productPrice.toLocaleString() + '원</div>' +
+                        '</div>' +
+                        '</div>';
 
-                    // 생성된 HTML을 페이지에 추가합니다.
-                    $("main").append(productHTML);
+                    // 생성된 HTML을 main 태그 안에 추가합니다.
+                    $('.my-products').append(productHTML);
                 });
             },
             error: function(error){
