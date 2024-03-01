@@ -69,51 +69,9 @@
         <i class="fa-solid fa-gift"></i>
     </div>
     <!-- 샘플 데이터 시작 -->
-    <div class="product-card">
-        <img src="/resources/image/gift_sample.png" alt="Iced Coffee" class="product-image">
-        <div class="product-details">
-            <div class="product-title">h-cafe 5000원 상품권</div>
-            <div class="product-date">발급일: 2023-02-01</div>
-            <div class="product-price">5,000원</div>
-        </div>
-    </div>
+    <div class="my-products">
 
-    <div class="product-card">
-        <img src="/resources/image/gift_sample.png" alt="Iced Coffee" class="product-image">
-        <div class="product-details">
-            <div class="product-title">h-cafe 5000원 상품권</div>
-            <div class="product-date">발급일: 2023-02-01</div>
-            <div class="product-price">5,000원</div>
-        </div>
     </div>
-
-    <div class="product-card">
-        <img src="/resources/image/gift_sample.png" alt="Iced Coffee" class="product-image">
-        <div class="product-details">
-            <div class="product-title">h-cafe 5000원 상품권</div>
-            <div class="product-date">발급일: 2023-02-01</div>
-            <div class="product-price">5,000원</div>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <img src="/resources/image/gift_sample.png" alt="Iced Coffee" class="product-image">
-        <div class="product-details">
-            <div class="product-title">h-cafe 5000원 상품권</div>
-            <div class="product-date">발급일: 2023-02-01</div>
-            <div class="product-price">5,000원</div>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <img src="/resources/image/gift_sample.png" alt="Iced Coffee" class="product-image">
-        <div class="product-details">
-            <div class="product-title">h-cafe 5000원 상품권</div>
-            <div class="product-date">발급일: 2023-02-01</div>
-            <div class="product-price">5,000원</div>
-        </div>
-    </div>
-
     <!-- 샘플 데이터 끝-->
 </main>
 </body>
@@ -122,17 +80,32 @@
 
     $(document).ready(function() {
         $.ajax({
-           url: 'https://www.h-club.site/auth/products',
-           type: 'GET',
+            url: 'https://www.h-club.site/auth/products',
+            type: 'GET',
             headers : {
                 'Authorization': 'Bearer ' + accessToken,
             },
-           dataType: 'json',
+            dataType: 'json',
             success:function(response) {
-               console.log(response);
+                // 기존의 샘플 데이터를 제거합니다.
+                $(".product-card").remove();
+
+                // 받은 데이터로 동적으로 HTML을 생성합니다.
+                response.forEach(function(product) {
+                    let productHTML = `<div class="product-card">
+                        <img src="${product.productImage}" alt="${product.productName}" class="product-image">
+                        <div class="product-details">
+                            <div class="product-title">${product.productName}</div>
+                            <div class="product-price">${product.productPrice.toLocaleString()}원</div>
+                        </div>
+                    </div>`;
+
+                    // 생성된 HTML을 페이지에 추가합니다.
+                    $("main").append(productHTML);
+                });
             },
             error: function(error){
-               console.log(error);
+                console.log(error);
             }
         });
     });

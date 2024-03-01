@@ -259,7 +259,8 @@
 
     function updatePassword(password, callback) {
         fetch(
-            'https://www.h-club.site/auth/mypage',
+            // 'https://www.h-club.site/auth/mypage',
+            'http://localhost:8080/auth/mypage',
             {
             method: 'POST',
             headers: {
