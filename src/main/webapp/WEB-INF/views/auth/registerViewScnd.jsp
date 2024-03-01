@@ -302,6 +302,8 @@
 		  </div>
 		</form>
 	</div>
+	<!-- 공통 모달 페이지 -->
+	<%@ include file="../common/modal.jsp" %>
 </main>
 <script>
 //obj 배열 선언
@@ -395,12 +397,17 @@ function registerIntrest(){
         data: JSON.stringify(userData),
         success: function(response) { 
              console.log(response);
-             alert("회원가입이 완료되었습니다.");
+             //alert("회원가입이 완료되었습니다.");
              //회원가입 완료시 로그인 페이지로 이동
-         	 location.href='/login/loginView' ;
+         	 //location.href='/login/loginView' ;
+             setModalMsg("테스트 신청 메세지");
+             getModalMesage(); 
+             moveLoc="/login/loginView"; 
         },
         error: function(xhr, status, error) {
             console.error('회원가입 interset정보 넣기 실패:', error);
+            setModalMsg("회원가입 interset정보 넣기 실패하였습니다.");
+            getModalMesage(); 
            
         }
     });

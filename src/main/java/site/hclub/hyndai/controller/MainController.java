@@ -133,4 +133,11 @@ public class MainController {
 		   
 		  return mv;
 	 }
+	 @GetMapping("modal")
+	 public ModelAndView modal() {
+		   ModelAndView mv  = new ModelAndView();
+		   mv.setViewName("common/modal");
+		   
+		  return mv;
+	 }
 }

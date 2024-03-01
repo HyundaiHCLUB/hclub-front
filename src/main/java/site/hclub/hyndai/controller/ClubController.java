@@ -114,6 +114,14 @@ public class ClubController {
         return mav;
     }
 
+    @GetMapping(value = "/history/{clubNo}")
+    public ModelAndView addHistory(Model model, @PathVariable Long clubNo) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("club/plusHistory");
+        model.addAttribute("clubNo", clubNo);
+        return mav;
+    }
+
     private String getDistrictName(Long districtNo) {
         switch (districtNo.intValue()) {
             case 1:
