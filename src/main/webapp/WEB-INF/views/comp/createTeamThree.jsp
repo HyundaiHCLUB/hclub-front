@@ -54,7 +54,7 @@
                     <img src="/resources/image/comp/comp_gameType.png">
                     <h3>게임 종류</h3>
                 </div>
-                <p>3 vs 3</p>
+                <p>2 vs 2</p>
             </div>
 
             <div class="detail-component-goods">
@@ -79,6 +79,7 @@
     <div class="button-container">
         <button class="team-button">팀 생성</button>
     </div>
+    
 </main>
 <script>
     // 데이터 로딩
@@ -144,28 +145,49 @@
             return members.map(member => member.memberName + ' ' + member.memberDept + ' ' + member.memberPosition);
         }
 
+        // 게임 종류
+        // const gameCapacity = localStorage.getItem("selectedGameTypeNum");
+        // let gameCapacityElement = document.querySelector('.detail-component-gametype');
+        // if (gameCapacity) {
+        //     let teamDateElement = document.querySelector('.detail-component-gametype p');
+        //     gameCapacityElement.textContent = gameCapacity + ' vs ' + gameCapacity;
+        // }
+
 
         let rating = calculateAverageRating(selectedMembers);
-        let memberArray = createMemberDetailsArray(selectedMembers);
+
 
         teamRatingElement.textContent = rating;
 
     });
 
+    // 팀 생성 -> 매칭 하러가기 버튼
+    document.addEventListener('DOMContentLoaded', function () {
+        // Select the button by its class name
+        var button = document.querySelector('.team-button');
 
-</script>
-</body>
-<script>
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     // Select the button by its class name
-    //     var button = document.querySelector('.team-button');
-    //
-    //     // Add a click event listener to the button
-    //     button.addEventListener('click', function () {
-    //         // Navigate to the /competition/matchDetail page
-    //         window.location.href = '/competition/create/4';
-    //     });
-    // });
+
+        // Add an event listener to the new button for its functionality
+        button.addEventListener('click', function () {
+            button.remove();
+            // Create a new "매칭" button
+            let matchingButton = document.createElement('button');
+            matchingButton.textContent = '매칭하러가기';
+            matchingButton.className = 'team-button'; // Assign any classes for styling
+
+            matchingButton.addEventListener('click', function () {
+                // Logic for what happens when "매칭" is clicked
+                window.location.href = '/competition/start'; // Adjust the URL to your matching page
+            });
+
+            // 매칭하러가기 버튼 추가
+            var buttonContainer = document.querySelector('.button-container');
+            buttonContainer.appendChild(matchingButton);
+
+        });
+
+
+    });
 
     // POST
     document.addEventListener('DOMContentLoaded', function () {
@@ -225,6 +247,9 @@
                     })
                     .then(function (data) {
                         console.log(data);
+                        // 다음 페이지로 보낼 데이터 세팅
+                        setTeamCreateResponseToLocalStorage(data);
+
                     })
                     .catch(function (error) {
                         console.error('Error:', error);
@@ -232,6 +257,35 @@
             }
         });
     });
+
+    function setTeamCreateResponseToLocalStorage(data) {
+
+        clearLocalStorageExceptAccessTokenInfo();
+        // Extract memberNo from each member and store it in an array
+        let memberList = data.data.memberList.map(member => member.memberNo);
+
+        localStorage.setItem("teamNo", data.data.teamNo.toString());
+        localStorage.setItem("teamRating", data.data.teamRating.toString());
+        localStorage.setItem("matchCapacity", data.data.matchCapacity.toString());
+        localStorage.setItem("matchType", data.data.matchType);
+        localStorage.setItem("memberList", JSON.stringify(memberList)); // Convert array to JSON string
+        localStorage.setItem("teamLoc", data.data.teamLoc);
+        localStorage.setItem("teamName", data.data.teamName);
+    }
+
+    function clearLocalStorageExceptAccessTokenInfo() {
+
+        localStorage.removeItem("gameType");
+        localStorage.removeItem("teamName");
+        localStorage.removeItem("multipartFile");
+        localStorage.removeItem("selectedGameTypeNum");
+        localStorage.removeItem("selectedMembers");
+        localStorage.removeItem("teamLoc");
+        localStorage.removeItem("teamProduct");
+        localStorage.removeItem("matchDate");
+        localStorage.removeItem("matchTime");
+
+    }
 
     function b64toBlob(b64Data, contentType, sliceSize) {
         contentType = contentType || '';
@@ -257,4 +311,6 @@
 
 
 </script>
+</body>
+
 </html>

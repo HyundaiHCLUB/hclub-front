@@ -51,48 +51,60 @@ public class CompController {
 
         return mav;
     }
+
     @GetMapping("/create/3")
-    public ModelAndView createTeamThree(){
+    public ModelAndView createTeamThree() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("comp/createTeamThree");
         return mav;
     }
+
     @GetMapping("/create/4")
-    public ModelAndView createTeamFour(){
+    public ModelAndView createTeamFour() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("comp/createTeamFour");
         return mav;
     }
 
-    @GetMapping("/start/{teamNo}")
-    public ModelAndView goMatchStart(@PathVariable("teamNo")Long teamNo){
+    @GetMapping("/start")
+    public ModelAndView goMatchStart() {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("teamNo", teamNo);
         mav.setViewName("comp/matchStart");
         return mav;
     }
 
     @GetMapping("/waiting")
-    public ModelAndView watingPage(){
+    public ModelAndView watingPage() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("comp/matchWaiting");
         return mav;
     }
 
     @GetMapping("/success")
-    public ModelAndView successPage(){
+    public ModelAndView successPage() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("comp/matchSuccess");
         return mav;
     }
+
     /* 매칭 상세페이지로 이동 */
     @GetMapping("/matchDetail/{matchHistoryNo}")
-    public ModelAndView goMatchDetailPage(@PathVariable("matchHistoryNo")Long matchHistoryNo) {
+    public ModelAndView goMatchDetailPage(@PathVariable("matchHistoryNo") Long matchHistoryNo) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("matchHistoryNo", matchHistoryNo);
         mav.setViewName("comp/MatchDetail");
         return mav;
     }
+
+    /* 팀 상세정보 페이지로 이동 (경기 상세정보 -> [상세정보] 클릭 */
+    @GetMapping("/matchDetail/teamDetail/{teamNo}")
+    public ModelAndView goTeamDetailPage(@PathVariable("teamNo") Long teamNo) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("teamNo", teamNo);
+        mav.setViewName("comp/teamDetail");
+        return mav;
+    }
+
 
     /* 경기 기록 페이지로 이동*/
     @GetMapping("/matchRecord/{matchHistoryNo}")
@@ -126,6 +138,7 @@ public class CompController {
 
         return mav;
     }
+
     /* 결제 성공페이지*/
     @GetMapping("/paySuccess")
     public ModelAndView gopaySuccessPage() {
