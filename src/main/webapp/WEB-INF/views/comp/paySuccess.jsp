@@ -1,168 +1,168 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>결제 완료</title>
     <link rel="stylesheet" href="/resources/css/main.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <link rel="stylesheet" href="/resources/css/compCreateTeam.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Match Success</title>
     <style>
-        .card-container {
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .confirmation-card {
+            background-color: #ffffff; /* Light green background */
+            border-radius: 30px;
+            width: 70%; /* Adjust width as needed */
+            height: 55%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Box shadow for a subtle depth effect */
+            font-size: 2.5em;
+            margin: 20px;
+            padding-bottom: 40px;
+        }
+
+        .confirmation-header {
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            border-bottom: 1px solid black;
+            background-color: #e8ffe8;
+        }
+
+        .confirmation-header img {
+            width: 180px;
+            height: 180px;
+        }
+        .confirmation-message {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .confirmation-body {
+            background-color: white;
+            text-align: left;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .match-name {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
+            text-align: left;
         }
-        .card {
-            width: 70%; /* Adjust the width as needed, or set a max-width */
-            height: 50%;
-            margin: auto; /* For horizontal centering */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: white; /* Assuming card background is white */
+        .match-name img{
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
         }
 
-        .card-header {
-            background-color: #00a2ff;
-            color: white;
-            padding: 20px;
-            text-align: center;
+        .confirmation-body h1 {
+            margin: 20px 0;
         }
 
-        .card-header h2 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        .card-header span {
-            display: block;
-            margin-top: 10px;
-            font-size: 0.9em;
-        }
-
-        .card-content {
-            padding: 20px;
-        }
-
-        .info {
+        .details {
+            color: #555; /* Darker text color for contrast */
             margin-bottom: 20px;
         }
-
-        .info-row {
+        .details-header {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .info-title {
+            justify-content: flex-start;
+            align-items: center;
+            text-align: left;
+            font-size: 1.3em;
             font-weight: bold;
-            color: #666;
+            margin-top: 30px;
         }
 
-        .info-value {
-            color: #333;
+        .details-header img {
+            width: 50px;
+            height: 50px;
+            margin: auto 20px;
         }
-
-        .info-note {
-            font-size: 0.8em;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        button {
+        .confirmation-footer {
             width: 100%;
-            height: 80px;
-            padding: 10px;
-            border: none;
-            background-color: #00a2ff;
+            margin-top: 100px;
+        }
+        .confirmation-button {
+            background-color: #46675C; /* Green background */
             color: white;
-            border-radius: 4px;
+            border: none;
+            padding: 20px 240px;
+            margin: 20px auto; /* Centering the button */
+            display: block; /* Center button */
+            font-size: 3em;
+            border-radius: 20px;
             cursor: pointer;
-            font-size: 1.5em;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase; /* Makes text uppercase */
         }
 
-        .card-content span {
-            font-size: 1.5em;
+        .confirmation-button:hover {
+            background-color: #367a36; /* Slightly darker green on hover */
         }
+    </style>
     </style>
 </head>
 <body>
 <main>
-    <div class="card-container">
-    <div class="card">
-        <div class="card-header">
-            <h2>결제완료</h2>
+    <div class="confirmation-card">
+        <div class="confirmation-header">
+            <img src="/resources/image/comp/comp_check_sample.svg"/>
+            <p class="confirmation-message">결제가 완료되었습니다.</p>
         </div>
-        <div class="card-content">
-            <div class="info">
-                <div class="info-row">
-                    <span class="info-title">거래처</span>
-                    <span class="info-value">Gmarket</span>
+        <div class="confirmation-body">
+            <div class="details">
+                <div class="details-header">
+                    <p class="detail-icon">결제 상품</p>
                 </div>
-                <div class="info-row">
-                    <span class="info-title">결제금액</span>
-                    <span class="info-value">23,240 원</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-title">결제일시</span>
-                    <span class="info-value">2017-12-26 10:52:16</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-title">결제카드</span>
-                    <span class="info-value">4518-****-****-052*</span>
+                <div class="details-content">
+                    <p class="detail-title">H-Cafe 30,000원 상품권</p>
                 </div>
             </div>
-            <div class="info-note">
-                <p>유의사항 노출 영역입니다. 본문에 실제 내용을 입력하세요.</p>
+
+            <div class="details">
+                <div class="details-header">
+                    <p class="detail-icon">금액</p>
+                </div>
+                <div class="details-content">
+                    <p class="detail-title">30,000 원</p>
+                </div>
             </div>
-            <button type="button">확인</button>
+
+            <div class="details">
+                <div class="details-header">
+                    <p class="detail-icon">받는 사람</p>
+                </div>
+                <div class="details-content">
+                    <p class="detail-title">홍길동</p>
+                </div>
+            </div>
         </div>
+
     </div>
+    <div class="confirmation-footer">
+        <button class="confirmation-button">홈으로</button>
     </div>
 </main>
 </body>
 <script>
-    window.onload = function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select the button by its class name
+        var button = document.querySelector('.confirmation-button');
 
-        insertSettleInfo();
-    };
-
-
-    function insertSettleInfo(){
-        var params = {};
-        params.matchHistNo=  sessionStorage.getItem('matchHistNo'); //매치히스토리 번호
-        params.settleAmount=sessionStorage.getItem('settleAmount'); //총결제 금액
-        params.productsNo=sessionStorage.getItem('productsNo'); //상품번호
-        params.settleMemberId=sessionStorage.getItem('settleMemberId'); //결제 하는사람
-        params.recipentMemberNo=sessionStorage.getItem('recipentMemberNo'); //결제 받는 사람
-
-        $.ajax({
-            type: 'POST',
-            url: 'https://www.h-club.site/comp/settle',
-            // url: '/hyndai/comp/settle',
-            data: JSON.stringify(params),
-            dataType: 'json',
-            contentType: 'application/json', // 추가: 요청의 Content-Type 설정
-            success: function(response){
-
-                console.log(response);
-                //정보들 초기화
-                clearSessionSettleInfo();
-            },
-            error: function(xhr, status, error){
-                // 에러 처리
-                alert("Error: " + error);
-            }
+        // Add a click event listener to the button
+        button.addEventListener('click', function() {
+            // Navigate to the /competition/matchDetail page
+            window.location.href = '/competition/';
         });
-    }
-
-    function clearSessionSettleInfo(){
-        sessionStorage.setItem('matchHistNo', '');
-        sessionStorage.setItem('settleAmount', '');
-        sessionStorage.setItem('productsNo', '');
-        sessionStorage.setItem('settleMemberId', '');
-        sessionStorage.setItem('recipentMemberNo', '');
-    }
+    });
 </script>
 </html>
