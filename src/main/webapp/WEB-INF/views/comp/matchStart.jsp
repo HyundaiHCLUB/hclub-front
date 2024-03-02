@@ -104,8 +104,8 @@
             window.location.href = '/competition/waiting';
         });
     });
+
     /**
-     * 아래 데이터들은 localStorage 에서 꺼내쓰면됨
      var matchingRequest = {
      teamNo
      memberList

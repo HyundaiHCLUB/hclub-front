@@ -7,6 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <title>Match Waiting</title>
 </head>
 <style>
@@ -78,25 +81,97 @@
             <p>매칭이 완료되면 알려드릴게요!</p>
         </div>
 
-        <div class="btn-test">
-            <button>test</button>
-        </div>
         <div>
             <button>경쟁 홈으로</button>
         </div>
     </div>
+
 </main>
 </body>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Select the button by its class name
-        var button = document.querySelector('.btn-test');
+    document.addEventListener('DOMContentLoaded', function () {
+        var stompClient = null;
 
-        // Add a click event listener to the button
-        button.addEventListener('click', function() {
-            // Navigate to the /competition/matchDetail page
-            window.location.href = '/competition/success';
-        });
+        function connect() {
+            console.log('연결 시도');
+            var socket = new WebSocket('ws://http://13.209.23.148:8082/ws');
+            //var socket = new WebSocket('ws://localhost:8082/ws');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function (frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/matches', function (message) {
+                    showMatchResult(message.body);
+                });
+                stompClient.subscribe('/topic/failure', function (message) {
+                    showFailureMessage(message.body);
+                });
+
+                // 연결 성공 후 addToQueue 호출
+                addToQueue();
+            });
+        }
+
+        function addToQueue() {
+            var teamNo = localStorage.getItem('teamNo');
+            var teamMemberNo = JSON.parse(localStorage.getItem('memberList'));
+            var matchType = localStorage.getItem('matchType');
+            var matchCapacity = localStorage.getItem('matchCapacity');
+            var teamRating = localStorage.getItem('teamRating');
+
+            console.log(teamNo);
+            console.log(teamMemberNo);
+            console.log(matchType);
+            console.log(matchCapacity);
+            console.log(teamRating);
+
+            var matchingRequest = {
+                teamNo: teamNo,
+                teamMemberNo: teamMemberNo,
+                matchType: matchType,
+                matchCapacity: matchCapacity,
+                teamRating: teamRating
+            };
+
+            // 웹소켓을 통해 데이터 전달
+            stompClient.send("/app/addTeamToQueue", {}, JSON.stringify(matchingRequest));
+        }
+
+        function showMatchResult(matchResult) {
+            console.log("매치 성공!", matchResult);
+            var teamNumbers = matchResult.split(',');
+
+            var team1No = parseInt(teamNumbers[0].trim());
+            var team2No = parseInt(teamNumbers[1].trim());
+
+            console.log("Team 1 No: " + team1No);
+            console.log("Team 2 No: " + team2No);
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8082/comp/match",
+                //url: "https://www.h-club.site/comp/match",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    team1No: team1No,
+                    team2No: team2No
+                }),
+                success: function (response) {
+                    console.log("AJAX 요청 성공", response);
+                    window.location.href = '/competition/success';
+                },
+                error: function (error) {
+                    console.error("AJAX 요청 실패", error);
+                }
+            });
+
+        }
+
+        function showFailureMessage(message) {
+            console.log("매치 실패!", message);
+        }
+
+        connect();
     });
 </script>
+
 </html>

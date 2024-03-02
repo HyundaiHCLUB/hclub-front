@@ -12,80 +12,27 @@
 
     <title>지역별 동아리</title>
     <style>
-        .section input[id="slide01"] {
+        .slider {
+            display: flex;
+            overflow: auto;
+            scroll-snap-type: x mandatory;
+        }
+
+        .slider::-webkit-scrollbar {
             display: none;
         }
 
-        .section input[id="slide02"] {
-            display: none;
-        }
-
-        .section input[id="slide03"] {
-            display: none;
-        }
-
-        .section .slidewrap {
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-
-        .section .slidelist {
-            white-space: nowrap;
-            font-size: 0;
-        }
-
-        .section .slidelist > li {
-            display: inline-block;
-            vertical-align: middle;
+        .img {
+            flex: none;
+            scroll-snap-align: start;
             width: 100%;
-            transition: all .2s;
         }
 
-        .section .slidelist > li > a {
+        .img img {
             display: block;
-            position: relative;
-        }
-
-        .section .slidelist > li > a img {
-            width: 900px;
-            height: 1000px;
-            margin-left: 40px;
-        }
-
-        .section .slidelist label {
-            position: absolute;
-            z-index: 10;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 50px;
-            cursor: pointer;
-        }
-
-        .section .slidelist .left {
-            left: 30px;
-            background: url('/resources/image/left-arrow.png') center center / 100% no-repeat;
-        }
-
-        .section .slidelist .right {
-            right: 30px;
-            background: url('/resources/image/right-arrow.png') center center / 100% no-repeat;
-        }
-
-        #slide01:checked ~ .slidewrap .slidelist > li {
-            transform: translateX(0%);
-        }
-
-        #slide02:checked ~ .slidewrap .slidelist > li {
-            transform: translateX(-100%);
-        }
-
-        #slide03:checked ~ .slidewrap .slidelist > li {
-            transform: translateX(-200%);
-        }
-
-        #slide04:checked ~ .slidewrap .slidelist > li {
-            transform: translateX(-300%);
+            width: 90%;
+            height: 90%;
+            margin-left: 70px;
         }
     </style>
     <script>
@@ -153,55 +100,31 @@
         <li><a href="#">#토너먼트</a></li>
     </div>
 
-
-    <div class="section">
-        <input type="radio" name="slide" id="slide01" checked>
-        <input type="radio" name="slide" id="slide02">
-        <input type="radio" name="slide" id="slide03">
-        <input type="radio" name="slide" id="slide04">
-
-        <div class="slidewrap">
-            <ul class="slidelist">
-                <li>
-                    <a href="/club/district/1">
-                        <label for="slide04" class="left"></label>
-                        <img src="/resources/image/gangnam.png">
-                        <label for="slide02" class="right"></label>
-                    </a>
-                </li>
-                <li>
-                    <a href="/club/district/3">
-                        <label for="slide01" class="left"></label>
-                        <img src="/resources/image/mapo.png">
-                        <label for="slide03" class="right"></label>
-                    </a>
-                </li>
-                <li>
-                    <a href="/club/district/2">
-                        <label for="slide02" class="left"></label>
-                        <img src="/resources/image/gangdong.png">
-                        <label for="slide04" class="right"></label>
-                    </a>
-                </li>
-                <li>
-                    <a href="/club/district/4">
-                        <label for="slide03" class="left"></label>
-                        <img src="/resources/image/junggu.png">
-                        <label for="slide01" class="right"></label>
-                    </a>
-                </li>
-            </ul>
+    <div class="slide-container">
+        <div class="slider">
+            <div class="img">
+                <a href="/club/district/1">
+                    <img src="/resources/image/gangnam.png">
+                </a>
+            </div>
+            <div class="img">
+                <a href="/club/district/2">
+                    <img src="/resources/image/gangdong.png">
+                </a>
+            </div>
+            <div class="img">
+                <a href="/club/district/3">
+                    <img src="/resources/image/mapo.png">
+                </a>
+            </div>
+            <div class="img">
+                <a href="/club/district/4">
+                    <img src="/resources/image/junggu.png">
+                </a>
+            </div>
         </div>
     </div>
 
-    <%--<div class="district-container">
-        <img class="left-district" src="/resources/image/gangnam.png">
-        <img class="right-district" src="/resources/image/mapo.png">
-    </div>
-    <div class="district-container">
-        <img class="left-district" src="/resources/image/gangdong.png">
-        <img class="right-district" src="/resources/image/junggu.png">
-    </div>--%>
 
     <div class="title">
         <div class="title-item">
