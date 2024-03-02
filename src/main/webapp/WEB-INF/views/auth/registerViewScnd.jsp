@@ -354,13 +354,13 @@ function registerData(){
         data: JSON.stringify(userData),
         success: function(response) { 
              console.log(response);
-          
              //회원가입 기본정보 넣기 완료시 interest정보 넣기
              registerIntrest();
         },
         error: function(xhr, status, error) {
-            console.error('회원가입 기본정보 넣기 실패:', error);
-           
+           // console.error('회원가입 기본정보 넣기 실패:', error);
+            setModalMsg("회원가입 실패.");
+            getModalMesage(); 
         }
     });
 }
@@ -400,13 +400,14 @@ function registerIntrest(){
              //alert("회원가입이 완료되었습니다.");
              //회원가입 완료시 로그인 페이지로 이동
          	 //location.href='/login/loginView' ;
-             setModalMsg("테스트 신청 메세지");
+             
+             setModalMsg("회원가입이 완료되었습니다");
              getModalMesage(); 
-             moveLoc="/login/loginView"; 
+             location.href='/login/loginView'
         },
         error: function(xhr, status, error) {
             console.error('회원가입 interset정보 넣기 실패:', error);
-            setModalMsg("회원가입 interset정보 넣기 실패하였습니다.");
+            setModalMsg("회원가입 interset정보 넣기를 실패하였습니다.");
             getModalMesage(); 
            
         }
