@@ -74,6 +74,13 @@ main {
     margin-bottom: 36px;
 }
 
+.grid-container-like {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 36px;
+}
+
 .grid-item {
     flex: 0 0 calc(50% - 20px);
     box-sizing: border-box;
