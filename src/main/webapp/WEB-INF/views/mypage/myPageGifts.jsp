@@ -22,16 +22,20 @@
         }
 
         .product-image {
-            width: auto;
-            max-height: 100%;
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .product-details {
-            padding: 20px;
+            padding-left: 30px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             width: 100%;
+            border-left: 1px solid gray;
         }
 
         .product-title {

@@ -85,7 +85,7 @@
             <span>프로필 수정</span>
         </div>
         <div class="menu" onclick="location.href='/mypage/myClubs'">
-            <i class="fa-regular fa-flag"></i>
+            <i class="fa-solid fa-flag"></i>
             <span><a>내 동아리</a></span>
         </div>
 
