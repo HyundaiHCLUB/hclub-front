@@ -17,11 +17,12 @@
 }
 
 .middle-section p {
-        margin: 5px 0;
-        color: #000000;
-        font-size: 2em;
-        font-weight: bold;
+    margin: 5px 0;
+    color: #000000;
+    font-size: 2em;
+    font-weight: bold;
 }
+
 .rounded-shape img {
     font-size: 48px;
 }
@@ -33,11 +34,13 @@
     justify-content: center;
     flex-direction: column;
 }
+
 .left-section img {
     width: 30px;
     height: 30px;
     margin-bottom: 10px;
 }
+
 .middle-section {
     flex: 2;
     display: flex;
@@ -99,13 +102,13 @@
 }
 
 .mypage-top-menu {
-    padding-left: 100px;
+    padding-left: 70px;
     margin-top: 20px;
     margin-bottom: 0;
 }
 
 
-.mypage-top-menu img{
+.mypage-top-menu img {
     width: 50px;
     height: 50px;
 }

@@ -11,6 +11,10 @@
 
 <body>
 <main>
+    <div class="mypage-top-menu">
+        <img src="/resources/image/left-arrow.png"
+             onclick="window.history.back()"/>
+    </div>
     <div class="team-image">
         <img src="" alt="팀 이미지">
     </div>
