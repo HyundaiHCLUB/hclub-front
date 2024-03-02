@@ -22,6 +22,7 @@
         .profile-pic {
             width: 250px;
             height: 250px;
+            border: 8px solid #6FC173;
             border-radius: 50%;
             margin: auto 30px;
         }
@@ -29,8 +30,9 @@
             margin-left: 20px;
         }
         .user-info h3 {
-            font-size: 1.5em;
+            font-size: 1.2em;
             margin-bottom: 20px;
+            font-weight: bold;
         }
         .user-info p {
             font-size: 1.1em;
@@ -77,6 +79,7 @@
         <div class="user-info">
             <h3 id="userName"></h3>
             <p id="userDept"></p>
+            <p id="userRating"></p>
         </div>
     </div>
     <div class="mypage-menus">
@@ -112,6 +115,7 @@
             console.log("memberID : " + memberInfo.member_id);
             $('#userName').text(memberInfo.employeeName); // 이름 설정
             $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
+            $('#userRating').text('레이팅 ' + memberInfo.memberRating);
             $('.profile-pic').attr('src', memberInfo.memberImage);
         }).catch(error => {
             console.error('사용자 정보 가져오기 실패:', error);
