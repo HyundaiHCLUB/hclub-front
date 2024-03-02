@@ -27,27 +27,27 @@
      	margin: 20px 20px 0px 0px;
      	font-size: 30px;     
      }
-     .myContent{
+     .otherContent{
      	background-color: #D5D5D5;
      	margin:20px;
      }
-      .basChat{
+     .basChat{
      	height:150px;
      	width:500px;
      	border-radius:30px;
      	padding:20px;
      }
-     .otherContent{
+     .myContent{
       	background-color: powderblue;
       	margin: 20px 300px 20px 400px;
      }
      .basDate{
      	color: #747474;
      }
-     .myDate{
+     .ohterDate{
      	margin: 0px 0px 20px 50px;
      }
-     .ohterDate{
+     .myDate{
      	margin: 20px 0px 20px 780px;
      	padding:0px;
      }
@@ -283,8 +283,11 @@
 	        obj.protocol = "sendChat";
 	        //상대 회원번호 
 	        obj.otherUseridx = otherUseridx;
-	        obj.chatMsg = $("#chatTxt").val();;
+	        obj.chatMsg = $("#chatTxt").val();
 	        doSendToWeb(JSON.stringify(obj));
+	        
+	        //메시지 보낸 후에 초기화
+	        $("#chatTxt").val('');
 	    }
 	    function setData(obj){
 	    	  //본인의 번호 session에 저장
