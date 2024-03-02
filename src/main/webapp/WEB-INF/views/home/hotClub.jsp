@@ -55,7 +55,7 @@
                                     '<div class="circle_hot_content">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
                                     '<a href="#" class="category_button">' + item.categoryName + '</a>' +
-                                    '<a href="#" class="content_button">인기</a></div>' +
+                                    '<a href="#" class="content_button">HOT</a></div>' +
                                     '<div class="circle_hot_content" style="margin-top: 0px;"><svg style="margin-top: 16px;" width="44" height="44" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
                                     '<rect width="36" height="36" fill="url(#pattern0)"/>' +
                                     '<defs>' +
