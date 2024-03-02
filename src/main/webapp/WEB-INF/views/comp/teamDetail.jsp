@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="stylesheet" href="/resources/css/compCreateTeamThree.css">
+    <link rel="stylesheet" href="/resources/css/teamDetail.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -36,7 +36,7 @@
                     <img src="/resources/image/comp/comp_calendar.png">
                     <h3>일시</h3>
                 </div>
-                <p>2023년 01월 16일 18:30</p>
+                <p></p>
             </div>
 
             <div class="detail-component-rating">
@@ -44,7 +44,7 @@
                     <img src="/resources/image/comp/rating.svg">
                     <h3>레이팅</h3>
                 </div>
-                <p>1450</p>
+                <p></p>
             </div>
         </div>
         <!-- 게임 종류 & 상품-->
@@ -54,7 +54,7 @@
                     <img src="/resources/image/comp/comp_gameType.png">
                     <h3>게임 종류</h3>
                 </div>
-                <p>3 vs 3</p>
+                <p>2 vs 2</p>
             </div>
 
             <div class="detail-component-goods">
@@ -96,11 +96,12 @@
                     console.log(response);
                     // 응답받은 데이터로 DOM을 업데이트합니다.
                     $('.team-image img').attr('src', response.data.teamImage);
+                    $('.team-detail img').attr('src', response.data.matchType);
                     $('.team-detail h2').text(response.data.teamName);
                     $('.detail-component-loc p').text(response.data.teamLoc);
                     $('.detail-component-date p').text(response.data.matchAt);
                     $('.detail-component-rating p').text(response.data.teamRating);
-                    $('.detail-component-gametype p').text(response.data.matchCapacity);
+                    $('.detail-component-gametype p').text(response.data.teamCapacity);
                     $('.detail-component-goods p').text(response.data.teamGoods);
 
                     // 팀원 정보를 업데이트합니다.

@@ -1,18 +1,119 @@
-.detail-top-menu {
-  padding-left: 100px;
-  margin-bottom: 0;
+@charset "UTF-8";
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.team-image {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.team-image img {
+  width: 85%;
+  height: 85%;
+}
+
+.event-details {
+  width: 90%;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px auto;
+}
+
+.event-details h2, .event-details p {
+  margin: 10px 0; /* 위아래 여백 수정 */
+}
+
+.event-details h2 {
+  color: #333; /* 제목 색상 설정 */
+  font-size: 3em; /* 제목 글꼴 크기 설정 */
+}
+
+.event-details p {
+  color: #666; /* 문단 색상 설정 */
+  font-size: 24px; /* 문단 글꼴 크기 설정 */
+}
+
+.team-detail { /* 아이콘과 팀명 가로로 배치 */
+  display: flex;
+  align-items: center;
+  gap: 30px; /* 아이콘과 <h2> 간격*/
+  padding-left: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.team-detail img {
+  width: 50px; /* 이미지 너비 조절 */
+  height: auto; /* 이미지 높이를 자동으로 조절하여 비율 유지 */
+}
+
+.detail-component-header {
   margin-top: 20px;
   display: flex;
+  align-items: center;
+  font-size: 2em;
+  gap: 10px;
+}
+
+/* Detail components container 스타일 */
+.details-container {
+  display: flex;
+  justify-content: space-between;
   align-items: flex-start;
+  margin: 30px auto;
+  gap: 20px; /* 컴포넌트 간의 간격 조정 */
 }
-.detail-top-menu img {
-  width: 50px;
-  height: 50px;
+
+/* Detail component 개별 스타일 */
+.detail-component {
+  flex-basis: 45%; /* flex 컨테이너 내에서 기본 크기 설정 */
+  border-radius: 10px;
 }
-.detail-top-menu span {
-  font-size: 50px;
-  margin-left: 20px;
-  margin-top: -16px;
+
+.detail-component-header {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 아이콘과 텍스트 간격 */
+}
+
+.detail-component-header img {
+  width: 48px; /* 헤더 아이콘 크기 조절 */
+  height: 48px;
+}
+
+.detail-component h3 {
+  font-size: 1.2em; /* 헤더 텍스트 크기 조절 */
+  margin: 0; /* 기본 마진 제거 */
+}
+
+.detail-component p {
+  margin-top: 10px; /* 헤더와 본문 사이의 상단 여백 */
+  color: #666;
+  font-size: 2em; /* 본문 텍스트 크기 조절 */
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.team-button {
+  width: 85%;
+  font-size: 2em;
+  padding: 20px;
+  margin-top: 100px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: #46675C;
 }
 
 /*# sourceMappingURL=teamDetail.css.map */
