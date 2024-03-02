@@ -41,8 +41,8 @@
         $(document).ready(function () {
             function getHotClubList() {
                 $.ajax({
-                    url: "http://localhost:8081/clubs/like",
-                    //url: "https://www.h-club.site/clubs/like",
+                    //url: "http://localhost:8081/clubs/like",
+                    url: "https://www.h-club.site/clubs/like",
                     method: "GET",
                     success: function (response) {
                         if (response.success) {
