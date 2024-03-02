@@ -85,14 +85,14 @@
     var teamNo = ${teamNo}; // 컨트롤러에서 받은 팀 번호
     console.log('teamNo : ' + teamNo);
 
-    $(document).ready(function() {
-        $(document).ready(function() {
+    $(document).ready(function () {
+        $(document).ready(function () {
             // API 요청을 보냅니다.
             $.ajax({
                 url: 'https://www.h-club.site/comp/' + teamNo,
                 type: 'GET',
                 dataType: 'json',
-                success: function(response) {
+                success: function (response) {
                     console.log(response);
                     // 응답받은 데이터로 DOM을 업데이트합니다.
                     $('.team-image img').attr('src', response.data.teamImage);
@@ -100,7 +100,7 @@
                     $('.detail-component-loc p').text(response.data.teamLoc);
                     $('.detail-component-date p').text(response.data.matchAt);
                     $('.detail-component-rating p').text(response.data.teamRating);
-                    $('.detail-component-gametype p').text(response.data.matchType);
+                    $('.detail-component-gametype p').text(response.data.matchCapacity);
                     $('.detail-component-goods p').text(response.data.teamGoods);
 
                     // 팀원 정보를 업데이트합니다.
@@ -108,11 +108,11 @@
                     var teamMembersContainer = $('.detail-component-team-mate');
                     teamMembersContainer.find('p').remove(); // 기존의 팀원 목록을 제거합니다.
                     // 새로운 팀원 목록을 추가합니다.
-                    teamMembers.forEach(function(member) {
+                    teamMembers.forEach(function (member) {
                         teamMembersContainer.append($('<p>').text(member.memberName));
                     });
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     // 오류 처리
                     console.error('팀 정보를 가져오는데 실패했습니다: ' + error);
                 }

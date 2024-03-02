@@ -58,6 +58,8 @@
         <div class="game-type-select-container">
             <img src="/resources/image/comp/gametype.png" alt="">
             <span> 게임 종류를 선택하세요.</span>
+            
+
         </div>
     </div>
     <div class="game-type-num">

@@ -28,10 +28,10 @@
     <div class="half-screen-line"></div>
     <div class="custom-select-container">
         <select class="sport-select">
-            <option value="soccer">축구</option>
-            <option value="basketball">농구</option>
-            <option value="bowling">볼링</option>
-            <option value="dart">다트</option> <!-- option3이 중복되어 있어서 수정함 -->
+            <option value="SOCCER">축구</option>
+            <option value="BASKETBALL">농구</option>
+            <option value="BOWLING">볼링</option>
+            <option value="DART">다트</option> <!-- option3이 중복되어 있어서 수정함 -->
         </select>
 
         <!-- 추가된 custom-select 2개 -->
@@ -59,7 +59,7 @@
     </div>
 
     <div class="matches">
-        
+
 
     </div>
 
@@ -137,38 +137,44 @@
         matchTypeSelect.innerHTML = '<option value="">인원 선택</option>';
 
         // '볼링'이 선택된 경우, 새로운 옵션을 추가합니다.
-        if (this.value === 'soccer') {
-            var options = ['3 vs 3', '5 vs 5', '6 vs 6', '11 vs 11'];
-            options.forEach(function (option) {
+        if (this.value === 'SOCCER') {
+            let options = ['3 vs 3', '5 vs 5', '6 vs 6', '11 vs 11'];
+            let values = [3, 5, 6, 11];
+            options.forEach(function (option, index) {
                 var newOption = document.createElement('option');
-                newOption.value = option;
+                newOption.value = values[index];
                 newOption.text = option;
                 matchTypeSelect.appendChild(newOption);
             });
         }
-        if (this.value === 'basketball') {
-            var options = ['1 vs 1', '2 vs 2', '3 vs 3', '5 vs 5'];
-            options.forEach(function (option) {
+        if (this.value === 'BASKETBALL') {
+            let options = ['1 vs 1', '2 vs 2', '3 vs 3', '5 vs 5'];
+            let values = [1, 2, 3, 5];
+            options.forEach(function (option, index) {
                 var newOption = document.createElement('option');
-                newOption.value = option;
+                newOption.value = values[index];
                 newOption.text = option;
                 matchTypeSelect.appendChild(newOption);
             });
         }
-        if (this.value === 'bowling') {
-            var options = ['1 vs 1', '2 vs 2', '3 vs 3', '4 vs 4'];
-            options.forEach(function (option) {
+
+        if (this.value === 'BOWLING') {
+            let options = ['1 vs 1', '2 vs 2', '3 vs 3', '4 vs 4'];
+            let values = [1, 2, 3, 4];
+            options.forEach(function (option, index) {
                 var newOption = document.createElement('option');
-                newOption.value = option;
+                newOption.value = values[index];
                 newOption.text = option;
                 matchTypeSelect.appendChild(newOption);
             });
         }
-        if (this.value === 'dart') {
-            var options = ['1 vs 1', '2 vs 2', '3 vs 3', '4 vs 4'];
-            options.forEach(function (option) {
+
+        if (this.value === 'DART') {
+            let options = ['1 vs 1', '2 vs 2', '3 vs 3', '4 vs 4'];
+            let values = [1, 2, 3, 4];
+            options.forEach(function (option, index) {
                 var newOption = document.createElement('option');
-                newOption.value = option;
+                newOption.value = values[index];
                 newOption.text = option;
                 matchTypeSelect.appendChild(newOption);
             });
@@ -179,6 +185,9 @@
         const dateSelect = document.querySelector('.date-select');
         const today = new Date();
         const dayInMillis = 24 * 60 * 60 * 1000; // 하루를 밀리초로 변환
+        let noSelectionOption = new Option("날짜 선택", "");
+        dateSelect.add(noSelectionOption);
+
         addDateOption(today, dateSelect);
         for (let i = 1; i <= 30; i++) {
             const dateOption = new Date(today);
@@ -218,6 +227,84 @@
         window.location.href = "/competition/teamDetail/" + teamNo;
     }
 
+
+    $(document).ready(function () {
+        const sportSelect = $('.sport-select');
+        const dateSelect = $('.date-select');
+        const matchTypeSelect = $('.match-type-select');
+        const orderSelect = $('.order-select');
+        const searchInput = $('.search-input');
+        const searchIcon = $('.search-icon');
+
+        function parseDate(dateStr) {
+            const currentYear = new Date().getFullYear(); // Assuming the year is the current year
+            const parts = dateStr.match(/(\d+)월 (\d+)일/);
+            if (parts) {
+                return currentYear + '/' + parts[1].padStart(2, '0') + '/' + parts[2].padStart(2, '0');
+            }
+            return '';
+        }
+
+        function fetchDataAndCreateMatches(gameType, date, players, order, keyword) {
+            let requestUrl = 'https://www.h-club.site/comp/list?gameType=' + gameType + '&date=' + date + '&players=' + players + '&sortOption=' + order + '&keyword=' + keyword;
+
+            $.ajax({
+                url: requestUrl,
+                method: "GET",
+                success: function (response) {
+                    if (response.success) {
+                        var data = response.data;
+
+                        $(".matches").empty();
+                       
+                        data.forEach(function (item) {
+                            var matchHTML =
+                                '<div class="rounded-shape" onclick="navigateToTeamDetail(\'' + item.teamNo + '\')">' +
+                                '<div class="left-section">' +
+                                '<img src="' + item.matchType + '" alt="" />' +
+                                '<p>' + item.teamCapacity + '</p>' +
+                                '</div>' +
+                                '<div class="middle-section">' +
+                                '<div class="middle-section-up">' +
+                                '<p>' + item.teamName + '</p>' +
+                                '</div>' +
+                                '<div class="middle-section-down">' +
+                                '<p>' + item.teamLoc + '</p>' +
+                                '<p style="color: #717070">Rating: ' + item.teamRating + '점</p>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="right-section">' +
+                                '<p>' + item.matchAt + '</p>' +
+                                '</div>' +
+                                '</div>';
+
+                            $(".matches").append(matchHTML);
+                        });
+                    } else {
+                        console.error("Error:", response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching data:", error);
+                }
+            });
+        }
+
+        // Initially fetch and display matches without any filters
+        fetchDataAndCreateMatches('', '', '', '', '');
+
+        // Event listener for the search icon click
+        searchIcon.click(function () {
+            let selectedGameType = sportSelect.val();
+            let selectedDate = parseDate(dateSelect.val());
+            let selectedPlayers = matchTypeSelect.val();
+            let selectedOrder = orderSelect.val();
+            let searchKeyword = encodeURIComponent(searchInput.val());
+
+
+            fetchDataAndCreateMatches(selectedGameType, selectedDate, selectedPlayers, selectedOrder, searchKeyword);
+        });
+    });
 
 </script>
 </html>
