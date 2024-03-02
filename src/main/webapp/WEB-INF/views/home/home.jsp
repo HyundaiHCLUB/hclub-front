@@ -36,7 +36,41 @@
                 document.querySelector('footer').classList.remove('fixed-bottom');
             }
         });
+    </script>
+    <script>
+        function getUserInfo(accessToken) {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    type: 'GET',
+                    // url: 'http://localhost:8080/auth/mypage/info',   // 로컬
+                    url: 'https://www.h-club.site/auth/mypage/info', // 배포판
+                    headers: {
+                        'Authorization': 'Bearer ' + accessToken, // accessToken 사용
+                    },
+                    success: function (response) {
+                        console.log('사용자 정보:', response);
+                        localStorage.setItem("name",response.employeeName);
+                        resolve(response); // 성공 시 response 객체를 resolve 합니다.
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('사용자 정보 가져오기 실패:', error);
+                        reject(error); // 실패 시 error 객체를 reject 합니다.
+                    }
+                });
+            })
+                .then(response => {
+                    const subTitle = document.getElementById('sub-title');
+                    const name = localStorage.getItem('name');
+                    subTitle.textContent = name + '님을 위한 추천 동아리';
+                    return response;
+                })
+                .catch(error => {
+                    console.error('에러 발생:', error);
+                });
 
+        }
+        ccessTokenInfo = localStorage.getItem("accessTokenInfo");
+        getUserInfo(accessTokenInfo);
     </script>
 </head>
 <body>
@@ -115,13 +149,13 @@
         </div>
     </div>
 
-    <div class="title">
+    <div class="title" style="width: 1100px">
         <div class="title-item">
-            <p class="sub-title">혜연님을 위한 추천 동아리</p>
+            <p class="sub-title" id="sub-title"></p>
         </div>
-        <div class="title-item">
+        <%--<div class="title-item">
             <p class="more">더보기</p>
-        </div>
+        </div>--%>
     </div>
 
     <div class="grid-container">

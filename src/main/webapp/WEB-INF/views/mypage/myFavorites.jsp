@@ -1,87 +1,131 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <html>
 <head>
-    <title>받은 선물함</title>
-    <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/mypage.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>즐겨찾기</title>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+        var headerHeight = document.querySelector('header').offsetHeight;
+        var footerHeight = document.querySelector('footer').offsetHeight;
+
+        window.addEventListener('scroll', function() {
+            var scrollY = window.scrollY || document.documentElement.scrollTop;
+
+            if (scrollY > headerHeight) {
+                document.body.style.paddingTop = headerHeight + 'px';
+                document.querySelector('header').classList.add('fixed');
+            } else {
+                document.body.style.paddingTop = 0;
+                document.querySelector('header').classList.remove('fixed');
+            }
+
+            var scrollBottom = window.innerHeight + scrollY;
+            var documentHeight = document.documentElement.offsetHeight;
+            if (documentHeight - scrollBottom < footerHeight) {
+                document.body.style.paddingBottom = footerHeight + 'px';
+                document.querySelector('footer').classList.add('fixed-bottom');
+            } else {
+                document.body.style.paddingBottom = 0;
+                document.querySelector('footer').classList.remove('fixed-bottom');
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subTitle = document.getElementById('sub-title');
+            const name = localStorage.getItem('name');
+            subTitle.innerHTML = name+`님의 즐겨찾기 <i class="fa-solid fa-heart" style="color: #EF7353;"></i>`;
+
+        });
+    </script>
     <style>
-        .product-card {
-            display: flex;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 30px auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            height: 220px;
-            width: 80%;
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            margin-left: 50px;
         }
 
-        .product-image {
-            width: auto;
-            max-height: 100%;
-        }
-
-        .product-details {
-            padding: 20px;
+        .category {
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
-            width: 100%;
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            width: 70%;
+            transition: background-color 0.3s, border-width 0.3s;
+
+        }
+        .category i {
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
-        .product-title {
-            font-size: 2em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
+        .category span {
+            font-size: 24px;
         }
 
-        .product-date {
-            font-size: 1em;
-            color: #666;
+        .category:hover {
+            background-color: #F1F5E8;
         }
 
-        .product-price {
-            font-size: 1.5em;
-            color: #333;
-            margin-top: 5px;
-        }
-
-        .mypage-header i {
-            color: #EF7353;
-        }
     </style>
-</head>
-<body>
-<main>
-    <div class="mypage-top-menu">
-        <img src="/resources/image/left-arrow.png"
-             onclick="window.history.back()"/>
-    </div>
-    <div class="mypage-header">
-        <i class="fa-solid fa-heart"></i>
-        <h1>즐겨찾기</h1>
-        <i class="fa-solid fa-heart"></i>
-    </div>
 
-    <!-- 샘플 데이터 시작-->
-    <div class="product-card">
-        <img src="/resources/image/sample3.png" alt="사진" class="product-image">
-        <div class="product-details">
-            <div class="product-title">난쏘공</div>
-            <div class="product-date">데이터 1</div>
-            <div class="product-price">데이터 2</div>
+</head>
+
+<body>
+<main class="main-container">
+
+    <div class="grid-container">
+        <div class="category">
+            <i class="fas fa-paint-brush"></i>
+            <span>문화, 예술</span>
+        </div>
+        <div class="category">
+            <i class="fas fa-bicycle"></i>
+            <span>액티비티</span>
+        </div>
+        <div class="category">
+            <i class="fas fa-utensils"></i>
+            <span>요리</span>
+        </div>
+        <div class="category">
+            <i class="fas fa-plane"></i>
+            <span>여행</span>
+        </div>
+        <div class="category">
+            <i class="fas fa-gamepad"></i>
+            <span>게임</span>
+        </div>
+        <div class="category">
+            <i class="fas fa-book"></i>
+            <span>자기계발</span>
+        </div>
+        <div class="category">
+            <i class="fas fa-language"></i>
+            <span>외국어</span>
+        </div>
+        <div class="category">
+            <i class="fas fa-chart-line"></i>
+            <span>재테크</span>
         </div>
     </div>
-    <!-- 샘플 데이터 끝-->
 
-
-
+    <div class="title">
+        <div class="title-item">
+            <p class="sub-title" id="sub-title"></p>
+        </div>
+    </div>
 </main>
 </body>
 </html>
