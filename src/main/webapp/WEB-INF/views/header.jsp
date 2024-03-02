@@ -13,7 +13,7 @@
 <body>
 <nav style="height:82px;display: flex; justify-content: center" class="navbar">
     <div class="navbar_logo">
-        <a href="/"><img src="/resources/image/logo.png" style="height: 100px;margin-top: -14px"></a>
+        <a href="/"><img src="/resources/image/hlogo.png" style="height: 100px;margin-top: -14px"></a>
     </div>
     <div class=" navbar_icons">
         <%--        <li><i class="fa-solid fa-magnifying-glass fa-3x"></i></li>--%>
