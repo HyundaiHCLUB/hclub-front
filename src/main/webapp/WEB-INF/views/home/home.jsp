@@ -38,6 +38,47 @@
         });
     </script>
     <script>
+        $(document).ready(function () {
+            function getHotClubList() {
+                $.ajax({
+                    //url: "http://localhost:8081/clubs/like",
+                    url: "https://www.h-club.site/clubs/like",
+                    method: "GET",
+                    success: function (response) {
+                        if (response.success) {
+                            var data = response.data;
+                            $(".hotClubs").empty();
+                            data.forEach(function (item) {
+                                var clubHTML =
+                                    '<div class="grid-container">' +
+                                    '<div class="grid-hot-item">' +
+                                    '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                    '</div>' +
+                                    '<div class="grid-hot-item">' +
+                                    '<div class="circle_hot_content">' +
+                                    '<p class="circle_name">' + item.clubName + '</p>' +
+                                        '<a href="#" class="category_button">'+item.categoryName+'</a>'+
+                                    '<a href="#" class="content_button">인기</a>'+
+                                    '</div>' +
+                                    '<p class="circle_hot_loc">서울특별시 서초구</p>' +
+                                    '<i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>' +
+                                    '</div></div>'
+                                    ;
+                                $(".hotClubs").append(clubHTML);
+                            });
+                        } else {
+                            console.error("Error:", response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error fetching data:", error);
+                    }
+                });
+            }
+            getHotClubList();
+        });
+    </script>
+    <script>
         function getUserInfo(accessToken) {
             return new Promise((resolve, reject) => {
                 $.ajax({
@@ -204,7 +245,10 @@
         </div>
     </div>
 
-    <div class="grid-container">
+    <div class="hotClubs">
+    </div>
+
+   <%-- <div class="grid-container">
         <div class="grid-hot-item">
             <img class="circle_recommend" src="/resources/image/sample2.png" alt="Example Image">
         </div>
@@ -259,7 +303,7 @@
             <p class="circle_hot_loc">서울특별시 서초구</p>
             <i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>
         </div>
-    </div>
+    </div>--%>
 </main>
 </body>
 </html>
