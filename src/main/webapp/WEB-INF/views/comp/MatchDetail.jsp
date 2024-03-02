@@ -355,8 +355,8 @@
                     };
                     console.log('configTeamDTO -> ', configTeamDTO);
                     $.ajax({
-                        // url: 'https://www.h-club.site/comp/team/member',
-                        url: 'http://localhost:8082/comp/team/member',
+                        url: 'https://www.h-club.site/comp/team/member',
+                        // url: 'http://localhost:8082/comp/team/member',
                         type: 'POST',
                         contentType: 'application/json', // 서버로 보내는 데이터 타입을 JSON으로 설정
                         data: JSON.stringify(configTeamDTO),
