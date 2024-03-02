@@ -36,26 +36,26 @@
                 <div class="modal-body">
                     <p id ="modalMsg" style="font-size: 32px;font-weight: bold; text-align: center;">메세지</p>
                 </div>
-                    <a onclick="moveLocation()">
+                    <a>
                         <div style="text-align: center;margin-bottom:20px;">
-                            <svg width="347" height="48" viewBox="0 0 347 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g filter="url(#filter0_d_662_7594)">
-                                    <rect x="2" y="1" width="343" height="44" rx="8" fill="#EF7353"/>
-                                    <rect x="2.5" y="1.5" width="342" height="43" rx="7.5" stroke="#D92D20"/>
-                                    <path d="M162.5 22.376H164.628V24.504H162.5V22.376ZM168.772 15.624H170.9V25.704H168.772V15.624ZM170.148 19.848H172.756V21.592H170.148V19.848ZM159.204 25.416L158.964 23.768C161.62 23.768 165.124 23.752 168.116 23.384L168.276 24.84C165.188 25.368 161.796 25.4 159.204 25.416ZM160.852 26.296H170.9V30.424H168.772V27.928H160.852V26.296ZM159.348 16.696H167.748V18.216H159.348V16.696ZM163.556 18.568C165.732 18.568 167.156 19.416 167.156 20.776C167.156 22.136 165.732 22.984 163.556 22.984C161.364 22.984 159.94 22.136 159.94 20.776C159.94 19.416 161.364 18.568 163.556 18.568ZM163.556 19.96C162.548 19.96 161.956 20.216 161.956 20.776C161.956 21.304 162.548 21.592 163.556 21.592C164.548 21.592 165.14 21.304 165.14 20.776C165.14 20.216 164.548 19.96 163.556 19.96ZM162.5 15.496H164.628V17.384H162.5V15.496ZM184.035 15.624H186.179V26.264H184.035V15.624ZM176.307 28.472H186.547V30.168H176.307V28.472ZM176.307 25.192H178.435V29.16H176.307V25.192ZM178.115 16.552C180.387 16.552 182.131 18.12 182.131 20.312C182.131 22.488 180.387 24.072 178.115 24.072C175.843 24.072 174.083 22.488 174.083 20.312C174.083 18.12 175.843 16.552 178.115 16.552ZM178.115 18.392C177.011 18.392 176.163 19.096 176.163 20.312C176.163 21.512 177.011 22.216 178.115 22.216C179.203 22.216 180.051 21.512 180.051 20.312C180.051 19.096 179.203 18.392 178.115 18.392Z" fill="white"/>
-                                </g>
-                                <defs>
-                                    <filter id="filter0_d_662_7594" x="0" y="0" width="347" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                        <feOffset dy="1"/>
-                                        <feGaussianBlur stdDeviation="1"/>
-                                        <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0"/>
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_662_7594"/>
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_662_7594" result="shape"/>
-                                    </filter>
-                                </defs>
-                            </svg>
+                         <svg id="cnfrmBtn" data-dismiss="modal" aria-label="Close" width="347" height="48" viewBox="0 0 347 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+						    <g filter="url(#filter0_d_662_7594)">
+						        <rect x="2" y="1" width="343" height="44" rx="8" fill="#EF7353"/>
+						        <rect x="2.5" y="1.5" width="342" height="43" rx="7.5" stroke="#D92D20"/>
+						        <path d="M162.5 22.376H164.628V24.504H162.5V22.376ZM168.772 15.624H170.9V25.704H168.772V15.624ZM170.148 19.848H172.756V21.592H170.148V19.848ZM159.204 25.416L158.964 23.768C161.62 23.768 165.124 23.752 168.116 23.384L168.276 24.84C165.188 25.368 161.796 25.4 159.204 25.416ZM160.852 26.296H170.9V30.424H168.772V27.928H160.852V26.296ZM159.348 16.696H167.748V18.216H159.348V16.696ZM163.556 18.568C165.732 18.568 167.156 19.416 167.156 20.776C167.156 22.136 165.732 22.984 163.556 22.984C161.364 22.984 159.94 22.136 159.94 20.776C159.94 19.416 161.364 18.568 163.556 18.568ZM163.556 19.96C162.548 19.96 161.956 20.216 161.956 20.776C161.956 21.304 162.548 21.592 163.556 21.592C164.548 21.592 165.14 21.304 165.14 20.776C165.14 20.216 164.548 19.96 163.556 19.96ZM162.5 15.496H164.628V17.384H162.5V15.496ZM184.035 15.624H186.179V26.264H184.035V15.624ZM176.307 28.472H186.547V30.168H176.307V28.472ZM176.307 25.192H178.435V29.16H176.307V25.192ZM178.115 16.552C180.387 16.552 182.131 18.12 182.131 20.312C182.131 22.488 180.387 24.072 178.115 24.072C175.843 24.072 174.083 22.488 174.083 20.312C174.083 18.12 175.843 16.552 178.115 16.552ZM178.115 18.392C177.011 18.392 176.163 19.096 176.163 20.312C176.163 21.512 177.011 22.216 178.115 22.216C179.203 22.216 180.051 21.512 180.051 20.312C180.051 19.096 179.203 18.392 178.115 18.392Z" fill="white"/>
+						    </g>
+						    <defs>
+						        <filter id="filter0_d_662_7594" x="0" y="0" width="347" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+						            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+						            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+						            <feOffset dy="1"/>
+						            <feGaussianBlur stdDeviation="1"/>
+						            <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0"/>
+						            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_662_7594"/>
+						            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_662_7594" result="shape"/>
+						        </filter>
+						    </defs>
+						</svg>
                         </div>
                     </a>
             </div>
@@ -63,8 +63,10 @@
     </div>
  </main>
 <script>
-//모달창 확인 클릭시 이동할 위치를 지정한다 => 호출할 위치에서 이동 location을 지정함.
-let moveLoc=""; 
+
+//모달창 확인 클릭시 이동 여부를 지정한다 => 기본 Default는 Y이고, 아닐시에만 N
+let moveYn ="N";
+
 //모달창 호출시 띄울 메세지를 출력한다. =>호출할 위치에서 메세지 셋팅.
 //setModalMsg("테스트 신청 메세지");
 //모달창을 click Trigger을 건다. => 호출할 위치에서 셋팅함.
@@ -75,12 +77,18 @@ let moveLoc="";
 function setModalMsg(msg){
 	$("#modalMsg").text(msg);
 }
-function moveLocation(){
-	location.href = moveLoc;
-}
+
 function getModalMesage(){
 	$("[data-toggle='modal']").trigger("click");
 }
+
+$(window).on("load", function() {
+    $("#cnfrmBtn").on("click", function(e) {
+        e.preventDefault();
+        console.log("submit 방지 테스트");
+    });
+});
+
 </script>
 </body>
 </html>
