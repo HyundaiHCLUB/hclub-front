@@ -285,17 +285,20 @@
     var matchHistorytNo = ${matchHistoryNo};
     var locationInformation; // 장소 저장할 변수
     let accessToken = localStorage.getItem("accessTokenInfo");
+    var memberId;
     var teamNo1;
     var teamNo2;
 
 	$(document).ready(function() {
         $('.team:eq(0) .team-logo').addClass('highlighted-team');
         $('.team:eq(1) .team-logo').addClass('not-highlighted-team');
+
         $('.btn-match-start').click(function(e) {
             e.preventDefault();
             // JWT 를 사용해 사용자 정보 가져오기
             getUserInfo(accessToken).then(memberInfo => {
                 console.log("memberID : " + memberInfo.member_id);
+                memberId = memberInfo.member_id;
                 $('#userName').text(memberInfo.employeeName); // 이름 설정
                 $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
                 $('.profile-pic').attr('src', memberInfo.memberImage);
@@ -343,10 +346,24 @@
                 console.log('Error : ' + error);
             }
         });
-
-        $('.btn-match-start').click(function(e) {
-
-        });
+        // 현재 화면에 접속한 사용자가 속한 팀 번호 알아내기
+        var configTeamDTO = {
+            team1No : teamNo1,
+            team2No : teamNo2,
+            memberId : memberId
+        };
+        console.log('configTeamDTO -> ' + configTeamDTO);
+        $.ajax({
+            url: 'https://www.h-club.site/comp/team/member',
+            type: 'POST',
+            contentType: 'application/json', // 서버로 보내는 데이터 타입을 JSON으로 설정
+            data: JSON.stringify(configTeamDTO),
+            success : function (response) {
+                console.log(response);
+            }, error : function(error) {
+                console.error(error);
+            }
+        })
 
         // 페이지 DOM 업데이트 함수
         function updateMatchDetails(data) {
