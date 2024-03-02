@@ -94,7 +94,7 @@
 
         function connect() {
             console.log('연결 시도');
-            var socket = new WebSocket('wss://http://13.209.23.148/ws');
+            var socket = new WebSocket('wss://13.209.23.148/ws');
             //var socket = new WebSocket('ws://localhost:8082/ws');
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function (frame) {
