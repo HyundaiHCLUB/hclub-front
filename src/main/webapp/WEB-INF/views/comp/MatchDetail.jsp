@@ -333,37 +333,54 @@
                 matchHistorytNo = response.data.matchHistoryNo;
                 localStorage.setItem("otherUserNo", response.data.team2.leader.memberNo); // 채팅 상대방 번호
                 localStorage.setItem("otherUserName", response.data.team2.leader.memberId); // 채팅 상대방 이름
+                temaNo1 = response.data.team1.teamNo;
+                temaNo2 = response.data.team2.teamNo;
                 console.log(response);
                 console.log('otherUserNo : ' + response.data.team2.leader.memberNo);
                 console.log('otherUserId : ' + response.data.team2.leader.memberId);
                 console.log("matchHistNo -> " + matchHistorytNo);
-                temaNo1 = response.data.team1.teamNo;
-                temaNo2 = response.data.team2.teamNo;
+                console.log("teamNo1 -> " + response.data.team1.teamNo);
+                console.log("teamNo2 -> " + response.data.team2.teamNo);
                 // 버튼에 data-team-no 속성 설정
                 $('.btn-team-detail').eq(0).attr('data-team-no', temaNo1);
                 $('.btn-team-detail').eq(1).attr('data-team-no', temaNo2);
+                // 현재 화면에 접속한 사용자가 속한 팀 번호 알아내기
+                getUserInfo(accessToken).then(memberInfo => {
+                    memberId = memberInfo.member_id;
+                    var userTeamNo = memberInfo.teamNo; // 사용자의 팀 번호를 가져옵니다.
+                    var configTeamDTO = {
+                        team1No : response.data.team1.teamNo,
+                        team2No : response.data.team2.teamNo,
+                        memberId : memberId
+                    };
+                    console.log('configTeamDTO -> ', configTeamDTO);
+                    $.ajax({
+                        // url: 'https://www.h-club.site/comp/team/member',
+                        url: 'http://localhost:8082/comp/team/member',
+                        type: 'POST',
+                        contentType: 'application/json', // 서버로 보내는 데이터 타입을 JSON으로 설정
+                        data: JSON.stringify(configTeamDTO),
+                        success : function (response) {
+                            userTeamNo = response;
+                            console.log('userTeamNo => ' + userTeamNo);
+                        }, error : function(error) {
+                            console.error(error);
+                        }
+                    })
+                    if(userTeamNo === teamNo1) {
+                        $('.team:eq(0) .team-logo').addClass('highlighted-team');
+                        $('.team:eq(1) .team-logo').removeClass('highlighted-team').addClass('not-highlighted-team');
+                    } else if(userTeamNo === teamNo2) {
+                        $('.team:eq(1) .team-logo').addClass('highlighted-team');
+                        $('.team:eq(0) .team-logo').removeClass('highlighted-team').addClass('not-highlighted-team');
+                    }
+
+                });
             }, error: function (error){
                 console.log('Error : ' + error);
             }
         });
-        // 현재 화면에 접속한 사용자가 속한 팀 번호 알아내기
-        var configTeamDTO = {
-            team1No : teamNo1,
-            team2No : teamNo2,
-            memberId : memberId
-        };
-        console.log('configTeamDTO -> ' + configTeamDTO);
-        $.ajax({
-            url: 'https://www.h-club.site/comp/team/member',
-            type: 'POST',
-            contentType: 'application/json', // 서버로 보내는 데이터 타입을 JSON으로 설정
-            data: JSON.stringify(configTeamDTO),
-            success : function (response) {
-                console.log(response);
-            }, error : function(error) {
-                console.error(error);
-            }
-        })
+
 
         // 페이지 DOM 업데이트 함수
         function updateMatchDetails(data) {
