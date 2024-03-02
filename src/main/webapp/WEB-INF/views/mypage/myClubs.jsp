@@ -22,9 +22,11 @@
         }
 
         .product-image {
-            height: 200px; /* Example fixed height */
-            width: 50%;
-            object-fit: cover;
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .product-details {
@@ -33,6 +35,7 @@
             flex-direction: column;
             justify-content: center;
             width: 100%;
+            border-left: 1px solid gray;
         }
 
         .product-title {
@@ -80,6 +83,9 @@
             font-weight: bold;
             font-size: 1.2em;
         }
+        .mypage-header i {
+            color: #F4B5B7;
+        }
     </style>
 </head>
 <body>
@@ -90,9 +96,9 @@
     </div>
 
     <div class="mypage-header">
-        <i class="fa-regular fa-flag"></i>
+        <i class="fa-solid fa-flag"></i>
         <h1>내 동아리</h1>
-        <i class="fa-regular fa-flag"></i>
+        <i class="fa-solid fa-flag"></i>
     </div>
     <!-- 가입 완료된 동아리 -->
     <div class="mypage-subheader">
@@ -100,35 +106,14 @@
     </div>
     <div class="approved-clubs">
         <!-- 샘플데이터 -->
-        <div class="product-card">
-            <img src="/resources/image/sample3.png" alt="사진" class="product-image">
-            <div class="product-details">
-                <div class="product-title">난쏘공</div>
-                <div class="product-date"> 개설일 </div>
-                <div class="product-price">2023-04-12</div>
-            </div>
-            <div class="product-category">
-                <div class="category-title">카테고리명</div>
-            </div>
-        </div>
+
     </div>
    <!-- 승인 대기중인 동아리-->
     <div class="mypage-subheader">
         <h2>승인 대기중</h2>
     </div>
     <div class="waiting-clubs">
-        <!-- 샘플데이터 -->
-        <div class="product-card">
-            <img src="/resources/image/sample3.png" alt="사진" class="product-image">
-            <div class="product-details">
-                <div class="product-title">난쏘공</div>
-                <div class="product-date"> 개설일 : <span>2023-04-12 </span></div>
-                <div class="product-price"> 활동 지역 <h4>서울시 강남구 테헤란로123</h4></div>
-            </div>
-            <div class="product-category">
-                <div class="category-title">카테고리명</div>
-            </div>
-        </div>
+
     </div>
 
 
