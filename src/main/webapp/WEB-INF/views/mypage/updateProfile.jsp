@@ -1,51 +1,35 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="${path}/resources/css/main.css">
-    <link rel="stylesheet" href="${path}/resources/css/mypage.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>프로필 수정</title>
+    <title>H-Club</title>
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/mypage.css">
+    <link rel="stylesheet" href="/resources/css/compMain.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
     <style>
         #wrapper {
             display: flex;
             flex-direction: column;
         }
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        a:active {
-            color: #4CAF50;
-        }
-
         .profile-header {
             width: 80%;
             height: 400px;
             margin: 10px auto 50px;
             display: flex;
             align-items: center;
-            /*border: 2px solid #E2FFD4;*/
-            /*background-color: #E2FFD4;*/
             border-radius: 5%;
             padding-left: 30px;
             font-size: 36px;
         }
-
         .profile-pic {
             width: 250px;
             height: 250px;
             border-radius: 50%;
             margin: auto 50px;
         }
-
         #profile-form{
             margin: 30px auto;
             width: 80%;
@@ -57,7 +41,6 @@
             margin-left: 20px;
             margin-bottom: 10px; /* Adjust as needed */
         }
-
         .form-label label {
             display: block;
             font-size: 1.5em; /* Adjust as needed */
@@ -65,7 +48,6 @@
             color: black; /* Adjust as needed */
             margin-bottom: 10px;
         }
-
         .form-label input[type="text"], .form-label input[type="password"] {
             font-size: 1em; /* Adjust as needed */
             padding: 8px 12px; /* Adjust as needed */
@@ -76,8 +58,6 @@
             box-sizing: border-box; /* Keeps padding inside width */
             margin-bottom: 10px; /* Adjust as needed */
         }
-
-        /* Placeholder styling */
         .form-label input[type="text"]::placeholder {
             color: #aaa; /* Adjust as needed */
             font-size: 1em;
@@ -108,51 +88,51 @@
 </head>
 <body>
 <main>
-<div id="wrapper">
-    <div class="mypage-top-menu">
-        <img src="/resources/image/left-arrow.png"
-             onclick="window.history.back()"/>
-    </div>
-            <div class="profile-header">
-                <div id="profileImageContainer" onclick="document.getElementById('profileImageInput').click();">
-                    <input type="file" id="profileImageInput" style="display: none;" accept="image/*" />
-                    <img src="" class="profile-pic">
-                </div>
-                <div class="user-info">
-                    <h3 id="userName"></h3>
-                    <p id="userDept"></p>
-                    <p id="userRating"></p>
-                </div>
+    <div id="wrapper">
+        <div class="mypage-top-menu">
+            <img src="/resources/image/left-arrow.png"
+                 onclick="window.history.back()"/>
+        </div>
+        <div class="profile-header">
+            <div id="profileImageContainer" onclick="document.getElementById('profileImageInput').click();">
+                <input type="file" id="profileImageInput" style="display: none;" accept="image/*" />
+                <img src="" class="profile-pic">
             </div>
-            <form id="profile-form">
-                <!-- 이름 필드 -->
-                <div class="form-label">
-                    <label for="name">이름</label>
-                    <input type="text" id="name" name="name" placeholder="이름" readonly> <br/>
-                </div>
-                <!-- 소속(직급) 필드 -->
-                <div class="form-label">
-                    <label for="dept">소속(직급)</label>
-                    <input type="text" id="dept" name="dept" placeholder="IT 인프라 사업부 (선임)" readonly> <br/>
-                </div>
-                <!-- 아이디 필드 -->
-                <div class="form-label">
-                    <label for="userId">아이디</label>
-                    <input type="text" id="userId" name="userId" placeholder="ID" readonly> <br/>
-                </div>
-                <!-- 비밀번호 필드 -->
-                <div class="form-label">
-                    <label for="password">비밀번호</label>
-                    <input type="password" id="password" name="password"><br/>
-                </div>
-                <div class="form-label">
-                    <label for="password">비밀번호확인</label>
-                    <input type="password" id="password-check" name="password"><br/>
-                </div>
-                <!-- 제출 버튼 -->
-                <input type="submit" value="정보 업데이트" class="btn-submit"><br/>
-            </form>
-</div>
+            <div class="user-info">
+                <h3 id="userName"></h3>
+                <p id="userDept"></p>
+                <p id="userRating"></p>
+            </div>
+        </div>
+        <form id="profile-form">
+            <!-- 이름 필드 -->
+            <div class="form-label">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" placeholder="이름" readonly> <br/>
+            </div>
+            <!-- 소속(직급) 필드 -->
+            <div class="form-label">
+                <label for="dept">소속(직급)</label>
+                <input type="text" id="dept" name="dept" placeholder="IT 인프라 사업부 (선임)" readonly> <br/>
+            </div>
+            <!-- 아이디 필드 -->
+            <div class="form-label">
+                <label for="userId">아이디</label>
+                <input type="text" id="userId" name="userId" placeholder="ID" readonly> <br/>
+            </div>
+            <!-- 비밀번호 필드 -->
+            <div class="form-label">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password"><br/>
+            </div>
+            <div class="form-label">
+                <label for="password">비밀번호확인</label>
+                <input type="password" id="password-check" name="password"><br/>
+            </div>
+            <!-- 제출 버튼 -->
+            <input type="submit" value="정보 업데이트" class="btn-submit"><br/>
+        </form>
+    </div>
 </main>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
@@ -262,12 +242,12 @@
             // 'https://www.h-club.site/auth/mypage',
             'http://localhost:8080/auth/mypage',
             {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({memberId:memberId, memberPw: password})
-        })
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({memberId:memberId, memberPw: password})
+            })
             .then(response => {
                 if(response.ok) {
                     return response.text(); // 응답을 텍스트로 처리

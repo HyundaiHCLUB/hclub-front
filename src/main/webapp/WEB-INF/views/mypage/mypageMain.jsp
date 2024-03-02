@@ -1,32 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="${path}/resources/css/main.css">
-    <link rel="stylesheet" href="${path}/resources/css/mypage.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>마이페이지</title>
+    <title>H-Club</title>
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/mypage.css">
+    <link rel="stylesheet" href="/resources/css/compMain.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
     <style>
-        span:active {
-            color: #4CAF50;
-        }
-
         .profile-header {
             width: 80%;
             height: 400px;
             margin: 10px auto 50px;
             display: flex;
             align-items: center;
-            /*border: 2px solid #E2FFD4;*/
-            /*background-color: #E2FFD4;*/
             border-radius: 5%;
             font-size: 36px;
         }
-
         .profile-pic {
             width: 250px;
             height: 250px;
@@ -45,7 +37,7 @@
             margin-top: 0;
         }
         .mypage-menus {
-            margin: 30px auto;
+            margin: 0 auto;
             padding: 20px;
             width: 80%;
             background-color: #F1F5E8;
@@ -57,11 +49,10 @@
             width: 70%;
             height: 120px;
             padding: 20px;
-            padding-left: 50px;
             background-color: #F1F5E8;
             border-radius: 30px;
-            margin: 40px auto;
-            font-size: 2em;
+            margin: 60px auto;
+            font-size: 2.2em;
         }
         .menu span {
             margin-top: auto;
@@ -77,39 +68,36 @@
 </head>
 <body>
 <main>
-            <div class="mypage-top-menu">
-                <img src="/resources/image/left-arrow.png"
-                onclick="window.history.back()"/>
-            </div>
-            <div class="profile-header">
-                <img src="" class="profile-pic">
-                <div class="user-info">
-                    <h3 id="userName"></h3>
-                    <p id="userDept"></p>
-                </div>
-            </div>
-            <div class="mypage-menus">
-                <div class="menu" onclick="location.href='/mypage/updateProfileView'">
-                    <i class="fa-solid fa-user"></i>
-                    <span>프로필 수정</span>
-                </div>
-                <div class="menu" onclick="location.href='/mypage/myClubs'">
-                    <i class="fa-regular fa-flag"></i>
-                    <span><a>내 동아리</a></span>
-                </div>
-                <div class="menu" onclick="location.href='/mypage/myFavorites'">
-                    <i class="fa-solid fa-heart"></i>
-                    <span><a>즐겨찾기</a></span>
-                </div>
-                <div class="menu" onclick="location.href='/mypage/myGifts'">
-                    <i class="fa-solid fa-gift"></i>
-                    <span><a>받은 선물함</a></span>
-                </div>
-                <div class="menu" onclick="location.href='/mypage/myMatchHistoryView'">
-                    <i class="fa-solid fa-trophy"></i>
-                    <span>매치 히스토리</span>
-                </div>
-            </div>
+    <div class="mypage-top-menu">
+        <img src="/resources/image/left-arrow.png"
+             onclick="window.history.back()"/>
+    </div>
+    <div class="profile-header">
+        <img src="" class="profile-pic">
+        <div class="user-info">
+            <h3 id="userName"></h3>
+            <p id="userDept"></p>
+        </div>
+    </div>
+    <div class="mypage-menus">
+        <div class="menu" onclick="location.href='/mypage/updateProfileView'">
+            <i class="fa-solid fa-user"></i>
+            <span>프로필 수정</span>
+        </div>
+        <div class="menu" onclick="location.href='/mypage/myClubs'">
+            <i class="fa-regular fa-flag"></i>
+            <span><a>내 동아리</a></span>
+        </div>
+
+        <div class="menu" onclick="location.href='/mypage/myGifts'">
+            <i class="fa-solid fa-gift"></i>
+            <span><a>받은 선물함</a></span>
+        </div>
+        <div class="menu" onclick="location.href='/mypage/myMatchHistoryView'">
+            <i class="fa-solid fa-trophy"></i>
+            <span>매치 히스토리</span>
+        </div>
+    </div>
 </main>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
