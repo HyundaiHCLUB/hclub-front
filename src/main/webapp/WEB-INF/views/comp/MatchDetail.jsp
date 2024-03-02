@@ -325,7 +325,7 @@
 
         // 경기상세정보 API 호출
         $.ajax({
-            url: 'https://www.h-club.site/comp/match/13', //샘플데이터 <- 컨트롤러에서 넘어온 경기번호로 대체해야됨
+            url: 'https://www.h-club.site/comp/match/${matchHistoryNo}', //샘플데이터 <- 컨트롤러에서 넘어온 경기번호로 대체해야됨
             type: 'GET',
             dataType: 'json',
             success: function (response){
