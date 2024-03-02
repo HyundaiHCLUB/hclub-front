@@ -108,6 +108,8 @@
             </div>
     	</div>
     </div>
+     
+    <%@ include file="/WEB-INF/views/common/modal.jsp" %> 
   </div>
  <script>
  $(document).ready(function() {
@@ -139,8 +141,8 @@ function adminLogin() {
             
        },
        error: function(xhr, status, error) {
-           // console.error('로그인 실패:', error);
-        	alert("로그인에 실패했습니다. 아이디 혹은 비밀번호를 확인해주세요.");
+        	setModalMsg("관리자 로그인에 실패했습니다. 아이디 혹은 비밀번호를 확인해주세요.");
+            getModalMesage(); 
        }
    });
 }
@@ -149,12 +151,16 @@ function validateForm() {
     var password = $('#userPw').val();
 
     if (username.trim() === '') {
-        alert('사용자 아이디를 입력해주세요.');
+    	setModalMsg("아이디를 입력해주세요");
+        getModalMesage();
+        $('#userId').focus();
         return false;
     }
 
     if (password.trim() === '') {
-        alert('비밀번호를 입력해주세요.');
+    	setModalMsg("비밀번호를 입력해주세요");
+        getModalMesage(); 
+        $('#userPw').focus();
         return false;
     }
 
