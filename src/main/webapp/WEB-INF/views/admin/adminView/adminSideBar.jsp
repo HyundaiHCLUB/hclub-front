@@ -4,18 +4,18 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     // 페이지 로드 시 초기 실행
-    //checkAccessAdminTokenInfo();
+    checkAccessAdminTokenInfo();
 
     // sessionStorage 변경 감지를 위한 이벤트 리스너 등록
     window.addEventListener("storage", function(event) {
-      /*   // 변경된 키가 "accessTokenInfo"인 경우
+   // 변경된 키가 "accessTokenInfo"인 경우
         if (event.key === "accessTokenInfo") {
             // 변경된 값을 기반으로 다시 실행
             checkAccessAdminTokenInfo();
-        } */
+        } 
     });
 });
-let accessAdminTokenInfo = sessionStorage.getItem("accessTokenInfo");
+let accessAdminTokenInfo = sessionStorage.getItem("accessAdminTokenInfo");
 // sessionStorage에서 값 가져와서 처리하는 함수
 function checkAccessAdminTokenInfo() {
     if (accessAdminTokenInfo !== null && accessAdminTokenInfo !== "") {
@@ -32,8 +32,8 @@ function checkAccessAdminTokenInfo() {
                <span class="sr-only">Home</span>
                <span class="icon logo" aria-hidden="true"></span>
                <div class="logo-text">
-                   <span class="logo-title">관리자페이지</span>
-                   <span class="logo-subtitle">admin</span>
+                   <span class="logo-title">H-Club</span>
+                   <span class="logo-subtitle">관리자페이지</span>
                </div>
             </a>
 	        <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
