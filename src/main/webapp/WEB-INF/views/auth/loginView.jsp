@@ -41,7 +41,7 @@
          color: #aaa; 
       }
       #loginFrm{
-        margin:200px 0px 50px 20px;
+        margin:100px 0px 50px 20px;
       }
       .btn-class{
          font-size: 30px; 
@@ -65,7 +65,7 @@
       }
       #logo{
 	      width: 50%;
-	      margin: 150px 0px 0px 0px;
+	      margin: 250px 0px 0px 0px;
       }
 </style>
 </head>
@@ -73,7 +73,7 @@
 <main>
 
 	<div id="mainLogoDiv">
-		<img id="logo" src="/resources/image/logo.png">
+		<img id="logo" src="/resources/image/hlogo.png">
 	</div>
 	<div id="loginDiv">
 		<form id="loginFrm">
@@ -132,6 +132,8 @@ $(document).ready(function() {
     	location.href="/login/registerViewFrst";
     });
     
+    //로그인 화면에서만 header을 숨긴다.
+    $(".navbar_logo").hide();
     
 });
 function validateForm() {
