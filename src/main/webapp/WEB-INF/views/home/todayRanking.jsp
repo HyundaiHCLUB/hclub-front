@@ -27,17 +27,17 @@
         /*background-color: #f5f5f5;*/
         background-color: #F7FFE5;
         position: relative;
-        font-size: 1.5em;
-        min-height: 120px;
+        font-size: 2em;
+        min-height: 200px;
     }
 
     .profile-picture {
         position: absolute;
         left: 150px;
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
-        margin3: 30px 30px;
+        margin: 30px 30px 30px 10px;
     }
     .profile-picture img {
         width: 100%; /* 이미지의 너비를 div의 너비와 같게 설정 */
@@ -132,6 +132,9 @@
     .comp-select p {
         margin-top: 0;
         margin-bottom: 1rem;
+    }
+    .rank {
+        font-weight: bold;
     }
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="

@@ -138,6 +138,7 @@
 	<div id="pagination">
 	
 	</div>
+	 <%@ include file="/WEB-INF/views/common/modal.jsp" %> 
   </div>
  <script>
  $(document).ready(function() {
@@ -199,7 +200,8 @@
 	            }
 	        },
 	        error: function(xhr, status, error) {
-	            console.error('동아리 리스트 정보 가져오기 실패:', error);
+	        	setModalMsg("동아리 리스트 정보 가져오기 실패");
+		        getModalMesage(); 
 	        }
 	    });
 }
@@ -222,10 +224,10 @@ function getClubSize(){
 	    clubListSize = response.data;
 	    setupPagination();
 	           
-	  },
-	      error: function(xhr, status, error) {
-	          console.error('동아리 리스트 정보 가져오기 실패:', error);
-	      }
+	  	},
+	   	error: function(xhr, status, error) {
+	         console.error('동아리 리스트 정보 가져오기 실패:', error);
+	    }
 	  });
  }
  function appendDataToTable(data) {
