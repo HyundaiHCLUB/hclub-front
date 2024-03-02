@@ -247,7 +247,7 @@ function confirmEmployeeYn(){
              //alert('사원여부 조회에 성공 하였습니다.');
              setModalMsg("사원여부 조회에 성공하셨습니다.");
              getModalMesage(); 
-             moveLoc="/"; //history.bach();혹은 이동 이벤트 막는거 추가하기
+             //moveLoc="/"; //history.bach();혹은 이동 이벤트 막는거 추가하기
         },
         error: function(xhr, status, error) {
             console.error('사원여부 조회 실패:', error);

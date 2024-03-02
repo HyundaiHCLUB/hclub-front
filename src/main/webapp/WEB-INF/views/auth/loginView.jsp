@@ -114,10 +114,9 @@ $(document).ready(function() {
                
              	//로그인 완료시 모달 띄우고, 이동
                  if(pageLocFlag){
-                 	 setModalMsg("로그인에 성공하셨습니다.");
-	                 getModalMesage(); 
-	                 moveLoc="/"; 
-                	// location.href='/' ;
+                 	/*  setModalMsg("로그인에 성공하셨습니다.");
+	                 getModalMesage();  */
+                	 location.href='/' ;
                  } 
                  
             },
@@ -140,12 +139,16 @@ function validateForm() {
     var password = $('#userPw').val();
 
     if (username.trim() === '') {
-        alert('사용자 아이디를 입력해주세요.');
+    	setModalMsg("사용자 아이디를 입력해주세요.");
+        getModalMesage(); 
+        $("#userId").focus(); 
         return false;
     }
 
     if (password.trim() === '') {
-        alert('비밀번호를 입력해주세요.');
+    	setModalMsg("비밀번호를 입력해주세요.");
+        getModalMesage(); 
+        $("#userPw").focus(); 
         return false;
     }
 

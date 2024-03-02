@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="stylesheet" href="/resources/css/compCreateTeamThree.css">
+    <link rel="stylesheet" href="/resources/css/teamDetail.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -36,7 +36,7 @@
                     <img src="/resources/image/comp/comp_calendar.png">
                     <h3>일시</h3>
                 </div>
-                <p>2023년 01월 16일 18:30</p>
+                <p></p>
             </div>
 
             <div class="detail-component-rating">
@@ -44,7 +44,7 @@
                     <img src="/resources/image/comp/rating.svg">
                     <h3>레이팅</h3>
                 </div>
-                <p>1450</p>
+                <p></p>
             </div>
         </div>
         <!-- 게임 종류 & 상품-->
@@ -54,7 +54,7 @@
                     <img src="/resources/image/comp/comp_gameType.png">
                     <h3>게임 종류</h3>
                 </div>
-                <p>3 vs 3</p>
+                <p>2 vs 2</p>
             </div>
 
             <div class="detail-component-goods">
@@ -85,22 +85,23 @@
     var teamNo = ${teamNo}; // 컨트롤러에서 받은 팀 번호
     console.log('teamNo : ' + teamNo);
 
-    $(document).ready(function() {
-        $(document).ready(function() {
+    $(document).ready(function () {
+        $(document).ready(function () {
             // API 요청을 보냅니다.
             $.ajax({
                 url: 'https://www.h-club.site/comp/' + teamNo,
                 type: 'GET',
                 dataType: 'json',
-                success: function(response) {
+                success: function (response) {
                     console.log(response);
                     // 응답받은 데이터로 DOM을 업데이트합니다.
                     $('.team-image img').attr('src', response.data.teamImage);
+                    $('.team-detail img').attr('src', response.data.matchType);
                     $('.team-detail h2').text(response.data.teamName);
                     $('.detail-component-loc p').text(response.data.teamLoc);
                     $('.detail-component-date p').text(response.data.matchAt);
                     $('.detail-component-rating p').text(response.data.teamRating);
-                    $('.detail-component-gametype p').text(response.data.matchType);
+                    $('.detail-component-gametype p').text(response.data.teamCapacity);
                     $('.detail-component-goods p').text(response.data.teamGoods);
 
                     // 팀원 정보를 업데이트합니다.
@@ -108,11 +109,11 @@
                     var teamMembersContainer = $('.detail-component-team-mate');
                     teamMembersContainer.find('p').remove(); // 기존의 팀원 목록을 제거합니다.
                     // 새로운 팀원 목록을 추가합니다.
-                    teamMembers.forEach(function(member) {
+                    teamMembers.forEach(function (member) {
                         teamMembersContainer.append($('<p>').text(member.memberName));
                     });
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     // 오류 처리
                     console.error('팀 정보를 가져오는데 실패했습니다: ' + error);
                 }

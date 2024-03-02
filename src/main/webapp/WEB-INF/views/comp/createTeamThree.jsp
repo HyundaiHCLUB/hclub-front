@@ -79,7 +79,7 @@
     <div class="button-container">
         <button class="team-button">팀 생성</button>
     </div>
-    
+
 </main>
 <script>
     // 데이터 로딩
@@ -137,21 +137,40 @@
         let teamRatingElement = document.querySelector('.detail-component-rating p');
 
         function calculateAverageRating(members) {
+            if (members.length === 0) return 0;
             const totalRating = members.reduce((acc, member) => acc + member.memberRating, 0);
-            return totalRating / members.length;
+            const averageRating = totalRating / members.length;
+            return Math.floor(averageRating);
         }
+
 
         function createMemberDetailsArray(members) {
             return members.map(member => member.memberName + ' ' + member.memberDept + ' ' + member.memberPosition);
         }
 
         // 게임 종류
-        // const gameCapacity = localStorage.getItem("selectedGameTypeNum");
-        // let gameCapacityElement = document.querySelector('.detail-component-gametype');
-        // if (gameCapacity) {
-        //     let teamDateElement = document.querySelector('.detail-component-gametype p');
-        //     gameCapacityElement.textContent = gameCapacity + ' vs ' + gameCapacity;
-        // }
+        let selectedGameTypeNum = localStorage.getItem("selectedGameTypeNum");
+        if (selectedGameTypeNum) {
+            // Assuming you want to set this number to the <p> inside .detail-component-gametype
+            let gameTypeElement = document.querySelector('.detail-component-gametype p');
+            if (gameTypeElement) {
+                gameTypeElement.textContent = selectedGameTypeNum + ' vs ' + selectedGameTypeNum; // Or however you wish to format it
+            }
+        }
+        // 상품
+        let teamProductJSON = localStorage.getItem("teamProduct");
+        if (teamProductJSON) {
+            let teamProductArray = JSON.parse(teamProductJSON);
+            // Find the <p> tag within .detail-component-goods
+            let goodsElement = document.querySelector('.detail-component-goods p');
+            if (goodsElement) {
+                // Assuming you want to concatenate all product names separated by commas
+
+                goodsElement.textContent = teamProductArray.productName;
+            }
+        }
+
+        // 팀원
 
 
         let rating = calculateAverageRating(selectedMembers);
