@@ -20,7 +20,7 @@
 <body>
 <main>
     <div class="select-game-type-container">
-        <div class="rounded-shape-gametype selected-game-type" data-game-type="SOCCER" onclick="selectGameType(this)">
+        <div class="rounded-shape-gametype" data-game-type="SOCCER" onclick="selectGameType(this)">
             <div class="round-shape">
                 <img src="/resources/image/comp/soccer.png"/>
             </div>
@@ -175,7 +175,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
 
-        let gameType = 'SOCCER';
+        let gameType = '';
 
         window.selectGameType = function (element) {
             // 모든 gameType div 요소를 찾음
@@ -336,16 +336,16 @@
 
                     // Create an image element for the remove button
                     const removeImg = document.createElement('img');
-                    removeImg.src = '/resources/image/comp/member-cancel.png'; // Path to your remove icon image
+                    removeImg.src = '/resources/image/comp/member-cancel.png';
                     removeImg.alt = 'Remove';
-                    removeImg.style.cursor = 'pointer'; // Change cursor on hover
-                    removeImg.style.marginLeft = '30px'; // Add some space between text and icon
+                    removeImg.style.cursor = 'pointer';
+                    removeImg.style.marginLeft = '30px';
 
                     // Set the width and height of the image if necessary
-                    removeImg.style.width = '50px'; // Example size, adjust as needed
-                    removeImg.style.height = '50px'; // Example size, adjust as needed
+                    removeImg.style.width = '50px';
+                    removeImg.style.height = '50px';
 
-                    // Attach an event listener to the image for the remove functionality
+
                     removeImg.onclick = function () {
                         removeTeamMember(index);
                     };

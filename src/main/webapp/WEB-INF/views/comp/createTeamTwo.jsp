@@ -72,13 +72,21 @@
 
     // 데이터 로딩
     document.addEventListener('DOMContentLoaded', function () {
-        // Retrieve the Base64 image string from localStorage
+        // 이미지 세팅
         let base64ImageData = localStorage.getItem('multipartFile');
         if (base64ImageData) {
             // Find the <img> tag within the .event-image container
             let imageElement = document.querySelector('.team-caption-image img');
             // Set the retrieved Base64 string as the src attribute of the <img> tag
             imageElement.src = base64ImageData;
+        }
+        // 팀장 이름 세팅
+        const selectedMembers = JSON.parse(localStorage.getItem('selectedMembers'));
+        if (selectedMembers && selectedMembers.length > 0) {
+            // 첫 번째 멤버의 이름을 가져옵니다.
+            const firstMemberName = selectedMembers[0].memberName;
+            // .team-captain-name 내의 <p> 태그를 찾아 이름을 설정합니다.
+            document.querySelector('.team-captain-name p').textContent = firstMemberName;
         }
     });
     document.addEventListener("DOMContentLoaded", function () {
