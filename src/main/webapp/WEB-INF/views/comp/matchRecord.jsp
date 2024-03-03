@@ -196,6 +196,8 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script>
+    let accessToken = localStorage.getItem("accessTokenInfo");
+    let selectedFile;
     console.log("matchHistoryNo from controller : " + ${matchHistoryNo})
     var team1No;
     var team2No;
@@ -216,6 +218,12 @@
                 $('.team').eq(0).find('h4').text(response.data.team1.teamName);
                 $('.team').eq(1).find('img').attr('src', response.data.team2.teamImage);
                 $('.team').eq(1).find('h4').text(response.data.team2.teamName);
+
+                getUserInfo(accessToken).then(memberInfo => {
+                    console.log("memberID : " + memberInfo.member_id);
+                }).catch(error => {
+                    console.error('사용자 정보 가져오기 실패:', error);
+                })
             }, error: function (error){
                 console.log('Error : ' + error);
             }
@@ -239,15 +247,21 @@
                 matchLoc : matchLoc,
                 teamANo : team1No,
                 scoreA : scoreValueTeam1,
-                teamBNo : team1No,
+                teamBNo : team2No,
                 scoreB : scoreValueTeam2
             };
+            console.log('dataToSend : ', dataToSend);
+            var formData = new FormData();
+            formData.append('multipartFile', selectedFile); // Append the file
+            formData.append('historyRequest', new Blob([JSON.stringify(dataToSend)], { type: "application/json" })); // Append the JSON data
             // 경기 결과 기록 API 호출 - DB 등록 및 S3 파일 업로드
             $.ajax({
-                url: 'https://www.h-club.site/comp/history',
+                // url: 'https://www.h-club.site/comp/history',
+                url: 'http://localhost:8082/comp/history',
                 type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(dataToSend),
+                data: formData,
+                contentType: false, // This is required so jQuery doesn’t add a contentType header
+                processData: false, // This is required so jQuery doesn’t process the data
                 success: function(response) {
                     console.log('Server response:', response);
                 },
@@ -271,6 +285,7 @@
         var preview = document.getElementById('preview-img');
         if (files.length > 0) {
             var file = files[0];
+            selectedFile = file;
             var reader = new FileReader();
 
             reader.onload = function (e) {
@@ -291,5 +306,25 @@
     document.getElementById('fileUpload').addEventListener('change', function() {
         handleFiles(this.files);
     });
+    /* accessToken 으로부터 유저 정보 추출하는 함수 */
+    function getUserInfo(accessToken) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                url: 'https://www.h-club.site/auth/mypage/info', // 배포판
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken, // accessToken 사용
+                },
+                success: function (response) {
+                    console.log('사용자 정보:', response);
+                    resolve(response); // 성공 시 response 객체를 resolve 합니다.
+                },
+                error: function (xhr, status, error) {
+                    console.error('사용자 정보 가져오기 실패:', error);
+                    reject(error); // 실패 시 error 객체를 reject 합니다.
+                }
+            });
+        });
+    }
 </script>
 </html>
