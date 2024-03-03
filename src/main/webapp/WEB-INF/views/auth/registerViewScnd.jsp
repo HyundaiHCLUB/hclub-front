@@ -320,7 +320,8 @@
     ">
         <img src="/resources/image/loading.gif"
              style="position:absolute; width:400px; height:400px; top:50%; left:50%; transform:translate(-50%, -50%); color:white;">
-        <%--        <p style="position: absolute;font-size:40px; top:65% ; left:50%; transform:translate(-50%,-50%);">회원가입 중..</p>--%>
+        <p style="position: absolute;font-size:40px; top:65% ; left:50%; transform:translate(-50%,-50%); color: #FFFFFF">
+            동아리 추천 중...</p>
     </div>
 
     <!-- 공통 모달 페이지 -->
