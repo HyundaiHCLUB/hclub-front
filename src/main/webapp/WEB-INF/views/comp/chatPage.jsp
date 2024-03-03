@@ -155,7 +155,7 @@
 	    let websocketToWeb = null;
 	
 	    let imageUrl ='';
-	    var urdata =  accessTokenInfo;
+	    var urdata =  localStorage.getItem("currentUserNo");
 	    
 	  //  localStorage.setItem("otherUserNo", "5"); // 추후 주석처리
 	    let otherUserNo = localStorage.getItem("otherUserNo");

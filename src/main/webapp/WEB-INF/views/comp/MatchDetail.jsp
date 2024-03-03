@@ -353,8 +353,10 @@
                     var otherLeader;
                     if(memberInfo.member_id == response.data.team1.leader.memberId) {
                         otherLeader = response.data.team2.leader;
+                        localStorage.setItem("currentUserNo", response.data.team1.leader.memberNo);
                     } else if(memberInfo.member_id == response.data.team2.leader.memberId) {
                         otherLeader = response.data.team1.leader;
+                        localStorage.setItem("currentUserNo", response.data.team2.leader.memberNo);
                     }
                     if(otherLeader) {
                         localStorage.setItem("otherUserNo", otherLeader.memberNo);
@@ -363,6 +365,8 @@
                     console.log("--------- otherLeader ------------");
                     console.log(localStorage.getItem("otherUserNo"));
                     console.log(localStorage.getItem("otherUserId"));
+                    console.log("---------- current Leader-------------");
+                    console.log(localStorage.getItem("currentUserNo"));
                     console.log("----------------------------------");
                     console.log('configTeamDTO -> ', configTeamDTO);
                     $.ajax({
@@ -452,6 +456,7 @@
                 success: function (response) {
                     console.log('사용자 정보:', response);
                     resolve(response); // 성공 시 response 객체를 resolve 합니다.
+                    
                 },
                 error: function (xhr, status, error) {
                     console.error('사용자 정보 가져오기 실패:', error);
