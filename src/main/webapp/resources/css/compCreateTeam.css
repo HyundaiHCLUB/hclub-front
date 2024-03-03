@@ -144,7 +144,7 @@ input[type=text] {
   margin-right: 20px;
 }
 .game-type-select span {
-  font-size: 45px;
+  font-size: 60px;
   margin-top: 10px;
 }
 
@@ -198,7 +198,7 @@ input[type=text] {
   padding: 8px; /* 내부 여백 추가 */
   margin: 10px 0; /* 상하 마진 추가 */
   box-sizing: border-box; /* 패딩과 테두리가 너비에 포함되도록 설정 */
-  font-size: 38px;
+  font-size: 50px;
 }
 
 .search-result-item {
@@ -209,7 +209,7 @@ input[type=text] {
   box-sizing: border-box; /* Ensures padding is included in the width */
   border: 4px solid #46675C; /* Matches the input border style */
   border-radius: 10px; /* Matches the input border-radius */
-  font-size: 38px; /* Matches the input font size */
+  font-size: 50px; /* Matches the input font size */
   background-color: #ffffff; /* Matches the input background */
   color: #000000; /* Text color */
   cursor: pointer; /* Indicates the item is clickable */

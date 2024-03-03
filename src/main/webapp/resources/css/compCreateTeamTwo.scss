@@ -55,7 +55,7 @@
   margin-top: 70px;
 
   p {
-    font-size: 50px;
+    font-size: 60px;
     margin-left: 20px;
   }
 }
@@ -75,7 +75,6 @@
 }
 
 
-
 /* Increase the font size for the entire datepicker for larger text */
 .ui-datepicker {
   font-size: 16px; /* Adjust this value as needed */
@@ -88,13 +87,21 @@
 
 /* Increase the size of each date cell */
 .ui-datepicker td {
-  padding: 10px; /* Adjust padding for larger cells */
+  padding: 30px; /* Adjust padding for larger cells */
+}
+
+/* 날짜 텍스트의 크기를 조정합니다. */
+.ui-datepicker .ui-state-default {
+  font-size: 35px;
+  line-height: 40px; /* 텍스트를 셀 중앙에 위치시킵니다. */
 }
 
 /* Enlarge the header part */
 .ui-datepicker .ui-datepicker-header {
+  background-color: #46675c;
   font-size: 50px; /* Larger text for the header */
   padding: 10px 0; /* More padding around the header elements */
+  color: #FFFFFF;
 }
 
 /* Adjust the prev/next buttons if needed */
@@ -107,6 +114,11 @@
 .ui-menu-item {
   font-size: 35px; /* Increase font size for the list */
 
+}
+
+.ui-datepicker th {
+  font-size: 30px; /* 요일 이름의 텍스트 크기를 18px로 조정 */
+  padding: 5px 0; /* 상하 패딩 추가 */
 }
 
 .ui-timepicker-list li {
@@ -129,7 +141,7 @@
   margin-top: 200px;
 
   p {
-    font-size: 50px;
+    font-size: 60px;
     margin-left: 20px;
   }
 }
@@ -174,7 +186,7 @@
 
 /* 이전 다음 버튼 */
 .team-create-button-container {
-  margin-top: 150px;
+  margin-top: 65px;
   display: flex;
   justify-content: space-evenly;
 

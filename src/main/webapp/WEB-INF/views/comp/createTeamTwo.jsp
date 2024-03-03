@@ -194,31 +194,47 @@
 
 
     $(document).ready(function () {
-        let inputWidth = $('#dateSelectInput').outerWidth(); // Get the outer width of the dateSelectInput
 
-        // Optionally, calculate a desired height based on the new width
-        // This is a simple proportion, adjust according to your needs
-        let desiredHeight = inputWidth * 0.8; // Example proportion, adjust as needed
+        $.datepicker.regional['ko'] = {
+            closeText: '닫기',
+            prevText: '이전 달',
+            nextText: '다음 달',
+            currentText: '오늘',
+            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월',
+                '7월', '8월', '9월', '10월', '11월', '12월'],
+            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월',
+                '7월', '8월', '9월', '10월', '11월', '12월'],
+            dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            weekHeader: '주',
+            dateFormat: 'yy년 mm월 dd일',
+            firstDay: 0,
+            isRTL: false,
+            showMonthAfterYear: true,
+            yearSuffix: '년'
+        };
+        $.datepicker.setDefaults($.datepicker.regional['ko']);
+        let adjustCalendarSize = function (input, inst) {
+            let calendar = inst.dpDiv;
+            setTimeout(function () {
+                let inputWidth = $(input).outerWidth();
+                calendar.outerWidth(inputWidth);
+                calendar.outerHeight(400); // 예시로 높이를 300px로 설정
+            }, 0);
+        };
 
-        // Initialize the datepicker on #dateSelectInput
         $('#dateSelectInput').datepicker({
-            dateFormat: 'yy년 mm월 dd일', // Set the format of the date
+            dateFormat: 'yy년 mm월 dd일',
             onSelect: function (dateText) {
-                $('#dateSelectInput').val(dateText);
+                $(this).val(dateText);
             },
             beforeShow: function (input, inst) {
-                let calendar = inst.dpDiv;
-                setTimeout(function () {
-                    calendar.outerWidth(inputWidth); // Set the width of the datepicker to match the input
-                    // Apply dynamic height adjustment here if necessary
-                    calendar.outerHeight(500);
-                }, 0);
+                adjustCalendarSize(input, inst);
+            },
+            onChangeMonthYear: function (year, month, inst) {
+                adjustCalendarSize(this, inst);
             }
-        });
-
-        // Adjustments for timepicker as needed
-        $('#timeSelectInput').timepicker({
-            // Timepicker configuration
         });
     });
 
