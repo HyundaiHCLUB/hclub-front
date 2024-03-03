@@ -85,33 +85,14 @@
             });
         });
     }
-    //
-    //
-    // function getUserInfo(accessToken) {
-    //     return new Promise((resolve, reject) => {
-    //         $.ajax({
-    //             type: 'GET',
-    //             url: 'https://www.h-club.site/auth/mypage/', // 배포판
-    //             headers: {
-    //                 'Authorization': 'Bearer ' + accessToken, // accessToken 사용
-    //             },
-    //             success: function (response) {
-    //                 console.log('사용자 정보:', response);
-    //                 resolve(response); // 성공 시 response 객체를 resolve 합니다.
-    //             },
-    //             error: function (xhr, status, error) {
-    //                 console.error('사용자 정보 가져오기 실패:', error);
-    //                 reject(error); // 실패 시 error 객체를 reject 합니다.
-    //             }
-    //         });
-    //     });
-    // }
     function displayMatches(matches) {
         const matchesContainer = $('.matches');
         matchesContainer.empty(); // 기존 매치 내용을 지웁니다.
 
         matches.forEach(match => {
             // 각 매치 정보로 HTML 요소 생성
+            var scoreColor = match.teamNo === match.winTeamNo ? 'blue' :  'red';
+            if (match.winTeamScoreAmount == match.loseTeamScoreAmount) {scoreColor = 'black'}
             var matchElement = $('<div/>', { class: 'rounded-shape' }).append(
                 $('<div/>', { class: 'left-section' }).append(
                     $('<img/>', { src: '/resources/image/comp/' + match.matchType.toLowerCase() + '.png', alt: '이미지' }),
@@ -119,7 +100,7 @@
                 ),
                 $('<div/>', { class: 'middle-section' }).append(
                     $('<p/>').text(match.teamName),
-                    $('<p/>').text(match.score1 + ' vs ' + match.score2)
+                    $('<p/>', { style: 'color:' + scoreColor }).text(match.winTeamScoreAmount + ' vs ' + match.loseTeamScoreAmount)
                 ),
                 $('<div/>', { class: 'right-section' }).append(
                     $('<p/>').text(match.matchLoc),
@@ -132,5 +113,27 @@
         });
     }
 
+    /* accessToken 으로부터 유저 정보 추출하는 함수 */
+    function getUserInfo(accessToken) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                // url: 'http://localhost:8080/auth/mypage/info',   // 로컬
+                url: 'https://www.h-club.site/auth/mypage/info', // 배포판
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken, // accessToken 사용
+                },
+                success: function (response) {
+                    console.log('사용자 정보:', response);
+                    resolve(response); // 성공 시 response 객체를 resolve 합니다.
+
+                },
+                error: function (xhr, status, error) {
+                    console.error('사용자 정보 가져오기 실패:', error);
+                    reject(error); // 실패 시 error 객체를 reject 합니다.
+                }
+            });
+        });
+    }
 </script>
 </html>
