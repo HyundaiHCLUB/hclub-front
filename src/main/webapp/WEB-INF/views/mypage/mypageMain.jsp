@@ -106,6 +106,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- jquery CDN -->
 <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
 <script>
+    /* 로그인 되어있지 않은 사용자 -> 홈으로 리다이렉트 */
+    document.addEventListener("DOMContentLoaded", function() {
+        let accessToken = localStorage.getItem("accessTokenInfo");
+        if (!accessToken) {
+            alert("로그인이 필요한 페이지입니다.");
+            window.location.href = "/"; // 로그인 페이지 URL로 변경하세요.
+        }
+    });
     $(document).ready(function() {
         // 로컬 스토리지에서 JWT 가져오기
         let accessToken = localStorage.getItem("accessTokenInfo");

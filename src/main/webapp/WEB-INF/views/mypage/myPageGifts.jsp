@@ -80,6 +80,14 @@
 </main>
 </body>
 <script>
+    /* 로그인 되어있지 않은 사용자 -> 홈으로 리다이렉트 */
+    document.addEventListener("DOMContentLoaded", function() {
+        let accessToken = localStorage.getItem("accessTokenInfo");
+        if (!accessToken) {
+            alert("로그인이 필요한 페이지입니다.");
+            window.location.href = "/"; // 로그인 페이지 URL로 변경하세요.
+        }
+    });
     let accessToken = localStorage.getItem("accessTokenInfo");
 
     $(document).ready(function() {
