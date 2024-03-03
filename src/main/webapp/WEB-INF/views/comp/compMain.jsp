@@ -28,6 +28,7 @@
     <div class="half-screen-line"></div>
     <div class="custom-select-container">
         <select class="sport-select">
+            <option value="ALL">종목 선택</option>
             <option value="SOCCER">축구</option>
             <option value="BASKETBALL">농구</option>
             <option value="BOWLING">볼링</option>
@@ -307,7 +308,7 @@
             let selectedOrder = orderSelect.val();
             let searchKeyword = encodeURIComponent(searchInput.val());
 
-
+            console.log(selectedGameType + ' ' + selectedDate + ' ' + selectedPlayers + ' ' + selectedOrder + ' ' + searchKeyword);
             fetchDataAndCreateMatches(selectedGameType, selectedDate, selectedPlayers, selectedOrder, searchKeyword);
         });
     });
