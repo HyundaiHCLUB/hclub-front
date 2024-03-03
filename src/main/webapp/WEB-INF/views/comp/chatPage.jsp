@@ -101,11 +101,11 @@
      <!--    <button onclick="createRoom(3)">chat</button> -->
 <div id="profileDiv">
 	<div class="profile">
-		<img id ="myProfileImg" src="https://img.freepik.com/free-photo/basketball-game-concept_23-2150910692.jpg?size=626&ext=jpg&ga=GA1.1.1141335507.1707523200&semt=sph"/>
+		<img id ="myProfileImg" />
 	</div>
 	<div class="profile">
-		<div id="nickName">포르투갈손흥민</div>
-		<div id="satus">*Online</div>
+		<div id="nickName"></div>
+		<div id="satus"></div>
 	</div>
 	<div class="profile">
 		<span>버튼버튼</span>
@@ -153,7 +153,7 @@
 
 	    let websocketToWeb = null;
 	
-	    
+	    let imageUrl ='';
 	    var urdata =  accessTokenInfo;
 	    
 	  //  localStorage.setItem("otherUserNo", "5"); // 추후 주석처리
@@ -287,7 +287,7 @@
 	        doSendToWeb(JSON.stringify(obj));
 	        
 	        //메시지 보낸 후에 초기화
-	        $("#chatTxt").val('');
+	        //$("#chatTxt").val('');
 	    }
 	    function setData(obj){
 	    	  //본인의 번호 session에 저장
@@ -308,6 +308,13 @@
 	                urdata = response.userNo;
 	                $("#nickName").text(response.userId);
 	                
+	                imageUrl = response.userImageUrl;
+	                
+	                //프론트에서 default 이미지 설정
+	                if(imageUrl == null ){
+	                	imageUrl='https://h-clubbucket.s3.ap-northeast-2.amazonaws.com/profile/242474.jpg'
+	                }
+	                $("#myProfileImg").attr('src', imageUrl);
 	                createRoom(otherUserNo); //현재 방과 내방을 기준으로 createRoom
 	            },
 	            error: function(xhr, status, error) {
