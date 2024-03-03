@@ -16,15 +16,12 @@ import java.util.Locale;
 @Controller
 @RequestMapping("/club")
 public class ClubController {
-    @GetMapping
-    public ModelAndView club(Locale locale, Model model) {
+    @GetMapping("/{categoryId}")
+    public ModelAndView club(Model model, @PathVariable Long categoryId) {
         ModelAndView mav = new ModelAndView();
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
-        String formattedDate = dateFormat.format(date);
         mav.setViewName("club/club");
-        model.addAttribute("serverTime", formattedDate);
+        model.addAttribute("categoryId", categoryId);
 
         return mav;
     }

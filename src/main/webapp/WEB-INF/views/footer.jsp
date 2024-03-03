@@ -25,7 +25,7 @@
                 <span>경쟁</span>
             </div>
         </a>
-        <a href="/club">
+        <a href="/club/0">
             <div class="nav-item">
                 <i class="fa-solid fa-compass fa-4x"></i>
                 <span>동아리</span>

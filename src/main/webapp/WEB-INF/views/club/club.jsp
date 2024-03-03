@@ -74,6 +74,13 @@
             text-align: center;
         }
     </style>
+
+    <script>
+        $(document).ready(function () {
+            categoryId = <%= request.getAttribute("categoryId") %>;
+            getClubList(categoryId);
+        });
+    </script>
     <script>
             function getClubList(categoryId) {
                 $.ajax({
@@ -497,7 +504,7 @@
         </div>
 
         <div class="plus-club">
-            <a href="club/add">
+            <a href="/club/add">
                <svg width="160" height="160" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
                  <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
