@@ -72,6 +72,9 @@
             <div class="search-results-dropdown" style="position: absolute"></div>
         </div>
     </div>
+    <div class="team-mate-list-container">
+        <ul id="teamMateList"></ul>
+    </div>
 
     <div class="location-add-container">
         <p>장소</p>
@@ -305,18 +308,71 @@
             }
 
             function saveSelectedMemberToLocalStorage(member) {
-                // Check if the 'selectedMembers' array exists in localStorage
-                if (localStorage.getItem('selectedMembers')) {
-                    var selectedMembers = JSON.parse(localStorage.getItem('selectedMembers'));
-                    // Add the new member to the array
-                    selectedMembers.push(member);
-                    // Save the updated array back to localStorage
-                    localStorage.setItem('selectedMembers', JSON.stringify(selectedMembers));
-                } else {
-                    // If 'selectedMembers' doesn't exist, create a new array with the member
-                    localStorage.setItem('selectedMembers', JSON.stringify([member]));
-                }
+                // Initialize an array to hold the selected members
+                var selectedMembers = localStorage.getItem('selectedMembers') ? JSON.parse(localStorage.getItem('selectedMembers')) : [];
+
+                // Add the new member to the array
+                selectedMembers.push(member);
+                // Save the updated array back to localStorage
+                localStorage.setItem('selectedMembers', JSON.stringify(selectedMembers));
+
+                // Update the UI
+                updateTeamMateListUI();
             }
+
+            function updateTeamMateListUI() {
+                const teamMateList = document.getElementById('teamMateList');
+                teamMateList.innerHTML = ''; // Clear the list
+
+                // Fetch selected members from localStorage
+                var selectedMembers = localStorage.getItem('selectedMembers') ? JSON.parse(localStorage.getItem('selectedMembers')) : [];
+
+                // Iterate over each member and create list items
+                selectedMembers.forEach((member, index) => {
+                    const li = document.createElement('li');
+
+                    // Construct member details text
+                    li.textContent = member.memberName + ' ' + member.memberDept + ' ' + member.memberPosition;
+
+                    // Create an image element for the remove button
+                    const removeImg = document.createElement('img');
+                    removeImg.src = '/resources/image/comp/member-cancel.png'; // Path to your remove icon image
+                    removeImg.alt = 'Remove';
+                    removeImg.style.cursor = 'pointer'; // Change cursor on hover
+                    removeImg.style.marginLeft = '30px'; // Add some space between text and icon
+
+                    // Set the width and height of the image if necessary
+                    removeImg.style.width = '50px'; // Example size, adjust as needed
+                    removeImg.style.height = '50px'; // Example size, adjust as needed
+
+                    // Attach an event listener to the image for the remove functionality
+                    removeImg.onclick = function () {
+                        removeTeamMember(index);
+                    };
+
+                    // Append the image to the list item
+                    li.appendChild(removeImg);
+                    // Append the list item to the list
+                    teamMateList.appendChild(li);
+                });
+            }
+
+            function removeTeamMember(index) {
+                // Retrieve the current list of selected members from localStorage
+                var selectedMembers = JSON.parse(localStorage.getItem('selectedMembers'));
+                // Remove the member at the specified index
+                selectedMembers.splice(index, 1);
+                // Update localStorage with the new list of members
+                localStorage.setItem('selectedMembers', JSON.stringify(selectedMembers));
+                // Refresh the displayed list of members
+                updateTeamMateListUI();
+            }
+
+            $(document).ready(function () {
+                // Update the displayed list of team members when the page loads
+                updateTeamMateListUI();
+            });
+
 
             // Show the dropdown when the input field is focused
             memberSearchInput.focus(function () {
