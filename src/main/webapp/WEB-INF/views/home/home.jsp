@@ -61,7 +61,8 @@
                                         '<a href="#" class="category_button">'+item.categoryName+'</a>'+
                                     '<a href="#" class="content_button">인기</a>'+
                                     '</div>' +
-                                    '<p class="circle_hot_loc">'+ item.clubLoc +'</p>' +
+                                        '<p class="club_info">' + item.clubInfo + '</p>' +
+                                        '<p class="circle_hot_loc">'+ item.clubLoc +'</p>' +
                                     '<i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>' +
                                     '</a>' +
                                     '</div></div>'
