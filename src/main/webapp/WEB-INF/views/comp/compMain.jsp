@@ -64,14 +64,14 @@
     </div>
 
     <div class="add-button">
-        <a href="/competition/create/1" class="add-button">
-            <svg width="160" height="160" viewBox="0 0 42 42" fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-                <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
-                <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-                <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-        </a>
+
+        <svg width="160" height="160" viewBox="0 0 42 42" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
+            <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+
     </div>
 
 </main>
@@ -227,6 +227,12 @@
         window.location.href = "/competition/teamDetail/" + teamNo;
     }
 
+    let teamCreateButton = document.querySelector('.add-button');
+    teamCreateButton.addEventListener('click', function () {
+        localStorage.setItem('initCreate', 'Y');
+        window.location.href = "/competition/create/1";
+    })
+
 
     $(document).ready(function () {
         const sportSelect = $('.sport-select');
@@ -256,7 +262,7 @@
                         var data = response.data;
 
                         $(".matches").empty();
-                       
+
                         data.forEach(function (item) {
                             var matchHTML =
                                 '<div class="rounded-shape" onclick="navigateToTeamDetail(\'' + item.teamNo + '\')">' +
