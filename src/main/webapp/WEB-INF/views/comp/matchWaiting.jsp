@@ -95,8 +95,6 @@
         function connect() {
             console.log('연결 시도');
             var socket = new WebSocket('wss://www.h-club.site/ws');
-
-            //var socket = new WebSocket('wss://13.209.23.148:8082/ws');
             //var socket = new WebSocket('ws://localhost:8082/ws');
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function (frame) {
@@ -158,8 +156,8 @@
                     team2No: team2No
                 }),
                 success: function (response) {
-                    console.log("AJAX 요청 성공", response);
-                    window.location.href = '/competition/success';
+                    console.log("AJAX 요청 성공", response.data);
+                    window.location.href = '/competition/success/'+response.data;
                 },
                 error: function (error) {
                     console.error("AJAX 요청 실패", error);
