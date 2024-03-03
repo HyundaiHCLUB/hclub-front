@@ -140,6 +140,7 @@
  <!-- websocket javascript -->
 <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=643e03d7f19df83b3f4191ad" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>    
 <script type="text/javascript">
+
 	    var servername = '<%=request.getServerName()%>';
 	    <%-- var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
 	     var wsUriToWeb = "wss://www.h-club.site/comp/ws/chat"; 
@@ -154,18 +155,19 @@
 	    let websocketToWeb = null;
 	
 	    let imageUrl ='';
-	    var urdata =  accessTokenInfo;
+	    var urdata =  localStorage.getItem("currentUserNo");
 	    
 	  //  localStorage.setItem("otherUserNo", "5"); // 추후 주석처리
 	    let otherUserNo = localStorage.getItem("otherUserNo");
 	    let otherUserName = localStorage.getItem("otherUserName");
-	    
+	    let openFlag = false;
 	    if(urdata == null){
 	    	urdata = getRandomNumber(1, 100);//"${uuIdx}"; =>회원의 번호로 대체
 	    }
 	    else{
 	    	// accessToken정보를 넣어 해당 userID 조회
 	    	getUserInfo(accessTokenInfo);
+	    	openFlag = true;
 	        console.log("urdata:"+urdata);
 	    	
 	    }
@@ -173,7 +175,7 @@
 	    var messagePop = 0;
 	
 	    //화면에 접속하면 소켓오픈
-	    if(urdata!= null && urdata!="" && urdata!="null")
+	    if(urdata!= null && urdata!="" && urdata!="null" && openFlag==true)
 	      initToWeb();
 	
 	    function initToWeb() {
@@ -219,7 +221,6 @@
 	    				obj.protocol = "login";
 	    				//본인의 번호 session에 저장
 	    				obj.userIdx = urdata;
-	    				obj.userIdx = 10;
 	    				//서버로 패킷을 전송
 	    				doSendToWeb(JSON.stringify(obj));
 	    			}
@@ -237,6 +238,8 @@
 	    			let toUser = obj.toUser;
 	    			let chatMsg = obj.chatMsg;
 	    			let time = obj.time;
+	    			consoel.log("sendChat: ");
+	    			consoel.log(obj);
 	    			//보낸사람
 	    			console.log("onMessageToWeb sendChat fromUser:"+fromUser+" urdata:"+urdata);
 	    			if(urdata==fromUser){
