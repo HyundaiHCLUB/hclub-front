@@ -23,13 +23,13 @@
     <!-- 이벤트 상세 정보 섹션 -->
     <div class="event-details">
         <div class="team-detail">
-            <img src="/resources/image/comp/soccer.png"/>
+            <img src=""/>
             <h2>팀 이름</h2>
         </div>
         <!-- 장소 -->
         <div class="detail-component-loc">
             <div class="detail-component-header">
-                <img src="/resources/image/comp/comp_location.png">
+                <img src="/resources/image/comp/team-loc-icon.png">
                 <h3>장소</h3>
             </div>
             <p>경기 장소</p>
@@ -38,7 +38,7 @@
         <div class="details-container">
             <div class="detail-component-date">
                 <div class="detail-component-header">
-                    <img src="/resources/image/comp/comp_calendar.png">
+                    <img src="/resources/image/comp/team-date-icon.png">
                     <h3>일시</h3>
                 </div>
                 <p></p>
@@ -46,7 +46,7 @@
 
             <div class="detail-component-rating">
                 <div class="detail-component-header">
-                    <img src="/resources/image/comp/rating.svg">
+                    <img src="/resources/image/comp/team-rating-icon.png">
                     <h3>레이팅</h3>
                 </div>
                 <p></p>
@@ -56,7 +56,7 @@
         <div class="details-container">
             <div class="detail-component-gametype">
                 <div class="detail-component-header">
-                    <img src="/resources/image/comp/comp_gameType.png">
+                    <img src="/resources/image/comp/team-capa-icon.png">
                     <h3>게임 종류</h3>
                 </div>
                 <p>2 vs 2</p>
@@ -64,7 +64,7 @@
 
             <div class="detail-component-goods">
                 <div class="detail-component-header">
-                    <img src="/resources/image/comp/comp_trophy.png">
+                    <img src="/resources/image/comp/team-prize-icon.png">
                     <h3>상품</h3>
                 </div>
                 <p>H-Cafe 50,000원권</p>
@@ -73,7 +73,7 @@
         <!-- 팀원 -->
         <div class="detail-component-team-mate">
             <div class="detail-component-header">
-                <img src="/resources/image/comp/comp_members.png">
+                <img src="/resources/image/comp/team-member-icon.png">
                 <h3>팀원</h3>
             </div>
 
@@ -103,7 +103,7 @@
                     $('.team-detail h2').text(response.data.teamName);
                     $('.detail-component-loc p').text(response.data.teamLoc);
                     $('.detail-component-date p').text(response.data.matchAt);
-                    $('.detail-component-rating p').text(response.data.teamRating);
+                    $('.detail-component-rating p').text(response.data.teamRating + '점');
                     $('.detail-component-gametype p').text(response.data.teamCapacity);
                     $('.detail-component-goods p').text(response.data.teamGoods);
 
