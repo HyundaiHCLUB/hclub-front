@@ -14,30 +14,39 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            padding-top: 50px;
-            padding-bottom: 50px;
+            padding-top: 0px;
+            padding-bottom: 0px;
         }
 
-        .confirmation-card {
-            background-color: #ffffff; /* Light green background */
-            border-radius: 30px;
-            width: 70%; /* Adjust width as needed */
-            height: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for a subtle depth effect */
-            font-size: 2.5em;
-        }
+        /*.confirmation-card {*/
+        /*    background-color: #ffffff; !* Light green background *!*/
+        /*    border-radius: 30px;*/
+        /*    width: 70%; !* Adjust width as needed *!*/
+        /*    height: 50%;*/
+        /*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); !* Box shadow for a subtle depth effect *!*/
+        /*    font-size: 2.5em;*/
+        /*}*/
 
         .confirmation-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
             padding: 50px;
             position: relative;
-            border-bottom: 1px solid black;
             background-color: #e8ffe8;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 3em;
+            height: 50%;
+            width: 70%;
         }
 
        .confirmation-header img {
            width: 180px;
            height: 180px;
+           margin : 30px auto;
        }
         .confirmation-message {
             text-align: center;
@@ -46,18 +55,6 @@
             margin-top: 20px;
         }
 
-        .confirmation-body {
-            background-color: white;
-            text-align: left;
-            padding: 20px;
-        }
-
-        .match-name {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: left;
-        }
         .match-name img{
             width: 50px;
             height: 50px;
@@ -68,17 +65,6 @@
             margin: 20px 0;
         }
 
-        .details {
-            color: #555; /* Darker text color for contrast */
-            margin-bottom: 20px;
-        }
-        .details-header {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            text-align: left;
-            font-size: 1.3em;
-        }
 
         .details-header img {
             width: 50px;
@@ -111,40 +97,10 @@
 </head>
 <body>
 <main>
-    <div class="confirmation-card">
         <div class="confirmation-header">
             <img src="/resources/image/comp/comp_check_sample.svg"/>
-            <p class="confirmation-message">매치가 완료되었습니다.</p>
+            <p class="confirmation-message">매칭이 완료되었습니다.</p>
         </div>
-        <div class="confirmation-body">
-            <div class="match-name">
-                <img src="/resources/image/comp/basketball.png">
-                <h1>3대3 농구대회</h1>
-            </div>
-
-            <div class="details">
-                <div class="details-header">
-                    <img src="/resources/image/comp/comp_location.png"/>
-                    <p class="detail-icon">장소</p>
-                </div>
-                <div class="details-content">
-                    <p class="detail-title">서울특별시 양천구 목동동로 111 양천공원</p>
-                </div>
-            </div>
-
-            <div class="details">
-                <div class="details-header">
-                    <img src="/resources/image/comp/comp_calendar.png"/>
-                    <p class="detail-icon">일시</p>
-                </div>
-                <div class="details-content">
-                    <p class="detail-title">2023년 01월 16일 18:30</p>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
     <div class="confirmation-footer">
         <button class="confirmation-button">경기화면으로</button>
     </div>
@@ -158,7 +114,7 @@
         // Add a click event listener to the button
         button.addEventListener('click', function() {
             // Navigate to the /competition/matchDetail page
-            window.location.href = '/competition/matchDetail/13';
+            window.location.href = '/competition/matchDetail/${matchHistoryNo}'; // 변수명 혜연쓰와 맞춰야됨
         });
     });
 </script>
