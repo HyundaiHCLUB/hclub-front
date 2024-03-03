@@ -42,10 +42,7 @@
 
         <select class="match-type-select">
             <option value="">인원 선택</option>
-            <option value="3">3 vs 3</option>
-            <option value="5">5 vs 5</option>
-            <option value="6">6 vs 6</option>
-            <option value="11">11 vs 11</option>
+
         </select>
     </div>
 
@@ -307,8 +304,7 @@
             let selectedPlayers = matchTypeSelect.val();
             let selectedOrder = orderSelect.val();
             let searchKeyword = encodeURIComponent(searchInput.val());
-
-            console.log(selectedGameType + ' ' + selectedDate + ' ' + selectedPlayers + ' ' + selectedOrder + ' ' + searchKeyword);
+            
             fetchDataAndCreateMatches(selectedGameType, selectedDate, selectedPlayers, selectedOrder, searchKeyword);
         });
     });
