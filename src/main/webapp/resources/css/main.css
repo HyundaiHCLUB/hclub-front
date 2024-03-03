@@ -160,6 +160,20 @@ main {
     margin-top: 16px;
 }
 
+.club_info {
+    font-size: 28px;
+    text-align: center;
+    margin-top: 16px;
+    width: 400px;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .district-container {
     display: flex;
     justify-content: center;

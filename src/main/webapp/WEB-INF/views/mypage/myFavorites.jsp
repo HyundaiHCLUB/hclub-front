@@ -50,7 +50,6 @@
 
         $(document).ready(function () {
             $('.grid-container').on('click', '.category', function () {
-                // 기존 선택된 카테고리 스타일 제거
                 $('.category').removeClass('selected');
 
                 accessToken = localStorage.getItem("accessTokenInfo");
@@ -62,11 +61,12 @@
                 $.ajax({
                     type: 'GET',
                     url: 'https://www.h-club.site/clubs/like/category',
-                   //url: 'http://localhost:8081/clubs/like/category',
+                    //url: 'http://localhost:8081/clubs/like/category',
                     data: { categoryName: categoryName },
                     headers: {
                         'accessTokenInfo': accessToken,
                     },
+                    // crossDomain: true,
                     success: function (response) {
                         if (response.success) {
                             var data = response.data;
