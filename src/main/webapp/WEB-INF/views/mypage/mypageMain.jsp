@@ -109,6 +109,7 @@
     $(document).ready(function() {
         // 로컬 스토리지에서 JWT 가져오기
         let accessToken = localStorage.getItem("accessTokenInfo");
+        let defaultImage = '/resources/image/default-image.jpg';
 
         // 가져온 JWT를 사용하여 사용자 정보 가져오기
         getUserInfo(accessToken).then(memberInfo => {
@@ -116,7 +117,8 @@
             $('#userName').text(memberInfo.employeeName); // 이름 설정
             $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
             $('#userRating').text('레이팅 ' + memberInfo.memberRating);
-            $('.profile-pic').attr('src', memberInfo.memberImage);
+            let userProfileImage = memberInfo.memberImage || defaultImage;
+            $('.profile-pic').attr('src', userProfileImage);
         }).catch(error => {
             console.error('사용자 정보 가져오기 실패:', error);
         });
