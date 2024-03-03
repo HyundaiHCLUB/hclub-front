@@ -43,8 +43,62 @@
             const name = localStorage.getItem('name');
             subTitle.innerHTML = name+`님의 즐겨찾기 <i class="fa-solid fa-heart" style="color: #EF7353;"></i>`;
 
+            // 페이지 로딩 시 문화예술 카테고리 선택
+            var defaultCategory = "문화·예술";
+            $('.category:contains(' + defaultCategory + ')').click();
+        });
+
+        $(document).ready(function () {
+            $('.grid-container').on('click', '.category', function () {
+                $('.category').removeClass('selected');
+
+                accessToken = localStorage.getItem("accessTokenInfo");
+                var categoryName = $(this).find('span').text();
+                console.log(categoryName);
+
+                $(this).addClass('selected');
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://www.h-club.site/clubs/like/category',
+                    //url: 'http://localhost:8081/clubs/like/category',
+                    data: { categoryName: categoryName },
+                    headers: {
+                        'accessTokenInfo': accessToken,
+                    },
+                    // crossDomain: true,
+                    success: function (response) {
+                        if (response.success) {
+                            var data = response.data;
+                            $(".likeList").empty();
+                            data.forEach(function (item) {
+                                var clubHTML =
+                                    '<div class="grid-container-like">' +
+                                    '<div class="grid-hot-item">' +
+                                    '<a href="/club/detail/' + item.clubNo + '">' +
+                                    '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                    '</div>' +
+                                    '<div class="grid-hot-item">' +
+                                    '<div class="circle_hot_content">' +
+                                    '<p class="circle_name">' + item.clubName + '</p>' +
+                                    '<a href="#" class="category_button">'+item.categoryName+'</a>'+
+                                    '</div>' +
+                                    '<p class="circle_hot_loc">'+ item.clubLoc +'</p>' +
+                                    '<i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>' +
+                                    '</a>' +
+                                    '</div></div>'
+                                ;
+                                $(".likeList").append(clubHTML);
+                            });
+                        } else {
+                            console.error("Error:", response.message);
+                        }
+                    },
+                });
+            });
         });
     </script>
+
     <style>
         .grid-container {
             display: grid;
@@ -66,6 +120,7 @@
             transition: background-color 0.3s, border-width 0.3s;
 
         }
+
         .category i {
             font-size: 28px;
             margin-bottom: 10px;
@@ -78,18 +133,15 @@
         .category:hover {
             background-color: #F1F5E8;
         }
-
     </style>
-
 </head>
 
 <body>
 <main class="main-container">
-
     <div class="grid-container">
         <div class="category">
             <i class="fas fa-paint-brush"></i>
-            <span>문화, 예술</span>
+            <span>문화·예술</span>
         </div>
         <div class="category">
             <i class="fas fa-bicycle"></i>
@@ -126,6 +178,8 @@
             <p class="sub-title" id="sub-title"></p>
         </div>
     </div>
+
+    <div class="likeList"></div>
 </main>
 </body>
 </html>

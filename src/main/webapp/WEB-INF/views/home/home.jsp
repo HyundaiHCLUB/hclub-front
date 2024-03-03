@@ -52,6 +52,7 @@
                                 var clubHTML =
                                     '<div class="grid-container">' +
                                     '<div class="grid-hot-item">' +
+                                    '<a href="/club/detail/' + item.clubNo + '">' +
                                     '<img class="circle_recommend" src="' + item.clubImage + '">' +
                                     '</div>' +
                                     '<div class="grid-hot-item">' +
@@ -60,8 +61,10 @@
                                         '<a href="#" class="category_button">'+item.categoryName+'</a>'+
                                     '<a href="#" class="content_button">인기</a>'+
                                     '</div>' +
-                                    '<p class="circle_hot_loc">서울특별시 서초구</p>' +
+                                        '<p class="club_info">' + item.clubInfo + '</p>' +
+                                        '<p class="circle_hot_loc">'+ item.clubLoc +'</p>' +
                                     '<i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>' +
+                                    '</a>' +
                                     '</div></div>'
                                     ;
                                 $(".hotClubs").append(clubHTML);
@@ -240,9 +243,7 @@
         <div class="title-item">
             <p class="sub-title">취향저격! 인기 동아리</p>
         </div>
-        <div class="title-item">
-            <p class="more">더보기</p>
-        </div>
+
     </div>
 
     <div class="hotClubs">

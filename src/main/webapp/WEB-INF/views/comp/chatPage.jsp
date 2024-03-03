@@ -27,27 +27,27 @@
      	margin: 20px 20px 0px 0px;
      	font-size: 30px;     
      }
-     .myContent{
+     .otherContent{
      	background-color: #D5D5D5;
      	margin:20px;
      }
-      .basChat{
+     .basChat{
      	height:150px;
      	width:500px;
      	border-radius:30px;
      	padding:20px;
      }
-     .otherContent{
+     .myContent{
       	background-color: powderblue;
       	margin: 20px 300px 20px 400px;
      }
      .basDate{
      	color: #747474;
      }
-     .myDate{
+     .ohterDate{
      	margin: 0px 0px 20px 50px;
      }
-     .ohterDate{
+     .myDate{
      	margin: 20px 0px 20px 780px;
      	padding:0px;
      }
@@ -142,8 +142,9 @@
 <script type="text/javascript">
 	    var servername = '<%=request.getServerName()%>';
 	    <%-- var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
-	     var wsUriToWeb = "ws://http://13.209.23.148:8082/comp/ws/chat"; 
-	 /* 	var wsUriToWeb = "wss://http://13.209.23.148:8083/comp/ws/chat"; */
+	     var wsUriToWeb = "wss://www.h-club.site/comp/ws/chat"; 
+	
+	     /* 	var wsUriToWeb = "wss://http://13.209.23.148:8083/comp/ws/chat"; */
 	  /*   //http://13.209.23.148:8083/comp/ws/chat */
 	    //if(servername == "localhost")
 <%-- 	    wsUriToWeb = "ws://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
@@ -282,8 +283,11 @@
 	        obj.protocol = "sendChat";
 	        //상대 회원번호 
 	        obj.otherUseridx = otherUseridx;
-	        obj.chatMsg = $("#chatTxt").val();;
+	        obj.chatMsg = $("#chatTxt").val();
 	        doSendToWeb(JSON.stringify(obj));
+	        
+	        //메시지 보낸 후에 초기화
+	        $("#chatTxt").val('');
 	    }
 	    function setData(obj){
 	    	  //본인의 번호 session에 저장

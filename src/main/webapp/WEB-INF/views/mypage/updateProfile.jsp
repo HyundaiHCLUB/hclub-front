@@ -21,7 +21,6 @@
             display: flex;
             align-items: center;
             border-radius: 5%;
-            padding-left: 30px;
             font-size: 36px;
         }
         .profile-pic {
@@ -29,6 +28,19 @@
             height: 250px;
             border-radius: 50%;
             margin: auto 50px;
+            border: 8px solid #46675C;
+        }
+        .user-info {
+            margin-left: 20px;
+        }
+        .user-info h3 {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .user-info p {
+            font-size: 1.1em;
+            margin-top: 0;
         }
         #profile-form{
             margin: 30px auto;
@@ -83,6 +95,9 @@
             margin :50px auto 10px;
             background: #46675C;
             color: white;
+        }
+        input[readonly] {
+            background-color: #d3d3d3;
         }
     </style>
 </head>

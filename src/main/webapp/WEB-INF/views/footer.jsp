@@ -38,12 +38,29 @@
             </div>
         </a>
 
-        <div class="nav-item" onclick="location.href='/mypage'">
+        <div class="nav-item" onclick="checkLoginAndRedirect()">
             <i class="fa-solid fa-user fa-4x"></i>
             <span>마이페이지</span>
         </div>
 
     </div>
+
 </nav>
 </body>
+<script>
+
+    function checkLoginAndRedirect() {
+        const accessTokenInfo = localStorage.getItem('accessTokenInfo');
+        const isLoggedIn = accessTokenInfo !== null; // 토큰이 있으면 true, 없으면 false
+        if (isLoggedIn) {
+            // 로그인이 되어 있으면 마이페이지로 이동
+            window.location.href = '/mypage';
+        } else {
+            // 로그인이 되어 있지 않으면 경고 메시지 표시
+            alert("로그인이 필요한 기능입니다");
+            return;
+        }
+    }
+
+</script>
 </html>

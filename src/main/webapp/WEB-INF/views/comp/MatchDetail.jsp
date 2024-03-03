@@ -285,17 +285,20 @@
     var matchHistorytNo = ${matchHistoryNo};
     var locationInformation; // 장소 저장할 변수
     let accessToken = localStorage.getItem("accessTokenInfo");
+    var memberId;
     var teamNo1;
     var teamNo2;
 
 	$(document).ready(function() {
         $('.team:eq(0) .team-logo').addClass('highlighted-team');
         $('.team:eq(1) .team-logo').addClass('not-highlighted-team');
+
         $('.btn-match-start').click(function(e) {
             e.preventDefault();
             // JWT 를 사용해 사용자 정보 가져오기
             getUserInfo(accessToken).then(memberInfo => {
                 console.log("memberID : " + memberInfo.member_id);
+                memberId = memberInfo.member_id;
                 $('#userName').text(memberInfo.employeeName); // 이름 설정
                 $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
                 $('.profile-pic').attr('src', memberInfo.memberImage);
@@ -322,7 +325,7 @@
 
         // 경기상세정보 API 호출
         $.ajax({
-            url: 'https://www.h-club.site/comp/match/13', //샘플데이터 <- 컨트롤러에서 넘어온 경기번호로 대체해야됨
+            url: 'https://www.h-club.site/comp/match/${matchHistoryNo}', //샘플데이터 <- 컨트롤러에서 넘어온 경기번호로 대체해야됨
             type: 'GET',
             dataType: 'json',
             success: function (response){
@@ -330,23 +333,54 @@
                 matchHistorytNo = response.data.matchHistoryNo;
                 localStorage.setItem("otherUserNo", response.data.team2.leader.memberNo); // 채팅 상대방 번호
                 localStorage.setItem("otherUserName", response.data.team2.leader.memberId); // 채팅 상대방 이름
+                temaNo1 = response.data.team1.teamNo;
+                temaNo2 = response.data.team2.teamNo;
                 console.log(response);
                 console.log('otherUserNo : ' + response.data.team2.leader.memberNo);
                 console.log('otherUserId : ' + response.data.team2.leader.memberId);
                 console.log("matchHistNo -> " + matchHistorytNo);
-                temaNo1 = response.data.team1.teamNo;
-                temaNo2 = response.data.team2.teamNo;
+                console.log("teamNo1 -> " + response.data.team1.teamNo);
+                console.log("teamNo2 -> " + response.data.team2.teamNo);
                 // 버튼에 data-team-no 속성 설정
                 $('.btn-team-detail').eq(0).attr('data-team-no', temaNo1);
                 $('.btn-team-detail').eq(1).attr('data-team-no', temaNo2);
+                // 현재 화면에 접속한 사용자가 속한 팀 번호 알아내기
+                getUserInfo(accessToken).then(memberInfo => {
+                    memberId = memberInfo.member_id;
+                    var userTeamNo = memberInfo.teamNo; // 사용자의 팀 번호를 가져옵니다.
+                    var configTeamDTO = {
+                        team1No : response.data.team1.teamNo,
+                        team2No : response.data.team2.teamNo,
+                        memberId : memberId
+                    };
+                    console.log('configTeamDTO -> ', configTeamDTO);
+                    $.ajax({
+                        url: 'https://www.h-club.site/comp/team/member',
+                        // url: 'http://localhost:8082/comp/team/member',
+                        type: 'POST',
+                        contentType: 'application/json', // 서버로 보내는 데이터 타입을 JSON으로 설정
+                        data: JSON.stringify(configTeamDTO),
+                        success : function (response) {
+                            userTeamNo = response;
+                            console.log('userTeamNo => ' + userTeamNo);
+                        }, error : function(error) {
+                            console.error(error);
+                        }
+                    })
+                    if(userTeamNo === teamNo1) {
+                        $('.team:eq(0) .team-logo').addClass('highlighted-team');
+                        $('.team:eq(1) .team-logo').removeClass('highlighted-team').addClass('not-highlighted-team');
+                    } else if(userTeamNo === teamNo2) {
+                        $('.team:eq(1) .team-logo').addClass('highlighted-team');
+                        $('.team:eq(0) .team-logo').removeClass('highlighted-team').addClass('not-highlighted-team');
+                    }
+
+                });
             }, error: function (error){
                 console.log('Error : ' + error);
             }
         });
 
-        $('.btn-match-start').click(function(e) {
-
-        });
 
         // 페이지 DOM 업데이트 함수
         function updateMatchDetails(data) {

@@ -118,6 +118,7 @@
     <div id="pagination">
 	
 	</div>
+	 <%@ include file="/WEB-INF/views/common/modal.jsp" %> 
   </div>
  <script>
  $(document).ready(function() {
@@ -164,7 +165,8 @@
 	            }
 	        },
 	        error: function(xhr, status, error) {
-	            console.error('개인 랭킹 리스트 정보 가져오기 실패:', error);
+	         	//setModalMsg("회원목록 관리 가져오기 실패");
+		        //getModalMesage(); 
 	        }
 	    });
  }
