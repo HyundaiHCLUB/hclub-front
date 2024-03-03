@@ -22,7 +22,7 @@
 <main>
     <div class="team-caption-container">
         <div class="team-caption-image">
-            <img src="/resources/image/comp/soccer.png" alt="">
+            <img src="" alt="">
         </div>
         <div class="team-captain-name">
 
@@ -55,6 +55,7 @@
     </div>
     <div class="select-product-container">
         <p>상품</p>
+        <div class="products"></div>
     </div>
 
     <div class="team-create-button-container">
@@ -68,39 +69,57 @@
 </main>
 
 <script>
+
+    // 데이터 로딩
+    document.addEventListener('DOMContentLoaded', function () {
+        // Retrieve the Base64 image string from localStorage
+        let base64ImageData = localStorage.getItem('multipartFile');
+        if (base64ImageData) {
+            // Find the <img> tag within the .event-image container
+            let imageElement = document.querySelector('.team-caption-image img');
+            // Set the retrieved Base64 string as the src attribute of the <img> tag
+            imageElement.src = base64ImageData;
+        }
+    });
     document.addEventListener("DOMContentLoaded", function () {
         // Define a global variable to store fetched product data
         let globalProductData = [];
-
         const apiUrl = 'https://www.h-club.site/comp/products';
+        const container = document.querySelector('.products'); // 제품들을 담을 컨테이너
 
         // Use fetch API to get the products
         fetch(apiUrl)
-            .then(response => response.json()) // Convert the response to JSON
+            .then(response => response.json())
             .then(data => {
-                console.log(data);
                 globalProductData = data.data; // Store the fetched data globally
-                const container = document.querySelector('.select-product-container');
 
-                // Loop through the data and create a radio button for each product
+                // Loop through the data and create a div for each product
                 data.data.forEach(product => {
-                    console.log(product);
+                    const productDiv = document.createElement('div'); // 각 제품을 담을 div 생성
+                    productDiv.classList.add('product-item'); // CSS 클래스 추가
 
                     // Create radio input
                     const radioInput = document.createElement('input');
                     radioInput.setAttribute('type', 'radio');
                     radioInput.setAttribute('name', 'product');
                     radioInput.setAttribute('value', product.productId);
-                    radioInput.setAttribute('id', `product-${product.productId}`);
-
+                    radioInput.setAttribute('id', `product`);
+                    // radioInput.setAttribute('style', '')
                     // Create label for radio input
                     const label = document.createElement('label');
-                    label.setAttribute('for', `product-${product.productId}`);
+                    label.setAttribute('for', `product` + product.productId);
                     label.textContent = product.productName;
 
-                    // Append the radio input and label to the container
-                    container.appendChild(radioInput);
-                    container.appendChild(label);
+                    // Append the radio input and label to the product div
+                    productDiv.appendChild(radioInput);
+                    productDiv.appendChild(label);
+
+                    // Append the product div to the products container
+                    container.appendChild(productDiv);
+
+                    productDiv.addEventListener('click', function () {
+                        radioInput.checked = true; // Set the radio input to checked when the div is clicked
+                    });
                 });
             })
             .catch(error => console.error('Error fetching products:', error));

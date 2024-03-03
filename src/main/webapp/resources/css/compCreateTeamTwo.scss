@@ -4,13 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
 }
 
 .team-caption-image {
 
   img {
     width: 300px;
-
+    border-radius: 40%;
   }
 
 
@@ -18,25 +19,31 @@
 
 .team-captain-name {
   display: flex;
-  justify-content: space-between;
-
-  img {
-    width: 50px;
-  }
-
-  p {
-    font-size: 30px;
-  }
+  justify-content: center; /* 기본적으로 중앙 정렬을 유지합니다 */
+  width: 100%; /* 부모 컨테이너의 전체 너비를 차지하도록 설정 */
+  position: relative; /* 포지셔닝 컨텍스트 설정 */
+  font-size: 60px;
+  margin-top: 50px;
 }
 
 .captain-caption {
+  margin-top: 10px;
+  position: absolute; /* 절대 위치 설정 */
+  right: 0; /* 오른쪽 정렬을 위해 */
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  color: #EF7353;
+  font-weight: bold;
+
+  p {
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 .team-border-line {
-  margin-top: 100px;
+  margin-top: 50px;
   border: 4px solid #46675c;
 }
 
@@ -62,10 +69,12 @@
   padding: 8px; /* 내부 여백 추가 */
   margin: 10px 0; /* 상하 마진 추가 */
   box-sizing: border-box; /* 패딩과 테두리가 너비에 포함되도록 설정 */
-  font-size: 38px;
+  font-size: 50px;
 
 
 }
+
+
 
 /* Increase the font size for the entire datepicker for larger text */
 .ui-datepicker {
@@ -95,8 +104,9 @@
 }
 
 /* Customize the dropdown list of the timepicker */
-.ui-timepicker-list {
-  font-size: 50px; /* Increase font size for the list */
+.ui-menu-item {
+  font-size: 35px; /* Increase font size for the list */
+
 }
 
 .ui-timepicker-list li {
@@ -107,7 +117,7 @@
 /* If you want to increase the space inside the input field as well */
 .ui-timepicker-input {
   height: 200px; /* Example height, adjust as needed */
-  font-size: 50px; /* Match the font size with the dropdown */
+  font-size: 200px; /* Match the font size with the dropdown */
 }
 
 
@@ -116,13 +126,49 @@
 .select-product-container {
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 500px;
+  margin-top: 200px;
 
   p {
     font-size: 50px;
     margin-left: 20px;
   }
 }
+
+.products {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px; /* 상품 간의 간격을 조정하기 위해 추가 */
+}
+
+.product-item {
+
+}
+
+.product-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-basis: calc(50% - 20px); /* 한 줄에 3개씩 표시, gap으로 인한 너비 조정 */
+  text-align: center; /* 텍스트를 가운데 정렬 */
+  margin-bottom: 20px;
+  font-size: 35px;
+
+}
+
+[type="radio"] {
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+
+}
+
+[type="radio"]:checked {
+  background-color: #46675c;
+}
+
 
 /* 이전 다음 버튼 */
 
