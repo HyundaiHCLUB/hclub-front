@@ -71,9 +71,7 @@
                 <img src="/resources/image/comp/comp_members.png">
                 <h3>팀원</h3>
             </div>
-            <p>차은우</p>
-            <p>박형식</p>
-            <p>송강</p>
+
         </div>
     </div>
     <div class="button-container">
@@ -171,7 +169,25 @@
         }
 
         // 팀원
+        let selectedMembersJSON = localStorage.getItem("selectedMembers");
+        if (selectedMembersJSON) {
+            let selectedMembers = JSON.parse(selectedMembersJSON);
 
+            // Find the .detail-component-team-mate container
+            let teamMateContainer = document.querySelector('.detail-component-team-mate');
+
+            // Ensure the container is found and the selectedMembers array is not empty
+            if (teamMateContainer && selectedMembers.length) {
+
+
+                // Create a new <p> tag for each member and append to the container
+                selectedMembers.forEach(member => {
+                    let pTag = document.createElement('p');
+                    pTag.textContent = member.memberName; // Set text to memberName
+                    teamMateContainer.appendChild(pTag);
+                });
+            }
+        }
 
         let rating = calculateAverageRating(selectedMembers);
 
@@ -185,28 +201,65 @@
         // Select the button by its class name
         var button = document.querySelector('.team-button');
 
-
-        // Add an event listener to the new button for its functionality
+        // Add an event listener to the button for its functionality
         button.addEventListener('click', function () {
-            button.remove();
-            // Create a new "매칭" button
+            button.remove(); // Remove the original button
+
+            // Create a new "매칭하러가기" button
             let matchingButton = document.createElement('button');
             matchingButton.textContent = '매칭하러가기';
             matchingButton.className = 'team-button'; // Assign any classes for styling
 
-            matchingButton.addEventListener('click', function () {
-                // Logic for what happens when "매칭" is clicked
-                window.location.href = '/competition/start'; // Adjust the URL to your matching page
+            // Event listener for the new matching button
+            matchingButton.addEventListener('click', async function () {
+                let url = '';
+                let isInitCreate = localStorage.getItem("initCreate");
+                if (isInitCreate === 'Y') {
+                    url = '/competition/start';
+                } else {
+
+                    let matchNo = await sendMatchRequest();
+
+                    url = '/competition/matchDetail/' + matchNo;
+                }
+
+                window.location.href = url; // Redirect to the appropriate URL
             });
 
-            // 매칭하러가기 버튼 추가
+            // Add the new matching button to the container
             var buttonContainer = document.querySelector('.button-container');
             buttonContainer.appendChild(matchingButton);
-
         });
-
-
     });
+
+    async function sendMatchRequest() {
+        var team1No = localStorage.getItem("teamNo");
+        var team2No = localStorage.getItem("opponentTeamNo");
+        var CreateMatchRequest = {
+            "team1No": team1No,
+            "team2No": team2No
+        };
+
+        try {
+            const response = await fetch('https://www.h-club.site/comp/match', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(CreateMatchRequest),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Success:', data);
+                return data.data; // 성공 시 data.data 리턴
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
 
     // POST
     document.addEventListener('DOMContentLoaded', function () {

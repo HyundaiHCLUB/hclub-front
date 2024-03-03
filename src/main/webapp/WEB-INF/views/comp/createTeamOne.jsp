@@ -141,13 +141,26 @@
             // Get all keys in localStorage
             const keys = Object.keys(localStorage);
 
-            // Iterate over all keys
+            if (localStorage.getItem('initCreate') === 'N') {
+                keys.forEach(function (key) {
+                    // Check if the current key is not accessTokenInfo
+                    if (key !== 'accessTokenInfo' && key !== 'opponentTeamNo' && key !== 'initCreate' && key !== 'name') {
+                        // Remove the item from localStorage
+                        localStorage.removeItem(key);
+                    }
+
+                });
+                return;
+            }
+
+            // N 일 경우
             keys.forEach(function (key) {
                 // Check if the current key is not accessTokenInfo
-                if (key !== 'accessTokenInfo') {
+                if (key !== 'accessTokenInfo' && key !== 'initCreate' && key !== 'name') {
                     // Remove the item from localStorage
                     localStorage.removeItem(key);
                 }
+
             });
         }
 
