@@ -41,19 +41,22 @@
         .product-title {
             font-size: 2em;
             font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
+            color: black;
+            margin-bottom: 20px;
         }
 
         .product-date {
             font-size: 1em;
-            color: #666;
+            margin-bottom: 10px;
         }
 
         .product-price {
             font-size: 1.5em;
             color: #333;
             margin-top: 5px;
+        }
+        .product-price h3 {
+            font-weight: bold;
         }
 
         .mypage-header i {
@@ -81,7 +84,8 @@
             width: 35%; /* New category width */
             border-left: 1px solid #ddd; /* Separating line if needed */
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 2.2em;
+            color: #fda5a8;
         }
         .mypage-header i {
             color: #F4B5B7;
@@ -192,7 +196,8 @@
                         '개설일 : ', $('<span/>', { text: club.createdAt })
                     ),
                     $('<div/>', { class: 'product-price' }).append(
-                        '활동 지역 ', $('<h4/>', { text: club.clubLoc })
+                        $('<h3/>', { style: 'display: inline;', text: '활동지역  ' }),
+                        $('<h4/>', { style: 'display: inline;', text: club.clubLoc })
                     )
                 ),
                 $('<div/>', { class: 'product-category' }).append(

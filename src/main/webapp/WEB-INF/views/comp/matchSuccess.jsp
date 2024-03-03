@@ -116,7 +116,7 @@
         // Add a click event listener to the button
         button.addEventListener('click', function() {
             // Navigate to the /competition/matchDetail page
-            window.location.href = '/competition/matchDetail/'+matchHistoryNo; // 변수명 혜연쓰와 맞춰야됨
+            window.location.href = '/competition/matchDetail/'+matchHistoryNo;
         });
     });
 </script>
