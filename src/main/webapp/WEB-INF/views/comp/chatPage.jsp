@@ -241,6 +241,8 @@
 	    			}
 	    			//받는사람
 	    			else if(urdata==toUser){
+	    				console.log("tes:::");
+	    				
 	    				//알람
 	    				if(messagePop == 0)
 	    					$("#alarm").show();
@@ -282,7 +284,7 @@
 	        doSendToWeb(JSON.stringify(obj));
 	        
 	        //메시지 보낸 후에 초기화
-	        //$("#chatTxt").val('');
+	        $("#chatTxt").val('');
 	    }
 	    function setData(obj){
 	    	  //본인의 번호 session에 저장
