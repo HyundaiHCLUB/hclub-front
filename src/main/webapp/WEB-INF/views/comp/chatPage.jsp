@@ -105,11 +105,10 @@
 	</div>
 	<div class="profile">
 		<div id="nickName"></div>
-		<div id="satus"></div>
 	</div>
-	<div class="profile">
+<!-- 	<div class="profile">
 		<span>버튼버튼</span>
-	</div>
+	</div> -->
 </div>
 <div id="chatArea"  style="height: 1389px;overflow: overlay;">
 
@@ -241,8 +240,7 @@
 	    			}
 	    			//받는사람
 	    			else if(urdata==toUser){
-	    				console.log("tes:::");
-	    				
+	 
 	    				//알람
 	    				if(messagePop == 0)
 	    					$("#alarm").show();
@@ -301,11 +299,11 @@
 	                'Authorization': 'Bearer ' + accessTokenInfo // accessToken 사용
 	            },
 	            success: function(response) {
-	               // console.log('사용자 정보:', response);
+	               console.log('사용자 정보:', response);
 	                // urdata = response.userNo;
-	                $("#nickName").text(response.userId);
+	                $("#nickName").text(response.data.employeeName);
 	                
-	                imageUrl = response.userImageUrl;
+	                imageUrl = response.data.userImageUrl;
 	                
 	                //프론트에서 default 이미지 설정
 	                if(imageUrl == null ){
