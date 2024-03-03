@@ -230,6 +230,33 @@ input[type="text"] {
 
 }
 
+// 팀원 DP
+
+.team-mate-list-container {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.team-mate-list-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.team-mate-list-container li {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.team-mate-list-container li button {
+  margin-left: 15px;
+  font-size: 20px;
+  color: #ff0000;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+
 .search-result-item {
   display: block; /* Makes each result appear on a new line */
   width: calc(100% - 20px); /* Matches the input width, adjusting for padding */
