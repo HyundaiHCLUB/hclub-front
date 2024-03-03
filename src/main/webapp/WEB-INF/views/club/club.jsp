@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>동아리</title>
-    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>
         var headerHeight = document.querySelector('header').offsetHeight;
         var footerHeight = document.querySelector('footer').offsetHeight;
@@ -426,92 +426,9 @@
             });
         </script>
 
-
         <div class="clubs" id="clubs">
         </div>
 
-        <div class="grid-container">
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-        </div>
-        <div class="grid-container">
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-        </div>
-        <div class="grid-container">
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-        </div>
-        <div class="grid-container">
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="plus-club">
-            <a href="/club/add">
-               <svg width="160" height="160" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
-                 <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-                 <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-             </svg>
-            </a>
-        </div>
     </main>
 </body>
 </html>

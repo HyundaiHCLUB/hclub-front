@@ -95,12 +95,14 @@
                             var clubHTML = '<div class="grid-container">';
                             data.forEach(function (item) {
                                 clubHTML += '<div class="grid-item">' +
+                                    '<a href="/club/detail/' + item.clubNo + '">' +
                                     '<img class="circle_recommend" src="' + item.clubImage + '">' +
                                     '<div class="circle_content">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
                                     '<a href="#" class="category_button">' + item.categoryName + '</a>' +
                                     '<a href="#" class="content_button">추천</a>' +
                                     '</div>' +
+                                    '</a>' +
                                     '</div>'
                                 ;
                             });
@@ -239,43 +241,6 @@
     </div>
 
     <div class="interestClubs"></div>
-
-    <div class="grid-container">
-        <div class="grid-item">
-            <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-            <div class="circle_content">
-                <p class="circle_name">난쏘공</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">추천</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-            <div class="circle_content">
-                <p class="circle_name">난쏘공</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">추천</a>
-            </div>
-        </div>
-    </div>
-    <div class="grid-container">
-        <div class="grid-item">
-            <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-            <div class="circle_content">
-                <p class="circle_name">난쏘공</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">추천</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-            <div class="circle_content">
-                <p class="circle_name">난쏘공</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">추천</a>
-            </div>
-        </div>
-    </div>
 
     <div class="title">
         <div class="title-item">
