@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>메인 페이지</title>
     <script>
         var headerHeight = document.querySelector('header').offsetHeight;
@@ -78,7 +78,48 @@
                     }
                 });
             }
+
+            function getInterestList() {
+                accessToken = localStorage.getItem("accessTokenInfo");
+
+                $.ajax({
+                    url: "https://www.h-club.site/clubs/interest",
+                    method: "GET",
+                    headers: {
+                        'accessTokenInfo': accessToken,
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            var data = response.data;
+                            $(".interestClubs").empty();
+                            var clubHTML = '<div class="grid-container">';
+                            data.forEach(function (item) {
+                                clubHTML += '<div class="grid-item">' +
+                                    '<a href="/club/detail/' + item.clubNo + '">' +
+                                    '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                    '<div class="circle_content">' +
+                                    '<p class="circle_name">' + item.clubName + '</p>' +
+                                    '<a href="#" class="category_button">' + item.categoryName + '</a>' +
+                                    '<a href="#" class="content_button">추천</a>' +
+                                    '</div>' +
+                                    '</a>' +
+                                    '</div>'
+                                ;
+                            });
+                            clubHTML += '</div>';
+                            $(".interestClubs").append(clubHTML);
+
+                        } else {
+                            console.error("Error:", response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error fetching data:", error);
+                    }
+                });
+            }
             getHotClubList();
+            getInterestList();
         });
     </script>
     <script>
@@ -166,30 +207,30 @@
 
     <div class="category">
         <div class="category-item">
-            <a href="today.jsp"><img src="/resources/image/category_cooking.png"></a>
+            <a href="/club/1"><img src="/resources/image/category_cooking.png"></a>
         </div>
         <div class="category-item">
-            <img src="/resources/image/category_activity.png">
+            <a href="/club/3"><img src="/resources/image/category_activity.png"></a>
         </div>
         <div class="category-item">
-            <img src="/resources/image/category_game.png">
+            <a href="/club/4"><img src="/resources/image/category_game.png"></a>
         </div>
         <div class="category-item">
-            <img src="/resources/image/category_culture.png">
+            <a href="/club/5"><img src="/resources/image/category_culture.png"></a>
         </div>
     </div>
     <div class="category">
         <div class="category-item">
-            <img src="/resources/image/category_foreign.png">
+            <a href="/club/6"><img src="/resources/image/category_foreign.png"></a>
         </div>
         <div class="category-item">
-            <img src="/resources/image/category_travel.png">
+            <a href="/club/7"><img src="/resources/image/category_travel.png"></a>
         </div>
         <div class="category-item">
-            <img src="/resources/image/category_self.png">
+            <a href="/club/8"><img src="/resources/image/category_self.png"></a>
         </div>
         <div class="category-item">
-            <img src="/resources/image/category_money.png">
+            <a href="/club/2"><img src="/resources/image/category_money.png"></a>
         </div>
     </div>
 
@@ -197,47 +238,9 @@
         <div class="title-item">
             <p class="sub-title" id="sub-title"></p>
         </div>
-        <%--<div class="title-item">
-            <p class="more">더보기</p>
-        </div>--%>
     </div>
 
-    <div class="grid-container">
-        <div class="grid-item">
-            <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-            <div class="circle_content">
-                <p class="circle_name">난쏘공</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">추천</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-            <div class="circle_content">
-                <p class="circle_name">난쏘공</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">추천</a>
-            </div>
-        </div>
-    </div>
-    <div class="grid-container">
-        <div class="grid-item">
-            <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-            <div class="circle_content">
-                <p class="circle_name">난쏘공</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">추천</a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-            <div class="circle_content">
-                <p class="circle_name">난쏘공</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">추천</a>
-            </div>
-        </div>
-    </div>
+    <div class="interestClubs"></div>
 
     <div class="title">
         <div class="title-item">
@@ -249,62 +252,6 @@
     <div class="hotClubs">
     </div>
 
-   <%-- <div class="grid-container">
-        <div class="grid-hot-item">
-            <img class="circle_recommend" src="/resources/image/sample2.png" alt="Example Image">
-        </div>
-        <div class="grid-hot-item">
-            <div class="circle_hot_content">
-                <p class="circle_name">볼링즈</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">인기</a>
-            </div>
-            <p class="circle_hot_loc">서울특별시 서초구</p>
-            <i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>
-        </div>
-    </div>
-    <div class="grid-container">
-        <div class="grid-hot-item">
-            <img class="circle_recommend" src="/resources/image/sample2.png" alt="Example Image">
-        </div>
-        <div class="grid-hot-item">
-            <div class="circle_hot_content">
-                <p class="circle_name">볼링즈</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">인기</a>
-            </div>
-            <p class="circle_hot_loc">서울특별시 서초구</p>
-            <i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>
-        </div>
-    </div>
-    <div class="grid-container">
-        <div class="grid-hot-item">
-            <img class="circle_recommend" src="/resources/image/sample2.png" alt="Example Image">
-        </div>
-        <div class="grid-hot-item">
-            <div class="circle_hot_content">
-                <p class="circle_name">볼링즈</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">인기</a>
-            </div>
-            <p class="circle_hot_loc">서울특별시 서초구</p>
-            <i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>
-        </div>
-    </div>
-    <div class="grid-container">
-        <div class="grid-hot-item">
-            <img class="circle_recommend" src="/resources/image/sample2.png" alt="Example Image">
-        </div>
-        <div class="grid-hot-item">
-            <div class="circle_hot_content">
-                <p class="circle_name">볼링즈</p>
-                <a href="#" class="category_button">액티비티</a>
-                <a href="#" class="content_button">인기</a>
-            </div>
-            <p class="circle_hot_loc">서울특별시 서초구</p>
-            <i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>
-        </div>
-    </div>--%>
 </main>
 </body>
 </html>

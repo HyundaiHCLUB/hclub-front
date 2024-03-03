@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>동아리 신청</title>
-    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>
         var headerHeight = document.querySelector('header').offsetHeight;
         var footerHeight = document.querySelector('footer').offsetHeight;
