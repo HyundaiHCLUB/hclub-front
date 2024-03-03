@@ -34,7 +34,6 @@
             gap: 10px; /* 컬럼 사이의 간격 */
             border-radius: 30px;
             padding: 20px;
-            padding-top: 50px;
             justify-content: space-around;
             /*background-color: #F1F5E8;*/
             width: 90%;
@@ -302,6 +301,7 @@
                 $('#userName').text(memberInfo.employeeName); // 이름 설정
                 $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
                 $('.profile-pic').attr('src', memberInfo.memberImage);
+
              }).catch(error => {
                 console.error('사용자 정보 가져오기 실패:', error);
             });
@@ -325,19 +325,15 @@
 
         // 경기상세정보 API 호출
         $.ajax({
-            url: 'https://www.h-club.site/comp/match/${matchHistoryNo}', //샘플데이터 <- 컨트롤러에서 넘어온 경기번호로 대체해야됨
+            url: 'https://www.h-club.site/comp/match/${matchHistoryNo}', //<- 컨트롤러에서 넘어온 경기번호
             type: 'GET',
             dataType: 'json',
             success: function (response){
                 updateMatchDetails(response.data);
                 matchHistorytNo = response.data.matchHistoryNo;
-                localStorage.setItem("otherUserNo", response.data.team2.leader.memberNo); // 채팅 상대방 번호
-                localStorage.setItem("otherUserName", response.data.team2.leader.memberId); // 채팅 상대방 이름
                 temaNo1 = response.data.team1.teamNo;
                 temaNo2 = response.data.team2.teamNo;
                 console.log(response);
-                console.log('otherUserNo : ' + response.data.team2.leader.memberNo);
-                console.log('otherUserId : ' + response.data.team2.leader.memberId);
                 console.log("matchHistNo -> " + matchHistorytNo);
                 console.log("teamNo1 -> " + response.data.team1.teamNo);
                 console.log("teamNo2 -> " + response.data.team2.teamNo);
@@ -353,6 +349,21 @@
                         team2No : response.data.team2.teamNo,
                         memberId : memberId
                     };
+                    // 두 팀 리더 중 로그인한 사용자가 아닌 다른 사람의 번호를 otherUserNo 에 저장
+                    var otherLeader;
+                    if(memberInfo.member_id == response.data.team1.leader.memberId) {
+                        otherLeader = response.data.team2.leader;
+                    } else if(memberInfo.member_id == response.data.team2.leader.memberId) {
+                        otherLeader = response.data.team1.leader;
+                    }
+                    if(otherLeader) {
+                        localStorage.setItem("otherUserNo", otherLeader.memberNo);
+                        localStorage.setItem("otherUserId", otherLeader.memberId);
+                    }
+                    console.log("--------- otherLeader ------------");
+                    console.log(localStorage.getItem("otherUserNo"));
+                    console.log(localStorage.getItem("otherUserId"));
+                    console.log("----------------------------------");
                     console.log('configTeamDTO -> ', configTeamDTO);
                     $.ajax({
                         url: 'https://www.h-club.site/comp/team/member',
