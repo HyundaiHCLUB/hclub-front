@@ -11,6 +11,11 @@
 
 <body>
 <main>
+    <div class="mypage-top-menu">
+        <img src="/resources/image/left-arrow.png"
+             onclick="window.history.back()"/>
+        <span>상세보기</span>
+    </div>
     <div class="team-image">
         <img src="" alt="팀 이미지">
     </div>
@@ -71,13 +76,11 @@
                 <img src="/resources/image/comp/comp_members.png">
                 <h3>팀원</h3>
             </div>
-            <p>차은우</p>
-            <p>박형식</p>
-            <p>송강</p>
+
         </div>
     </div>
     <div class="button-container">
-        <button class="team-button" onclick="window.history.back();">뒤로가기</button>
+        <button class="team-button">참여하기</button>
     </div>
 </main>
 </body>
@@ -120,5 +123,11 @@
             });
         });
     });
+    let buttonNext = document.querySelector('.team-button');
+    buttonNext.addEventListener('click', function () {
+        localStorage.setItem("opponentTeamNo", teamNo);
+        localStorage.setItem("initCreate", 'N');
+        window.location.href = '/competition/create/1';
+    })
 </script>
 </html>
