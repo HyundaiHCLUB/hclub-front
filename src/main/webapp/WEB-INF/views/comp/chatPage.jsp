@@ -160,22 +160,16 @@
 	  //  localStorage.setItem("otherUserNo", "5"); // 추후 주석처리
 	    let otherUserNo = localStorage.getItem("otherUserNo");
 	    let otherUserName = localStorage.getItem("otherUserName");
-	    let openFlag = false;
-	    if(urdata == null){
-	    	urdata = getRandomNumber(1, 100);//"${uuIdx}"; =>회원의 번호로 대체
-	    }
-	    else{
-	    	// accessToken정보를 넣어 해당 userID 조회
-	    	getUserInfo(accessTokenInfo);
-	    	openFlag = true;
-	        console.log("urdata:"+urdata);
+
+	    // accessToken정보를 넣어 해당 userID 조회
+	    getUserInfo(accessTokenInfo);
+	    console.log("urdata:"+urdata);
 	    	
-	    }
 	    var otherUseridx;
 	    var messagePop = 0;
 	
 	    //화면에 접속하면 소켓오픈
-	    if(urdata!= null && urdata!="" && urdata!="null" && openFlag==true)
+	    if(urdata!= null && urdata!="" && urdata!="null" )
 	      initToWeb();
 	
 	    function initToWeb() {
@@ -238,8 +232,6 @@
 	    			let toUser = obj.toUser;
 	    			let chatMsg = obj.chatMsg;
 	    			let time = obj.time;
-	    			consoel.log("sendChat: ");
-	    			consoel.log(obj);
 	    			//보낸사람
 	    			console.log("onMessageToWeb sendChat fromUser:"+fromUser+" urdata:"+urdata);
 	    			if(urdata==fromUser){
@@ -307,8 +299,8 @@
 	                'Authorization': 'Bearer ' + accessTokenInfo // accessToken 사용
 	            },
 	            success: function(response) {
-	                console.log('사용자 정보:', response);
-	                urdata = response.userNo;
+	               // console.log('사용자 정보:', response);
+	                // urdata = response.userNo;
 	                $("#nickName").text(response.userId);
 	                
 	                imageUrl = response.userImageUrl;
