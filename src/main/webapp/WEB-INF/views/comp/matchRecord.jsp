@@ -156,7 +156,14 @@
             margin: 0 auto;
             text-align: center;
         }
-
+        .highlighted-team {
+            border: 13px solid #ffa500;
+            border-radius: 50%;
+        }
+        .not-highlighted-team {
+            border: 13px solid #ffffff;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -173,13 +180,13 @@
         </div>
             <div class="team-icons">
                 <div class="team">
-                    <img src="${path}/resources/image/sample.png" alt="팀1 로고"/>
+                    <img src="" class="team-logo"/>
                     <h4>한반두</h4>
                     <input type="number" class="score-input" name="score1"/>
                 </div>
                 <div class="score-separator">:</div> <!-- 여기에 추가 -->
                 <div class="team">
-                    <img src="${path}/resources/image/sample2.png" alt="팀2 로고"/>
+                    <img src="" class="team-logo"/>
                     <h4>장한평핫스퍼</h4>
                     <input type="number" class="score-input" name="score2"/>
                 </div>
@@ -199,6 +206,7 @@
     let accessToken = localStorage.getItem("accessTokenInfo");
     let selectedFile;
     console.log("matchHistoryNo from controller : " + ${matchHistoryNo})
+    var memberId;
     var team1No;
     var team2No;
     var matchLoc;
@@ -220,7 +228,54 @@
                 $('.team').eq(1).find('h4').text(response.data.team2.teamName);
 
                 getUserInfo(accessToken).then(memberInfo => {
-                    console.log("memberID : " + memberInfo.member_id);
+                    memberId = memberInfo.member_id;
+                    console.log("memberID : " + memberId);
+                    // 현재 화면에 접속한 사용자가 속한 팀 번호 알아내기
+                    var userTeamNo = memberInfo.teamNo;
+                    var configTeamDTO = {
+                        team1No : response.data.team1.teamNo,
+                        team2No : response.data.team2.teamNo,
+                        memberId : memberId
+                    };
+                    // 두 팀 리더 중 로그인한 사용자가 아닌 다른 사람의 번호를 otherUserNo 에 저장
+                    var otherLeader;
+                    if(memberInfo.member_id == response.data.team1.leader.memberId) {
+                        otherLeader = response.data.team2.leader;
+                        localStorage.setItem("currentUserNo", response.data.team1.leader.memberNo);
+                    } else if(memberInfo.member_id == response.data.team2.leader.memberId) {
+                        otherLeader = response.data.team1.leader;
+                        localStorage.setItem("currentUserNo", response.data.team2.leader.memberNo);
+                    }
+                    if(otherLeader) {
+                        localStorage.setItem("otherUserNo", otherLeader.memberNo);
+                        localStorage.setItem("otherUserId", otherLeader.memberId);
+                    }
+                    console.log("--------- otherLeader ------------");
+                    console.log(localStorage.getItem("otherUserNo"));
+                    console.log(localStorage.getItem("otherUserId"));
+                    console.log("---------- current Leader-------------");
+                    console.log(localStorage.getItem("currentUserNo"));
+                    console.log("----------------------------------");
+                    console.log('configTeamDTO -> ', configTeamDTO);
+                    $.ajax({
+                        url: 'https://www.h-club.site/comp/team/member',
+                        type: 'POST',
+                        contentType: 'application/json', // 서버로 보내는 데이터 타입을 JSON으로 설정
+                        data: JSON.stringify(configTeamDTO),
+                        success : function (response) {
+                            userTeamNo = response;
+                            console.log('userTeamNo => ' +  userTeamNo);
+                            if(userTeamNo === team1No) {
+                                $('.team:eq(0) .team-logo').addClass('highlighted-team');
+                                $('.team:eq(1) .team-logo').removeClass('highlighted-team').addClass('not-highlighted-team');
+                            } else if(userTeamNo === team2No) {
+                                $('.team:eq(1) .team-logo').addClass('highlighted-team');
+                                $('.team:eq(0) .team-logo').removeClass('highlighted-team').addClass('not-highlighted-team');
+                            }
+                        }, error : function(error) {
+                            console.error(error);
+                        }
+                    })
                 }).catch(error => {
                     console.error('사용자 정보 가져오기 실패:', error);
                 })
@@ -270,10 +325,15 @@
                 }
             })
             // 여기에 점수 비교 로직 추가
-            if (scoreTeam1 < scoreTeam2) {
+            if (scoreTeam1 < scoreTeam2) { // 진경우
                 // 팀1의 점수가 팀2의 점수보다 작으면 loseTeamResult.jsp로 리다이렉트
                 window.location.href = '${path}/competition/loseTeam/${matchHistoryNo}';
                 return; // 추가된 부분
+            }
+            else if (scoreTeam1 == scoreTeam2) { // 무승부
+                window.location.href = '/competition/drawTeam';
+            } else { // 이긴 경우
+                window.location.href = '/competition/winTeam';
             }
         });
     });
