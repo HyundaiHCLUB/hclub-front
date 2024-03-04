@@ -188,6 +188,6 @@
     	 
     	 console.log(params);
     	 
-    }
+    });
 </script>
 </html>
