@@ -29,8 +29,11 @@ function checkAccessAdminTokenInfo() {
 	#headerLogo{
 	  width: 50px;
 	}
+	#logo{
+	  width: 100px;
+	}
 </style>
-<aside class="sidebar">
+<aside class="sidebar" >
    <div class="sidebar-start">
        <div class="sidebar-head">
            <a href="/dashboard/clubAdminPage" class="logo-wrapper" title="Home">
