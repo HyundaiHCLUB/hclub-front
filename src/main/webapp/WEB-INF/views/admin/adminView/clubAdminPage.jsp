@@ -62,6 +62,10 @@
 		padding: 10px;
 		text-align: center;
 	}
+	#logo{
+		width:100px;
+		color: white;
+	}
 </style>
 <body>
 <body>
@@ -155,20 +159,17 @@
 	            getClubSetUp();
 	        }
 	    });
-	 /* window.pagObj = $('#pagination').twbsPagination({
-	        totalPages: [[20]], // 전체 페이지
-	        startPage: parseInt([[0]] + 1), // 시작(현재) 페이지
-	        visiblePages: 10, // 최대로 보여줄 페이지
-	        prev: "‹", // Previous Button Label
-	        next: "›", // Next Button Label
-	        first: '«', // First Button Label
-	        last: '»', // Last Button Label
-	        onPageClick: function (event, page) { // Page Click event
-	            console.info("current page : " + page);
-	        }
-	    }).on('page', function (event, page) {
-	        searchDataList(page);
-	    }); */
+	 //공통 모달의 css를 onload시 변경
+	 $('#modalMsg').css({
+	        'font-size': '20px',
+	        'font-weight': 'bold',
+	        'text-align': 'center'
+	    });
+
+	  $('.modal-content').css({
+	        'width': 'fit-content',
+	        'padding': '10px'
+	  });
  });
  let setClubStartIndex = 1;
  let setClubEndIndex = 10;

@@ -132,6 +132,18 @@
 	            getRankSetUp();
 	        }
 	  });
+	 
+	 //공통 모달의 css를 onload시 변경
+	 $('#modalMsg').css({
+	        'font-size': '20px',
+	        'font-weight': 'bold',
+	        'text-align': 'center'
+	    });
+
+	  $('.modal-content').css({
+	        'width': 'fit-content',
+	        'padding': '10px'
+	  });
  
  });
  
@@ -175,8 +187,8 @@
 	            }
 	        },
 	        error: function(xhr, status, error) {
-	         	//setModalMsg("회원목록 관리 가져오기 실패");
-		        //getModalMesage(); 
+	         	setModalMsg("회원목록 관리 가져오기 실패");
+		        getModalMesage(); 
 	        }
 	    });
  }
