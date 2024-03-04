@@ -83,10 +83,19 @@ main {
 }
 
 .grid-item {
-    flex: 0 0 calc(50% - 20px);
+    flex: 0 0 calc(50%);
     box-sizing: border-box;
     text-align: center;
     margin-bottom: 24px;
+}
+
+.grid-container:after {
+    content: '';
+    flex: auto;
+}
+
+.grid-container:last-child .grid-item:last-child {
+    margin-right: auto;
 }
 
 .circle_recommend {
@@ -102,7 +111,7 @@ main {
 }
 
 .category_button {
-    font-size: 30px;
+    font-size: 28px;
     margin-top: 10px;
     padding: 8px 16px;
     background-color: #46675c;
@@ -113,7 +122,7 @@ main {
     text-decoration: none;
     display: inline-block;
     height: fit-content;
-    width: 150px;
+    width: 138px;
     margin-left: 8px;
     margin-top: 20px;
 }

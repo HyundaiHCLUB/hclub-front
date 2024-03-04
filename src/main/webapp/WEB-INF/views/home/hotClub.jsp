@@ -11,32 +11,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>인기 동아리</title>
     <script>
-        var headerHeight = document.querySelector('header').offsetHeight;
-        var footerHeight = document.querySelector('footer').offsetHeight;
-
-        window.addEventListener('scroll', function() {
-            var scrollY = window.scrollY || document.documentElement.scrollTop;
-
-            if (scrollY > headerHeight) {
-                document.body.style.paddingTop = headerHeight + 'px';
-                document.querySelector('header').classList.add('fixed');
-            } else {
-                document.body.style.paddingTop = 0;
-                document.querySelector('header').classList.remove('fixed');
-            }
-
-            var scrollBottom = window.innerHeight + scrollY;
-            var documentHeight = document.documentElement.offsetHeight;
-            if (documentHeight - scrollBottom < footerHeight) {
-                document.body.style.paddingBottom = footerHeight + 'px';
-                document.querySelector('footer').classList.add('fixed-bottom');
-            } else {
-                document.body.style.paddingBottom = 0;
-                document.querySelector('footer').classList.remove('fixed-bottom');
-            }
-        });
-    </script>
-    <script>
         $(document).ready(function () {
             function getHotClubList() {
                 $.ajax({
