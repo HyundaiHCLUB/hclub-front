@@ -276,7 +276,7 @@
     </div>
 
     <div class="input-group">
-        <input id="clubTitle" style="font-size: 36px; width: 90%;height: 50px;" name="boardSubject" type="text" value="제목을 입력해 주세요.">
+        <input id="clubTitle" style="font-size: 36px; width: 90%;height: 50px;" name="boardSubject" type="text" placeholder="제목을 입력해 주세요.">
     </div>
     <div id="root">
         <hr>

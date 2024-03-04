@@ -10,7 +10,7 @@ main {
 .category {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .category-item {
@@ -31,10 +31,11 @@ main {
 
 .title-item {
     flex: 1;
+    margin-top: 20px;
 }
 
 .sub-title {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     text-align: left;
     margin-left: 58px;
@@ -43,16 +44,16 @@ main {
 }
 
 .sub-title-district {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     text-align: left;
     margin-left: 58px;
-    margin-top: 28px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .sub-desc-district {
-    font-size: 28px;
+    font-size: 36px;
     color: #5F5F5F;
     text-align: left;
     margin-left: 58px;
@@ -96,12 +97,12 @@ main {
 
 .circle_name {
     font-weight: bold;
-    font-size: 44px;
+    font-size: 50px;
     margin-top: 16px;
 }
 
 .category_button {
-    font-size: 20px;
+    font-size: 30px;
     margin-top: 10px;
     padding: 8px 16px;
     background-color: #46675c;
@@ -112,13 +113,13 @@ main {
     text-decoration: none;
     display: inline-block;
     height: fit-content;
-    width: fit-content;
+    width: 150px;
     margin-left: 8px;
     margin-top: 20px;
 }
 
 .content_button {
-    font-size: 20px;
+    font-size: 30px;
     padding: 8px 16px;
     background-color: #b31312;
     color: #fff;
@@ -128,7 +129,7 @@ main {
     text-decoration: none;
     display: inline-block;
     height: fit-content;
-    width: fit-content;
+    width: 110px;
     margin-left: 8px;
     margin-top: 20px;
 }
@@ -154,16 +155,17 @@ main {
     display: flex;
     justify-content: center;
     margin-top: 15%;
+    margin-right: 14px;
 }
 
 .circle_hot_loc {
-    font-size: 28px;
+    font-size: 40px;
     text-align: center;
     margin-top: 16px;
 }
 
 .club_info {
-    font-size: 28px;
+    font-size: 36px;
     text-align: center;
     margin-top: 16px;
     width: 400px;
