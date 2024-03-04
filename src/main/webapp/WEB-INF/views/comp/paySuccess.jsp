@@ -124,7 +124,7 @@
                     <p class="detail-icon">결제 상품</p>
                 </div>
                 <div class="details-content">
-                    <p class="detail-title">H-Cafe 30,000원 상품권</p>
+                    <p class="detail-title" id="productName">H-Cafe 30,000원 상품권</p>
                 </div>
             </div>
 
@@ -133,18 +133,18 @@
                     <p class="detail-icon">금액</p>
                 </div>
                 <div class="details-content">
-                    <p class="detail-title">30,000 원</p>
+                    <p class="detail-title" id="productAmount">30,000 원</p>
                 </div>
             </div>
 
-            <div class="details">
+          <!--   <div class="details">
                 <div class="details-header">
                     <p class="detail-icon">받는 사람</p>
                 </div>
                 <div class="details-content">
                     <p class="detail-title">홍길동</p>
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </div>
@@ -166,5 +166,28 @@
     });
     var item = sessionStorage.getItem('recipentMemberNo');
     console.log(item);
+    
+    $(document).ready(function(){
+    	 let matchHistNo = localStorage.getItem('matchHistNo');
+    	 let settleAmount = localStorage.getItem('settleAmount');
+    	 let settleName = localStorage.getItem('settleName');
+    	 let productsNo = localStorage.getItem('productsNo');
+    	 let settleMemberId = localStorage.getItem('settleMemberId');
+    	 let recipentMemberNo = localStorage.getItem('recipentMemberNo');
+    	 
+    	 $("#productName").text(settleName);
+    	 $("#productAmount").text(settleAmount);
+    	 
+    	 var params = {};
+    	 params.matchHistNo=matchHistNo;
+    	 params.settleAmount=settleAmount;
+    	 params.settleName=settleName;
+    	 params.productsNo=productsNo;
+    	 params.settleMemberId= settleMemberId;
+    	 params.recipentMemberNo=recipentMemberNo;
+    	 
+    	 console.log(params);
+    	 
+    }
 </script>
 </html>
