@@ -53,8 +53,8 @@
             box-sizing: border-box; /* 테두리와 패딩을 요소의 크기 계산에 포함 */
         }
         .team img {
-            width: 180px;
-            height: 180px;
+            width: 260px;
+            height: 260px;
             margin: 20px auto;
         }
         .team p {
