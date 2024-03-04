@@ -249,9 +249,50 @@
                             clubHTML += '</div>';
                             $(".clubs").append(clubHTML);
                         }
+                        updateLikedClubs();
+
                     } else {
                         console.error("Error:", response.message);
                     }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching data:", error);
+                }
+            });
+        }
+    </script>
+    <script>
+        function getClubRecentList(categoryName) {
+            $.ajax({
+                url: "https://www.h-club.site/clubs/recent/filter?category="+categoryName,
+                method: "GET",
+                success: function (response) {
+                    if (response.success) {
+                        var data = response.data;
+                        $(".clubs").empty();
+                        var clubList = document.getElementById("clubs");
+
+                        for (var i = 0; i < data.length; i += 2) {
+                            var group = data.slice(i, i + 2);
+
+                            var clubHTML = '<div class="grid-container">';
+                            group.forEach(function (item) {
+                                clubHTML += '<a href="/club/detail/' + item.clubNo + '"><div class="grid-item">' +
+                                    '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                    '<div class="circle_content">' +
+                                    '<p class="circle_name">' + item.clubName + '</p>' +
+                                    '<a href="#" class="category_button">'+item.categoryName+'</a>' +
+                                    '</div></div></a>';
+                            });
+                            clubHTML += '</div>';
+                            $(".clubs").append(clubHTML);
+                        }
+                        updateLikedClubs();
+
+                    } else {
+                        console.error("Error:", response.message);
+                    }
+
                 },
                 error: function (xhr, status, error) {
                     console.error("Error fetching data:", error);
@@ -394,7 +435,7 @@
                     getClubLikeList(getCategoryName(categoryId));
                 }
                 else if(filter === '새로 열린순'){
-
+                    getClubRecentList(getCategoryName(categoryId));
                 }
             }
 
