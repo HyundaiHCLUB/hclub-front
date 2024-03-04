@@ -11,32 +11,6 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>동아리 개설</title>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script>
-        var headerHeight = document.querySelector('header').offsetHeight;
-        var footerHeight = document.querySelector('footer').offsetHeight;
-
-        window.addEventListener('scroll', function() {
-            var scrollY = window.scrollY || document.documentElement.scrollTop;
-
-            if (scrollY > headerHeight) {
-                document.body.style.paddingTop = headerHeight + 'px';
-                document.querySelector('header').classList.add('fixed');
-            } else {
-                document.body.style.paddingTop = 0;
-                document.querySelector('header').classList.remove('fixed');
-            }
-
-            var scrollBottom = window.innerHeight + scrollY;
-            var documentHeight = document.documentElement.offsetHeight;
-            if (documentHeight - scrollBottom < footerHeight) {
-                document.body.style.paddingBottom = footerHeight + 'px';
-                document.querySelector('footer').classList.add('fixed-bottom');
-            } else {
-                document.body.style.paddingBottom = 0;
-                document.querySelector('footer').classList.remove('fixed-bottom');
-            }
-        });
-    </script>
     <style>
         .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:24px;}
         .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -90,7 +64,7 @@
 
     <ul>
         <li style="list-style: none; text-align: center; margin-top: 40px">
-            <input type = "text" id ="keyword" placeholder = "장소를 검색해주세요." style="font-size: 40px; text-align: center;width: 800px;margin-top: 40px;">
+            <input type = "text" id ="keyword" placeholder = "장소를 검색해주세요." style="font-size: 56px; text-align: center;width: 800px;margin-top: 40px;">
         </li>
         <li style="list-style: none; text-align: center; margin-top: 40px">
             <input type = "text" id ="address" style="font-size: 40px; text-align: center;border:0px;width: 700px;">
