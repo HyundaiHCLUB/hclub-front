@@ -124,7 +124,7 @@
                     <p class="detail-icon">결제 상품</p>
                 </div>
                 <div class="details-content">
-                    <p class="detail-title" id="productName">H-Cafe 30,000원 상품권</p>
+                    <p class="detail-title" id="productName"></p>
                 </div>
             </div>
 
@@ -133,7 +133,7 @@
                     <p class="detail-icon">금액</p>
                 </div>
                 <div class="details-content">
-                    <p class="detail-title" id="productAmount">30,000 원</p>
+                    <p class="detail-title" id="productAmount">0</p>&nbsp;원
                 </div>
             </div>
 
@@ -187,6 +187,23 @@
     	 params.recipentMemberNo=recipentMemberNo;
     	 
     	 console.log(params);
+    	 
+    	 //결제 결과 확인 로드시 결제테이블에 데이터 삽잉ㅂ
+    	 $.ajax({
+              type: 'POST',
+              //url: '/compTest/comp/settle',
+              url: 'https://www.h-club.site/comp/settle',
+              contentType: 'application/json',
+              data: JSON.stringify(params),
+              success: function(response) { 
+                  console.log(response);
+                   
+              },
+              error: function(xhr, status, error) {
+               	setModalMsg("결제결과 삽입에 실패 했습니다..");
+                getModalMesage(); 
+              }
+          });
     	 
     });
 </script>
