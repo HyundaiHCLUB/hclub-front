@@ -25,15 +25,21 @@ function checkAccessAdminTokenInfo() {
     }
 }
 </script>
+<style>
+	#headerLogo{
+	  width: 50px;
+	}
+</style>
 <aside class="sidebar">
    <div class="sidebar-start">
        <div class="sidebar-head">
-           <a href="/" class="logo-wrapper" title="Home">
+           <a href="/dashboard/clubAdminPage" class="logo-wrapper" title="Home">
                <span class="sr-only">Home</span>
-               <span class="icon logo" aria-hidden="true"></span>
+              <!--  <span class="icon logo" aria-hidden="true"></span> -->
+                <span><img id="headerLogo" src="/resources/image/oriCharacter.png"></span>
                <div class="logo-text">
-                   <span class="logo-title">H-Club</span>
-                   <span class="logo-subtitle">관리자페이지</span>
+                   <span class="logo-title"><img id="logo" src="/resources/image/hlogo.png"></span>
+                   <span class="logo-subtitle">&nbsp;&nbsp;관리자페이지</span>
                </div>
             </a>
 	        <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
