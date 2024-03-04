@@ -122,7 +122,7 @@
 	</div>
 	<div class="profile">
 		<div id="otherInfo">
-			<span id="nickName"></span>님과의 대화<br/><br/>
+			<span id="nickName"></span><br/><br/>
 			<span id="dept"></span> &nbsp;<span id="position">
 		</div>
 	</div>
@@ -330,8 +330,7 @@
 	                $("#nickName").text(response.data.employeeName);
 	                $("#dept").text(response.data.employeeDept);
 	                $("#position").text(response.data.employeePosition);
-	                
-	                imageUrl = response.data.userImageUrl;
+	                imageUrl = response.data.memberImage;
 	                
 	                //프론트에서 default 이미지 설정
 	                if(imageUrl == null ){

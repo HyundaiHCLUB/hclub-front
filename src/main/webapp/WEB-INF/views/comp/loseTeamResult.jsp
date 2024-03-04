@@ -21,12 +21,15 @@
              type: 'GET',
              dataType: 'json',
              success: function(response) {
+            	console.log("data");
                 console.log(response);
                 settleName = response.settleName;
                 settleAmount = response.settleAmount;
                 productsNo = response.productsNo;
                 settleMemberId = response.settleMemberId;
                 recipentMemberNo = response.recipentMemberNo;
+                
+                setLocalStorageInfo();
              },
              error: function (error) {
                 console.log(error);
@@ -34,14 +37,13 @@
 
          });
     });
+ 
 function pay(){
 	// //테스트용 데이터. 추후에 진짜 데이터 담기
     var params = {};
     params.settleName= settleName;
     params.settleAmount= settleAmount;
     
-    setSessionInfo();
- 
     $.ajax({
         type: 'POST',
         url: 'https://www.h-club.site/comp/kakaopay',
@@ -66,14 +68,16 @@ function pay(){
     }); 
 }
 
-function setSessionInfo(){
+function setLocalStorageInfo(){
     <%--sessionStorage.setItem('matchHistNo', '${matchHistoryNo}');--%>
     //sessionStorage.setItem('matchHistNo','50');
-    sessionStorage.setItem('matchHistNo', ${matchHistoryNo});
-    sessionStorage.setItem('settleAmount', settleAmount);
-    sessionStorage.setItem('productsNo', productsNo);
-    sessionStorage.setItem('settleMemberId', settleMemberId);
-    sessionStorage.setItem('recipentMemberNo', recipentMemberNo);
+    localStorage.setItem('matchHistNo', ${matchHistoryNo});
+    localStorage.setItem('settleAmount', settleAmount);
+    localStorage.setItem('productsNo', productsNo);
+    localStorage.setItem('settleMemberId', settleMemberId);
+    localStorage.setItem('recipentMemberNo', recipentMemberNo);
+    localStorage.setItem('settleName', settleName);
+    
 }
 </script>
 <html>

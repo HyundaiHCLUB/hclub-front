@@ -76,6 +76,9 @@ public class MainController {
     @GetMapping("mypage/myFavorites")
     public ModelAndView goMyFavoritesView() {return new ModelAndView("mypage/myFavorites");}
 
+    /* 마이페이지 - 진행중인 매치 */
+    @GetMapping("mypage/myProceedingMatch")
+    public ModelAndView goMyProceedingMatchView () {return new ModelAndView("mypage/myProceedingMatch");}
     /***** end mypage *****/
     /* 로그인 페이지 이동*/
     @GetMapping("login/loginView")
