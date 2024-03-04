@@ -49,15 +49,17 @@
                         $(".club").empty();
 
                         var clubHTML =
-                            '<p class="club-title">' + data.clubName + '</p>' +
+                            '<p class="club-title" style="color:#46675C">' + data.clubName + '</p>' +
                             '<img class="club-image" src="' + data.clubImage + '">' +
 
                             '<div style="display: flex;justify-content: center; align-items: center;"><svg width="30" height="30" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">' +
                                 '<path d="M9 12C10.6569 12 12 10.6569 12 9C12 7.34315 10.6569 6 9 6C7.34315 6 6 7.34315 6 9C6 10.6569 7.34315 12 9 12Z" stroke="#727272" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>' +
                                 '<path d="M9 1C6.87827 1 4.84344 1.84285 3.34315 3.34315C1.84285 4.84344 1 6.87827 1 9C1 10.892 1.402 12.13 2.5 13.5L9 21L15.5 13.5C16.598 12.13 17 10.892 17 9C17 6.87827 16.1571 4.84344 14.6569 3.34315C13.1566 1.84285 11.1217 1 9 1V1Z" stroke="#727272" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>' +
                             '</svg>' +
-                        '<p class="club-loc">' + data.clubLoc + '</p></div>' +
-                            '<p class="club-info">' + data.clubInfo + '</p>'
+                        '<p class="club-loc" style="font-size: 40px">' + data.clubLoc + '</p></div>' +
+                            '<div style="margin-left:auto;margin-right:auto;width: 800px;">' +
+                            '<p class="club-info">' + data.clubInfo + '</p>' +
+                            '</div>'
                             ;
 
                         $(".club").append(clubHTML);
@@ -299,7 +301,7 @@
     </script>
     <style>
         input[type="radio"] {display: none; }
-        input[type="radio"] + label {display: inline-block;padding: 20px;background: #F5F6F7;color: #000000;font-size: 36px;cursor: pointer; width:400px; border-radius:16px; text-align: center;}
+        input[type="radio"] + label {display: inline-block;padding: 20px; margin:20px; background: #F5F6F7;color: #000000;font-size: 40px;cursor: pointer; width:400px; border-radius:16px; text-align: center;}
         input[type="radio"]:checked + label {background: #46675c; color: #ffffff;}
 
         .conbox {width: 100%;height: 1700px;background: #F1F5E8;margin: 0 auto;display: none;border-radius: 80px; padding-top: 40px;}
@@ -350,7 +352,7 @@
                         </div>
                         <div class="modal-body" style="padding: 0">
                             <div class="input-group" style="margin-bottom: 10px;margin-left: 44px;">
-                                <input id="noticeTitle" style="font-size: 36px; width: 90%;height: 50px;" name="noticeTitle" type="text" value="제목을 입력해 주세요.">
+                                <input id="noticeTitle" style="font-size: 36px; width: 90%;height: 50px;" name="noticeTitle" type="text" placeholder="제목을 입력해 주세요.">
                             </div>
                             <div class="input-group" style="margin-left: 44px;">
                                 <textarea id="noticeContent" name="noticeContent" style="width: 90%;height: 700px;font-size: 36px;" placeholder="내용을 상세히 입력해주세요." ></textarea>

@@ -81,10 +81,9 @@
                                     '<div class="grid-hot-item">' +
                                     '<div class="circle_hot_content">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
-                                    '<a href="#" class="category_button">'+item.categoryName+'</a>'+
                                     '</div>' +
                                     '<p class="circle_hot_loc">'+ item.clubLoc +'</p>' +
-                                    '<i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>' +
+                                    '<a href="#" class="category_button" style="margin-top: 14px;">'+item.categoryName+'</a>'+
                                     '</a>' +
                                     '</div></div>'
                                 ;

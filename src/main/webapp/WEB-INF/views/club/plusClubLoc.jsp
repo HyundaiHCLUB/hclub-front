@@ -90,10 +90,10 @@
 
     <ul>
         <li style="list-style: none; text-align: center; margin-top: 40px">
-            <input type = "text" id ="keyword" placeholder = "장소를 검색해주세요." style="font-size: 40px; text-align: center;">
+            <input type = "text" id ="keyword" placeholder = "장소를 검색해주세요." style="font-size: 40px; text-align: center;width: 800px;margin-top: 40px;">
         </li>
         <li style="list-style: none; text-align: center; margin-top: 40px">
-            <input type = "text" id ="address" style="font-size: 40px; text-align: center;border:0px;width: 700px;"></input>
+            <input type = "text" id ="address" style="font-size: 40px; text-align: center;border:0px;width: 700px;">
         </li>
     </ul>
     <ul id = "placesList"></ul>
