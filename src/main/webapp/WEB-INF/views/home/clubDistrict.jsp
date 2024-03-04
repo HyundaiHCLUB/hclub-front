@@ -16,6 +16,7 @@
             display: flex;
             overflow: auto;
             scroll-snap-type: x mandatory;
+            margin-bottom: 40px;
         }
 
         .slider::-webkit-scrollbar {
@@ -31,8 +32,8 @@
         .img img {
             display: block;
             width: 90%;
-            height: 90%;
-            margin-left: 70px;
+            height: 100%;
+            margin-left: 50px;
         }
     </style>
     <script>
@@ -100,7 +101,6 @@
         <li><a href="#">#토너먼트</a></li>
     </div>
 
-    <div class="slide-container">
         <div class="slider">
             <div class="img">
                 <a href="/club/district/1">
@@ -123,8 +123,6 @@
                 </a>
             </div>
         </div>
-    </div>
-
 
     <div class="title">
         <div class="title-item">
