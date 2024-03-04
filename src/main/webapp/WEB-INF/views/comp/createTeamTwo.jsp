@@ -38,7 +38,10 @@
 
     </div>
     <div class="select-match-date-container">
-        <p>날짜</p>
+        <div class="select-option-container">
+            <img src="/resources/image/comp/team-create-date-icon.png" alt="">
+            <span style="padding-left: 21px">날짜</span>
+        </div>
         <div class="select-match-date">
             <input id="dateSelectInput" type="text" placeholder="날짜를 선택해주세요"/>
 
@@ -48,13 +51,19 @@
 
     </div>
     <div class="select-match-time-container">
-        <p>시간</p>
+        <div class="select-option-container">
+            <img src="/resources/image/comp/team-create-time-icon.png" alt="">
+            <span>시간</span>
+        </div>
         <div class="select-match-time">
             <input id="timeSelectInput" type="text" placeholder="시간을 선택해주세요"/>
         </div>
     </div>
     <div class="select-product-container">
-        <p>상품</p>
+        <div class="select-option-container">
+            <img src="/resources/image/comp/team-create-prize-icon.png" alt="">
+            <span>상품</span>
+        </div>
         <div class="products"></div>
     </div>
 

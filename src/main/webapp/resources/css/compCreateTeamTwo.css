@@ -46,11 +46,18 @@
 .select-match-date-container, .select-match-time-container {
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 70px;
+  margin-top: 150px;
 }
-.select-match-date-container p, .select-match-time-container p {
+.select-match-date-container span, .select-match-time-container span {
   font-size: 60px;
   margin-left: 20px;
+}
+
+.select-option-container {
+  margin-bottom: 20px;
+}
+.select-option-container img {
+  margin-top: -30px;
 }
 
 .select-match-date input#dateSelectInput, .select-match-time input#timeSelectInput {
@@ -126,7 +133,7 @@
   margin-right: 20px;
   margin-top: 200px;
 }
-.select-product-container p {
+.select-product-container span {
   font-size: 60px;
   margin-left: 20px;
 }

@@ -230,6 +230,19 @@ input[type="text"] {
 
 }
 
+.select-option-container {
+  margin-bottom: 20px;
+
+  span {
+    font-size: 60px;
+    margin-left: 20px;
+  }
+
+  img {
+    margin-top: -30px;
+  }
+}
+
 // 팀원 DP
 
 .team-mate-list-container {
@@ -295,7 +308,7 @@ input[type="text"] {
 .location-add-container {
   margin-top: 200px;
 
-  p {
+  span {
     font-size: 60px;
     margin-left: 20px;
   }
