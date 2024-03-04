@@ -34,8 +34,8 @@
     .profile-picture {
         position: absolute;
         left: 150px;
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
         margin: 30px 30px 30px 10px;
     }
@@ -56,10 +56,11 @@
 
     .name {
         position: absolute;
-        right: 380px;
+        right: 360px;
         font-weight: bold;
         top: 50%;
         transform: translateY(-50%);
+        margin-left: 5px;
     }
 
     .rating {
@@ -112,6 +113,7 @@
     }
 
     /* 1위, 2위, 3위에 대한 왕관 색상 */
+    .crown-icon {color: #F7FFE5}
     .top1 .crown-icon { color: gold; }
     .top2 .crown-icon { color: silver; }
     .top3 .crown-icon { color: #cd7f32; } /* Bronze color */
@@ -136,6 +138,7 @@
     .rank {
         font-weight: bold;
     }
+
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
@@ -172,7 +175,7 @@
                         rankClass = " top" + (index + 1);
                     }
                     rankingHTML += '<div class="user' + rankClass + '">' +
-                        (index + 1 <= 3 ? '<i class="fas fa-crown crown-icon"></i>' : '') +
+                        '<i class="fas fa-crown crown-icon"></i>'  +
                         '<div class="rank">' + (index + 1) + '</div>' +
                         '<div class="profile-picture">' +
                         '<img src="' + user.memberImage + '" alt="사진" onerror="this.onerror=null; this.src=\'/resources/image/default-image.jpg\'"/>' +

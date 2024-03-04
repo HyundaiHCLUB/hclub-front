@@ -18,15 +18,21 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: 0.3s;
             height: 220px;
-            width: 75%;
+            width: 85%;
         }
 
         .product-image {
             width: 180px;
-            height: 180px;
-            object-fit: contain;
-            padding-left: 20px;
-            padding-right: 20px;
+            min-width: 180px;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .product-details {
@@ -81,14 +87,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 35%; /* New category width */
+            width:45%; /* New category width */
             border-left: 1px solid #ddd; /* Separating line if needed */
             font-weight: bold;
             font-size: 2.2em;
-            color: #fda5a8;
+            color: #F4B5B7;
         }
         .mypage-header i {
-            color: #F4B5B7;
+            color: #31dc3b
         }
     </style>
 </head>

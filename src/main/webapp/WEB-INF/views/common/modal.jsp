@@ -9,6 +9,40 @@
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+<script>
+
+//모달창 확인 클릭시 이동 여부를 지정한다 => 기본 Default는 Y이고, 아닐시에만 N
+let moveYn ="N";
+
+//모달창 호출시 띄울 메세지를 출력한다. =>호출할 위치에서 메세지 셋팅.
+//setModalMsg("테스트 신청 메세지");
+//모달창을 click Trigger을 건다. => 호출할 위치에서 셋팅함.
+//getModalMesage(); 
+//모달창 확인 클릭시 이동할 위치를 지정한다.
+//moveLoc="/modal"; 
+
+function setModalMsg(msg){
+	$("#modalMsg").text(msg);
+}
+
+function getModalMesage(){
+	$("[data-toggle='modal']").trigger("click");
+}
+
+$(window).on("load", function() {
+    //공통 모달의 css를 onload시 변경
+	 $('#modalMsg').css({
+	        'font-size': '30px',
+	        'font-weight': 'bold',
+	        'text-align': 'center'
+	 });
+	 $('.modal-content').css({
+	        'width': '600px',
+	        'padding': '10px'
+	 });
+});
+
+</script>
 <body>
 <main>
    <a data-toggle="modal" data-target="#myModal">
@@ -62,33 +96,6 @@
         </div>
     </div>
  </main>
-<script>
 
-//모달창 확인 클릭시 이동 여부를 지정한다 => 기본 Default는 Y이고, 아닐시에만 N
-let moveYn ="N";
-
-//모달창 호출시 띄울 메세지를 출력한다. =>호출할 위치에서 메세지 셋팅.
-//setModalMsg("테스트 신청 메세지");
-//모달창을 click Trigger을 건다. => 호출할 위치에서 셋팅함.
-//getModalMesage(); 
-//모달창 확인 클릭시 이동할 위치를 지정한다.
-//moveLoc="/modal"; 
-
-function setModalMsg(msg){
-	$("#modalMsg").text(msg);
-}
-
-function getModalMesage(){
-	$("[data-toggle='modal']").trigger("click");
-}
-
-$(window).on("load", function() {
-    $("#cnfrmBtn").on("click", function(e) {
-        e.preventDefault();
-        console.log("submit 방지 테스트");
-    });
-});
-
-</script>
 </body>
 </html>
