@@ -133,7 +133,7 @@
                     <p class="detail-icon">금액</p>
                 </div>
                 <div class="details-content">
-                    <p class="detail-title" id="productAmount">0</p>&nbsp;원
+                    <p class="detail-title" id="productAmount"></p>
                 </div>
             </div>
 
@@ -176,7 +176,9 @@
     	 let recipentMemberNo = localStorage.getItem('recipentMemberNo');
     	 
     	 $("#productName").text(settleName);
-    	 $("#productAmount").text(settleAmount);
+    	 var numberWithCommas = (settleAmount).toLocaleString('ko-KR', { style: 'currency', currency: 'KRW' }); 
+    	 $("#productAmount").text(numberWithCommas);
+    	 
     	 
     	 var params = {};
     	 params.matchHistNo=matchHistNo;
