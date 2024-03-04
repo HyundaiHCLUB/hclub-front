@@ -38,6 +38,13 @@
             font-size: 1.1em;
             margin-top: 0;
         }
+        #userName {
+           font-size: 1.8em;
+        }
+        #userDept {
+            font-size: 1em;
+            margin-bottom: 30px;
+        }
         .mypage-menus {
             margin: 0 auto;
             padding: 20px;
@@ -66,6 +73,26 @@
         .fas fa-user-circle icon {
             margin : auto 10px auto 30px;
         }
+        .user-rating {
+            display: flex; /* Flexbox 레이아웃 사용 */
+            align-items: center; /* 세로축(center)을 기준으로 자식 요소들을 가운데 정렬 */
+            gap: 10px; /* 이미지와 텍스트 사이에 10px의 간격을 줌 */
+        }
+        .user-rating img {
+            width: 40px;
+            height: 40px;
+        }
+
+        #userRating {
+            line-height: 40px; /* Set line-height equal to the height of the image for vertical alignment */
+            margin: 0; /* Remove default margin */
+            display: flex; /* Use flex to align text */
+            align-items: center; /* Align text to the center vertically */
+            height: 40px; /* Ensure the div height matches the image height */
+            font-weight: bold;
+            color: #0061f7;
+        }
+
     </style>
 </head>
 <body>
@@ -79,7 +106,11 @@
         <div class="user-info">
             <h3 id="userName"></h3>
             <p id="userDept"></p>
-            <p id="userRating"></p>
+            <div class="user-rating">
+                <img src="/resources/image/comp/rating.svg"/>
+                <p style="margin-bottom: 0; margin-right: 10px;">레이팅  </p>
+                <p id="userRating"></p>
+            </div>
         </div>
     </div>
     <div class="mypage-menus">
@@ -124,7 +155,8 @@
             console.log("memberID : " + memberInfo.member_id);
             $('#userName').text(memberInfo.employeeName); // 이름 설정
             $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
-            $('#userRating').text('레이팅 ' + memberInfo.memberRating);
+            // $('#userRating').text('레이팅 ' + memberInfo.memberRating);
+            $('#userRating').text(memberInfo.memberRating);
             let userProfileImage = memberInfo.memberImage || defaultImage;
             $('.profile-pic').attr('src', userProfileImage);
         }).catch(error => {
