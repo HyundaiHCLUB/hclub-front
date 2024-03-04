@@ -93,6 +93,8 @@
       #satus{
       	padding : 0px 40px 0px 0px;
       }
+      
+      
 </style>
 </head>
 <body>
@@ -159,6 +161,7 @@
 	  //  localStorage.setItem("otherUserNo", "5"); // 추후 주석처리
 	    let otherUserNo = localStorage.getItem("otherUserNo");
 	    let otherUserName = localStorage.getItem("otherUserName");
+	    let otherUserId = localStorage.getItem("otherUserId")
 
 	    // accessToken정보를 넣어 해당 userID 조회
 	    getUserInfo(accessTokenInfo);
@@ -291,10 +294,15 @@
 			doSendToWeb(JSON.stringify(obj));
 	    }
 	    function getUserInfo(accessToken) { //accessToken
+	    	var params= {};
+	        params.memberId = otherUserId;
+	        
 	        $.ajax({
 	            type: 'POST',
 	            url: 'https://www.h-club.site/auth/getMemberId',
+	            data: JSON.stringify(params),
 	            //url: 'http://localhost/hyndai/auth/getMemberId',
+	            contentType: 'application/json',
 	            headers: {
 	                'Authorization': 'Bearer ' + accessTokenInfo // accessToken 사용
 	            },
