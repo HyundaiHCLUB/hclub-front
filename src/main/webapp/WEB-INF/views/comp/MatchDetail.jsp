@@ -46,7 +46,7 @@
             gap: 10px;
             text-align: center;
             flex: 1; /* Flex grow to take available space */
-            font-size: 2em;
+            font-size: 2.5em;
         }
         .team-logo {
             border-radius: 50%;
