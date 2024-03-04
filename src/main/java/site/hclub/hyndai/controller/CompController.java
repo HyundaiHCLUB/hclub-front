@@ -132,6 +132,12 @@ public class CompController {
         return mav;
     }
 
+    /* 승리팀 페이지 */
+    @GetMapping("/winTeam")
+    public ModelAndView goWinTeamPage(){return new ModelAndView("comp/winTeamResult");}
+    /* 무승부팀 페이지 */
+    @GetMapping("/drawTeam")
+    public ModelAndView goDrawTeamPage() {return new ModelAndView("comp/drawTeamResult");}
     @GetMapping("/teamDetail/{teamNo}")
     public ModelAndView goTeamDetail(@PathVariable Long teamNo) {
         ModelAndView mav = new ModelAndView();

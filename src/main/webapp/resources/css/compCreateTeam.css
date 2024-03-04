@@ -1,4 +1,14 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "happiness";
+  src: url("/resources/font/happinessSans/ttf/Happiness-Sans-Regular.ttf");
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
 /* 팀 생성 */
 .select-game-type-container {
   margin-top: 35px;
@@ -188,6 +198,7 @@ input[type=text] {
 .team-mate-add-container p, .location-add-container p {
   font-size: 60px;
   margin-left: 20px;
+  font-family: happiness;
 }
 
 .team-mate-search input#memberSearchInput, input#locationSearchInput {
@@ -199,6 +210,32 @@ input[type=text] {
   margin: 10px 0; /* 상하 마진 추가 */
   box-sizing: border-box; /* 패딩과 테두리가 너비에 포함되도록 설정 */
   font-size: 50px;
+}
+
+.select-option-container {
+  margin-bottom: 20px;
+  font-family: happiness;
+}
+.select-option-container span {
+  font-size: 60px;
+  margin-left: -9px;
+}
+.select-option-container img {
+  margin-top: -30px;
+  margin-left: 10px;
+}
+
+.select-option-container-1 {
+  margin-bottom: 20px;
+  font-family: happiness;
+}
+.select-option-container-1 span {
+  font-size: 60px;
+  margin-left: -9px;
+}
+.select-option-container-1 img {
+  margin-top: -30px;
+  margin-left: -2px;
 }
 
 .team-mate-list-container {
@@ -261,8 +298,9 @@ input[type=text] {
 /* 장소 검색 */
 .location-add-container {
   margin-top: 200px;
+  font-family: happiness;
 }
-.location-add-container p {
+.location-add-container span {
   font-size: 60px;
   margin-left: 20px;
 }

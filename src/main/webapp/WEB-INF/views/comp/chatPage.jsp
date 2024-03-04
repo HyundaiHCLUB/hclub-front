@@ -9,11 +9,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 	#myProfileImg{
-    	width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        object-fit: cover; /* 이미지 비율을 유지하면서 요소에 맞게 조정 */
-        margin-right:10px;
+    	width: 150px; /* 이미지의 너비 */
+    	height: 150px; /* 이미지의 높이 */
+    	border-radius: 50%; /* 원 모양으로 이미지 테두리 만들기 */
+    	object-fit: cover; /* 이미지가 요소에 맞게 채워지도록 */
+    	border: 2px solid #333; /* 테두리 추가 */
      }
      #profileDiv{
      	margin: 70px;
@@ -22,6 +22,10 @@
      	display:inline-block;
      	font-size: 30px;
      	margin: 0px 50px 0px 0px;
+     }
+     .profile2{
+     	display:inline-block;
+     	font-size: 30px;
      }
      #chatArea{
      	margin: 20px 20px 0px 0px;
@@ -87,13 +91,20 @@
       }
       #nickName{
       	font-weight:bold;
-      	font-size:35px;
-      	margin-bottom:20px;
+      	font-size:45px;
+    
       }
       #satus{
       	padding : 0px 40px 0px 0px;
       }
-      
+     
+      /* 프로필 컨테이너 */
+	  #profileDiv {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+	  }
+}
       
 </style>
 </head>
@@ -101,12 +112,19 @@
 <main>
  <!-- 상대방 번호 넣기 -->
      <!--    <button onclick="createRoom(3)">chat</button> -->
+  <div style="display: flex;margin: auto;display: block;">
+        <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;margin-left: 58px" onclick="history.back()" src="/resources/image/left-arrow.png">
+        <div class="club"></div>
+    </div>   
 <div id="profileDiv">
 	<div class="profile">
 		<img id ="myProfileImg" />
 	</div>
 	<div class="profile">
-		<div id="nickName"></div>
+		<div id="otherInfo">
+			<span id="nickName"></span>님과의 대화<br/><br/>
+			<span id="dept"></span> &nbsp;<span id="position">
+		</div>
 	</div>
 <!-- 	<div class="profile">
 		<span>버튼버튼</span>
@@ -310,6 +328,8 @@
 	               console.log('사용자 정보:', response);
 	                // urdata = response.userNo;
 	                $("#nickName").text(response.data.employeeName);
+	                $("#dept").text(response.data.employeeDept);
+	                $("#position").text(response.data.employeePosition);
 	                
 	                imageUrl = response.data.userImageUrl;
 	                
