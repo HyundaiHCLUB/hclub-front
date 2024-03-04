@@ -80,9 +80,11 @@ public class CompController {
         return mav;
     }
 
-    @GetMapping("/success")
-    public ModelAndView successPage() {
+    @GetMapping("/success/{matchHistoryNo}")
+    public ModelAndView successPage(Model model, @PathVariable Long matchHistoryNo) {
         ModelAndView mav = new ModelAndView();
+        model.addAttribute("matchHistoryNo", matchHistoryNo);
+
         mav.setViewName("comp/matchSuccess");
         return mav;
     }

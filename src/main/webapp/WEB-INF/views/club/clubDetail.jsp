@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -397,16 +397,11 @@
         </div>
 
         <div class="conbox con2">
-<%--            <%--%>
-<%--                Long clubNo = (Long) request.getAttribute("clubNo");--%>
-<%--            %>--%>
-<%--            <a href="/club/history/<%= clubNo %>">--%>
                 <div onclick="checkMemberAndOpenModal()">
                     <svg style="margin-top:10px; margin-bottom:10px; margin-left: 790px;" width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M17.2047 10.7962L19.0007 9.00019C19.546 8.45494 19.8186 8.18231 19.9644 7.88822C20.2416 7.32866 20.2416 6.67171 19.9644 6.11215C19.8186 5.81806 19.546 5.54544 19.0007 5.00019C18.4555 4.45494 18.1829 4.18231 17.8888 4.03658C17.3292 3.75929 16.6723 3.75929 16.1127 4.03658C15.8186 4.18231 15.546 4.45494 15.0007 5.00019L13.1821 6.81884C14.146 8.46944 15.5321 9.845 17.2047 10.7962ZM11.7276 8.2733L4.85713 15.1438C4.43207 15.5689 4.21954 15.7814 4.0798 16.0425C3.94007 16.3036 3.88112 16.5983 3.76323 17.1878L3.14784 20.2648C3.08131 20.5974 3.04805 20.7637 3.14266 20.8583C3.23727 20.9529 3.40357 20.9196 3.73618 20.8531L6.81316 20.2377C7.40262 20.1198 7.69734 20.0609 7.95844 19.9211C8.21954 19.7814 8.43207 19.5689 8.85713 19.1438L15.7465 12.2544C14.1249 11.2388 12.7532 9.87646 11.7276 8.2733Z" fill="#222222"/>
                     </svg>
                 </div>
-<%--            </a>--%>
 
                 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">

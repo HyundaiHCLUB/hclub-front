@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>동아리</title>
-    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>
         var headerHeight = document.querySelector('header').offsetHeight;
         var footerHeight = document.querySelector('footer').offsetHeight;
@@ -74,6 +74,13 @@
             text-align: center;
         }
     </style>
+
+    <script>
+        $(document).ready(function () {
+            categoryId = <%= request.getAttribute("categoryId") %>;
+            getClubList(categoryId);
+        });
+    </script>
     <script>
             function getClubList(categoryId) {
                 $.ajax({
@@ -242,9 +249,50 @@
                             clubHTML += '</div>';
                             $(".clubs").append(clubHTML);
                         }
+                        updateLikedClubs();
+
                     } else {
                         console.error("Error:", response.message);
                     }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching data:", error);
+                }
+            });
+        }
+    </script>
+    <script>
+        function getClubRecentList(categoryName) {
+            $.ajax({
+                url: "https://www.h-club.site/clubs/recent/filter?category="+categoryName,
+                method: "GET",
+                success: function (response) {
+                    if (response.success) {
+                        var data = response.data;
+                        $(".clubs").empty();
+                        var clubList = document.getElementById("clubs");
+
+                        for (var i = 0; i < data.length; i += 2) {
+                            var group = data.slice(i, i + 2);
+
+                            var clubHTML = '<div class="grid-container">';
+                            group.forEach(function (item) {
+                                clubHTML += '<a href="/club/detail/' + item.clubNo + '"><div class="grid-item">' +
+                                    '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                    '<div class="circle_content">' +
+                                    '<p class="circle_name">' + item.clubName + '</p>' +
+                                    '<a href="#" class="category_button">'+item.categoryName+'</a>' +
+                                    '</div></div></a>';
+                            });
+                            clubHTML += '</div>';
+                            $(".clubs").append(clubHTML);
+                        }
+                        updateLikedClubs();
+
+                    } else {
+                        console.error("Error:", response.message);
+                    }
+
                 },
                 error: function (xhr, status, error) {
                     console.error("Error fetching data:", error);
@@ -387,7 +435,7 @@
                     getClubLikeList(getCategoryName(categoryId));
                 }
                 else if(filter === '새로 열린순'){
-
+                    getClubRecentList(getCategoryName(categoryId));
                 }
             }
 
@@ -419,90 +467,16 @@
             });
         </script>
 
-
         <div class="clubs" id="clubs">
         </div>
 
-        <div class="grid-container">
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-        </div>
-        <div class="grid-container">
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-        </div>
-        <div class="grid-container">
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-        </div>
-        <div class="grid-container">
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-            <div class="grid-item">
-                <img class="circle_recommend" src="/resources/image/sample.png" alt="Example Image">
-                <div class="circle_content">
-                    <p class="circle_name">난쏘공</p>
-                    <a href="#" class="category_button">액티비티</a>
-                    <a href="#" class="content_button">추천</a>
-                </div>
-            </div>
-        </div>
-
         <div class="plus-club">
-            <a href="club/add">
-               <svg width="160" height="160" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
-                 <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-                 <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-             </svg>
+            <a href="/club/add">
+                <svg width="160" height="160" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
+                    <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
             </a>
         </div>
     </main>

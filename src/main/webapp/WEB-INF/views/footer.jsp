@@ -25,7 +25,7 @@
                 <span>경쟁</span>
             </div>
         </a>
-        <a href="/club">
+        <a href="/club/0">
             <div class="nav-item">
                 <i class="fa-solid fa-compass fa-4x"></i>
                 <span>동아리</span>
@@ -56,8 +56,10 @@
             // 로그인이 되어 있으면 마이페이지로 이동
             window.location.href = '/mypage';
         } else {
-            // 로그인이 되어 있지 않으면 경고 메시지 표시
+            // 로그인이 되어 있지 않으면 경고 메시지 표시후 로그인 페이지로 이동
+            localStorage.clear(); // localStorage 초기화
             alert("로그인이 필요한 기능입니다");
+            window.location.href ='/login/loginView';
             return;
         }
     }
