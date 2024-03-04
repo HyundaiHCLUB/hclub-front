@@ -46,15 +46,15 @@
             gap: 10px;
             text-align: center;
             flex: 1; /* Flex grow to take available space */
-            font-size: 2em;
+            font-size: 2.5em;
         }
         .team-logo {
             border-radius: 50%;
             box-sizing: border-box; /* 테두리와 패딩을 요소의 크기 계산에 포함 */
         }
         .team img {
-            width: 180px;
-            height: 180px;
+            width: 260px;
+            height: 260px;
             margin: 20px auto;
         }
         .team p {
