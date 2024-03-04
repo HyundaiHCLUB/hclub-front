@@ -22,7 +22,7 @@
 <main>
     <div class="team-caption-container">
         <div class="team-caption-image">
-            <img src="/resources/image/comp/soccer.png" alt="">
+            <img src="" alt="">
         </div>
         <div class="team-captain-name">
 
@@ -55,6 +55,7 @@
     </div>
     <div class="select-product-container">
         <p>상품</p>
+        <div class="products"></div>
     </div>
 
     <div class="team-create-button-container">
@@ -68,39 +69,65 @@
 </main>
 
 <script>
+
+    // 데이터 로딩
+    document.addEventListener('DOMContentLoaded', function () {
+        // 이미지 세팅
+        let base64ImageData = localStorage.getItem('multipartFile');
+        if (base64ImageData) {
+            // Find the <img> tag within the .event-image container
+            let imageElement = document.querySelector('.team-caption-image img');
+            // Set the retrieved Base64 string as the src attribute of the <img> tag
+            imageElement.src = base64ImageData;
+        }
+        // 팀장 이름 세팅
+        const selectedMembers = JSON.parse(localStorage.getItem('selectedMembers'));
+        if (selectedMembers && selectedMembers.length > 0) {
+            // 첫 번째 멤버의 이름을 가져옵니다.
+            const firstMemberName = selectedMembers[0].memberName;
+            // .team-captain-name 내의 <p> 태그를 찾아 이름을 설정합니다.
+            document.querySelector('.team-captain-name p').textContent = firstMemberName;
+        }
+    });
     document.addEventListener("DOMContentLoaded", function () {
         // Define a global variable to store fetched product data
         let globalProductData = [];
-
         const apiUrl = 'https://www.h-club.site/comp/products';
+        const container = document.querySelector('.products'); // 제품들을 담을 컨테이너
 
         // Use fetch API to get the products
         fetch(apiUrl)
-            .then(response => response.json()) // Convert the response to JSON
+            .then(response => response.json())
             .then(data => {
-                console.log(data);
                 globalProductData = data.data; // Store the fetched data globally
-                const container = document.querySelector('.select-product-container');
 
-                // Loop through the data and create a radio button for each product
+                // Loop through the data and create a div for each product
                 data.data.forEach(product => {
-                    console.log(product);
+                    const productDiv = document.createElement('div'); // 각 제품을 담을 div 생성
+                    productDiv.classList.add('product-item'); // CSS 클래스 추가
 
                     // Create radio input
                     const radioInput = document.createElement('input');
                     radioInput.setAttribute('type', 'radio');
                     radioInput.setAttribute('name', 'product');
                     radioInput.setAttribute('value', product.productId);
-                    radioInput.setAttribute('id', `product-${product.productId}`);
-
+                    radioInput.setAttribute('id', `product`);
+                    // radioInput.setAttribute('style', '')
                     // Create label for radio input
                     const label = document.createElement('label');
-                    label.setAttribute('for', `product-${product.productId}`);
+                    label.setAttribute('for', `product` + product.productId);
                     label.textContent = product.productName;
 
-                    // Append the radio input and label to the container
-                    container.appendChild(radioInput);
-                    container.appendChild(label);
+                    // Append the radio input and label to the product div
+                    productDiv.appendChild(radioInput);
+                    productDiv.appendChild(label);
+
+                    // Append the product div to the products container
+                    container.appendChild(productDiv);
+
+                    productDiv.addEventListener('click', function () {
+                        radioInput.checked = true; // Set the radio input to checked when the div is clicked
+                    });
                 });
             })
             .catch(error => console.error('Error fetching products:', error));
@@ -175,31 +202,47 @@
 
 
     $(document).ready(function () {
-        let inputWidth = $('#dateSelectInput').outerWidth(); // Get the outer width of the dateSelectInput
 
-        // Optionally, calculate a desired height based on the new width
-        // This is a simple proportion, adjust according to your needs
-        let desiredHeight = inputWidth * 0.8; // Example proportion, adjust as needed
+        $.datepicker.regional['ko'] = {
+            closeText: '닫기',
+            prevText: '이전 달',
+            nextText: '다음 달',
+            currentText: '오늘',
+            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월',
+                '7월', '8월', '9월', '10월', '11월', '12월'],
+            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월',
+                '7월', '8월', '9월', '10월', '11월', '12월'],
+            dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            weekHeader: '주',
+            dateFormat: 'yy년 mm월 dd일',
+            firstDay: 0,
+            isRTL: false,
+            showMonthAfterYear: true,
+            yearSuffix: '년'
+        };
+        $.datepicker.setDefaults($.datepicker.regional['ko']);
+        let adjustCalendarSize = function (input, inst) {
+            let calendar = inst.dpDiv;
+            setTimeout(function () {
+                let inputWidth = $(input).outerWidth();
+                calendar.outerWidth(inputWidth);
+                calendar.outerHeight(400); // 예시로 높이를 300px로 설정
+            }, 0);
+        };
 
-        // Initialize the datepicker on #dateSelectInput
         $('#dateSelectInput').datepicker({
-            dateFormat: 'yy년 mm월 dd일', // Set the format of the date
+            dateFormat: 'yy년 mm월 dd일',
             onSelect: function (dateText) {
-                $('#dateSelectInput').val(dateText);
+                $(this).val(dateText);
             },
             beforeShow: function (input, inst) {
-                let calendar = inst.dpDiv;
-                setTimeout(function () {
-                    calendar.outerWidth(inputWidth); // Set the width of the datepicker to match the input
-                    // Apply dynamic height adjustment here if necessary
-                    calendar.outerHeight(500);
-                }, 0);
+                adjustCalendarSize(input, inst);
+            },
+            onChangeMonthYear: function (year, month, inst) {
+                adjustCalendarSize(this, inst);
             }
-        });
-
-        // Adjustments for timepicker as needed
-        $('#timeSelectInput').timepicker({
-            // Timepicker configuration
         });
     });
 
