@@ -425,6 +425,7 @@
 
         $('.btn-team-detail').on('click', function() {
             var teamNo = $(this).data('team-no');
+            console.log("btn click -> teamNo : ")
             goTeamDetailPage(teamNo);
         });
     });
