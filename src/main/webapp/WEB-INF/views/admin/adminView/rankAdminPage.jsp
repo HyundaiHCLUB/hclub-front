@@ -65,7 +65,7 @@
 	       <i data-feather="search" aria-hidden="true"></i>
 	        <input type="text" placeholder="사원 이름으로 검색하세요" id="search" required>
 	    </div>
-	    <div style="display:inline-block; cursor:pointer;"><input type="button" value="검색" style="font-weight:bold; cursor:pointer; color:dodgerblue;" onclick="getRankSetUp()"></div>
+	    <div style="display:inline-block; cursor:pointer;"><input type="button" value="검색" style="font-weight:bold; cursor:pointer; color:#46675c;" onclick="getRankSetUp()"></div>
 	   </div>  
 	</div>
    </nav>
