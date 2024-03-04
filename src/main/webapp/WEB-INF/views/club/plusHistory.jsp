@@ -162,7 +162,8 @@
                     contentType: false,
                     success: function (response) {
                         console.log(response);
-                        history.back();
+                        window.location.href = "/club/detail/" + clubNo;
+
                     },
                     error: function (error) {
                         console.error("에러 발생:", error);
