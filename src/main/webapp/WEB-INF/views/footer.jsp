@@ -53,7 +53,7 @@
     }
 
     function compMainRedirect() {
-        window.location.href = '/mypage/myFavorites'
+        window.location.href = '/competition'
     }
 
     function clubRedirect() {
@@ -61,7 +61,7 @@
     }
 
     function favoriteRedirect() {
-        window.location.href = '/competition'
+        window.location.href = '/mypage/myFavorites'
     }
 
     function checkLoginAndRedirect() {
