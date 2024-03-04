@@ -52,7 +52,7 @@
     </div>
     <div class="select-match-time-container">
         <div class="select-option-container">
-            <img src="/resources/image/comp/team-create-time-icon.png" alt="">
+            <img src="/resources/image/comp/team-create-time-icon.png" alt="" style="margin-left: -13px">
             <span>시간</span>
         </div>
         <div class="select-match-time">
@@ -61,7 +61,7 @@
     </div>
     <div class="select-product-container">
         <div class="select-option-container">
-            <img src="/resources/image/comp/team-create-prize-icon.png" alt="">
+            <img src="/resources/image/comp/team-create-prize-icon.png" alt="" style="margin-left: -13px">
             <span>상품</span>
         </div>
         <div class="products"></div>

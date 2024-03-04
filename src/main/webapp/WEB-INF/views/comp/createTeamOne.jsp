@@ -66,9 +66,9 @@
 
     </div>
     <div class="team-mate-add-container">
-        <div class="select-option-container">
-            <img src="/resources/image/comp/team-create-member-icon.png" alt="" style="width:90px;height:90px">
-            <span style="margin-left: 4px">팀원</span>
+        <div class="select-option-container-1">
+            <img src="/resources/image/comp/team-create-member-icon.png" alt="" style="width:100px;height:100px">
+            <span style="">팀원</span>
         </div>
         <div class="team-mate-search" style="position: relative">
             <input type="text" id="memberSearchInput" placeholder="팀원을 검색하세요"/>
@@ -81,8 +81,8 @@
 
     <div class="location-add-container">
         <div class="select-option-container">
-            <img src="/resources/image/comp/team-create-loc-icon.png" alt="">
-            <span>장소</span>
+            <img src="/resources/image/comp/team-create-loc-icon-1.png" alt="">
+            <span style="margin-left: 10px;">장소</span>
         </div>
         <div class="team-mate-search">
             <input id="locationSearchInput" type="text" placeholder="장소를 입력해주세요"/>

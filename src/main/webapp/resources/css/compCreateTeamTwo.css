@@ -51,6 +51,7 @@
 .select-match-date-container span, .select-match-time-container span {
   font-size: 60px;
   margin-left: 20px;
+  margin-top: 10px;
 }
 
 .select-option-container {
@@ -154,12 +155,16 @@
   flex-basis: calc(50% - 20px); /* 한 줄에 3개씩 표시, gap으로 인한 너비 조정 */
   text-align: center; /* 텍스트를 가운데 정렬 */
   margin-bottom: 20px;
-  font-size: 35px;
+  font-size: 34px;
+}
+
+.product-item label {
+  margin-left: 20px; /* Optionally add left margin to label if more spacing is needed */
 }
 
 [type=radio] {
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   padding-right: 5px;
 }
 
