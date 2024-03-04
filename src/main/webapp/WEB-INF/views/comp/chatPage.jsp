@@ -112,10 +112,10 @@
 <main>
  <!-- 상대방 번호 넣기 -->
      <!--    <button onclick="createRoom(3)">chat</button> -->
- <!--  <div style="display: flex;margin: auto;display: block;">
+  <div style="display: flex;margin: auto;display: block;">
         <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;margin-left: 58px" onclick="history.back()" src="/resources/image/left-arrow.png">
         <div class="club"></div>
-    </div>   -->
+    </div>   
 <div id="profileDiv">
 	<div class="profile">
 		<img id ="myProfileImg" />
