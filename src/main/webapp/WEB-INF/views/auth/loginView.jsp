@@ -134,7 +134,7 @@ $(document).ready(function() {
     
     //로그인 화면에서만 header을 숨긴다.
     $(".navbar_logo").hide();
-    
+    $(".navbar_bottom_menu").hide();
 });
 function validateForm() {
     var username = $('#userId').val();
