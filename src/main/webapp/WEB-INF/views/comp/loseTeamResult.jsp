@@ -68,11 +68,11 @@ function pay(){
 
 function setSessionInfo(){
     <%--sessionStorage.setItem('matchHistNo', '${matchHistoryNo}');--%>
-    sessionStorage.setItem('matchHistNo', '12');
-    sessionStorage.setItem('settleAmount', response.settleAmount);
-    sessionStorage.setItem('productsNo', response.productsNo);
-    sessionStorage.setItem('settleMemberId', response.settleMemberId);
-    sessionStorage.setItem('recipentMemberNo', response.recipentMemberNo);
+    sessionStorage.setItem('matchHistNo', ${matchHistoryNo});
+    sessionStorage.setItem('settleAmount', settleAmount);
+    sessionStorage.setItem('productsNo', productsNo);
+    sessionStorage.setItem('settleMemberId', settleMemberId);
+    sessionStorage.setItem('recipentMemberNo', recipentMemberNo);
 }
 </script>
 <html>
