@@ -26,13 +26,18 @@
             font-weight: bold;
             color: #46675C;
         }
+        .detail-component-date {
+            width: 450px;
+        }
     </style>
 </head>
 
 <body>
 <main>
-    <div class="top-menu">
-        <h2>[ 팀 상세정보 ]</h2>
+    <div class="mypage-top-menu">
+        <img src="/resources/image/left-arrow.png"
+             onclick="window.history.back()"/>
+        <span>상세보기</span>
     </div>
     <div class="team-image">
         <img src="" alt="팀 이미지">
@@ -88,7 +93,7 @@
                     <img src="/resources/image/comp/team-prize-icon.png">
                     <h3>상품</h3>
                 </div>
-                <p></p>
+                <p>H-Cafe 50,000원권</p>
             </div>
         </div>
         <!-- 팀원 -->
@@ -101,7 +106,7 @@
         </div>
     </div>
     <div class="button-container">
-        <button class="team-button">뒤로가기</button>
+        <button class="team-button">참여하기</button>
     </div>
 </main>
 </body>
@@ -146,7 +151,9 @@
     });
     let buttonNext = document.querySelector('.team-button');
     buttonNext.addEventListener('click', function () {
-        window.history.back();
+        localStorage.setItem("opponentTeamNo", teamNo);
+        localStorage.setItem("initCreate", 'N');
+        window.location.href = '/competition/create/1';
     })
 </script>
 </html>
