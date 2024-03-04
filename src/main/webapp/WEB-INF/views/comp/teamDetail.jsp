@@ -7,14 +7,32 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>TeamCreated</title>
+    <style>
+        .details-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* 중앙 정렬 */
+            margin: 30px auto;
+        }
+        .top-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* 중앙 정렬 */
+            margin: 30px auto;
+
+        }
+        .top-menu h2 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #46675C;
+        }
+    </style>
 </head>
 
 <body>
 <main>
-    <div class="mypage-top-menu">
-        <img src="/resources/image/left-arrow.png"
-             onclick="window.history.back()"/>
-        <span>상세보기</span>
+    <div class="top-menu">
+        <h2>[ 팀 상세정보 ]</h2>
     </div>
     <div class="team-image">
         <img src="" alt="팀 이미지">
@@ -27,12 +45,22 @@
             <h2>팀 이름</h2>
         </div>
         <!-- 장소 -->
-        <div class="detail-component-loc">
-            <div class="detail-component-header">
-                <img src="/resources/image/comp/team-loc-icon.png">
-                <h3>장소</h3>
+        <div class="details-container">
+            <div class="detail-component-loc">
+                <div class="detail-component-header">
+                    <img src="/resources/image/comp/team-loc-icon.png">
+                    <h3>장소</h3>
+                </div>
+                <p>경기 장소</p>
             </div>
-            <p>경기 장소</p>
+
+            <div class="detail-component-gametype">
+                <div class="detail-component-header">
+                    <img src="/resources/image/comp/team-capa-icon.png">
+                    <h3>게임 종류</h3>
+                </div>
+                <p></p>
+            </div>
         </div>
         <!-- 일시 & 레이팅-->
         <div class="details-container">
@@ -54,20 +82,13 @@
         </div>
         <!-- 게임 종류 & 상품-->
         <div class="details-container">
-            <div class="detail-component-gametype">
-                <div class="detail-component-header">
-                    <img src="/resources/image/comp/team-capa-icon.png">
-                    <h3>게임 종류</h3>
-                </div>
-                <p>2 vs 2</p>
-            </div>
 
             <div class="detail-component-goods">
                 <div class="detail-component-header">
                     <img src="/resources/image/comp/team-prize-icon.png">
                     <h3>상품</h3>
                 </div>
-                <p>H-Cafe 50,000원권</p>
+                <p></p>
             </div>
         </div>
         <!-- 팀원 -->
@@ -80,7 +101,7 @@
         </div>
     </div>
     <div class="button-container">
-        <button class="team-button">참여하기</button>
+        <button class="team-button">뒤로가기</button>
     </div>
 </main>
 </body>
@@ -125,9 +146,7 @@
     });
     let buttonNext = document.querySelector('.team-button');
     buttonNext.addEventListener('click', function () {
-        localStorage.setItem("opponentTeamNo", teamNo);
-        localStorage.setItem("initCreate", 'N');
-        window.location.href = '/competition/create/1';
+        window.history.back();
     })
 </script>
 </html>

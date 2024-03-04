@@ -117,7 +117,7 @@ function setSessionInfo(){
 <body>
 <main>
     <div class="wrapper">
-        <img src="/resources/image/comp/lose_team_result.png">
+        <img src="/resources/image/comp/lose_heendy.png">
         <p>저런... 경기에서 지셨군요?</p>
         <p>다음 번엔 이기실 수 있을거에요! </p>
         <input type="button" class="btn-payment" onclick="pay()" value="결제하기">
