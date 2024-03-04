@@ -168,7 +168,7 @@ $(document).ready(function() {
 		}
 		if(employeeYn === "N"){
 			//alert("사원이 아닙니다. 사번을 확인해주세요.");
-			setModalMsg("사원이 아닙니다. 사번을 확인해주세요.");
+			setModalMsg("사원이 아닙니다. 이름 또는 사번을 확인해주세요.");
 	        getModalMesage(); 
 	        
             $("#employeeNo").focus(); // 해당 필드로 포커스 이동
@@ -244,8 +244,14 @@ function confirmEmployeeYn(){
         success: function(response) { 
              console.log(response);
              employeeYn =  response.data.isEmployee;
+             
+             if(employeeYn == "Y"){
+            	 setModalMsg("사원여부 조회에 성공하셨습니다.");
+             }else{
+            	 setModalMsg("사원이 아닙니다. 이름 또는 사번을 확인해주세요.");
+             }
              //alert('사원여부 조회에 성공 하였습니다.');
-             setModalMsg("사원여부 조회에 성공하셨습니다.");
+             
              getModalMesage(); 
              //moveLoc="/"; //history.bach();혹은 이동 이벤트 막는거 추가하기
         },

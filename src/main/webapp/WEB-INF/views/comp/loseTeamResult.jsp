@@ -17,6 +17,7 @@
          $.ajax({
              url: 'https://www.h-club.site/comp/settle/${matchHistoryNo}',
              // url: 'https://www.h-club.site/comp/settle/12',
+             //url: '/compTest/comp/settle/50',
              type: 'GET',
              dataType: 'json',
              success: function(response) {
@@ -44,15 +45,14 @@ function pay(){
     $.ajax({
         type: 'POST',
         url: 'https://www.h-club.site/comp/kakaopay',
-        //url: '/hyndai/comp/kakaopay',
+        //url: '/compTest/comp/kakaopay',
         data: JSON.stringify(params),
         dataType: 'json',
         contentType: 'application/json', // 추가: 요청의 Content-Type 설정
         success: function(response){
             if(response.success){
-                var returnData = JSON.parse(response.data);      
-                var nextRedirectPcUrl = 'https://www.h-club.site/competition/paySuccess';
-               // window.open(box);
+                var returnData = JSON.parse(response.data);
+                var nextRedirectPcUrl = returnData.next_redirect_pc_url;
                 window.location.href = nextRedirectPcUrl;
             } else {
                 // 실패 시 처리
@@ -68,11 +68,12 @@ function pay(){
 
 function setSessionInfo(){
     <%--sessionStorage.setItem('matchHistNo', '${matchHistoryNo}');--%>
-    sessionStorage.setItem('matchHistNo', '12');
-    sessionStorage.setItem('settleAmount', response.settleAmount);
-    sessionStorage.setItem('productsNo', response.productsNo);
-    sessionStorage.setItem('settleMemberId', response.settleMemberId);
-    sessionStorage.setItem('recipentMemberNo', response.recipentMemberNo);
+    //sessionStorage.setItem('matchHistNo','50');
+    sessionStorage.setItem('matchHistNo', ${matchHistoryNo});
+    sessionStorage.setItem('settleAmount', settleAmount);
+    sessionStorage.setItem('productsNo', productsNo);
+    sessionStorage.setItem('settleMemberId', settleMemberId);
+    sessionStorage.setItem('recipentMemberNo', recipentMemberNo);
 }
 </script>
 <html>
@@ -116,7 +117,7 @@ function setSessionInfo(){
 <body>
 <main>
     <div class="wrapper">
-        <img src="/resources/image/comp/lose_team_result.png">
+        <img src="/resources/image/comp/lose_heendy.png">
         <p>저런... 경기에서 지셨군요?</p>
         <p>다음 번엔 이기실 수 있을거에요! </p>
         <input type="button" class="btn-payment" onclick="pay()" value="결제하기">

@@ -95,7 +95,7 @@
             background-color: #46675C; /* Green background */
             color: white;
             border: none;
-            padding: 20px 240px;
+            padding: 20px 210px;
             margin: 20px auto; /* Centering the button */
             display: block; /* Center button */
             font-size: 3em;
@@ -149,7 +149,7 @@
 
     </div>
     <div class="confirmation-footer">
-        <button class="confirmation-button">홈으로</button>
+        <button class="confirmation-button">경쟁 홈으로</button>
     </div>
 </main>
 </body>
@@ -164,5 +164,7 @@
             window.location.href = '/competition/';
         });
     });
+    var item = sessionStorage.getItem('recipentMemberNo');
+    console.log(item);
 </script>
 </html>

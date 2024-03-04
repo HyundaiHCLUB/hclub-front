@@ -58,15 +58,15 @@
                                     '<div class="grid-hot-item">' +
                                     '<div class="circle_hot_content">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
-                                        '<a href="#" class="category_button">'+item.categoryName+'</a>'+
-                                    '<a href="#" class="content_button">인기</a>'+
+                                    '<a href="#" class="category_button">' + item.categoryName + '</a>' +
+                                    '<a href="#" class="content_button">인기</a>' +
                                     '</div>' +
-                                        '<p class="club_info">' + item.clubInfo + '</p>' +
-                                        '<p class="circle_hot_loc">'+ item.clubLoc +'</p>' +
+                                    '<p class="club_info">' + item.clubInfo + '</p>' +
+                                    '<p class="circle_hot_loc">' + item.clubLoc + '</p>' +
                                     '<i class="fa-solid fa-users fa-1x" style="margin-top: 8px">10</i>' +
                                     '</a>' +
                                     '</div></div>'
-                                    ;
+                                ;
                                 $(".hotClubs").append(clubHTML);
                             });
                         } else {
@@ -118,6 +118,7 @@
                     }
                 });
             }
+
             getHotClubList();
             getInterestList();
         });
@@ -134,7 +135,9 @@
                     },
                     success: function (response) {
                         console.log('사용자 정보:', response);
-                        localStorage.setItem("name",response.employeeName);
+                        localStorage.setItem("name", response.employeeName);
+                        localStorage.setItem("dept", response.employeeDept);
+                        localStorage.setItem("pos", response.employeePosition);
                         resolve(response); // 성공 시 response 객체를 resolve 합니다.
                     },
                     error: function (xhr, status, error) {
@@ -154,6 +157,7 @@
                 });
 
         }
+
         ccessTokenInfo = localStorage.getItem("accessTokenInfo");
         getUserInfo(accessTokenInfo);
     </script>

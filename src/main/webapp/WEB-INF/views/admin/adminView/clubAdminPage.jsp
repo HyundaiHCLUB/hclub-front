@@ -55,7 +55,17 @@
 	    color: #fff;
 	    border-color: #007bff;
 	}
-
+	.table-wrapper table.posts-table{
+		min-width: max-content;
+	}
+	td, th{
+		padding: 10px;
+		text-align: center;
+	}
+	#logo{
+		width:100px;
+		color: white;
+	}
 </style>
 <body>
 <body>
@@ -76,7 +86,7 @@
 	        <input type="text" placeholder="동아리 이름으로 검색하세요" required id="search">
 	        
 	    </div>
-	    <div style="display:inline-block; cursor:pointer;"><input type="button" value="검색" style="font-weight:bold; cursor:pointer; color:dodgerblue;" onclick="getClubList()"></div>
+	    <div style="display:inline-block; cursor:pointer;"><input type="button" value="검색" style="font-weight:bold; cursor:pointer; color:dodgerblue;" onclick="getClubSetUp()"></div>
 	   </div>  
 	</div>
    </nav>
@@ -85,7 +95,7 @@
     <div class="row">
     	
     	<div class="col-lg-9" style="margin: 0px 0px 0px 50px">  
-          <div class="users-table table-wrapper">
+          <div class="users-table table-wrapper" style="width: fit-content">
               <table class="posts-table">
                 <thead>
                   <tr class="users-table-info">
@@ -146,23 +156,20 @@
 	 $('#search').on('keypress', function(e) {
 	        if(e.which === 13) {
 	            e.preventDefault();
-	            getClubList();
+	            getClubSetUp();
 	        }
 	    });
-	 /* window.pagObj = $('#pagination').twbsPagination({
-	        totalPages: [[20]], // 전체 페이지
-	        startPage: parseInt([[0]] + 1), // 시작(현재) 페이지
-	        visiblePages: 10, // 최대로 보여줄 페이지
-	        prev: "‹", // Previous Button Label
-	        next: "›", // Next Button Label
-	        first: '«', // First Button Label
-	        last: '»', // Last Button Label
-	        onPageClick: function (event, page) { // Page Click event
-	            console.info("current page : " + page);
-	        }
-	    }).on('page', function (event, page) {
-	        searchDataList(page);
-	    }); */
+	 //공통 모달의 css를 onload시 변경
+	 $('#modalMsg').css({
+	        'font-size': '20px',
+	        'font-weight': 'bold',
+	        'text-align': 'center'
+	    });
+
+	  $('.modal-content').css({
+	        'width': 'fit-content',
+	        'padding': '10px'
+	  });
  });
  let setClubStartIndex = 1;
  let setClubEndIndex = 10;
@@ -173,7 +180,14 @@
  
  let clubListSize = 0;
 
- function getClubList() { 
+ 
+function getClubSetUp(){
+	$("#pagination").val('');
+	getClubSize();
+	getClubList();
+}
+ 
+function getClubList() { 
 	    var params = {}; // 
 	    params.searchParams= $("#search").val();
 	    params.startIndex = setClubStartIndex;
@@ -184,7 +198,7 @@
 			/* headers: {
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 			}, */
-			//url: '/hyndai/admin/club', 
+			//url: '/adminTest/admin/club', 
 			url: 'https://www.h-club.site/admin/club', 
 		    data: JSON.stringify(params),
 			contentType: 'application/json', 
@@ -215,7 +229,7 @@ function getClubSize(){
 		/* headers: {
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 		}, */
-		//url: '/hyndai/admin/clubCnt', 
+		//url: '/adminTest/admin/clubCnt', 
 		url: 'https://www.h-club.site/admin/clubCnt', 
 	    data: JSON.stringify(params),
 		contentType: 'application/json', 

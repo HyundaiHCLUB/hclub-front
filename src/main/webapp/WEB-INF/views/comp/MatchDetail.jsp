@@ -377,7 +377,7 @@
                         data: JSON.stringify(configTeamDTO),
                         success : function (response) {
                             userTeamNo = response;
-                            console.log('userTeamNo => ' + userTeamNo);
+                            console.log('userTeamNo => ' +  userTeamNo);
                         }, error : function(error) {
                             console.error(error);
                         }
@@ -412,7 +412,7 @@
             $('.team:eq(1) .team-detail').eq(0).find('p').text(data.team2.teamName);
             $('.team:eq(1) .team-detail').eq(1).find('p').text(data.team2.teamLoc);
             $('.team:eq(1) .team-detail').eq(2).find('p').text(data.team2.matchDate);
-            $('.team:eq(1) .team-detail').eq(3).find('p').text(data.team2.teamGoods ? data.team2.teamGoods : "없음");atus
+            $('.team:eq(1) .team-detail').eq(3).find('p').text(data.team2.teamGoods ? data.team2.teamGoods : "없음");
 
             $('.team:eq(1) .team-detail').eq(4).find('p').text(data.team2.teamRating);
             // 팀2에 대한 정보 업데이트도 같은 방식으로 수행
@@ -425,6 +425,7 @@
 
         $('.btn-team-detail').on('click', function() {
             var teamNo = $(this).data('team-no');
+            console.log("btn click -> teamNo : ")
             goTeamDetailPage(teamNo);
         });
     });

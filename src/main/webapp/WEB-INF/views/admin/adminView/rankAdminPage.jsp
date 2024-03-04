@@ -42,6 +42,10 @@
 	    color: #fff;
 	    border-color: #007bff;
 	}
+	td, th{
+		padding: 10px;
+		text-align: center;
+	}
 </style>
 <body>
 <div class="layer"></div>
@@ -61,14 +65,14 @@
 	       <i data-feather="search" aria-hidden="true"></i>
 	        <input type="text" placeholder="사원 이름으로 검색하세요" id="search" required>
 	    </div>
-	    <div style="display:inline-block; cursor:pointer;"><input type="button" value="검색" style="font-weight:bold; cursor:pointer; color:dodgerblue;" onclick="getRankingList()"></div>
+	    <div style="display:inline-block; cursor:pointer;"><input type="button" value="검색" style="font-weight:bold; cursor:pointer; color:dodgerblue;" onclick="getRankSetUp()"></div>
 	   </div>  
 	</div>
    </nav>
    <div class="container">
     <div class="row">
     	<div class="col-lg-9" style="margin: 0px 0px 0px 50px">  
-          <div class="users-table table-wrapper">
+          <div class="users-table table-wrapper" style="width: fit-content">
               <table class="posts-table">
                 <thead>
                   <tr class="users-table-info">
@@ -125,8 +129,20 @@
 	 $('#search').on('keypress', function(e) {
 	        if(e.which === 13) {
 	            e.preventDefault();
-	            getRankingList();
+	            getRankSetUp();
 	        }
+	  });
+	 
+	 //공통 모달의 css를 onload시 변경
+	 $('#modalMsg').css({
+	        'font-size': '20px',
+	        'font-weight': 'bold',
+	        'text-align': 'center'
+	    });
+
+	  $('.modal-content').css({
+	        'width': 'fit-content',
+	        'padding': '10px'
 	  });
  
  });
@@ -141,6 +157,12 @@
  let rankListSize = 0;
  getRankingList(); //초기 랭킹리스트 조회
  
+ function getRankSetUp(){
+	 $("#pagination").val('');
+	 getRankSize();
+	 getRankingList();
+ }
+ 
  function getRankingList() { 
 	    var params = {}; // 
 	    params.searchParams= $("#search").val();
@@ -153,7 +175,7 @@
 			/* headers: {
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 			}, */
-			//url: '/hyndai/admin/rank', 
+			//url: '/adminTest/admin/rank', 
 			url: 'https://www.h-club.site/admin/rank', 
 		    data: JSON.stringify(params),
 			contentType: 'application/json',
@@ -165,8 +187,8 @@
 	            }
 	        },
 	        error: function(xhr, status, error) {
-	         	//setModalMsg("회원목록 관리 가져오기 실패");
-		        //getModalMesage(); 
+	         	setModalMsg("회원목록 관리 가져오기 실패");
+		        getModalMesage(); 
 	        }
 	    });
  }
@@ -179,7 +201,7 @@
 			/* headers: {
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 			}, */
-			//url: '/hyndai/admin/rankCnt', 
+			//url: '/adminTest/admin/rankCnt', 
 			url: 'https://www.h-club.site/admin/rankCnt', 
 		    data: JSON.stringify(params),
 			contentType: 'application/json', 
