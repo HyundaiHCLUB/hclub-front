@@ -176,7 +176,6 @@
     	 let recipentMemberNo = localStorage.getItem('recipentMemberNo');
     	 
     	 $("#productName").text(settleName);
-    	 console.log(parseInt(settleAmount).toLocaleString('ko-KR'));
     	 $("#productAmount").text(parseInt(settleAmount).toLocaleString('ko-KR')+' 원');
     	 
     	 
