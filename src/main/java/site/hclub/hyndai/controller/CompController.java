@@ -152,4 +152,15 @@ public class CompController {
     public ModelAndView gopaySuccessPage() {
         return new ModelAndView("comp/paySuccess");
     }
+    /* 결제 실패 페이지*/
+    @GetMapping("/payFail")
+    public ModelAndView gopayFailPage() {
+        return new ModelAndView("comp/payFail");
+    }
+    /* 결제 취소 페이지*/
+    @GetMapping("/payCancel")
+    public ModelAndView gopayCancelPage() {
+        return new ModelAndView("comp/payCancel");
+    }
+    
 }
