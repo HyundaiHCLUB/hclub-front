@@ -59,7 +59,7 @@
         }
         .submitBtn {
             width: 100%;
-            background-color: dodgerblue;
+            background-color: #46675c;
             color: #fff;
             border: none;
             padding: 15px; /* 수정된 부분 */

@@ -86,7 +86,7 @@
 	        <input type="text" placeholder="동아리 이름으로 검색하세요" required id="search">
 	        
 	    </div>
-	    <div style="display:inline-block; cursor:pointer;"><input type="button" value="검색" style="font-weight:bold; cursor:pointer; color:dodgerblue;" onclick="getClubSetUp()"></div>
+	    <div style="display:inline-block; cursor:pointer;"><input type="button" value="검색" style="font-weight:bold; cursor:pointer; color:#46675c;" onclick="getClubSetUp()"></div>
 	   </div>  
 	</div>
    </nav>
