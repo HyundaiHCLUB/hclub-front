@@ -377,7 +377,7 @@
                         data: JSON.stringify(configTeamDTO),
                         success : function (response) {
                             userTeamNo = response;
-                            console.log('userTeamNo => ' + userTeamNo);
+                            console.log('userTeamNo => ' +  userTeamNo);
                         }, error : function(error) {
                             console.error(error);
                         }
