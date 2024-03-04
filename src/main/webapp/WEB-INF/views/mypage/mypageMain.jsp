@@ -118,9 +118,9 @@
             <i class="fa-solid fa-user"></i>
             <span>프로필 수정</span>
         </div>
-        <div class="menu" onclick="location.href='/mypage/myClubs'">
+        <div class="menu" onclick="location.href='/mypage/myProceedingMatch'">
             <i class="fa-solid fa-flag"></i>
-            <span><a>내 동아리</a></span>
+            <span><a>진행중인 매치</a></span>
         </div>
 
         <div class="menu" onclick="location.href='/mypage/myGifts'">
