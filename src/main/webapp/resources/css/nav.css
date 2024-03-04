@@ -79,6 +79,10 @@ a {
     color: #333;
 }
 
+.comp-icon {
+
+}
+
 @media (max-width: 768px) {
     .navbar_bottom {
         position: fixed;

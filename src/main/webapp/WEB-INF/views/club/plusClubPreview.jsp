@@ -147,16 +147,17 @@
         <rect width="100%" height="1" fill="#46675C"/>
     </svg>
 
-    <img class="club-image" src="/resources/image/default-image.jpg">
+    <img class="club-image" src="/resources/image/default_image.png">
 
     <div class="club-detail">
         <div class="circle_content">
             <p class="club-title"></p>
-            <a href="#" class="content_button"></a>
+            <a href="#" class="content_button" style="text-align: center;"></a>
         </div>
-        <p class="club-preview">상세 내용</p>
-        <p class="club-content"></p>
+        <p class="club-preview" style="text-align: center;">상세 내용</p>
+        <p class="club-content" style="text-align: center;font-size: 40px;"></p>
     </div>
+
 
     <a href="/club/0">
         <svg class="next_button" width="700" height="250" viewBox="0 0 350 50" fill="none" xmlns="http://www.w3.org/2000/svg">

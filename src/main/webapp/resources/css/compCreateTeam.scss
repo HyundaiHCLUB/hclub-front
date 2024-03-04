@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'happiness';
+  src: url('/resources/font/happinessSans/ttf/Happiness-Sans-Regular.ttf')
+}
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* 팀 생성 */
 .select-game-type-container {
   margin-top: 35px;
@@ -213,6 +225,7 @@ input[type="text"] {
   p {
     font-size: 60px;
     margin-left: 20px;
+    font-family: happiness;
   }
 }
 
@@ -228,6 +241,36 @@ input[type="text"] {
   font-size: 50px;
 
 
+}
+
+.select-option-container {
+  margin-bottom: 20px;
+  font-family: happiness;
+
+  span {
+    font-size: 60px;
+    margin-left: -9px;
+  }
+
+  img {
+    margin-top: -30px;
+    margin-left: 10px;
+  }
+}
+
+.select-option-container-1 {
+  margin-bottom: 20px;
+  font-family: happiness;
+
+  span {
+    font-size: 60px;
+    margin-left: -9px;
+  }
+
+  img {
+    margin-top: -30px;
+    margin-left: -2px;
+  }
 }
 
 // 팀원 DP
@@ -294,8 +337,9 @@ input[type="text"] {
 /* 장소 검색 */
 .location-add-container {
   margin-top: 200px;
+  font-family: happiness;
 
-  p {
+  span {
     font-size: 60px;
     margin-left: 20px;
   }
@@ -309,8 +353,8 @@ input[type="text"] {
   justify-content: space-evenly;
 
   button {
-    width: 300px;
-    height: 75px;
+    width: 385px;
+    height: 85px;
     border-radius: 10px;
     border: 3px solid #46675C;
     background: #ffffff;

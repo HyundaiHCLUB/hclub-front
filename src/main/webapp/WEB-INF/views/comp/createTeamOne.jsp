@@ -66,7 +66,10 @@
 
     </div>
     <div class="team-mate-add-container">
-        <p>팀원</p>
+        <div class="select-option-container-1">
+            <img src="/resources/image/comp/team-create-member-icon.png" alt="" style="width:100px;height:100px">
+            <span style="">팀원</span>
+        </div>
         <div class="team-mate-search" style="position: relative">
             <input type="text" id="memberSearchInput" placeholder="팀원을 검색하세요"/>
             <div class="search-results-dropdown" style="position: absolute"></div>
@@ -77,7 +80,10 @@
     </div>
 
     <div class="location-add-container">
-        <p>장소</p>
+        <div class="select-option-container">
+            <img src="/resources/image/comp/team-create-loc-icon-1.png" alt="">
+            <span style="margin-left: 10px;">장소</span>
+        </div>
         <div class="team-mate-search">
             <input id="locationSearchInput" type="text" placeholder="장소를 입력해주세요"/>
 
@@ -139,6 +145,44 @@
         // Your other JavaScript code...
     });
     $(document).ready(function () {
+
+        function displaySavedMemberInfo() {
+            // Retrieve the individual pieces of data from localStorage
+            let name = localStorage.getItem('name');
+            let dept = localStorage.getItem('dept');
+            let pos = localStorage.getItem('pos');
+
+            // Check if the information exists
+            if (name && dept && pos) {
+                // Create the list item
+                let newListItem = $('<li></li>').text(name);
+
+                // Create the remove button as an img element
+                let removeBtn = $('<img>', {
+                    src: '/resources/image/comp/member-cancel.png',
+                    alt: 'Remove',
+                    css: {
+                        cursor: 'pointer',
+                        marginLeft: '30px',
+                        width: '50px',
+                        height: '50px'
+                    },
+                    click: function () {
+
+                    }
+                });
+
+                // Append the remove button to the list item
+                newListItem.append(removeBtn);
+
+                // Append the new list item to the teamMateList container
+                $('#teamMateList').append(newListItem);
+            }
+        }
+
+        // Call the function to display the saved member information
+        displaySavedMemberInfo();
+
         // Function to clear all localStorage items except for accessTokenInfo
         function clearLocalStorageExceptAccessTokenInfo() {
             // Get all keys in localStorage
@@ -147,7 +191,7 @@
             if (localStorage.getItem('initCreate') === 'N') {
                 keys.forEach(function (key) {
                     // Check if the current key is not accessTokenInfo
-                    if (key !== 'accessTokenInfo' && key !== 'opponentTeamNo' && key !== 'initCreate' && key !== 'name') {
+                    if (key !== 'accessTokenInfo' && key !== 'opponentTeamNo' && key !== 'initCreate' && key !== 'name' && key !== 'dept' && key !== 'pos') {
                         // Remove the item from localStorage
                         localStorage.removeItem(key);
                     }
@@ -159,7 +203,7 @@
             // N 일 경우
             keys.forEach(function (key) {
                 // Check if the current key is not accessTokenInfo
-                if (key !== 'accessTokenInfo' && key !== 'initCreate' && key !== 'name') {
+                if (key !== 'accessTokenInfo' && key !== 'initCreate' && key !== 'name' && key !== 'dept' && key !== 'pos') {
                     // Remove the item from localStorage
                     localStorage.removeItem(key);
                 }

@@ -13,30 +13,30 @@
 <body>
 <nav class="navbar_bottom">
     <div class="navbar_bottom_menu" style="height:100px;">
-        <a href="/">
-            <div class="nav-item">
-                <i class="fa-solid fa-house fa-4x"></i>
-                <span>홈</span>
-            </div>
-        </a>
-        <a href="/competition">
-            <div class="nav-item">
-                <i class="fa-solid fa-bag-shopping fa-4x"></i>
-                <span>경쟁</span>
-            </div>
-        </a>
-        <a href="/club/0">
-            <div class="nav-item">
-                <i class="fa-solid fa-compass fa-4x"></i>
-                <span>동아리</span>
-            </div>
-        </a>
-        <a href="/mypage/myFavorites">
-            <div class="nav-item">
-                <i class="fa fa-heart fa-4x"></i>
-                <span>즐겨찾기</span>
-            </div>
-        </a>
+
+        <div class="nav-item" onclick="homeRedirect()">
+            <i class="fa-solid fa-house fa-4x"></i>
+            <span>홈</span>
+        </div>
+
+
+        <div class="nav-item" onclick="compMainRedirect()">
+            <img src="/resources/image/vs-icon-large.png" alt="">
+            <span>경쟁</span>
+        </div>
+
+
+        <div class="nav-item" onclick="clubRedirect()">
+            <i class="fa-solid fa-compass fa-4x"></i>
+            <span>동아리</span>
+        </div>
+
+
+        <div class="nav-item" onclick="favoriteRedirect()">
+            <i class="fa fa-heart fa-4x"></i>
+            <span>즐겨찾기</span>
+        </div>
+
 
         <div class="nav-item" onclick="checkLoginAndRedirect()">
             <i class="fa-solid fa-user fa-4x"></i>
@@ -48,6 +48,21 @@
 </nav>
 </body>
 <script>
+    function homeRedirect() {
+        window.location.href = '/'
+    }
+
+    function compMainRedirect() {
+        window.location.href = '/competition'
+    }
+
+    function clubRedirect() {
+        window.location.href = '/club/0'
+    }
+
+    function favoriteRedirect() {
+        window.location.href = '/mypage/myFavorites'
+    }
 
     function checkLoginAndRedirect() {
         const accessTokenInfo = localStorage.getItem('accessTokenInfo');
@@ -59,10 +74,11 @@
             // 로그인이 되어 있지 않으면 경고 메시지 표시후 로그인 페이지로 이동
             localStorage.clear(); // localStorage 초기화
             alert("로그인이 필요한 기능입니다");
-            window.location.href ='/login/loginView';
+            window.location.href = '/login/loginView';
             return;
         }
     }
+
 
 </script>
 </html>

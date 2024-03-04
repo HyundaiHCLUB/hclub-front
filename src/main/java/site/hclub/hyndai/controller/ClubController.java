@@ -143,7 +143,7 @@ public class ClubController {
             case 3:
                 return "마포의 중심에서 함께 멋진 경험을 만들어봐요! ";
             case 4:
-                return "중구의 동아리에서 새로운 친구들과 소중한 경험을 만들어보세요! ";
+                return "새로운 친구들과 소중한 경험을 만들어보세요! ";
             default:
                 return "알 수 없는 지역";
         }
