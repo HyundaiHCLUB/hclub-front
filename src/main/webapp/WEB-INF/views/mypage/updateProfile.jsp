@@ -28,7 +28,7 @@
             height: 250px;
             border-radius: 50%;
             margin: auto 50px;
-            border: 8px solid #46675C;
+            border: 8px solid #6FC173;
         }
         .user-info {
             margin-left: 20px;
@@ -41,6 +41,13 @@
         .user-info p {
             font-size: 1.1em;
             margin-top: 0;
+        }
+        #userName {
+            font-size: 1.8em;
+        }
+        #userDept {
+            font-size: 1em;
+            margin-bottom: 30px;
         }
         #profile-form{
             margin: 30px auto;
@@ -99,6 +106,25 @@
         input[readonly] {
             background-color: #d3d3d3;
         }
+        .user-rating {
+            display: flex; /* Flexbox 레이아웃 사용 */
+            align-items: center; /* 세로축(center)을 기준으로 자식 요소들을 가운데 정렬 */
+            gap: 10px; /* 이미지와 텍스트 사이에 10px의 간격을 줌 */
+        }
+        .user-rating img {
+            width: 40px;
+            height: 40px;
+        }
+
+        #userRating {
+            line-height: 40px; /* Set line-height equal to the height of the image for vertical alignment */
+            margin: 0; /* Remove default margin */
+            display: flex; /* Use flex to align text */
+            align-items: center; /* Align text to the center vertically */
+            height: 40px; /* Ensure the div height matches the image height */
+            font-weight: bold;
+            color: #0061f7;
+        }
     </style>
 </head>
 <body>
@@ -116,7 +142,11 @@
             <div class="user-info">
                 <h3 id="userName"></h3>
                 <p id="userDept"></p>
-                <p id="userRating"></p>
+                <div class="user-rating">
+                    <img src="/resources/image/comp/rating.svg"/>
+                    <p style="margin-bottom: 0; margin-right: 10px;">레이팅  </p>
+                    <p id="userRating"></p>
+                </div>
             </div>
         </div>
         <form id="profile-form">
@@ -171,7 +201,7 @@
             memberId = memberInfo.member_id;
             $('#userName').text(memberInfo.employeeName); // 이름 설정
             $('#userDept').text(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')'); // 부서와 직급 설정
-            $('#userRating').text('레이팅 ' + memberInfo.memberRating); // 부서와 직급 설정
+            $('#userRating').text(memberInfo.memberRating); // 부서와 직급 설정
             $('.profile-pic').attr('src', memberInfo.memberImage); // 프로필 사진
             $('#name').val(memberInfo.employeeName);
             $('#dept').val(memberInfo.employeeDept + ' (' + memberInfo.employeePosition + ')');
