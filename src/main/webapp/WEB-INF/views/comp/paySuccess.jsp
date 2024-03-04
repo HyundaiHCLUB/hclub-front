@@ -176,8 +176,7 @@
     	 let recipentMemberNo = localStorage.getItem('recipentMemberNo');
     	 
     	 $("#productName").text(settleName);
-    	 var numberWithCommas = (settleAmount).toLocaleString('ko-KR', { style: 'currency', currency: 'KRW' }); 
-    	 $("#productAmount").text(numberWithCommas);
+    	 $("#productAmount").text(parseInt(settleAmount).toLocaleString('ko-KR')+' 원');
     	 
     	 
     	 var params = {};
