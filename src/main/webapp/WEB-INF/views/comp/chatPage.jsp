@@ -9,11 +9,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 	#myProfileImg{
-    	width: 150px; /* 이미지의 너비 */
-    	height: 150px; /* 이미지의 높이 */
-    	border-radius: 50%; /* 원 모양으로 이미지 테두리 만들기 */
-    	object-fit: cover; /* 이미지가 요소에 맞게 채워지도록 */
-    	border: 2px solid #333; /* 테두리 추가 */
+    	width: 150px; 
+    	height: 150px; 
+    	border-radius: 50%; 
+    	border: 2px solid #333; 
      }
      #profileDiv{
      	margin: 70px;
@@ -92,7 +91,7 @@
       #nickName{
       	font-weight:bold;
       	font-size:45px;
-    
+    	margin-bottom:10px;
       }
       #satus{
       	padding : 0px 40px 0px 0px;
@@ -110,42 +109,24 @@
 </head>
 <body>
 <main>
- <!-- 상대방 번호 넣기 -->
-     <!--    <button onclick="createRoom(3)">chat</button> -->
-  <div style="display: flex;margin: auto;display: block;">
-        <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;margin-left: 58px" onclick="history.back()" src="/resources/image/left-arrow.png">
-        <div class="club"></div>
-    </div>   
+<div style="display: flex;margin: auto;display: block;">
+    <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;margin-left: 58px" onclick="history.back()" src="/resources/image/left-arrow.png">
+    <div class="club"></div>
+</div>   
 <div id="profileDiv">
 	<div class="profile">
 		<img id ="myProfileImg" />
 	</div>
 	<div class="profile">
 		<div id="otherInfo">
-			<span id="nickName"></span><br/><br/>
-			<span id="dept"></span> &nbsp;<span id="position">
+			<div id="nickName"></div>
+			<div>
+				<span id="dept"></span> &nbsp;<span id="position">
+			</div>
 		</div>
 	</div>
-<!-- 	<div class="profile">
-		<span>버튼버튼</span>
-	</div> -->
 </div>
 <div id="chatArea"  style="height: 1389px;overflow: overlay;">
-
-	<!-- <div class="myContent basChat">
-	 어느 장소가 좋으신지요.
-	</div>
-	<div class="myDate basDate">
-	 2:55 PM
-	</div>
-
-
-	<div class="otherContent basChat"> 
- 	제 생각에는 서초구 인근이 좋을거 같습니다!
-	</div>
-	<div class="ohterDate basDate">
-		 3:08 PM
-	</div>	 -->
 	<div id="message"></div>
 </div>
 <div id="inputArea">
