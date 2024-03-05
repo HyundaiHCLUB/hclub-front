@@ -4,47 +4,65 @@
 <head>
   <link rel="stylesheet" href="/resources/css/club.css">
   <link rel="stylesheet" href="/resources/css/main.css">
+  <link rel="stylesheet" href="/resources/css/compCreateTeam.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <title>동아리 개설</title>
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <script type="text/javascript" src="/resources/js/write.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      function handleFileInputChange() {
-        var fileInput = document.getElementById('file');
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          var fileBlob = e.target.result;
-          localStorage.setItem('clubFile', fileBlob);
-          localStorage.setItem('clubFileName', fileInput.files[0].name);
-        };
-        reader.readAsDataURL(fileInput.files[0]);
+        var plusButton = document.querySelector('.plus-button');
+      var fileInput = document.getElementById('file');
+        var imageUploadContainer = document.querySelector('.image-upload-container');
 
-        var previewImage = document.getElementById('previewImage');
-        var defaultImage = document.getElementById('defaultImage');
+        plusButton.addEventListener('click', function () {
+          fileInput.click();
+        });
 
-        if (fileInput.files && fileInput.files[0]) {
-          var reader = new FileReader();
+        fileInput.addEventListener('change', function () {
+          if (this.files && this.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              try {
+                let imgDataUrl = e.target.result;
+                plusButton.style.display = 'none';
+                console.log(e.target)
+                let img = document.createElement("img");
+                img.setAttribute("src", imgDataUrl);
+                img.style.width = "500px";
+                img.style.height = "500px";
+                img.style.border = "none";
+                img.style.borderRadius = "40%";
 
-          reader.onload = function (e) {
-            previewImage.src = e.target.result;
-            previewImage.style.display = 'block';
-            defaultImage.style.display = 'none';
-          };
+                imageUploadContainer.appendChild(img);
 
-          reader.readAsDataURL(fileInput.files[0]);
-        } else {
-          previewImage.style.display = 'none';
-          defaultImage.style.display = 'block';
-        }
-      }
+                localStorage.setItem('clubFile', imgDataUrl);
+                console.log("Image saved to localStorage.");
+              } catch (error) {
+                if (e == QUOTA_EXCEEDED_ERR) {
+                  alert("Error: Local Storage limit exceeds.");
+                } else {
+                  console.log("Error saving image to localStorage.", e);
+                }
+              }
 
-      document.getElementById('file').addEventListener('change', handleFileInputChange);
-    });
+            };
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+
+
+        fileInput.addEventListener('change', function () {
+          var files = fileInput.files;
+
+          console.log(files);
+        });
+
+      })
 
     function handleNextButtonClick() {
       console.log('버튼 클릭');
@@ -72,16 +90,17 @@
 
     <input type="hidden" name="boardId">
     <div class="input-group">
-      <input id="clubTitle" style="font-size: 44px; width: 95%;height: 50px;" name="boardSubject" type="text" placeholder="동아리명을 입력해 주세요.">
+      <input id="clubTitle" style="font-size: 50px; padding:12px; width: 95%;height: 50px;" name="boardSubject" type="text" placeholder="동아리명을 입력해 주세요.">
     </div>
-  <input style="margin: auto;display: block;width: 300px
-" name="file" type="file" id="file">
 
-  <img class="club-image" id="previewImage" style="max-width: 100%; display: none; margin-top: 10px;" />
-  <img class="club-image" id="defaultImage" src="/resources/image/default_image.png" style="max-width: 100%; margin-top: 10px;margin-bottom: 50px;" />
+
+  <input type="file" id="file" style="display: none;" multiple>
+  <div class="plus-button"></div>
+  <div class="image-upload-container"
+  ></div>
 
   <div class="input-group">
-      <textarea id="clubInfo" style="width: 95%;height: 600px;font-size: 44px;" placeholder="내용을 상세히 입력해주세요." ></textarea>
+      <textarea id="clubInfo" style="width: 95%;height: 600px;padding:12px;font-size: 44px;" placeholder="내용을 상세히 입력해주세요." ></textarea>
     </div>
 
   <div class="next_button" onclick="handleNextButtonClick()">
