@@ -202,8 +202,8 @@ function getClubList() {
 			/* headers: {
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 			}, */
-			//url: '/adminTest/admin/club', 
-			url: 'https://www.h-club.site/admin/club', 
+			url: '/adminTest/admin/club', 
+			//url: 'https://www.h-club.site/admin/club', 
 		    data: JSON.stringify(params),
 			contentType: 'application/json', 
 			success: function(response) {
