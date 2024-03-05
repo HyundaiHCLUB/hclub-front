@@ -156,6 +156,11 @@
   </div>
  <script>
  $(document).ready(function() {
+	 
+	 //관리계정으로 로그인이 안되어있을시, 관리자 로그인 페이지로 redircet
+	 if (accessAdminTokenInfo == null || accessAdminTokenInfo == "") {
+		location.href='/dashboard/adminLoginPage';
+	 }
  
 	 $('#search').on('keypress', function(e) {
 	        if(e.which === 13) {
@@ -202,8 +207,8 @@ function getClubList() {
 			/* headers: {
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 			}, */
-			url: '/adminTest/admin/club', 
-			//url: 'https://www.h-club.site/admin/club', 
+			//url: '/adminTest/admin/club', 
+			url: 'https://www.h-club.site/admin/club', 
 		    data: JSON.stringify(params),
 			contentType: 'application/json', 
 			success: function(response) {
