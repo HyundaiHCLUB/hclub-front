@@ -58,7 +58,11 @@
 	.table-wrapper table.posts-table{
 		min-width: max-content;
 	}
-	td, th{
+	td {
+		padding: 10px;
+		text-align: center;
+	}
+	th{
 		padding: 10px;
 		text-align: center;
 	}
@@ -94,7 +98,7 @@
    <!-- <div id="deleteButton" onclick="deleteClub()">삭제</div> -->
     <div class="row">
     	
-    	<div class="col-lg-9" style="margin: 0px 0px 0px 50px">  
+    	<div class="col-lg-9" style="margin: 0px 0px 0px 0px">  
           <div class="users-table table-wrapper" style="width: fit-content">
               <table class="posts-table">
                 <thead>
@@ -104,15 +108,15 @@
                         <input type="checkbox" class="check-all">
                       </label>
                     </th> -->
-                    <th>번호</th>
-                    <th>동아리 이름</th>
-                    <th>동아리 사진</th>
-                    <th>동아리 소개</th>
-                    <th>활동 지역</th>
-                    <th>활성 여부</th>
-                    <th>카테고리</th>
-                    <th>등록 날짜</th>
-                    <th>수정 날짜</th>
+                    <th style="text-align:center">번호</th>
+                    <th style="text-align:center">동아리 이름</th>
+                    <th style="text-align:center">동아리 사진</th>
+                    <th style="text-align:center">동아리 소개</th>
+                    <th style="text-align:center">활동 지역</th>
+                    <th style="text-align:center">활성 여부</th>
+                    <th style="text-align:center">카테고리</th>
+                    <th style="text-align:center">등록 날짜</th>
+                    <th style="text-align:center">수정 날짜</th>
                   </tr>
                 </thead>
                 <tbody id="dataTbody">
@@ -240,7 +244,7 @@ function getClubSize(){
 	           
 	  	},
 	   	error: function(xhr, status, error) {
-	         console.error('동아리 리스트 정보 가져오기 실패:', error);
+	         console.error('동아리 리스트 수 정보 가져오기 실패:', error);
 	    }
 	  });
  }
@@ -252,7 +256,16 @@ function getClubSize(){
 	    tr.append('<td>'+data.clubNo+'</td>'); // 동아리 ID 
 	    tr.append('<td>'+data.clubName+'</td>'); // 동아리명 
 	    tr.append('<td><div class="categories-table-img"><img src="'+data.clubImage+'" alt="category"></div></td>'); // 동아리 이미지
-	    tr.append('<td>'+data.clubInfo+'</td>'); //동아리 정보
+	   // tr.append('<td>'+data.clubInfo+'</td>'); //동아리 정보
+	   
+	    
+	    if(data.clubInfo.length >20 ){
+	    	var info = data.clubInfo;
+	    	 tr.append('<td>'+info.substring(0, 30)+'...</td>'); //동아리 정보
+	    	 //tr.append('<td>'+data.clubInfo+'</td>'); //동아리 정보
+	    }else{
+	    	tr.append('<td>'+data.clubInfo+'</td>'); //동아리 정보
+	    }
 	    tr.append('<td>'+data.clubLoc+'</td>');  //동아리 위치
 	    if(data.useYn == 'Y'){
 	        tr.append('<td style="text-align:center"><span class="badge-active">'+data.useYn+'</span></td>'); // 동아리 활성화 여부
@@ -275,7 +288,8 @@ function getClubSize(){
 		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 			}, */
 		    url: 'https://www.h-club.site/admin/club/updateUseYn/'+clubNo, 
-			contentType: 'application/json', 
+			//url: '/adminTest/admin/club/updateUseYn/'+clubNo, 
+		    contentType: 'application/json', 
 			success: function(response) {
 	         	console.log('동아리 승인 업데이트 성공: '+response);
 	         	getClubList();//업데이트 후 데이터 재 로딩
