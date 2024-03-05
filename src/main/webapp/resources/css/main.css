@@ -110,6 +110,13 @@ main {
     margin-top: 16px;
 }
 
+.circle_like {
+    display: flex;
+    float: right;
+    margin-right:58px;
+    margin-top:60px;
+}
+
 .category_button {
     font-size: 28px;
     margin-top: 10px;
@@ -162,6 +169,12 @@ main {
 
 .circle_hot_content {
     display: flex;
+    justify-content: center;
+    margin-top: 15%;
+    margin-right: 14px;
+}
+
+.club_hot_content {
     justify-content: center;
     margin-top: 15%;
     margin-right: 14px;
