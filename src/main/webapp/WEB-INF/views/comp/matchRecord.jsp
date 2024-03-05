@@ -360,15 +360,15 @@
             // 여기에 점수 비교 로직 추가
             if (myTeamScore < opponentTeamScore) { // 진경우
                 // 팀1의 점수가 팀2의 점수보다 작으면 loseTeamResult.jsp로 리다이렉트
-                <%--window.location.href = '${path}/competition/loseTeam/${matchHistoryNo}';--%>
+                indow.location.href = '${path}/competition/loseTeam/${matchHistoryNo}';
                 console.log("패배");
                 return; // 추가된 부분
             }
             else if (myTeamScore == opponentTeamScore) { // 무승부
-                // window.location.href = '/competition/drawTeam';
+                window.location.href = '/competition/drawTeam';
                 console.log("무승부");
             } else if (myTeamScore > opponentTeamScore) { // 이긴 경우
-                // window.location.href = '/competition/winTeam';
+                window.location.href = '/competition/winTeam';
                 console.log("승리");
             }
         });
