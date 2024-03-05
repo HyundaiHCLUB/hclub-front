@@ -276,7 +276,20 @@
             }, error: function (error){
                 console.log('Error : ' + error);
             }
-        });
+        });// end ajax
+
+        $.ajax({
+            url : 'https://www.h-club.site/auth/mypage/history/detail/${matchHistoryNo}',
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                console.log('## auth/mypage/histroy/deatail/${matchHistoryNo} ## ')
+                console.log(response);
+            }, error: function (error){
+                console.log('error occured', error);
+            }
+        })
+
         $('.end-match-button').click(function() { // 뒤로가기버튼
             window.history.back();
         });
