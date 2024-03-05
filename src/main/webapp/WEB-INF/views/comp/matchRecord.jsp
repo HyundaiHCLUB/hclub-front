@@ -296,6 +296,15 @@
             if (isNaN(scoreTeam1) || isNaN(scoreTeam2)) {
                 alert('유효한 점수를 입력하세요.');
             }
+            // 현재 날짜와 시간을 나타내는 Date 객체 생성
+            const now = new Date();
+
+            // Date 객체를 YYYY-MM-DD:HH:MM 형식의 문자열로 포맷팅
+            const formattedMatchDate = now.getFullYear() + '-' +
+                String(now.getMonth() + 1).padStart(2, '0') + '-' + // 월은 0부터 시작하므로 1을 더해줍니다.
+                String(now.getDate()).padStart(2, '0') + ':' +
+                String(now.getHours()).padStart(2, '0') + ':' +
+                String(now.getMinutes()).padStart(2, '0');
             // 경기 결과 기록 request dto
             var dataToSend = {
                 matchHistNo: 13,
@@ -303,7 +312,8 @@
                 teamANo : team1No,
                 scoreA : scoreValueTeam1,
                 teamBNo : team2No,
-                scoreB : scoreValueTeam2
+                scoreB : scoreValueTeam2,
+                matchDate: formattedMatchDate
             };
             console.log('dataToSend : ', dataToSend);
             var formData = new FormData();
