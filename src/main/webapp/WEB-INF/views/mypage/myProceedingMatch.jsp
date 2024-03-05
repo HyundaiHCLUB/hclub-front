@@ -17,12 +17,13 @@
             font-size: 1.5em;
         }
         .mypage-header i {
-            color: #0061f7;
+            color: #529863; /* Sets the color of the line */
+        ;
         }
         .rounded-shape {
             height: 300px;
             border: 1px solid #0061f7;
-            background: linear-gradient(to right, rgb(98, 175, 243) 25%, rgb(167, 250, 255) 15%, rgb(220, 247, 255) 100%);
+            background: linear-gradient(to right, rgb(80, 122, 77) 25%, rgb(226, 243, 227) 15%, rgb(226, 243, 227) 100%);
         }
         .right-section {
             height: 100%;
@@ -88,12 +89,12 @@
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: 'GET',
-                url: 'https://www.h-club.site/auth/mypage/history',
+                url: 'https://www.h-club.site/auth/mypage/match',
                 headers: {
                     'Authorization': 'Bearer ' + accessToken,
                 },
                 success: function (response) {
-                    console.log('히스토리 가져오기 성공 -> ' + response);
+                    console.log('히스토리 가져오기 성공 -> ' , response);
                     resolve(response); // 성공 시 response 객체를 resolve 합니다.
                 },
                 error: function (xhr, status, error){
@@ -109,25 +110,26 @@
 
         matches.forEach(match => {
             // 각 매치 정보로 HTML 요소 생성
-            var scoreColor = match.teamNo === match.winTeamNo ? 'blue' :  'red';
-            if (match.winTeamScoreAmount == match.loseTeamScoreAmount) {scoreColor = 'black'}
+            console.log("matchType -> ", match.matchType);
             var matchElement = $('<div/>', { class: 'rounded-shape' }).append(
                 $('<div/>', { class: 'left-section' }).append(
-                    $('<img/>', { src: '/resources/image/comp/' + match.matchType.toLowerCase() + '.png', alt: '이미지' }),
-                    $('<p/>').text(match.matchCapacity + ' vs ' + match.matchCapacity)
+                    $('<img/>', { src: match.gameType}),
+                    $('<p/>').text(match.matchCapacity)
                 ),
                 $('<div/>', { class: 'middle-section' }).append(
-                    $('<p/>').text(match.teamName),
+                    $('<p/>', { style: 'color: blue;' }).text(match.myTeamName),
                     // $('<p/>', { style: 'color:' + scoreColor }).text(match.winTeamScoreAmount + ' vs ' + match.loseTeamScoreAmount)
                     $('<p/>').text( ' vs ' ),
-                    $('<p/>').text('[상대팀 이름]'),
+                    $('<p/>').text(match.opponentTeamName),
 
                 ),
                 $('<div/>', { class: 'right-section' }).append(
                     $('<p/>').text(match.matchLoc),
                     $('<p/>').text(match.matchDate)
                 )
-            );
+            ).click(function() {
+                goMatchDetail(match.matchNo);
+            });
 
             // matchesContainer에 매치 요소 추가
             matchesContainer.append(matchElement);
@@ -158,8 +160,8 @@
     }
 
     // 각 매치별로 경기 상세정보 페이지로 이동 -> 경기번호 matchHistoryNo 로 받는다 가정 -> 각 매치별로 onclick 달아줘야됨(아직안함)
-    function goMatchDetail(matchHistoryNo){
-        window.location.href = '/competition/matchDetail/' + matchHistoryNo;
+    function goMatchDetail(matchNo){
+        window.location.href = '/competition/matchDetail/' + matchNo;
     }
 </script>
 </html>
