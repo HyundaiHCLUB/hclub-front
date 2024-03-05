@@ -210,6 +210,9 @@
     var team1No;
     var team2No;
     var matchLoc;
+    var currentUserId;
+    var currentLeader;
+    var opponentLeader;
     $(document).ready(function() {
         $.ajax({
             url: 'https://www.h-club.site/comp/match/${matchHistoryNo}', //샘플데이터
@@ -241,15 +244,22 @@
                     var otherLeader;
                     if(memberInfo.member_id == response.data.team1.leader.memberId) {
                         otherLeader = response.data.team2.leader;
+                        opponentLeader = otherLeader;
+                        currentLeader = response.data.team1.leader;
                         localStorage.setItem("currentUserNo", response.data.team1.leader.memberNo);
                     } else if(memberInfo.member_id == response.data.team2.leader.memberId) {
                         otherLeader = response.data.team1.leader;
+                        opponentLeader = otherLeader;
+                        currentLeader = response.data.team2.leader;
                         localStorage.setItem("currentUserNo", response.data.team2.leader.memberNo);
+                        localStorage.setItem("currentUserId", response.data.team2.leader.memberId);
+                        currentUserId = localStorage.getItem("currentUserId");
                     }
                     if(otherLeader) {
                         localStorage.setItem("otherUserNo", otherLeader.memberNo);
                         localStorage.setItem("otherUserId", otherLeader.memberId);
                     }
+
                     console.log("--------- otherLeader ------------");
                     console.log(localStorage.getItem("otherUserNo"));
                     console.log(localStorage.getItem("otherUserId"));
@@ -286,16 +296,25 @@
         $('.end-match-button').click(function() { // 경기종료버튼 리스너 등록
             var scoreValueTeam1 = $('input[name="score1"]').val().trim();
             var scoreValueTeam2 = $('input[name="score2"]').val().trim();
+
             if (scoreValueTeam1 === '' || scoreValueTeam2 === '') {
                 alert('모든 점수를 입력해 주세요.');
                 return;
             }
-
             var scoreTeam1 = parseInt(scoreValueTeam1, 10);
             var scoreTeam2 = parseInt(scoreValueTeam2, 10);
             if (isNaN(scoreTeam1) || isNaN(scoreTeam2)) {
                 alert('유효한 점수를 입력하세요.');
             }
+
+            const now = new Date();
+
+            // Date 객체를 YYYY-MM-DD:HH:MM 형식의 문자열로 포맷팅
+            const formattedMatchDate = now.getFullYear() + '-' +
+                String(now.getMonth() + 1).padStart(2, '0') + '-' + // 월은 0부터 시작하므로 1을 더해줍니다.
+                String(now.getDate()).padStart(2, '0') + ':' +
+                String(now.getHours()).padStart(2, '0') + ':' +
+                String(now.getMinutes()).padStart(2, '0');
             // 경기 결과 기록 request dto
             var dataToSend = {
                 matchHistNo: 13,
@@ -303,7 +322,8 @@
                 teamANo : team1No,
                 scoreA : scoreValueTeam1,
                 teamBNo : team2No,
-                scoreB : scoreValueTeam2
+                scoreB : scoreValueTeam2,
+                matchDate: formattedMatchDate
             };
             console.log('dataToSend : ', dataToSend);
             var formData = new FormData();
@@ -323,16 +343,33 @@
                     console.error('Error occurred:', error);
                 }
             })
+            // 사용자가 속한 팀 식별
+            var userTeamNo = parseInt(localStorage.getItem("currentUserTeamNo"), 10); // 현재 사용자의 팀 번호
+            var myTeamScore, opponentTeamScore;
+
+            // 사용자의 팀에 따라 점수 할당
+            if(userTeamNo === team1No) {
+                myTeamScore = scoreValueTeam1;
+                opponentTeamScore = scoreValueTeam2;
+            } else {
+                myTeamScore = scoreValueTeam2;
+                opponentTeamScore = scoreValueTeam1;
+            }
+            console.log('myTeamScore = ', myTeamScore);
+            console.log('opponentTeamScore = ', opponentTeamScore);
             // 여기에 점수 비교 로직 추가
-            if (scoreTeam1 < scoreTeam2) { // 진경우
+            if (myTeamScore < opponentTeamScore) { // 진경우
                 // 팀1의 점수가 팀2의 점수보다 작으면 loseTeamResult.jsp로 리다이렉트
-                window.location.href = '${path}/competition/loseTeam/${matchHistoryNo}';
+                indow.location.href = '${path}/competition/loseTeam/${matchHistoryNo}';
+                console.log("패배");
                 return; // 추가된 부분
             }
-            else if (scoreTeam1 == scoreTeam2) { // 무승부
+            else if (myTeamScore == opponentTeamScore) { // 무승부
                 window.location.href = '/competition/drawTeam';
-            } else { // 이긴 경우
+                console.log("무승부");
+            } else if (myTeamScore > opponentTeamScore) { // 이긴 경우
                 window.location.href = '/competition/winTeam';
+                console.log("승리");
             }
         });
     });

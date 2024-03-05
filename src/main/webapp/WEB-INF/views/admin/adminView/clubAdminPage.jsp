@@ -152,7 +152,8 @@
 	<div id="pagination">
 	
 	</div>
-	 <%@ include file="/WEB-INF/views/common/modal.jsp" %> 
+	<%@ include file="/WEB-INF/views/common/confirmModal.jsp" %>
+	<%-- <%@ include file="/WEB-INF/views/common/modal.jsp" %>   --%>
   </div>
  <script>
  $(document).ready(function() {
@@ -181,12 +182,12 @@
 	  });
  });
  let setClubStartIndex = 1;
- let setClubEndIndex = 10;
+ let setClubEndIndex = 8;
  getClubSize();
  getClubList(); //초기 화면 로딩
- const itemsPerPage = 10; // 페이지 당 아이템 수
+ const itemsPerPage = 8; // 페이지 당 아이템 수
  let currentPage = 1; // 현재 페이지
- 
+ let clubDetailNo; 
  let clubListSize = 0;
 
  
@@ -223,8 +224,8 @@ function getClubList() {
 	            }
 	        },
 	        error: function(xhr, status, error) {
-	        	setModalMsg("동아리 리스트 정보 가져오기 실패");
-		        getModalMesage(); 
+	        	//setModalMsg("동아리 리스트 정보 가져오기 실패");
+		        //getModalMesage(); 
 	        }
 	    });
 }
@@ -283,31 +284,37 @@ function getClubSize(){
 	    
 	    tbody.append(tr); 
 }
- function updateUseYn(clubNo){
-	 var result = window.confirm("해당 동아리를 승인 하시겠습니까??");
+ 
 
-	if (result) {
-		$.ajax({
-			type: 'GET',
-			/* headers: {
-		     'Authorization': 'Bearer ' + accessToken // accessToken 사용
-			}, */
-		    url: 'https://www.h-club.site/admin/club/updateUseYn/'+clubNo, 
-			//url: '/adminTest/admin/club/updateUseYn/'+clubNo, 
-		    contentType: 'application/json', 
-			success: function(response) {
-	         	console.log('동아리 승인 업데이트 성공: '+response);
-	         	getClubList();//업데이트 후 데이터 재 로딩
-	        },
-	        error: function(xhr, status, error) {
-	            console.error('동아리 승인 업데이트 실패: ', error);
-	        }
-	    });
-	} 
- }
+function updateUseYn(clubNo){
+ 	setConfirmModalMsg("해당 동아리를 \n승인 하시겠습니까?");
+ 	getConfirmModalMesage(); 
+    clubDetailNo = clubNo;
+	
+}
 
+function confirmFlag(){
+	
+	$.ajax({
+		type: 'GET',
+		/* headers: {
+	     'Authorization': 'Bearer ' + accessToken // accessToken 사용
+		}, */
+	    url: 'https://www.h-club.site/admin/club/updateUseYn/'+clubDetailNo, 
+		//url: '/adminTest/admin/club/updateUseYn/'+clubDetailNo, 
+	    contentType: 'application/json', 
+		success: function(response) {
+			clubDetailNo="";//승인 초기화
+         	console.log('동아리 승인 업데이트 성공: '+response);
+         	getClubList();//업데이트 후 데이터 재 로딩
+      },
+	      error: function(xhr, status, error) {
+	           console.error('동아리 승인 업데이트 실패: ', error);
+	   }
+	});
+}
 
- function setupPagination() {
+function setupPagination() {
     const totalPages = Math.ceil(clubListSize / itemsPerPage);
     const paginationElement = document.getElementById('pagination');
     paginationElement.innerHTML = '';

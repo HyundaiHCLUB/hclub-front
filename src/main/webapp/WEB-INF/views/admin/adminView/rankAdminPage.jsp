@@ -154,10 +154,10 @@
  });
  
  let setClubStartIndex = 1;
- let setClubEndIndex = 10;
+ let setClubEndIndex = 8;
  getRankSize();
 
- const itemsPerPage = 10; // 페이지 당 아이템 수
+ const itemsPerPage = 8; // 페이지 당 아이템 수
  let currentPage = 1; // 현재 페이지
  
  let rankListSize = 0;
@@ -193,8 +193,8 @@
 	            }
 	        },
 	        error: function(xhr, status, error) {
-	         	setModalMsg("회원목록 관리 가져오기 실패");
-		        getModalMesage(); 
+	         	//setModalMsg("회원목록 관리 가져오기 실패");
+		        //getModalMesage(); 
 	        }
 	    });
  }
