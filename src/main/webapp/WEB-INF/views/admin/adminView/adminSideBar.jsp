@@ -22,7 +22,13 @@ function checkAccessAdminTokenInfo() {
         $("#sidebarLocation").show();
     } else {
         $("#sidebarLocation").hide();
-    }
+    }   
+}
+function signedOut(){
+	sessionStorage.setItem("accessAdminTokenInfo", "");
+	accessAdminTokenInfo = sessionStorage.getItem("accessAdminTokenInfo");
+	location.href='/dashboard/adminLoginPage';
+	checkAccessAdminTokenInfo();
 }
 </script>
 <style>
@@ -61,7 +67,11 @@ function checkAccessAdminTokenInfo() {
                 <li>
                     <a class="active" href="/dashboard/rankAdminPage"><span class="icon user-3" aria-hidden="true"></span>회원목록 관리</a>
                 </li>
-            </ul>      
+            </ul>
+             <!-- 로그아웃 버튼 영역 -->
+	        <div style="margin: 100px 0px 0px 0px;cursor:pointer;"><input type="button" value="로그아웃" style="font-weight:bold; cursor:pointer; color:#46675c;" onclick="signedOut()">
+	  		</div>      
         </div>
     </div>
+  
 </aside>

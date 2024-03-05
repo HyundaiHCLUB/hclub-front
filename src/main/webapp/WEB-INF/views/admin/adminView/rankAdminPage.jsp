@@ -51,7 +51,7 @@
 <div class="layer"></div>
 <!-- ! Body -->
 <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
-<div class="page-flex">
+<div class="page-flex" style="margin: auto;">
   <!-- ! Sidebar -->
 <%@ include file="../adminView/adminSideBar.jsp" %>
 
@@ -81,12 +81,12 @@
                         <input type="checkbox" class="check-all">
                       </label>
                     </th> -->
-                    <th>사원번호</th>
-                    <th>사원 사진</th>
-                    <th>아이디</th>
-                    <th>사원 이름</th>
-                    <th>레이팅 점수</th>
-                    <th>경기 횟수</th>
+                    <th style="text-align:center">사원번호</th>
+                    <th style="text-align:center">사원 사진</th>
+                    <th style="text-align:center">아이디</th>
+                    <th style="text-align:center">사원 이름</th>
+                    <th style="text-align:center">레이팅 점수</th>
+                    <th style="text-align:center">경기 횟수</th>
                   </tr>
                 </thead>
                 <tbody id="dataTbody">
@@ -126,6 +126,12 @@
   </div>
  <script>
  $(document).ready(function() {
+	 
+	 //관리계정으로 로그인이 안되어있을시, 관리자 로그인 페이지로 redircet
+	 if (accessAdminTokenInfo == null || accessAdminTokenInfo == "") {
+		location.href='/dashboard/adminLoginPage';
+	 }
+	 
 	 $('#search').on('keypress', function(e) {
 	        if(e.which === 13) {
 	            e.preventDefault();
