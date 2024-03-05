@@ -91,7 +91,7 @@
             border-left: 1px solid #ddd; /* Separating line if needed */
             font-weight: bold;
             font-size: 2.2em;
-            color: #F4B5B7;
+            color: #46675c;
         }
         .mypage-header i {
             color: #31dc3b
@@ -112,7 +112,6 @@
     </div>
     <!-- 가입 완료된 동아리 -->
     <div class="mypage-subheader">
-        <h2>가입 완료</h2>
     </div>
     <div class="approved-clubs">
         <!-- 샘플데이터 -->
@@ -120,7 +119,6 @@
     </div>
    <!-- 승인 대기중인 동아리-->
     <div class="mypage-subheader">
-        <h2>승인 대기중</h2>
     </div>
     <div class="waiting-clubs">
 
@@ -209,7 +207,9 @@
                 $('<div/>', { class: 'product-category' }).append(
                     $('<div/>', { class: 'category-title', text: club.categoryName })
                 )
-            );
+            ).click(function(){
+                window.location.href = '/club/detail/' + club.clubNo;
+            });
 
             // useYN 값에 따라 적절한 위치에 동아리 카드 추가
             if (club.useYN === 'Y') {
