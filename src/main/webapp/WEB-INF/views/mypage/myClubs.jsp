@@ -105,11 +105,8 @@
              onclick="window.history.back()"/>
     </div>
 
-    <div class="mypage-header">
-        <i class="fa-solid fa-flag"></i>
-        <h1>내 동아리</h1>
-        <i class="fa-solid fa-flag"></i>
-    </div>
+    <img src="/resources/image/myClub_banner.png" style="width:100%;margin-bottom:0px; margin-top:40px;">
+
     <!-- 가입 완료된 동아리 -->
     <div class="mypage-subheader">
         <h2>가입 완료</h2>
