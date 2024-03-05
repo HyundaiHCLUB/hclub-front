@@ -12,6 +12,11 @@
     <title>메인 페이지</title>
     <script>
         $(document).ready(function () {
+        	
+        	 if(localStorage.getItem("accessTokenInfo") == null){
+        		 location.href='/login/loginView'; 
+        	 }
+        		
             function getHotClubList() {
                 $.ajax({
                     //url: "http://localhost:8081/clubs/like",

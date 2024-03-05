@@ -113,7 +113,7 @@ $(document).ready(function() {
                  pageLocFlag = true;
                
              	//로그인 완료시 모달 띄우고, 이동
-                 if(pageLocFlag){
+                 if(localStorage.getItem("accessTokenInfo") != null && localStorage.getItem("accessTokenInfo") != ""){
                  	/*  setModalMsg("로그인에 성공하셨습니다.");
 	                 getModalMesage();  */
                 	 location.href='/' ;
