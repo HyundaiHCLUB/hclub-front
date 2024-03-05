@@ -126,6 +126,12 @@
   </div>
  <script>
  $(document).ready(function() {
+	 
+	 //관리계정으로 로그인이 안되어있을시, 관리자 로그인 페이지로 redircet
+	 if (accessAdminTokenInfo == null || accessAdminTokenInfo == "") {
+		location.href='/dashboard/adminLoginPage';
+	 }
+	 
 	 $('#search').on('keypress', function(e) {
 	        if(e.which === 13) {
 	            e.preventDefault();

@@ -106,7 +106,9 @@
                     $('<p/>').text(match.matchLoc),
                     $('<p/>').text(match.matchDate)
                 )
-            );
+            ).click(function (){
+                goHistoryDetail(match.matchHistoryNo);
+            });
 
             // matchesContainer에 매치 요소 추가
             matchesContainer.append(matchElement);
@@ -134,6 +136,10 @@
                 }
             });
         });
+    }
+
+    function goHistoryDetail(matchHistoryNo){
+        window.location.href = '/mypage/myMatchHistory/detail/' + matchHistoryNo;
     }
 </script>
 </html>

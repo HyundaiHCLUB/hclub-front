@@ -52,8 +52,8 @@
             font-weight: bold;
         }
         .team-icons img {
-            width: 180px;
-            height: 180px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
             object-fit: cover; /* 이미지 비율을 유지하면서 요소에 맞게 조정 */
         }
@@ -106,7 +106,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-                background-color: #c3ea6d;
+            background-color: #c3ea6d;
             border: black;
             border-radius: 50%;
             width: 200px;
@@ -117,7 +117,7 @@
             color: #000;
         }
         .end-match-button {
-            background-color: #F86A6A;
+            background-color: #529863;
             color: #fff;
             border: none;
             border-radius: 20px;
@@ -171,33 +171,27 @@
     <main>
         <div class="detail-title">
             <i class="fa-solid fa-trophy"></i>
-            <h1>경기 결과 입력</h1>
+            <h1>경기 결과</h1>
             <i class="fa-solid fa-trophy"></i><br/>
         </div>
-        <div class="match-notice">
-            <span>경기는 즐거우셨나요?</span><br/>
-            <span>경기 진행 후 결과를 입력해주세요!</span>
+        <div class="team-icons">
+            <div class="team">
+                <img src="" class="team-logo"/>
+                <h4>한반두</h4>
+                <input type="number" class="score-input" name="score1"/>
+            </div>
+            <div class="score-separator">:</div> <!-- 여기에 추가 -->
+            <div class="team">
+                <img src="" class="team-logo"/>
+                <h4>장한평핫스퍼</h4>
+                <input type="number" class="score-input" name="score2"/>
+            </div>
         </div>
-            <div class="team-icons">
-                <div class="team">
-                    <img src="" class="team-logo"/>
-                    <h4>한반두</h4>
-                    <input type="number" class="score-input" name="score1"/>
-                </div>
-                <div class="score-separator">:</div> <!-- 여기에 추가 -->
-                <div class="team">
-                    <img src="" class="team-logo"/>
-                    <h4>장한평핫스퍼</h4>
-                    <input type="number" class="score-input" name="score2"/>
-                </div>
-            </div>
-            <p class="match-notice"> ▼ 사진을 등록해주세요 ▼</p>
-            <div class="match-image" onclick="triggerUpload()">
-                <img id="preview-img" style="display: none"/>
-                <button class="add-button">+</button>
-                <input type="file" id="fileUpload" style="display:none;" onchange="handleFiles(this.files)">
-            </div>
-        <button class="end-match-button">경기 종료</button>
+        <div class="match-image" onclick="triggerUpload()">
+            <img id="preview-img" style="display: none"/>
+            <input type="file" id="fileUpload" style="display:none;" onchange="handleFiles(this.files)">
+        </div>
+        <button class="end-match-button">뒤로가기</button>
     </main>
 </div>
 </body>
@@ -283,88 +277,12 @@
                 console.log('Error : ' + error);
             }
         });
-        $('.end-match-button').click(function() { // 경기종료버튼 리스너 등록
-            var scoreValueTeam1 = $('input[name="score1"]').val().trim();
-            var scoreValueTeam2 = $('input[name="score2"]').val().trim();
-            if (scoreValueTeam1 === '' || scoreValueTeam2 === '') {
-                alert('모든 점수를 입력해 주세요.');
-                return;
-            }
-
-            var scoreTeam1 = parseInt(scoreValueTeam1, 10);
-            var scoreTeam2 = parseInt(scoreValueTeam2, 10);
-            if (isNaN(scoreTeam1) || isNaN(scoreTeam2)) {
-                alert('유효한 점수를 입력하세요.');
-            }
-            // 경기 결과 기록 request dto
-            var dataToSend = {
-                matchHistNo: 13,
-                matchLoc : matchLoc,
-                teamANo : team1No,
-                scoreA : scoreValueTeam1,
-                teamBNo : team2No,
-                scoreB : scoreValueTeam2
-            };
-            console.log('dataToSend : ', dataToSend);
-            var formData = new FormData();
-            formData.append('multipartFile', selectedFile); // Append the file
-            formData.append('historyRequest', new Blob([JSON.stringify(dataToSend)], { type: "application/json" })); // Append the JSON data
-            // 경기 결과 기록 API 호출 - DB 등록 및 S3 파일 업로드
-            $.ajax({
-                url: 'https://www.h-club.site/comp/history',
-                type: 'POST',
-                data: formData,
-                contentType: false, // This is required so jQuery doesn’t add a contentType header
-                processData: false, // This is required so jQuery doesn’t process the data
-                success: function(response) {
-                    console.log('Server response:', response);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error occurred:', error);
-                }
-            })
-            // 여기에 점수 비교 로직 추가
-            if (scoreTeam1 < scoreTeam2) { // 진경우
-                // 팀1의 점수가 팀2의 점수보다 작으면 loseTeamResult.jsp로 리다이렉트
-                window.location.href = '${path}/competition/loseTeam/${matchHistoryNo}';
-                return; // 추가된 부분
-            }
-            else if (scoreTeam1 == scoreTeam2) { // 무승부
-                window.location.href = '/competition/drawTeam';
-            } else { // 이긴 경우
-                window.location.href = '/competition/winTeam';
-            }
+        $('.end-match-button').click(function() { // 뒤로가기버튼
+            window.history.back();
         });
     });
 
-    function triggerUpload() {
-        document.getElementById('fileUpload').click();
-    }
-    function handleFiles(files) {
-        var preview = document.getElementById('preview-img');
-        if (files.length > 0) {
-            var file = files[0];
-            selectedFile = file;
-            var reader = new FileReader();
 
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-                preview.style.display = 'block'; // 이미지를 보여줍니다.
-                $('#preview-img').attr('src', e.target.result).show();
-                $('.add-button').hide(); // 추가 버튼 숨김
-                $('.match-image').css('border', 'none'); // match-image 테두리 제거
-            };
-
-            reader.readAsDataURL(file);
-            console.log(files[0].name);
-        } else {
-            console.log("No files selected.");
-            preview.style.display = 'none';
-        }
-    }
-    document.getElementById('fileUpload').addEventListener('change', function() {
-        handleFiles(this.files);
-    });
     /* accessToken 으로부터 유저 정보 추출하는 함수 */
     function getUserInfo(accessToken) {
         return new Promise((resolve, reject) => {
