@@ -92,7 +92,24 @@
             font-weight: bold;
             color: #0061f7;
         }
-
+        .logout {
+            width: 80%;
+            height: 400px;
+            margin: 10px auto 50px;
+            display: flex;
+            align-items: center;
+            border-radius: 5%;
+            font-size: 36px;
+        }
+        .btn-logout {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            background: #507A4DFF;
+            border: none;
+            color: white;
+            font-size: 1.4em;
+        }
     </style>
 </head>
 <body>
@@ -131,6 +148,9 @@
             <i class="fa-solid fa-trophy"></i>
             <span>매치 히스토리</span>
         </div>
+    </div>
+    <div class="logout">
+        <button class="btn-logout">로그아웃</button>
     </div>
 </main>
 </body>
