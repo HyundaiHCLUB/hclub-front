@@ -300,8 +300,8 @@ function confirmFlag(){
 		/* headers: {
 	     'Authorization': 'Bearer ' + accessToken // accessToken 사용
 		}, */
-	    //url: 'https://www.h-club.site/admin/club/updateUseYn/'+clubDetailNo, 
-		url: '/adminTest/admin/club/updateUseYn/'+clubDetailNo, 
+	    url: 'https://www.h-club.site/admin/club/updateUseYn/'+clubDetailNo, 
+		//url: '/adminTest/admin/club/updateUseYn/'+clubDetailNo, 
 	    contentType: 'application/json', 
 		success: function(response) {
 			clubDetailNo="";//승인 초기화
