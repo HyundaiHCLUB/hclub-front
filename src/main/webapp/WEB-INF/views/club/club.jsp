@@ -13,40 +13,12 @@
     <title>동아리</title>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>
-        var headerHeight = document.querySelector('header').offsetHeight;
-        var footerHeight = document.querySelector('footer').offsetHeight;
-
-        window.addEventListener('scroll', function() {
-            var scrollY = window.scrollY || document.documentElement.scrollTop;
-
-            if (scrollY > headerHeight) {
-                document.body.style.paddingTop = headerHeight + 'px';
-                document.querySelector('header').classList.add('fixed');
-            } else {
-                document.body.style.paddingTop = 0;
-                document.querySelector('header').classList.remove('fixed');
-            }
-
-            var scrollBottom = window.innerHeight + scrollY;
-            var documentHeight = document.documentElement.offsetHeight;
-            if (documentHeight - scrollBottom < footerHeight) {
-                document.body.style.paddingBottom = footerHeight + 'px';
-                document.querySelector('footer').classList.add('fixed-bottom');
-            } else {
-                document.body.style.paddingBottom = 0;
-                document.querySelector('footer').classList.remove('fixed-bottom');
-            }
-        });
-    </script>
-    <script>
         $(document).ready(function () {
             $("#total").click(function () {
                 $("#hiddenList").slideToggle();
             });
         });
-    </script>
 
-    <script>
         var currentCategoryId;
         function setCategoryId(categoryId) {
             currentCategoryId = categoryId;
@@ -54,34 +26,12 @@
         function getCurrentSelectedCategoryId() {
             return currentCategoryId;
         }
-    </script>
 
-    <style>
-        .main-container {
-            min-height: 100px;
-        }
-
-        .category {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-        }
-
-        .category-item {
-            margin: 5px;
-            justify-content: space-around;
-            text-align: center;
-        }
-    </style>
-
-    <script>
         $(document).ready(function () {
             categoryId = <%= request.getAttribute("categoryId") %>;
             getClubList(categoryId);
         });
-    </script>
-    <script>
+
             function getClubList(categoryId) {
                 $.ajax({
                     url: "https://www.h-club.site/clubs/"+categoryId,
@@ -118,9 +68,7 @@
                     }
                 });
             }
-    </script>
 
-    <script>
         function updateLikedClubs(){
             accessToken = localStorage.getItem("accessTokenInfo");
 
@@ -155,8 +103,7 @@
         $(document).ready(function() {
             updateLikedClubs();
         });
-    </script>
-    <script>
+
         function toggleLikeButton(clubNo, isLiked) {
             var likeButton = $('[data-club-id="' + clubNo + '"]');
 
@@ -220,13 +167,10 @@
                 addLike(clubNo)
             }
         });
-    </script>
 
-
-    <script>
         function getClubLikeList(categoryName) {
             $.ajax({
-                url: "https://www.h-club.site/clubs/popular?category="+categoryName,
+                url: "https://www.h-club.site/clubs/popular?category=" + categoryName,
                 method: "GET",
                 success: function (response) {
                     if (response.success) {
@@ -239,12 +183,13 @@
 
                             var clubHTML = '<div class="grid-container">';
                             group.forEach(function (item) {
-                                clubHTML += '<a href="/club/detail/' + item.clubNo + '"><div class="grid-item">' +
-                                    '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                clubHTML += '<div class="grid-item"><div class="club-image-container">' +
+                                    '<a href="/club/detail/' + item.clubNo + '"><img class="circle_recommend" src="' + item.clubImage + '"></a>' +
+                                    '<span class="like-icon" data-club-id="' + item.clubNo + '"><i class="far fa-heart" style="color: #ffffff;"></i></span></div>' +
                                     '<div class="circle_content">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
                                     '<a href="#" class="category_button">'+item.categoryName+'</a>' +
-                                    '</div></div></a>';
+                                    '</div></div>';
                             });
                             clubHTML += '</div>';
                             $(".clubs").append(clubHTML);
@@ -260,11 +205,10 @@
                 }
             });
         }
-    </script>
-    <script>
+
         function getClubRecentList(categoryName) {
             $.ajax({
-                url: "https://www.h-club.site/clubs/recent/filter?category="+categoryName,
+                url: "https://www.h-club.site/clubs/recent/filter?category=" + categoryName,
                 method: "GET",
                 success: function (response) {
                     if (response.success) {
@@ -277,12 +221,13 @@
 
                             var clubHTML = '<div class="grid-container">';
                             group.forEach(function (item) {
-                                clubHTML += '<a href="/club/detail/' + item.clubNo + '"><div class="grid-item">' +
-                                    '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                clubHTML += '<div class="grid-item"><div class="club-image-container">' +
+                                    '<a href="/club/detail/' + item.clubNo + '"><img class="circle_recommend" src="' + item.clubImage + '"></a>' +
+                                    '<span class="like-icon" data-club-id="' + item.clubNo + '"><i class="far fa-heart" style="color: #ffffff;"></i></span></div>' +
                                     '<div class="circle_content">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
                                     '<a href="#" class="category_button">'+item.categoryName+'</a>' +
-                                    '</div></div></a>';
+                                    '</div></div>';
                             });
                             clubHTML += '</div>';
                             $(".clubs").append(clubHTML);
@@ -292,15 +237,13 @@
                     } else {
                         console.error("Error:", response.message);
                     }
-
                 },
                 error: function (xhr, status, error) {
                     console.error("Error fetching data:", error);
                 }
             });
         }
-    </script>
-    <script>
+
         function getCategoryName(categoryId) {
             switch (categoryId) {
                 case 1:
@@ -322,12 +265,27 @@
             }
         }
     </script>
-
     <style>
+        .main-container {
+            min-height: 100px;
+        }
+
+        .category {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+        }
+
+        .category-item {
+            margin: 5px;
+            justify-content: space-around;
+            text-align: center;
+        }
         .dropdown {
             position: relative;
             display: inline-block;
-            margin-left: 810px;
+            margin-left: 770px;
             margin-top: 50px;
             margin-bottom: 20px;
         }
@@ -335,7 +293,7 @@
         .dropbtn {
             color: #000000;
             padding: 10px;
-            font-size: 24px;
+            font-size: 30px;
             border: none;
             cursor: pointer;
             background-color:transparent;
@@ -370,7 +328,6 @@
         }
     </style>
 </head>
-
 <body>
     <main class="main-container">
         <div class="category">

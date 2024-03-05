@@ -5,38 +5,11 @@
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <!--CDN 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>메인 페이지</title>
-    <script>
-        var headerHeight = document.querySelector('header').offsetHeight;
-        var footerHeight = document.querySelector('footer').offsetHeight;
-
-        window.addEventListener('scroll', function () {
-            var scrollY = window.scrollY || document.documentElement.scrollTop;
-
-            if (scrollY > headerHeight) {
-                document.body.style.paddingTop = headerHeight + 'px';
-                document.querySelector('header').classList.add('fixed');
-            } else {
-                document.body.style.paddingTop = 0;
-                document.querySelector('header').classList.remove('fixed');
-            }
-
-            var scrollBottom = window.innerHeight + scrollY;
-            var documentHeight = document.documentElement.offsetHeight;
-            if (documentHeight - scrollBottom < footerHeight) {
-                document.body.style.paddingBottom = footerHeight + 'px';
-                document.querySelector('footer').classList.add('fixed-bottom');
-            } else {
-                document.body.style.paddingBottom = 0;
-                document.querySelector('footer').classList.remove('fixed-bottom');
-            }
-        });
-    </script>
     <script>
         $(document).ready(function () {
             function getHotClubList() {
@@ -61,7 +34,7 @@
                                     '<a href="#" class="category_button">' + item.categoryName + '</a>' +
                                     '<a href="#" class="content_button">인기</a>' +
                                     '</div>' +
-                                        '<p class="club_info" style="font-size: 36px">' + item.clubInfo + '</p>' +
+                                        '<p class="club_info" style="font-size: 32px">' + item.clubInfo + '</p>' +
                                         '<div class="circle_content">' +
                                         '<svg style="margin-top: 16px;" width="44" height="44" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
                                         '<rect width="36" height="36" fill="url(#pattern0)"/>' +
@@ -131,8 +104,7 @@
             getHotClubList();
             getInterestList();
         });
-    </script>
-    <script>
+
         function getUserInfo(accessToken) {
             return new Promise((resolve, reject) => {
                 $.ajax({

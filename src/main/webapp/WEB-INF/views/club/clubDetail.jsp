@@ -12,32 +12,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>동아리 상세</title><script>
-        var headerHeight = document.querySelector('header').offsetHeight;
-        var footerHeight = document.querySelector('footer').offsetHeight;
-
-        window.addEventListener('scroll', function() {
-            var scrollY = window.scrollY || document.documentElement.scrollTop;
-
-            if (scrollY > headerHeight) {
-                document.body.style.paddingTop = headerHeight + 'px';
-                document.querySelector('header').classList.add('fixed');
-            } else {
-                document.body.style.paddingTop = 0;
-                document.querySelector('header').classList.remove('fixed');
-            }
-
-            var scrollBottom = window.innerHeight + scrollY;
-            var documentHeight = document.documentElement.offsetHeight;
-            if (documentHeight - scrollBottom < footerHeight) {
-                document.body.style.paddingBottom = footerHeight + 'px';
-                document.querySelector('footer').classList.add('fixed-bottom');
-            } else {
-                document.body.style.paddingBottom = 0;
-                document.querySelector('footer').classList.remove('fixed-bottom');
-            }
-        });
-    </script>
+    <title>동아리 상세</title>
     <script>
         function getClub(clubNo) {
             $.ajax({
@@ -49,7 +24,7 @@
                         $(".club").empty();
 
                         var clubHTML =
-                            '<p class="club-title" style="color:#46675C">' + data.clubName + '</p>' +
+                            '<p class="club-title" style="color:#46675C;font-size: 80px;">' + data.clubName + '</p>' +
                             '<img class="club-image" src="' + data.clubImage + '">' +
 
                             '<div style="display: flex;justify-content: center; align-items: center;"><svg width="30" height="30" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">' +
@@ -75,15 +50,12 @@
         var clubNo = <%= request.getAttribute("clubNo") %>;
         console.log(clubNo);
         getClub(clubNo);
-    </script>
 
-    <script>
         function checkAndOpenModal() {
             var clubNo = <%= request.getAttribute("clubNo") %>;
             checkCreatorAccess(clubNo);
         }
-    </script>
-    <script>
+
         function checkCreatorAccess(clubNo) {
             accessToken = localStorage.getItem("accessTokenInfo");
 
@@ -110,14 +82,12 @@
                 }
             });
         }
-    </script>
-    <script>
+
         function checkMemberAndOpenModal() {
             var clubNo = <%= request.getAttribute("clubNo") %>;
             checkMember(clubNo);
         }
-    </script>
-    <script>
+
         function checkMember(clubNo) {
             accessToken = localStorage.getItem("accessTokenInfo");
             console.log("동아리회원 체크");
@@ -145,8 +115,7 @@
                 }
             });
         }
-    </script>
-    <script>
+
         function createNotice() {
             accessToken = localStorage.getItem("accessTokenInfo");
 
@@ -177,8 +146,7 @@
                 }
             });
         }
-    </script>
-    <script>
+
         function checkCreator(clubNo) {
             accessToken = localStorage.getItem("accessTokenInfo");
 
@@ -205,8 +173,7 @@
                 }
             });
         }
-    </script>
-    <script>
+
         function getClubNotices(clubNo) {
             $.ajax({
                 method: "GET",
@@ -221,8 +188,7 @@
                         var noticeHTML = "";
                         data.forEach(function (item) {
                             if (item.noticeTitle !== undefined && item.noticeTitle !== null) {
-                                noticeHTML += '<a href="#" class="notice_content">' + item.noticeTitle + '</a>';
-                            }
+                                noticeHTML += '<a onclick="getClubNoticeDetail(' + item.noticeNo + ')" class="notice_content">' + item.noticeTitle + '</a>';                            }
                         });
 
                         $(".noticeListContainer").append(noticeHTML);
@@ -239,9 +205,35 @@
 
         var clubNo = "<%= request.getAttribute("clubNo") %>" || "";
         getClubNotices(clubNo);
-    </script>
 
-    <script>
+        function getClubNoticeDetail(noticeNo) {
+            $.ajax({
+                method: "GET",
+                url: "https://www.h-club.site/clubs/" + clubNo + "/notice/"+noticeNo,
+
+                success: function (response) {
+                    if (response.success) {
+                        var data = response.data;
+                        showNoticeModal(data.noticeTitle, data.noticeContent);
+
+                    } else {
+                        console.error("Error:", response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching data:", error);
+                }
+            });
+        }
+
+        function showNoticeModal(noticeTitle, noticeContent) {
+            document.getElementById('noticeTitles').innerText = noticeTitle;
+
+            document.getElementById('noticeContents').innerText = noticeContent;
+
+            $('#myModal5').modal('show');
+        }
+
         function fetchData() {
             var clubNo = <%= request.getAttribute("clubNo") %>;
             $.ajax({
@@ -280,7 +272,7 @@
                     var history = historyMap[historyNo];
 
                     html += '<a href="#"><div class="grid-item" style="margin-left: 16px;">';
-                    html += '<img class="circle_recommend" src="' + history.imageUrl + '" alt="Image">';
+                    html += '<img class="circle_recommend" style="margin-left: 50px;" src="' + history.imageUrl + '" alt="Image">';
                     html += '<div class="circle_content"><p class="circle_name">' + history.title + '</p></div>';
                     html += '</div></a>';
 
@@ -358,7 +350,7 @@
                                 <textarea id="noticeContent" name="noticeContent" style="width: 90%;height: 700px;font-size: 36px;" placeholder="내용을 상세히 입력해주세요." ></textarea>
                             </div>
                         </div>
-                        <a id="create" onclick="createNotice()" data-dismiss="modal" aria-label="Close">
+                        <a onclick="createNotice()" data-dismiss="modal" aria-label="Close">
                             <div style="text-align: center;margin-bottom:40px;">
                                 <svg width="600" height="60" viewBox="0 0 347 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g filter="url(#filter0_d_662_7594)">
@@ -467,6 +459,23 @@
             </div>
         </div>
 
+        <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: none" role="document">
+                <div class="modal-content" style="width: 900px;height: 1000px; margin-left: 44px">
+                    <div class="modal-body" style="padding: 0">
+                        <div class="input-group" style="margin-bottom: 10px;margin-left: 44px;">
+                            <div id="noticeTitles" style="font-size: 36px; width: 90%;height: 50px;"></div>
+                        </div>
+                        <div class="input-group" style="margin-left: 44px;">
+                            <div id="noticeContents" style="width: 90%;height: 700px;font-size: 36px;"></div>
+                        </div>
+                    </div>
+                    <a id="create" onclick="createNotice()" data-dismiss="modal" aria-label="Close">
+                        <!-- ... Your existing code ... -->
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <div class="conbox con2">
                 <div onclick="checkMemberAndOpenModal()">
