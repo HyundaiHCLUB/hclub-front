@@ -59,7 +59,7 @@
         margin-top: 150px;
     }
     .notice p {
-        font-size: 2.5em;
+        font-size: 2.6em;
     }
 
     .btn-test {
@@ -74,16 +74,16 @@
     <div class="content">
 
         <div class="profile-circle">
-            <img src="/resources/image/comp/comp_loading_sample.svg" class="rotating-image">
+            <img src="/resources/image/loading.gif">
         </div>
         <div class="notice">
             <p>상대 팀을 찾고 있습니다....</p>
             <p>매칭이 완료되면 알려드릴게요!</p>
         </div>
 
-        <div>
-            <button>경쟁 홈으로</button>
-        </div>
+<%--        <div>--%>
+<%--            <button>경쟁 홈으로</button>--%>
+<%--        </div>--%>
     </div>
 
 </main>
