@@ -126,22 +126,27 @@ function adminLogin() {
    $.ajax({
        type: 'POST',
 	   url: 'https://www.h-club.site/auth/login',
-	   //url: '/test/auth/login',
+	   //url: '/hyndai/auth/login',
        contentType: 'application/json',
        data: JSON.stringify({ username: username, password: password }),
        success: function(response) { 
-    	    sessionStorage.setItem("accessAdminTokenInfo", response.accessToken);
-            //getUserInfo2(response.accessToken);
-            pageLocFlag = true;
-            //$("#sidebarLocation").show();
-            if(pageLocFlag){
-           	    //로그인 완료시 관리자 메인페이지로 이동
-            	location.href='/dashboard/clubAdminPage' ;
-            }
+    	   
+    	   if(response.adminYn == 'Y'){
+    		   sessionStorage.setItem("accessAdminTokenInfo", response.accessToken);
+    		   pageLocFlag = true;
+               //$("#sidebarLocation").show();
+               if(pageLocFlag){
+              	    //로그인 완료시 관리자 메인페이지로 이동
+               	location.href='/dashboard/clubAdminPage' ;
+               }
+    	   }else{
+    		   setModalMsg("관리자 계정으로 로그인해주세요.");
+               getModalMesage(); 
+    	   }
             
        },
        error: function(xhr, status, error) {
-        	setModalMsg("관리자 로그인에 실패했습니다. 아이디 혹은 비밀번호를 확인해주세요.");
+        	setModalMsg("관리자 로그인에 실패했습니다.");
             getModalMesage(); 
        }
    });
