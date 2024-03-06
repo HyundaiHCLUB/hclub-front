@@ -31,7 +31,7 @@
                                     '<div class="grid-container">' +
                                     '<div class="grid-hot-item">' +
                                     '<a href="/club/detail/' + item.clubNo + '">' +
-                                    '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                    '<img class="circle_recommend" src="' + item.clubImage + '" style="object-fit: cover">' +
                                     '</div>' +
                                     '<div class="grid-hot-item" style="margin-top: 20px;">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
@@ -83,7 +83,7 @@
                             data.forEach(function (item) {
                                 clubHTML += '<div class="grid-item">' +
                                     '<a href="/club/detail/' + item.clubNo + '">' +
-                                    '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                    '<img class="circle_recommend" src="' + item.clubImage + '" style="object-fit: cover">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
                                     '<div class="circle_content">' +
                                     '<a href="#" class="category_button">' + item.categoryName + '</a>' +
