@@ -168,7 +168,7 @@
     $(document).ready(function() {
         // 로컬 스토리지에서 JWT 가져오기
         let accessToken = localStorage.getItem("accessTokenInfo");
-        let defaultImage = '/resources/image/default-image.jpg';
+        let defaultImage = '/resources/image/default_image.png';
 
         // 가져온 JWT를 사용하여 사용자 정보 가져오기
         getUserInfo(accessToken).then(memberInfo => {
