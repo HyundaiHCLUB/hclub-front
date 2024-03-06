@@ -17,13 +17,13 @@
             margin: 30px auto;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: 0.3s;
-            height: 240px;
+            height: 260px;
             width: 85%;
         }
 
         .product-image {
-            width: 180px;
-            min-width: 180px;
+            width: 200px;
+            min-width: 200px;
             height: 220px;
             object-fit: cover;
             display: block;
@@ -57,13 +57,14 @@
         }
 
         .product-price {
-            font-size: 2em;
+            font-size: 2.5px;
             color: #333;
             margin-top: 5px;
         }
         .product-price h3 {
             font-weight: bold;
         }
+
 
         .mypage-header i {
             color: black;
