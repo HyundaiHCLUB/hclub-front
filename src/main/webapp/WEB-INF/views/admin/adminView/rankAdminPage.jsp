@@ -40,7 +40,7 @@
 	#pagination a:hover {
 	    background-color: #46675c;
 	    color: #fff;
-	    border-color: #007bff;
+	    border-color: #46675c;
 	}
 	td, th{
 		padding: 10px;
