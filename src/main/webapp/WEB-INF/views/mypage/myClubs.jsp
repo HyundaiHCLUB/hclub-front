@@ -17,7 +17,7 @@
             margin: 30px auto;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: 0.3s;
-            height: 220px;
+            height: 240px;
             width: 85%;
         }
 
@@ -45,19 +45,19 @@
         }
 
         .product-title {
-            font-size: 2em;
+            font-size: 3em;
             font-weight: bold;
             color: black;
             margin-bottom: 20px;
         }
 
         .product-date {
-            font-size: 1em;
+            font-size: 2em;
             margin-bottom: 10px;
         }
 
         .product-price {
-            font-size: 1.5em;
+            font-size: 2em;
             color: #333;
             margin-top: 5px;
         }
