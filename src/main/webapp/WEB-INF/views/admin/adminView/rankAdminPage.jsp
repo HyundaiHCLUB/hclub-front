@@ -38,7 +38,7 @@
 	
 	#pagination a.active,
 	#pagination a:hover {
-	    background-color: #007bff;
+	    background-color: #46675c;
 	    color: #fff;
 	    border-color: #007bff;
 	}
