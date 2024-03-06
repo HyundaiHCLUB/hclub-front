@@ -253,7 +253,7 @@
             <div class="upload-box">
                 <div id="drop-file" class="drag-file">
                     <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
-                    <p class="message">이미지를 드래그하세요</p>
+                    <p class="message">이미지를 업로드 해주세요</p>
                     <img src="" alt="미리보기 이미지" class="preview">
                 </div>
                 <label class="file-label" for="chooseFile"><p style="font-weight: bold;font-size: 24px;color: white">이미지를 선택하세요</p></label>

@@ -146,10 +146,10 @@ public class MainController {
 		   
 		  return mv;
 	 }
-	 @GetMapping("modal")
+	 @GetMapping("dashboard/confirmModal")
 	 public ModelAndView modal() {
 		   ModelAndView mv  = new ModelAndView();
-		   mv.setViewName("common/modal");
+		   mv.setViewName("common/confirmModal");
 		   
 		  return mv;
 	 }
