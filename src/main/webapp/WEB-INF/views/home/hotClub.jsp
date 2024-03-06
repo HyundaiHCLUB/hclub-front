@@ -65,8 +65,8 @@
         <li><a href="/">투데이</a></li>
         <li><a href="/home/hot">인기 동아리</a></li>
         <li><a href="/home/district">지역별 동아리</a></li>
-        <li><a href="">내 모임</a></li>
-        <li><a href="#">#토너먼트</a></li>
+        <li><a href="/mypage/myClubs">내 모임</a></li>
+        <li><a href="#">이벤트</a></li>
     </div>
 
     <div class="slidebox">
