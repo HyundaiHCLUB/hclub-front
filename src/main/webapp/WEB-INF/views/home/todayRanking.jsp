@@ -178,7 +178,7 @@
                         '<i class="fas fa-crown crown-icon"></i>'  +
                         '<div class="rank">' + (index + 1) + '</div>' +
                         '<div class="profile-picture">' +
-                        '<img src="' + user.memberImage + '" alt="사진" onerror="this.onerror=null; this.src=\'/resources/image/default-image.jpg\'"/>' +
+                        '<img src="' + user.memberImage + '" alt="사진" onerror="this.onerror=null; this.src=\'/resources/image/default_image.png\'"/>' +
                         '</div>' +
                         '<div class="name-rating">' +
                         '<div class="name">' + user.memberId + '</div>' +
