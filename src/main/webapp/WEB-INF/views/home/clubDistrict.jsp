@@ -35,6 +35,9 @@
             height: 100%;
             margin-left: 50px;
         }
+        .club-image-container img{
+            object-fit: cover;
+        }
     </style>
     <script>
         function getClubList() {

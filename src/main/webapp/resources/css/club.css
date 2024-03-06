@@ -1,3 +1,8 @@
+/* club detail 이미지 크기 fit 하게 */
+.club img{
+    object-fit: cover;
+}
+
 .more-clubs {
     display: flex;
     justify-content: flex-end;
@@ -280,6 +285,9 @@ input[type=file]::file-selector-button {
 .club-image-container {
     position: relative;
     display: inline-block;
+}
+.club-image-container img {
+    object-fit: cover;
 }
 
 .like-icon {

@@ -7,32 +7,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>TeamCreated</title>
-    <style>
-        .details-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center; /* 중앙 정렬 */
-            margin: 30px auto;
-        }
 
-        .top-menu {
-            display: flex;
-            justify-content: center;
-            align-items: center; /* 중앙 정렬 */
-            margin: 30px auto;
-
-        }
-
-        .top-menu h2 {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #46675C;
-        }
-
-        .detail-component-date {
-            width: 450px;
-        }
-    </style>
 </head>
 
 <body>

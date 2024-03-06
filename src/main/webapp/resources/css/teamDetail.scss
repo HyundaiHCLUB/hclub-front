@@ -5,6 +5,32 @@ body {
 
 }
 
+.details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* 중앙 정렬 */
+  margin: 30px auto;
+}
+
+.top-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 중앙 정렬 */
+  margin: 30px auto;
+
+}
+
+.top-menu h2 {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #46675C;
+}
+
+.detail-component-date {
+  width: 450px;
+}
+
+
 .team-image {
   width: 100%;
   height: auto;
@@ -16,6 +42,8 @@ body {
 .team-image img {
   width: 700px;
   height: 700px;
+  object-fit: cover;
+  border-radius: 40%;
 }
 
 .event-details {
