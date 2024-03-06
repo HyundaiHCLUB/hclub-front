@@ -51,9 +51,9 @@
 	
 	#pagination a.active,
 	#pagination a:hover {
-	    background-color: #007bff;
+	    background-color: #46675c;
 	    color: #fff;
-	    border-color: #007bff;
+	    border-color: #46675c;
 	}
 	.table-wrapper table.posts-table{
 		min-width: max-content;
@@ -274,7 +274,7 @@ function getClubSize(){
 	    }
 	    tr.append('<td>'+data.clubLoc+'</td>');  //동아리 위치
 	    if(data.useYn == 'Y'){
-	        tr.append('<td style="text-align:center"><span class="badge-active">'+data.useYn+'</span></td>'); // 동아리 활성화 여부
+	    	  tr.append('<td style="text-align:center"><span class="badge-active">'+data.useYn+'</span></td>'); // 동아리 활성화 여부
 	    }else{
 	        tr.append('<td><span class="badge-active" style="cursor:pointer; color:red; background-color:blanchedalmond;" onclick="updateUseYn('+data.clubNo+')">'+data.useYn+'</span></td>'); // 활성화 여부 
 	    }

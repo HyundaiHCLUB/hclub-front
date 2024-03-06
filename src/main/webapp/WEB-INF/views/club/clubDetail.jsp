@@ -464,14 +464,13 @@
                 <div class="modal-content" style="width: 900px;height: 1000px; margin-left: 44px">
                     <div class="modal-body" style="padding: 0">
                         <div class="input-group" style="margin-bottom: 10px;margin-left: 44px;">
-                            <div id="noticeTitles" style="font-size: 36px; width: 90%;height: 50px;"></div>
+                            <div id="noticeTitles" style="font-size: 60px; width: 90%;height: 50px;font-weight:bold;margin-top: 40px;"></div>
                         </div>
                         <div class="input-group" style="margin-left: 44px;">
-                            <div id="noticeContents" style="width: 90%;height: 700px;font-size: 36px;"></div>
+                            <div id="noticeContents" style="width: 90%;height: 700px;font-size: 40px;margin-top:50px;"></div>
                         </div>
                     </div>
                     <a id="create" onclick="createNotice()" data-dismiss="modal" aria-label="Close">
-                        <!-- ... Your existing code ... -->
                     </a>
                 </div>
             </div>
