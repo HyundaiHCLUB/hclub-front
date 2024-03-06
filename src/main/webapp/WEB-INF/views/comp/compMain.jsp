@@ -100,7 +100,7 @@
                                 '</div>' +
                                 '<div class="middle-section-down">' +
                                 '<p>' + item.teamLoc + '</p>' +
-                                '<p style="color: #717070">Rating: ' + item.teamRating + '점</p>' +
+                                '<p style="color: #717070">' + item.teamRating + '점</p>' +
                                 '</div>' +
                                 '</div>' +
                                 '<div class="right-section">' +
@@ -274,7 +274,8 @@
                                 '</div>' +
                                 '<div class="middle-section-down">' +
                                 '<p>' + item.teamLoc + '</p>' +
-                                '<p style="color: #717070">Rating: ' + item.teamRating + '점</p>' +
+
+                                '<p style="color: #717070">' + item.teamRating + '점</p>' +
                                 '</div>' +
                                 '</div>' +
                                 '<div class="right-section">' +
@@ -304,7 +305,7 @@
             let selectedPlayers = matchTypeSelect.val();
             let selectedOrder = orderSelect.val();
             let searchKeyword = encodeURIComponent(searchInput.val());
-            
+
             fetchDataAndCreateMatches(selectedGameType, selectedDate, selectedPlayers, selectedOrder, searchKeyword);
         });
     });

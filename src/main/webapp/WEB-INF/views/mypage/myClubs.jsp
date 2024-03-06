@@ -15,7 +15,7 @@
             border-radius: 10px;
             overflow: hidden;
             margin: 30px auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: 0.3s;
             height: 220px;
             width: 85%;
@@ -28,6 +28,7 @@
             object-fit: cover;
             display: block;
         }
+
         .product-image img {
             width: 100%;
             height: 100%;
@@ -52,7 +53,7 @@
         }
 
         .product-date {
-            font-size: 1em;
+            font-size: 2em;
             margin-bottom: 10px;
         }
 
@@ -61,6 +62,7 @@
             color: #333;
             margin-top: 5px;
         }
+
         .product-price h3 {
             font-weight: bold;
         }
@@ -72,6 +74,7 @@
         .mypage-subheader {
             width: 80%;
         }
+
         .mypage-subheader h2 {
             font-size: 3em;
             font-weight: bold;
@@ -81,18 +84,20 @@
             margin-top: 100px;
             margin-left: 10%;
         }
+
         .product-category {
             padding: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width:45%; /* New category width */
+            width: 45%; /* New category width */
             border-left: 1px solid #ddd; /* Separating line if needed */
             font-weight: bold;
             font-size: 2.2em;
             color: #F4B5B7;
         }
+
         .mypage-header i {
             color: #31dc3b
         }
@@ -118,7 +123,7 @@
         <!-- 샘플데이터 -->
 
     </div>
-   <!-- 승인 대기중인 동아리-->
+    <!-- 승인 대기중인 동아리-->
     <div class="mypage-subheader">
         <h2>승인 대기중</h2>
     </div>
@@ -131,7 +136,7 @@
 </body>
 <script>
     /* 로그인 되어있지 않은 사용자 -> 홈으로 리다이렉트 */
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         let accessToken = localStorage.getItem("accessTokenInfo");
         if (!accessToken) {
             alert("로그인이 필요한 페이지입니다.");
@@ -140,7 +145,7 @@
     });
     var memberId;
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         // 로컬 스토리지에서 JWT 가져오기
         let accessToken = localStorage.getItem("accessTokenInfo");
         // 가져온 JWT를 사용하여 사용자 정보 가져오기
@@ -194,20 +199,20 @@
     function displayClubs(clubs) {
         clubs.forEach(club => {
             // 각 동아리 정보로 HTML 요소 생성
-            var clubCard = $('<div/>', { class: 'product-card' }).append(
-                $('<img/>', { src: club.clubImage, alt: '사진', class: 'product-image' }),
-                $('<div/>', { class: 'product-details' }).append(
-                    $('<div/>', { class: 'product-title', text: club.clubName }),
-                    $('<div/>', { class: 'product-date' }).append(
-                        '개설일 : ', $('<span/>', { text: club.createdAt })
+            var clubCard = $('<div/>', {class: 'product-card'}).append(
+                $('<img/>', {src: club.clubImage, alt: '사진', class: 'product-image'}),
+                $('<div/>', {class: 'product-details'}).append(
+                    $('<div/>', {class: 'product-title', text: club.clubName}),
+                    $('<div/>', {class: 'product-date'}).append(
+                        '개설일 : ', $('<span/>', {text: club.createdAt})
                     ),
-                    $('<div/>', { class: 'product-price' }).append(
-                        $('<h3/>', { style: 'display: inline;', text: '활동지역  ' }),
-                        $('<h4/>', { style: 'display: inline;', text: club.clubLoc })
+                    $('<div/>', {class: 'product-price'}).append(
+                        $('<h3/>', {style: 'display: inline;', text: '활동지역  '}),
+                        $('<h4/>', {style: 'display: inline;', text: club.clubLoc})
                     )
                 ),
-                $('<div/>', { class: 'product-category' }).append(
-                    $('<div/>', { class: 'category-title', text: club.categoryName })
+                $('<div/>', {class: 'product-category'}).append(
+                    $('<div/>', {class: 'category-title', text: club.categoryName})
                 )
             );
 
