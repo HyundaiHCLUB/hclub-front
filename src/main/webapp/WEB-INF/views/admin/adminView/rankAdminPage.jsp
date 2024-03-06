@@ -230,7 +230,13 @@
 
    /*  tr.append('<td><label class="users-table__checkbox"><input type="checkbox" class="check"></label></td>'); // 체크박스 열 추가 */
     tr.append('<td>'+data.employeeNo+'</td>'); // 사원번호
-    tr.append('<td><div class="categories-table-img"><img src="'+data.memberImage+'" alt="category"></div></td>');
+    
+    let setImage = data.memberImage;
+    if(setImage == null){
+    	setImage = '/resources/image/default_image.png';
+    }
+    tr.append('<td><div class="categories-table-img"><img src="'+setImage+'" alt="category"></div></td>');
+    
     tr.append('<td>'+data.memberId+'</td>'); // 아이디
     tr.append('<td>'+data.employeeName+'</td>'); // 이름
     tr.append('<td>'+data.memberRating+'</td>'); // 카테고리
