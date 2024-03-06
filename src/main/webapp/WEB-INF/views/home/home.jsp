@@ -33,10 +33,10 @@
                                     '<a href="/club/detail/' + item.clubNo + '">' +
                                     '<img class="circle_recommend" src="' + item.clubImage + '">' +
                                     '</div>' +
-                                    '<div class="grid-hot-item">' +
-                                    '<div class="circle_hot_content">' +
+                                    '<div class="grid-hot-item" style="margin-top: 20px;">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
-                                    '<a href="#" class="category_button">' + item.categoryName + '</a>' +
+                                        '<div class="circle_hot_content" style="margin-top: 0px;">' +
+                                        '<a href="#" class="category_button">' + item.categoryName + '</a>' +
                                     '<a href="#" class="content_button">인기</a>' +
                                     '</div>' +
                                         '<p class="club_info" style="font-size: 32px">' + item.clubInfo + '</p>' +
@@ -154,8 +154,8 @@
         <li><a href="/">투데이</a></li>
         <li><a href="/home/hot">인기 동아리</a></li>
         <li><a href="/home/district">지역별 동아리</a></li>
-        <li><a href="">내 모임</a></li>
-        <li><a href="#">#토너먼트</a></li>
+        <li><a href="/mypage/myClubs">내 모임</a></li>
+        <li><a href="#">이벤트</a></li>
     </div>
 
     <div class="slidebox">
