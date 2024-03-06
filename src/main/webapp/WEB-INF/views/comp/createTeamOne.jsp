@@ -223,7 +223,7 @@
 
         window.selectGameType = function (element) {
             // 모든 gameType div 요소를 찾음
-            var allGameTypes = document.querySelectorAll('.rounded-shape-gametype');
+            let allGameTypes = document.querySelectorAll('.rounded-shape-gametype');
 
             // 모든 gameType div 요소에 대해 selected-game-type 클래스 제거
             allGameTypes.forEach(function (gameType) {
@@ -247,7 +247,7 @@
 
         function updateGameTypeNum(gameType) {
             var gameTypeNumDiv = document.querySelector('.game-type-num');
-            gameTypeNumDiv.innerHTML = ''; // Clear existing content
+            gameTypeNumDiv.innerHTML = ''; // 기존에 있는 요소 제거
 
             let gameFormats = [];
             switch (gameType) {
@@ -448,9 +448,9 @@
         });
 
         // 파일 업로드
-        var plusButton = document.querySelector('.plus-button');
-        var fileInput = document.getElementById('fileInput');
-        var imageUploadContainer = document.querySelector('.image-upload-container');
+        let plusButton = document.querySelector('.plus-button');
+        let fileInput = document.getElementById('fileInput');
+        let imageUploadContainer = document.querySelector('.image-upload-container');
 
         plusButton.addEventListener('click', function () {
             fileInput.click();
@@ -468,6 +468,7 @@
                         img.style.width = "500px";
                         img.style.height = "500px";
                         img.style.border = "none";
+                        img.style.objectFit="cover";
                         img.style.borderRadius = "40%";
 
                         imageUploadContainer.appendChild(img);
@@ -475,7 +476,7 @@
                         localStorage.setItem('multipartFile', imgDataUrl);
                         console.log("Image saved to localStorage.");
                     } catch (error) {
-                        if (e == QUOTA_EXCEEDED_ERR) {
+                        if (e === QUOTA_EXCEEDED_ERR) {
                             alert("Error: Local Storage limit exceeds.");
                         } else {
                             console.log("Error saving image to localStorage.", e);
@@ -511,14 +512,14 @@
     });
     // 이전
     document.addEventListener('DOMContentLoaded', function () {
-        var goBackButton = document.getElementById('goBackButton');
+        const goBackButton = document.getElementById('goBackButton');
         goBackButton.addEventListener('click', function () {
             window.history.back();
         });
     });
     // 다음 페이지 이동
     document.addEventListener('DOMContentLoaded', function () {
-        var goNextButton = document.getElementById('goNextButton');
+        const goNextButton = document.getElementById('goNextButton');
         goNextButton.addEventListener('click', function () {
             window.location.href = '/competition/create/2';
         });
