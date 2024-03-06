@@ -14,6 +14,7 @@
             align-items: center; /* 중앙 정렬 */
             margin: 30px auto;
         }
+
         .top-menu {
             display: flex;
             justify-content: center;
@@ -21,11 +22,13 @@
             margin: 30px auto;
 
         }
+
         .top-menu h2 {
             font-size: 2.5em;
             font-weight: bold;
             color: #46675C;
         }
+
         .detail-component-date {
             width: 450px;
         }
@@ -139,7 +142,7 @@
                     teamMembersContainer.find('p').remove(); // 기존의 팀원 목록을 제거합니다.
                     // 새로운 팀원 목록을 추가합니다.
                     teamMembers.forEach(function (member) {
-                        teamMembersContainer.append($('<p>').text(member.memberName));
+                        teamMembersContainer.append($('<p>').text(member.memberName + ' ' + member.memberDept + ' ' + member.memberPosition));
                     });
                 },
                 error: function (xhr, status, error) {
