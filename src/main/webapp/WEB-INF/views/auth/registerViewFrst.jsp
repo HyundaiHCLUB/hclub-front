@@ -28,7 +28,7 @@
          display: block;
          margin: 0px 0px 20px 20px;
          font-size: 30px; 
-         font-weight: bold;
+         font-weight: 500;
          color: black; 
      }
 

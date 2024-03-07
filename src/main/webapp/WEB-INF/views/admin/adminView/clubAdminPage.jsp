@@ -90,7 +90,7 @@
 	        <input type="text" placeholder="동아리 이름으로 검색하세요" required id="search">
 	        
 	    </div>
-	    <div style="display:inline-block; cursor:pointer;"><input type="button" value="검색" style="font-weight:bold; cursor:pointer; color:#46675c;" onclick="getClubSetUp()"></div>
+	    <div style="display:inline-block; cursor:pointer;"><input type="button" value="검색" style="font-weight:500; cursor:pointer; color:#46675c;" onclick="getClubSetUp()"></div>
 	   </div>  
 	</div>
    </nav>
@@ -172,7 +172,7 @@
 	 //공통 모달의 css를 onload시 변경
 	 $('#modalMsg').css({
 	        'font-size': '20px',
-	        'font-weight': 'bold',
+	        'font-weight': '500',
 	        'text-align': 'center'
 	    });
 
