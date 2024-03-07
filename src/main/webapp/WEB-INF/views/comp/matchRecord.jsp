@@ -209,6 +209,7 @@
     var memberId;
     var team1No;
     var team2No;
+    var userTeamNo;
     var matchLoc;
     var currentUserId;
     var currentLeader;
@@ -233,8 +234,6 @@
                 getUserInfo(accessToken).then(memberInfo => {
                     memberId = memberInfo.member_id;
                     console.log("memberID : " + memberId);
-                    // 현재 화면에 접속한 사용자가 속한 팀 번호 알아내기
-                    var userTeamNo = memberInfo.teamNo;
                     var configTeamDTO = {
                         team1No : response.data.team1.teamNo,
                         team2No : response.data.team2.teamNo,
@@ -246,11 +245,13 @@
                         otherLeader = response.data.team2.leader;
                         opponentLeader = otherLeader;
                         currentLeader = response.data.team1.leader;
+                        userTeamNo = response.data.team1.team1No;
                         localStorage.setItem("currentUserNo", response.data.team1.leader.memberNo);
                     } else if(memberInfo.member_id == response.data.team2.leader.memberId) {
                         otherLeader = response.data.team1.leader;
                         opponentLeader = otherLeader;
                         currentLeader = response.data.team2.leader;
+                        userTeamNo = response.data.team2.team1No;
                         localStorage.setItem("currentUserNo", response.data.team2.leader.memberNo);
                         localStorage.setItem("currentUserId", response.data.team2.leader.memberId);
                         currentUserId = localStorage.getItem("currentUserId");
@@ -273,8 +274,9 @@
                         contentType: 'application/json', // 서버로 보내는 데이터 타입을 JSON으로 설정
                         data: JSON.stringify(configTeamDTO),
                         success : function (response) {
-                            userTeamNo = response;
-                            console.log('userTeamNo => ' +  userTeamNo);
+                            console.log('## response -> ', response);
+                            userTeamNo = parseInt(response, 10);
+                            console.log('userTeamNo => ' +  userTeamNo); /********************/
                             if(userTeamNo === team1No) {
                                 $('.team:eq(0) .team-logo').addClass('highlighted-team');
                                 $('.team:eq(1) .team-logo').removeClass('highlighted-team').addClass('not-highlighted-team');
@@ -303,6 +305,8 @@
             }
             var scoreTeam1 = parseInt(scoreValueTeam1, 10);
             var scoreTeam2 = parseInt(scoreValueTeam2, 10);
+            console.log('scoreTeam1', scoreTeam1);
+            console.log('scoreTeam2', scoreTeam2);
             if (isNaN(scoreTeam1) || isNaN(scoreTeam2)) {
                 alert('유효한 점수를 입력하세요.');
             }
@@ -343,10 +347,7 @@
                     console.error('Error occurred:', error);
                 }
             })
-            // 사용자가 속한 팀 식별
-            var userTeamNo = parseInt(localStorage.getItem("currentUserTeamNo"), 10); // 현재 사용자의 팀 번호
             var myTeamScore, opponentTeamScore;
-
             // 사용자의 팀에 따라 점수 할당
             if(userTeamNo === team1No) {
                 myTeamScore = scoreValueTeam1;
