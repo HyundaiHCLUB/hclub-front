@@ -103,13 +103,15 @@
 		  display: flex;
 		  justify-content: center;
 		  align-items: center;
+		
 	  }
 }
       
 </style>
 </head>
 <body>
-<main>
+<main style="overflow-y: clip;">
+<div>
 <div style="display: flex;margin: auto;display: block;">
     <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;margin-left: 58px" onclick="history.back()" src="/resources/image/left-arrow.png">
     <div class="club"></div>
@@ -127,7 +129,8 @@
 		</div>
 	</div>
 </div>
-<div id="chatArea"  style="height: 1389px;overflow: overlay;">
+</div>
+<div id="chatArea"  style="height: 1238px;overflow: scroll;">
 	<div id="message"></div>
 </div>
 <div id="inputArea">
@@ -182,19 +185,20 @@ if(servername == "localhost")
     	websocketToWeb = new WebSocket(wsUriToWeb);
     	websocketToWeb.onopen = function(evt) {
     		onOpenToWeb(evt);
-   	};
-
-   	websocketToWeb.onmessage = function(evt) {
-   		onMessageToWeb(evt);
-   	};
+	   	};
 	
-   	websocketToWeb.onerror = function(evt) {
-   		onErrorToWeb(evt);
-   	};
-	
-   	websocketToWeb.onclose = function(evt) {
-   		console.log("reconnect");
-    	};
+	   	websocketToWeb.onmessage = function(evt) {
+	   		onMessageToWeb(evt);
+	   	};
+		
+	   	websocketToWeb.onerror = function(evt) {
+	   		onErrorToWeb(evt);
+	   	};
+		
+	   	websocketToWeb.onclose = function(evt) {
+	   		console.log("reconnect");
+	   		initToWeb();
+	    };
     }    
 	    
     function onOpenToWeb(evt) {
@@ -260,6 +264,7 @@ if(servername == "localhost")
 	    			$("#room").show();
 	    			//추후에 대화내역 prepend하기
 	    		}
+    			$("#chatArea").scrollTop($("#chatArea")[0].scrollHeight);
 	    	} catch (err) {
 	    		console.log("[protocol]" + wpro + " " + err.message);
     	}
