@@ -14,6 +14,7 @@
             display: flex;
             flex-direction: column;
         }
+
         .profile-header {
             width: 80%;
             height: 400px;
@@ -23,36 +24,45 @@
             border-radius: 5%;
             font-size: 36px;
         }
+
         .profile-pic {
             width: 250px;
             height: 250px;
             border-radius: 50%;
             margin: auto 50px;
             border: 8px solid #6FC173;
+            object-fit: cover;
         }
+
         .user-info {
             margin-left: 20px;
         }
+
         .user-info h3 {
             font-size: 1.2em;
             margin-bottom: 20px;
             font-weight: 500;
         }
+
         .user-info p {
             font-size: 1.1em;
             margin-top: 0;
         }
+
         #userName {
             font-size: 1.8em;
         }
+
         #userDept {
             font-size: 1em;
             margin-bottom: 30px;
         }
-        #profile-form{
+
+        #profile-form {
             margin: 30px auto;
             width: 80%;
         }
+
         .form-label {
             font-family: 'Arial', sans-serif;
             font-size: 2em;
@@ -60,6 +70,7 @@
             margin-left: 20px;
             margin-bottom: 10px; /* Adjust as needed */
         }
+
         .form-label label {
             display: block;
             font-size: 1.5em; /* Adjust as needed */
@@ -67,6 +78,7 @@
             color: black; /* Adjust as needed */
             margin-bottom: 10px;
         }
+
         .form-label input[type="text"], .form-label input[type="password"] {
             font-size: 1em; /* Adjust as needed */
             padding: 8px 12px; /* Adjust as needed */
@@ -77,6 +89,7 @@
             box-sizing: border-box; /* Keeps padding inside width */
             margin-bottom: 10px; /* Adjust as needed */
         }
+
         .form-label input[type="text"]::placeholder {
             color: #aaa; /* Adjust as needed */
             font-size: 1em;
@@ -87,9 +100,11 @@
             outline: none;
             border-color: #000000; /* Adjust as needed */
         }
+
         .form-label input {
             border-radius: 30%;
         }
+
         .btn-submit {
             display: block;
             width: 40%;
@@ -99,18 +114,21 @@
             border-style: none;
             border-radius: 30px;
             padding: 30px;
-            margin :50px auto 10px;
+            margin: 50px auto 10px;
             background: #46675C;
             color: white;
         }
+
         input[readonly] {
             background-color: #d3d3d3;
         }
+
         .user-rating {
             display: flex; /* Flexbox 레이아웃 사용 */
             align-items: center; /* 세로축(center)을 기준으로 자식 요소들을 가운데 정렬 */
             gap: 10px; /* 이미지와 텍스트 사이에 10px의 간격을 줌 */
         }
+
         .user-rating img {
             width: 40px;
             height: 40px;
@@ -136,7 +154,7 @@
         </div>
         <div class="profile-header">
             <div id="profileImageContainer" onclick="document.getElementById('profileImageInput').click();">
-                <input type="file" id="profileImageInput" style="display: none;" accept="image/*" />
+                <input type="file" id="profileImageInput" style="display: none;" accept="image/*"/>
                 <img src="" class="profile-pic">
             </div>
             <div class="user-info">
@@ -144,7 +162,7 @@
                 <p id="userDept"></p>
                 <div class="user-rating">
                     <img src="/resources/image/comp/rating.svg"/>
-                    <p style="margin-bottom: 0; margin-right: 10px;">레이팅  </p>
+                    <p style="margin-bottom: 0; margin-right: 10px;">레이팅 </p>
                     <p id="userRating"></p>
                 </div>
             </div>
@@ -184,7 +202,7 @@
 <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
 <script>
     /* 로그인 되어있지 않은 사용자 -> 홈으로 리다이렉트 */
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         let accessToken = localStorage.getItem("accessTokenInfo");
         if (!accessToken) {
             alert("로그인이 필요한 페이지입니다.");
@@ -192,7 +210,7 @@
         }
     });
     var memberId;
-    $(document).ready(function() {
+    $(document).ready(function () {
         // 로컬 스토리지에서 JWT 가져오기
         let accessToken = localStorage.getItem("accessTokenInfo");
         // 가져온 JWT를 사용하여 사용자 정보 가져오기
@@ -232,13 +250,13 @@
         });
     }
 
-    document.getElementById('profileImageInput').addEventListener('change', function(event) {
+    document.getElementById('profileImageInput').addEventListener('change', function (event) {
         var file = event.target.files[0];
         var formData = new FormData();
-        var memberInfo = JSON.stringify({ memberId: memberId });
+        var memberInfo = JSON.stringify({memberId: memberId});
 
         formData.append('image', file);
-        formData.append('memberId', new Blob([memberInfo], { type: 'application/json'}));
+        formData.append('memberId', new Blob([memberInfo], {type: 'application/json'}));
         $.ajax({
             url: 'https://www.h-club.site/auth/mypage/profile',
             type: 'POST',
@@ -246,19 +264,19 @@
             dataType: 'text',
             processData: false, // FormData는 processData를 false로 설정해야 함
             contentType: false, // contentType도 false로 설정해야 함
-            success: function(response) {
+            success: function (response) {
                 // 성공 시, 프로필 이미지를 새로운 이미지로 변경
                 $('.profile-pic').attr('src', response);
                 console.log(response)
             },
-            error: function(error) {
+            error: function (error) {
                 alert('프로필 이미지 변경에 실패했습니다.');
                 console.error("Error thrown:", error);
             }
         });
     });
 
-    document.getElementById('profile-form').addEventListener('submit', function(event) {
+    document.getElementById('profile-form').addEventListener('submit', function (event) {
         event.preventDefault(); // 폼의 기본 제출 동작을 중단
 
         // 비밀번호 필드의 값 가져오기
@@ -278,7 +296,7 @@
         }
 
         // 비밀번호 변경 API 호출 (예시)
-        updatePassword(password, function(success) {
+        updatePassword(password, function (success) {
             console.log('input password : ' + password);
             if (success) {
                 // 비밀번호 변경 성공시 다른 페이지로 이동
@@ -299,10 +317,10 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({memberId:memberId, memberPw: password})
+                body: JSON.stringify({memberId: memberId, memberPw: password})
             })
             .then(response => {
-                if(response.ok) {
+                if (response.ok) {
                     return response.text(); // 응답을 텍스트로 처리
                 } else {
                     throw new Error('Network response was not ok.'); // 오류 처리

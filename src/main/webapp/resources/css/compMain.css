@@ -45,7 +45,7 @@
 .left-section p {
   margin-right: 10px;
   color: #ffffff;
-  font-weight: bolder;
+  font-weight: 500;
   font-size: 49px;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .middle-section-up {
-  font-weight: bold;
+  font-weight: 500;
   margin-top: 10px;
 }
 
