@@ -204,6 +204,10 @@
             });
         });
     }
+    document.querySelector('.btn-logout').addEventListener('click', function() {
+        localStorage.clear();
 
+        window.location.href = '/login/loginView'; // 예시: 로그인 페이지로 리다이렉트
+    });
 </script>
 </html>
