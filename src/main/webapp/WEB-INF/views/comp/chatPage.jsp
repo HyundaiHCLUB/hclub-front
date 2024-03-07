@@ -132,7 +132,8 @@
 <div id="inputArea">
   <input type="text" id="chatTxt" name="chatTxt" placeholder="메시지를 입력해주세요.">
   <div id="msgSendBtn" onclick="sendChat()">전송</div>
-
+	<!-- 공통 모달 페이지 -->
+ 	<%@ include file="../common/modal.jsp" %>
 </div>
 
 
@@ -161,7 +162,8 @@
 	    let otherUserNo = localStorage.getItem("otherUserNo");
 	    let otherUserName = localStorage.getItem("otherUserName");
 	    let otherUserId = localStorage.getItem("otherUserId")
-
+	    
+		chatValidationCheck();
 	    // accessToken정보를 넣어 해당 userID 조회
 	    getUserInfo(accessTokenInfo);
 	    console.log("urdata:"+urdata);
@@ -259,7 +261,14 @@
 	    		console.log("[protocol]" + wpro + " " + err.message);
 	    	}
 	    }
-	    
+	    function chatValidationCheck(){
+	        if(urdata ==  null || otherUserNo == null){
+		    	setModalMsg("채팅을 진행할 수 없습니다.");
+		    	getModalMesage(); 
+		    	return false;
+		    }
+	        return true;
+	    }
 	    function getRandomNumber(min, max) {
     	  return Math.floor(Math.random() * (max - min + 1)) + min;
     	}
