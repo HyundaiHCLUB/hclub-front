@@ -106,7 +106,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style="font-size: 32px;font-weight: bold; text-align: center;">신청에 성공하셨습니다.</p>
+                    <p style="font-size: 32px;font-weight: 500; text-align: center;">신청에 성공하셨습니다.</p>
                 </div>
                     <a onclick="history.back()">
                         <div style="text-align: center;margin-bottom:20px;">

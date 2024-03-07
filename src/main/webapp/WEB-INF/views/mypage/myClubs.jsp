@@ -47,7 +47,7 @@
 
         .product-title {
             font-size: 3em;
-            font-weight: bold;
+            font-weight: 500;
             color: black;
             margin-bottom: 20px;
         }
@@ -64,7 +64,7 @@
         }
 
         .product-price h3 {
-            font-weight: bold;
+            font-weight: 500;
         }
 
 
@@ -78,7 +78,7 @@
 
         .mypage-subheader h2 {
             font-size: 3em;
-            font-weight: bold;
+            font-weight: 500;
             color: #333;
             width: fit-content;
             padding-right: 30px;
@@ -94,7 +94,7 @@
             align-items: center;
             width: 45%; /* New category width */
             border-left: 1px solid #ddd; /* Separating line if needed */
-            font-weight: bold;
+            font-weight: 500;
             font-size: 2.2em;
             color: #46675c;
         }

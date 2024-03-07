@@ -196,7 +196,7 @@
         .contents .upload-box .file-label {
             margin-top: 30px;
             text-size: 24px;
-            font-weight: bold;
+            font-weight: 500;
             background-color: #46675C;
             color: #fff;
             text-align: center;
@@ -256,9 +256,9 @@
                     <p class="message">이미지를 업로드 해주세요</p>
                     <img src="" alt="미리보기 이미지" class="preview">
                 </div>
-                <label class="file-label" for="chooseFile"><p style="font-weight: bold;font-size: 24px;color: white">이미지를 선택하세요</p></label>
+                <label class="file-label" for="chooseFile"><p style="font-weight: 500;font-size: 24px;color: white">이미지를 선택하세요</p></label>
                 <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
-                <label class="file-label"><p style="font-weight: bold;font-size: 24px;color: white">업로드</p></label>
+                <label class="file-label"><p style="font-weight: 500;font-size: 24px;color: white">업로드</p></label>
             </div>
 
         </div>

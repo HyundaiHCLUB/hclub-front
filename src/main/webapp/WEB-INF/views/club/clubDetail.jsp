@@ -337,7 +337,7 @@
                                 <path d="M28 22L28 34" stroke="#B31312" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
                                 <path d="M34 28L22 28" stroke="#B31312" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
                             </svg>
-                            <p style="font-size:36px;font-weight: bold;margin-left:20px">동아리 공지사항</p>
+                            <p style="font-size:36px;font-weight: 500;margin-left:20px">동아리 공지사항</p>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -391,7 +391,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p style="font-size: 32px;font-weight: bold; text-align: center;">동아리 개설자만 작성하실 수 있습니다.</p>
+                        <p style="font-size: 32px;font-weight: 500; text-align: center;">동아리 개설자만 작성하실 수 있습니다.</p>
                     </div>
                         <div style="text-align: center;margin-bottom:20px;" data-dismiss="modal" aria-label="Close">
                             <svg width="347" height="48" viewBox="0 0 347 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -432,7 +432,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p style="font-size: 32px;font-weight: bold; text-align: center;">동아리 개설자는 신청할 수 없습니다.</p>
+                            <p style="font-size: 32px;font-weight: 500; text-align: center;">동아리 개설자는 신청할 수 없습니다.</p>
                         </div>
                         <div style="text-align: center;margin-bottom:20px;" data-dismiss="modal" aria-label="Close">
                             <svg width="347" height="48" viewBox="0 0 347 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -464,7 +464,7 @@
                 <div class="modal-content" style="width: 900px;height: 1000px; margin-left: 44px">
                     <div class="modal-body" style="padding: 0">
                         <div class="input-group" style="margin-bottom: 10px;margin-left: 44px;">
-                            <div id="noticeTitles" style="font-size: 60px; width: 90%;height: 50px;font-weight:bold;margin-top: 40px;"></div>
+                            <div id="noticeTitles" style="font-size: 60px; width: 90%;height: 50px;font-weight:500;margin-top: 40px;"></div>
                         </div>
                         <div class="input-group" style="margin-left: 44px;">
                             <div id="noticeContents" style="width: 90%;height: 700px;font-size: 40px;margin-top:50px;"></div>
@@ -498,7 +498,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p style="font-size: 32px;font-weight: bold; text-align: center;">동아리 멤버만 작성하실 수 있습니다.</p>
+                                <p style="font-size: 32px;font-weight: 500; text-align: center;">동아리 멤버만 작성하실 수 있습니다.</p>
                             </div>
                             <div style="text-align: center;margin-bottom:20px;" data-dismiss="modal" aria-label="Close">
                                 <svg width="347" height="48" viewBox="0 0 347 48" fill="none" xmlns="http://www.w3.org/2000/svg">
