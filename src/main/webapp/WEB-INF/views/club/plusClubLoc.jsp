@@ -47,7 +47,7 @@
         #placesList .item .marker_15 {background-position: 0 -654px;}
         #pagination {margin:10px auto;text-align: center;}
         #pagination a {display:inline-block;margin-right:10px;}
-        #pagination .on {font-weight: bold; cursor: default;color:#777;}
+        #pagination .on {font-weight: 500; cursor: default;color:#777;}
     </style>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9a9cfd814dc94ab10ad564b4959ffe28&libraries=services"></script>
 </head>

@@ -36,7 +36,7 @@
         .user-info h3 {
             font-size: 1.2em;
             margin-bottom: 20px;
-            font-weight: bold;
+            font-weight: 500;
         }
         .user-info p {
             font-size: 1.1em;
@@ -63,7 +63,7 @@
         .form-label label {
             display: block;
             font-size: 1.5em; /* Adjust as needed */
-            font-weight: bold;
+            font-weight: 500;
             color: black; /* Adjust as needed */
             margin-bottom: 10px;
         }
@@ -95,7 +95,7 @@
             width: 40%;
             font-size: 2em;
             text-align: center;
-            font-weight: bold;
+            font-weight: 500;
             border-style: none;
             border-radius: 30px;
             padding: 30px;
@@ -122,7 +122,7 @@
             display: flex; /* Use flex to align text */
             align-items: center; /* Align text to the center vertically */
             height: 40px; /* Ensure the div height matches the image height */
-            font-weight: bold;
+            font-weight: 500;
             color: #0061f7;
         }
     </style>

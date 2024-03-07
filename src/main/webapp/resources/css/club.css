@@ -53,7 +53,7 @@
 .plus-title {
     margin-left: 58px;
     font-size: 56px;
-    font-weight: bold;
+    font-weight: 500;
     height: 120px;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .category_name {
-    font-weight: bold;
+    font-weight: 500;
     font-size: 40px;
     margin-top: 40px;
     margin-bottom: 4px;
@@ -166,14 +166,14 @@ input[type=file]::file-selector-button {
 
 .club-title {
     font-size: 50px;
-    font-weight: bold;
+    font-weight: 500;
     text-align: center;
     margin-top: 12px;
 }
 
 .club-preview {
     font-size: 36px;
-    font-weight: bold;
+    font-weight: 500;
     color: #777777;
 }
 
@@ -223,7 +223,7 @@ input[type=file]::file-selector-button {
 
 .club-loc {
     font-size: 36px;
-    font-weight: bold;
+    font-weight: 500;
     margin-left: 10px;
     margin-top: 16px;
     color: #5F5F5F;
@@ -240,7 +240,7 @@ input[type=file]::file-selector-button {
 .apply-title {
     margin-left: 58px;
     font-size: 56px;
-    font-weight: bold;
+    font-weight: 500;
     height: 120px;
     margin-top: 44px;
 }
@@ -250,7 +250,7 @@ input[type=file]::file-selector-button {
     margin-top: 10px;
     margin-bottom: 120px;
     font-size: 52px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .apply-notice-content {
@@ -262,7 +262,7 @@ input[type=file]::file-selector-button {
 .apply-check {
     margin-left: 20px;
     font-size: 52px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .apply_box {

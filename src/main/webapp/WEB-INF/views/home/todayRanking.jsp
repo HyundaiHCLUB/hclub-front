@@ -57,7 +57,7 @@
     .name {
         position: absolute;
         right: 360px;
-        font-weight: bold;
+        font-weight: 500;
         top: 50%;
         transform: translateY(-50%);
         margin-left: 5px;
@@ -67,7 +67,7 @@
         position: absolute;
         right: 180px;
         color: black;
-        font-weight: bold;
+        font-weight: 500;
         top: 50%;
         transform: translateY(-50%);
     }
@@ -76,7 +76,7 @@
         right: 40px;
         top: 50%;
         transform: translateY(-50%);
-        font-weight: bold;
+        font-weight: 500;
     }
 
     /* Customize the top 3 */
@@ -136,7 +136,7 @@
         margin-bottom: 1rem;
     }
     .rank {
-        font-weight: bold;
+        font-weight: 500;
     }
 
 </style>

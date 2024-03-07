@@ -40,7 +40,7 @@
 
         .product-title {
             font-size: 2em;
-            font-weight: bold;
+            font-weight: 500;
             color: #333;
             margin-bottom: 5px;
         }

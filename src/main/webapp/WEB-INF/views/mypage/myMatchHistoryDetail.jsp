@@ -26,7 +26,7 @@
             justify-content: center;
             align-items: center;
             font-size: 2em;
-            font-weight: bold;
+            font-weight: 500;
             margin: 0 auto;
         }
         .detail-title i {
@@ -49,7 +49,7 @@
             width: 100%;
             margin-top: 0;
             font-size: 2em;
-            font-weight: bold;
+            font-weight: 500;
         }
         .team-icons img {
             width: 280px;
@@ -76,7 +76,7 @@
             flex: 0; /* ':' 기호는 공간을 차지하지 않도록 설정 */
             margin: 0 10px; /* 좌우 여백 조정 */
             font-size: 2em;
-            font-weight: bold;
+            font-weight: 500;
         }
         .match-image {
             box-shadow: 0 2px 15px rgba(0,0,0,0.2);
@@ -123,7 +123,7 @@
             border-radius: 20px;
             padding: 30px 100px;
             font-size: 3em;
-            font-weight: bold;
+            font-weight: 500;
             margin-bottom: 20px;
         }
         .score-input {
@@ -135,7 +135,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
             font-size: 2em;
-            font-weight: bold;
+            font-weight: 500;
         }
         .score-separator {
             align-self: center; /* 수직 중앙 정렬 */

@@ -32,7 +32,7 @@
         .user-info h3 {
             font-size: 1.2em;
             margin-bottom: 20px;
-            font-weight: bold;
+            font-weight: 500;
         }
         .user-info p {
             font-size: 1.1em;
@@ -67,7 +67,7 @@
             margin-top: auto;
             margin-bottom: auto;
             margin-left: 50px;
-            font-weight: bold;
+            font-weight: 500;
             font-size: 1.5em;
         }
         .fas fa-user-circle icon {
@@ -89,7 +89,7 @@
             display: flex; /* Use flex to align text */
             align-items: center; /* Align text to the center vertically */
             height: 40px; /* Ensure the div height matches the image height */
-            font-weight: bold;
+            font-weight: 500;
             color: #0061f7;
         }
         .logout {
