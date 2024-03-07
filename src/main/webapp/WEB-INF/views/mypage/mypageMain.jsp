@@ -150,7 +150,7 @@
         </div>
     </div>
     <div class="logout">
-        <button class="btn-logout">로그아웃</button>
+        <button class="btn-logout" onclick="logOut()">로그아웃</button>
     </div>
 </main>
 </body>
@@ -183,7 +183,10 @@
             console.error('사용자 정보 가져오기 실패:', error);
         });
     });
-
+	function logOut(){
+		localStorage.removeItem("accessTokenInfo")
+		location.href="https://www.h-club.site/login/loginView";
+	}
     function getUserInfo(accessToken) {
         return new Promise((resolve, reject) => {
             $.ajax({
