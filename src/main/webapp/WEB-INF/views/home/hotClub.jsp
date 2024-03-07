@@ -24,7 +24,7 @@
                                 var clubHTML =
                                     '<a href="/club/detail/' + item.clubNo + '">' +
                                     '<div class="grid-container" style="margin-left: 58px;"> <div class="grid-hot-item">' +
-                                    '<img class="circle_recommend" src="' + item.clubImage + '"></div>' +
+                                    '<img class="circle_recommend" style="object-fit: cover;" src="' + item.clubImage + '"></div>' +
                                     '<div class="grid-hot-item" style="flex: 0 0 calc(56%);">' +
                                     '<div class="club_hot_content">' +
                                     '<p class="circle_name" style="font-size: 60px;margin-top: 80px;">' + item.clubName + '</p>' +

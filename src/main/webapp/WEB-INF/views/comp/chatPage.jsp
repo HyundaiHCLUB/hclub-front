@@ -312,10 +312,10 @@
 	                $("#dept").text(response.data.employeeDept);
 	                $("#position").text(response.data.employeePosition);
 	                imageUrl = response.data.memberImage;
-	                
+	              
 	                //프론트에서 default 이미지 설정
 	                if(imageUrl == null ){
-	                	imageUrl='https://h-clubbucket.s3.ap-northeast-2.amazonaws.com/profile/242474.jpg'
+	                	imageUrl='/resources/image/default_image.png';
 	                }
 	                $("#myProfileImg").attr('src', imageUrl);
 	                createRoom(otherUserNo); //현재 방과 내방을 기준으로 createRoom

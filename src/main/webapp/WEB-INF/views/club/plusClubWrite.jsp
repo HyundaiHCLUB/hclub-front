@@ -36,6 +36,7 @@
                 img.style.width = "500px";
                 img.style.height = "500px";
                 img.style.border = "none";
+                img.style.objectFit="cover";
                 img.style.borderRadius = "40%";
 
                 imageUploadContainer.appendChild(img);
