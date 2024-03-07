@@ -11,8 +11,8 @@
     font-style: normal;
 }
 
-*{
-    font-family: happiness;
+* {
+    font-family: Pretendard-Regular;
 }
 
 
@@ -131,8 +131,8 @@ main {
 .circle_like {
     display: flex;
     float: right;
-    margin-right:58px;
-    margin-top:60px;
+    margin-right: 58px;
+    margin-top: 60px;
 }
 
 .category_button {
@@ -223,14 +223,15 @@ main {
     justify-content: center;
 }
 
-.left-district{
+.left-district {
     margin-left: 58px;
     margin-right: 20px;
     margin-bottom: 20px;
     width: 450px;
     border-radius: 16px;
 }
-.right-district{
+
+.right-district {
     margin-right: 58px;
     margin-left: 20px;
     margin-bottom: 20px;
