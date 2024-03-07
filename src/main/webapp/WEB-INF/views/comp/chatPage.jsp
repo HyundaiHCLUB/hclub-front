@@ -132,11 +132,10 @@
 <div id="inputArea">
   <input type="text" id="chatTxt" name="chatTxt" placeholder="메시지를 입력해주세요.">
   <div id="msgSendBtn" onclick="sendChat()">전송</div>
-	<!-- 공통 모달 페이지 -->
- 	<%@ include file="../common/modal.jsp" %>
+
 </div>
-
-
+<!-- 공통 모달 페이지 -->
+ <%@ include file="../common/modal.jsp" %>
 </main>
  <!-- websocket javascript -->
 <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=643e03d7f19df83b3f4191ad" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>    
