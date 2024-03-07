@@ -24,8 +24,11 @@
                         $(".club").empty();
 
                         var clubHTML =
-                            '<p class="club-title" style="color:#46675C;font-size: 80px;">' + data.clubName + '</p>' +
-                            '<img class="club-image" style="border-radius: 20px;" src="' + data.clubImage + '">' +
+                            '<div style="display: flex">' +
+                            '<img style="height: 50px;width: 50px;color: #46675c;margin-top: 55px;margin-left: 58px" onclick="history.back()" src="/resources/image/left-arrow.png">' +
+                            '<p class="club-title" style="color:#46675C;font-size: 80px; position: absolute;left: 50%;transform: translateX(-50%);margin-top:20px;margin-bottom: 20px;">' + data.clubName + '</p>' +
+                            '</div>' +
+                            '<img class="club-image" style="border-radius: 20px;margin-top: 60px;" src="' + data.clubImage + '">' +
 
                             '<div style="display: flex;justify-content: center; align-items: center;"><svg width="30" height="30" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">' +
                                 '<path d="M9 12C10.6569 12 12 10.6569 12 9C12 7.34315 10.6569 6 9 6C7.34315 6 6 7.34315 6 9C6 10.6569 7.34315 12 9 12Z" stroke="#727272" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>' +
@@ -306,7 +309,6 @@
 <body>
 <main class="main-container">
     <div style="display: flex;margin: auto;display: block;">
-        <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;margin-left: 58px" onclick="history.back()" src="/resources/image/left-arrow.png">
         <div class="club"></div>
     </div>
     <div style="text-align: center">

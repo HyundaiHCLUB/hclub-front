@@ -69,7 +69,7 @@ function signedOut(){
                 </li>
             </ul>
              <!-- 로그아웃 버튼 영역 -->
-	        <div style="margin: 100px 0px 0px 0px;cursor:pointer;"><input type="button" value="로그아웃" style="font-weight:bold; cursor:pointer; color:#46675c;" onclick="signedOut()">
+	        <div style="margin: 100px 0px 0px 0px;cursor:pointer;"><input type="button" value="로그아웃" style="font-weight:500; cursor:pointer; color:#46675c;" onclick="signedOut()">
 	  		</div>      
         </div>
     </div>

@@ -21,7 +21,7 @@
          display: block;
          margin: 5px;
          font-size: 14px; 
-         font-weight: bold;
+         font-weight: 500;
          color: black;
      }
 
@@ -53,7 +53,7 @@
          height:100px;
          margin : 30px 0px 30px 0px;
          background-color: #46675C;
-         font-weight:bold;
+         font-weight:500;
          color:white;
       }
       .btnDiv{

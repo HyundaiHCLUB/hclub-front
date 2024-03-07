@@ -70,7 +70,8 @@
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: 'GET',
-                url: 'https://www.h-club.site/auth/mypage/history',
+                // url: 'https://www.h-club.site/auth/mypage/history',
+                url: 'http://localhost:8080/auth/mypage/history',
                 headers: {
                     'Authorization': 'Bearer ' + accessToken,
                 },
