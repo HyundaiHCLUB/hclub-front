@@ -22,12 +22,21 @@
             <h2>팀 이름</h2>
         </div>
         <!-- 장소 -->
-        <div class="detail-component-loc">
-            <div class="detail-component-header">
-                <img src="/resources/image/comp/team-loc-icon.png">
-                <h3>장소</h3>
+        <div class="details-container">
+            <div class="detail-component-loc">
+                <div class="detail-component-header">
+                    <img src="/resources/image/comp/team-loc-icon.png">
+                    <h3>장소</h3>
+                </div>
+                <p>경기 장소</p>
             </div>
-            <p>경기 장소</p>
+            <div class="detail-component-rating">
+                <div class="detail-component-header">
+                    <img src="/resources/image/comp/team-rating-icon.png">
+                    <h3>레이팅</h3>
+                </div>
+                <p>레이팅</p>
+            </div>
         </div>
         <!-- 일시 & 레이팅-->
         <div class="details-container">
@@ -39,13 +48,7 @@
                 <p>경기 일시</p>
             </div>
 
-            <div class="detail-component-rating">
-                <div class="detail-component-header">
-                    <img src="/resources/image/comp/team-rating-icon.png">
-                    <h3>레이팅</h3>
-                </div>
-                <p>레이팅</p>
-            </div>
+
         </div>
         <!-- 게임 종류 & 상품-->
         <div class="details-container">
@@ -183,7 +186,7 @@
                 // Create a new <p> tag for each member and append to the container
                 selectedMembers.forEach(member => {
                     let pTag = document.createElement('p');
-                    pTag.textContent = member.memberName; // Set text to memberName
+                    pTag.textContent = member.memberName + ' ' + member.memberDept + ' ' + member.memberPosition; // Set text to memberName
                     teamMateContainer.appendChild(pTag);
                 });
             }

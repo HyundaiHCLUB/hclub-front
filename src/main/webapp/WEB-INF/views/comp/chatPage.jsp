@@ -148,7 +148,7 @@ $(document).ready(function() {
 	            sendChat();
 	        }
 	  });
-}
+});
 
 var servername = '<%=request.getServerName()%>';
 	    <%-- var wsUriToWeb = "wss://<%=request.getServerName()%>:<%=request.getServerPort()%>/ws/chat"; //주소 확인!! --%>
