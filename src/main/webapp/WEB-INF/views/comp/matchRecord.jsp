@@ -214,6 +214,7 @@
     var currentUserId;
     var currentLeader;
     var opponentLeader;
+    var matchHistoryNo = ${matchHistoryNo};
     $(document).ready(function() {
         $.ajax({
             url: 'https://www.h-club.site/comp/match/${matchHistoryNo}', //샘플데이터
@@ -321,7 +322,7 @@
                 String(now.getMinutes()).padStart(2, '0');
             // 경기 결과 기록 request dto
             var dataToSend = {
-                matchHistNo: 13,
+                matchHistNo: matchHistoryNo,
                 matchLoc : matchLoc,
                 teamANo : team1No,
                 scoreA : scoreValueTeam1,
