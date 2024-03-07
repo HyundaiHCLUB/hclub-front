@@ -9,8 +9,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 	#myProfileImg{
-    	width: 150px; 
-    	height: 150px; 
+    	width: 180px; 
+    	height: 180px; 
     	border-radius: 50%; 
     	border: 2px solid #333; 
      }
