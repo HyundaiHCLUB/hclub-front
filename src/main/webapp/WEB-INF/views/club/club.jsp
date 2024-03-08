@@ -48,11 +48,12 @@
                                 var clubHTML = '<div class="grid-container">';
                                 group.forEach(function (item) {
                                     clubHTML += '<div class="grid-item"><div class="club-image-container">' +
-                                        '<a href="/club/detail/' + item.clubNo + '"><img class="circle_recommend" src="' + item.clubImage + '"></a>' +
+                                        '<img class="circle_recommend" src="' + item.clubImage + '">' +
                                         '<span class="like-icon" data-club-id="' + item.clubNo + '"><i class="far fa-heart" style="color: #ffffff;"></i></span></div>' +
                                         '<div class="circle_content">' +
+                                        '<a href="/club/detail/' + item.clubNo + '">' +
                                         '<p class="circle_name">' + item.clubName + '</p>' +
-                                        '<a href="#" class="category_button">'+getCategoryName(item.categoryId)+'</a>' +
+                                        '<a href="#" class="category_button">'+getCategoryName(item.categoryId)+'</a></a>' +
                                     '</div></div>';
                                 });
                                 clubHTML += '</div>';
