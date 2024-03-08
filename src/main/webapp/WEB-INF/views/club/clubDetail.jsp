@@ -24,9 +24,9 @@
                         $(".club").empty();
 
                         var clubHTML =
-                            '<div style="display: flex">' +
+                            '<div style="display: flex; position: relative;">' +
                             '<img style="height: 50px;width: 50px;color: #46675c;margin-top: 55px;margin-left: 58px" onclick="history.back()" src="/resources/image/left-arrow.png">' +
-                            '<p class="club-title" style="color:#46675C;font-size: 80px; position: absolute;left: 50%;transform: translateX(-50%);margin-top:20px;margin-bottom: 20px;">' + data.clubName + '</p>' +
+                            '<p class="club-title" style="color:#46675C;font-size: 80px; margin-top:20px;margin-bottom: 20px; text-align: center;position: absolute; left: 50%; transform: translateX(-50%);">' + data.clubName + '</p>' +
                             '</div>' +
                             '<img class="club-image" style="border-radius: 20px;margin-top: 60px;" src="' + data.clubImage + '">' +
 

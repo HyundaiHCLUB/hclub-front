@@ -95,7 +95,7 @@
     </script>
 </head>
 <body>
-<main>
+<main style="overflow-x: hidden">
     <div class="navbar_menu">
         <li><a href="/">투데이</a></li>
         <li><a href="/home/hot">인기 동아리</a></li>

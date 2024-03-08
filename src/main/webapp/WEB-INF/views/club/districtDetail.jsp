@@ -68,7 +68,7 @@
     </script>
 </head>
 <body>
-<main>
+<main style="overflow-x: hidden">
     <div style="display: flex;margin: auto;display: block;">
         <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;margin-left: 58px;margin-bottom: 24px;"
              onclick="history.back()" src="/resources/image/left-arrow.png">
