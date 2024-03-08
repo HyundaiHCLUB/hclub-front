@@ -84,9 +84,9 @@
         // 이미지 세팅
         let base64ImageData = localStorage.getItem('multipartFile');
         if (base64ImageData) {
-            // Find the <img> tag within the .event-image container
+
             let imageElement = document.querySelector('.team-caption-image img');
-            // Set the retrieved Base64 string as the src attribute of the <img> tag
+
             imageElement.src = base64ImageData;
         }
         // 팀장 이름 세팅
@@ -99,18 +99,18 @@
         }
     });
     document.addEventListener("DOMContentLoaded", function () {
-        // Define a global variable to store fetched product data
+
         let globalProductData = [];
         const apiUrl = 'https://www.h-club.site/comp/products';
         const container = document.querySelector('.products'); // 제품들을 담을 컨테이너
 
-        // Use fetch API to get the products
+
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
-                globalProductData = data.data; // Store the fetched data globally
+                globalProductData = data.data;
 
-                // Loop through the data and create a div for each product
+
                 data.data.forEach(product => {
                     const productDiv = document.createElement('div'); // 각 제품을 담을 div 생성
                     productDiv.classList.add('product-item'); // CSS 클래스 추가
@@ -121,21 +121,20 @@
                     radioInput.setAttribute('name', 'product');
                     radioInput.setAttribute('value', product.productId);
                     radioInput.setAttribute('id', `product`);
-                    // radioInput.setAttribute('style', '')
-                    // Create label for radio input
+
                     const label = document.createElement('label');
                     label.setAttribute('for', `product` + product.productId);
                     label.textContent = product.productName;
 
-                    // Append the radio input and label to the product div
+
                     productDiv.appendChild(radioInput);
                     productDiv.appendChild(label);
 
-                    // Append the product div to the products container
+
                     container.appendChild(productDiv);
 
                     productDiv.addEventListener('click', function () {
-                        radioInput.checked = true; // Set the radio input to checked when the div is clicked
+                        radioInput.checked = true;
                     });
                 });
             })
@@ -145,20 +144,19 @@
             const selectedDate = $('#dateSelectInput').val();
             const selectedTime = $('#timeSelectInput').val();
 
-            // Retrieve the selected product ID
+
             const selectedProductId = $('input[name="product"]:checked').val();
-            // Find the selected product data by matching the selectedProductId with the product ID in the globalProductData
+
             const selectedProduct = globalProductData.find(product => product.productId == selectedProductId);
 
             if (selectedProduct) {
-                // Create an object with the product details
+
                 const teamProduct = {
                     productId: selectedProduct.productId,
                     productName: selectedProduct.productName,
-                    productPrice: selectedProduct.productPrice // Assuming productPrice is a property of your products
+                    productPrice: selectedProduct.productPrice
                 };
 
-                // Save the product details object as a JSON string in localStorage
                 localStorage.setItem('teamProduct', JSON.stringify(teamProduct));
             }
 
@@ -166,7 +164,7 @@
             localStorage.setItem('matchDate', selectedDate);
             localStorage.setItem('matchTime', selectedTime);
 
-            // Optionally, navigate to the next page or perform another action
+
         });
     });
 
@@ -198,12 +196,12 @@
         });
 
     $('#timeSelectInput').timepicker({
-        timeFormat: 'HH:mm', // 24-hour format
-        interval: 30, // Interval can be adjusted as needed
-        minTime: '00:00', // Minimum time can be adjusted as needed
-        maxTime: '23:30', // Maximum time can be adjusted as needed
-        defaultTime: '11', // Default time can be adjusted as needed
-        startTime: '00:00', // Start time adjusted for 24-hour format
+        timeFormat: 'HH:mm',
+        interval: 30,
+        minTime: '00:00',
+        maxTime: '23:30',
+        defaultTime: '11',
+        startTime: '00:00',
         dynamic: true,
         dropdown: true,
         scrollbar: true
