@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html>
 <head>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/reset.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!--CDN 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -15,7 +16,7 @@
     <script>
         function getClubList() {
             $.ajax({
-                url: "https://www.h-club.site/clubs/district/"+${districtNo},
+                url: "https://www.h-club.site/clubs/district/" +${districtNo},
                 method: "GET",
                 success: function (response) {
                     if (response.success) {
@@ -29,11 +30,11 @@
                             var clubHTML = '<div class="grid-container">';
                             group.forEach(function (item) {
                                 clubHTML += '<a href="/club/detail/' + item.clubNo + '"><div class="grid-item"><div class="club-image-container">' +
-                                    '<img class="circle_recommend" src="' + item.clubImage + '"></div>' +
+                                    '<img class="circle_recommend" style = "object-fit: cover"src="' + item.clubImage + '"></div>' +
                                     '<div class="circle_content">' +
                                     '<p class="circle_name">' + item.clubName + '</p></div>' +
                                     '<div class="circle_content">' +
-                                    '<a href="#" class="category_button">' +distrcit+'</a></div>' +
+                                    '<a href="#" class="category_button">' + distrcit + '</a></div>' +
                                     '<div class="circle_content">' +
                                     '<svg style="margin-top: 16px;" width="44" height="44" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
                                     '<rect width="36" height="36" fill="url(#pattern0)"/>' +
@@ -69,7 +70,8 @@
 <body>
 <main style="overflow-x: hidden">
     <div style="display: flex;margin: auto;display: block;">
-        <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;margin-left: 58px;margin-bottom: 24px;" onclick="history.back()" src="/resources/image/left-arrow.png">
+        <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;margin-left: 58px;margin-bottom: 24px;"
+             onclick="history.back()" src="/resources/image/left-arrow.png">
         <div class="club"></div>
     </div>
 

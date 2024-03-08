@@ -209,10 +209,12 @@
     var memberId;
     var team1No;
     var team2No;
+    var userTeamNo;
     var matchLoc;
     var currentUserId;
     var currentLeader;
     var opponentLeader;
+    var matchHistoryNo = ${matchHistoryNo};
     $(document).ready(function() {
         $.ajax({
             url: 'https://www.h-club.site/comp/match/${matchHistoryNo}', //샘플데이터
@@ -233,8 +235,6 @@
                 getUserInfo(accessToken).then(memberInfo => {
                     memberId = memberInfo.member_id;
                     console.log("memberID : " + memberId);
-                    // 현재 화면에 접속한 사용자가 속한 팀 번호 알아내기
-                    var userTeamNo = memberInfo.teamNo;
                     var configTeamDTO = {
                         team1No : response.data.team1.teamNo,
                         team2No : response.data.team2.teamNo,
@@ -246,11 +246,13 @@
                         otherLeader = response.data.team2.leader;
                         opponentLeader = otherLeader;
                         currentLeader = response.data.team1.leader;
+                        userTeamNo = response.data.team1.team1No;
                         localStorage.setItem("currentUserNo", response.data.team1.leader.memberNo);
                     } else if(memberInfo.member_id == response.data.team2.leader.memberId) {
                         otherLeader = response.data.team1.leader;
                         opponentLeader = otherLeader;
                         currentLeader = response.data.team2.leader;
+                        userTeamNo = response.data.team2.team1No;
                         localStorage.setItem("currentUserNo", response.data.team2.leader.memberNo);
                         localStorage.setItem("currentUserId", response.data.team2.leader.memberId);
                         currentUserId = localStorage.getItem("currentUserId");
@@ -273,8 +275,9 @@
                         contentType: 'application/json', // 서버로 보내는 데이터 타입을 JSON으로 설정
                         data: JSON.stringify(configTeamDTO),
                         success : function (response) {
-                            userTeamNo = response;
-                            console.log('userTeamNo => ' +  userTeamNo);
+                            console.log('## response -> ', response);
+                            userTeamNo = parseInt(response, 10);
+                            console.log('userTeamNo => ' +  userTeamNo); /********************/
                             if(userTeamNo === team1No) {
                                 $('.team:eq(0) .team-logo').addClass('highlighted-team');
                                 $('.team:eq(1) .team-logo').removeClass('highlighted-team').addClass('not-highlighted-team');
@@ -296,15 +299,22 @@
         $('.end-match-button').click(function() { // 경기종료버튼 리스너 등록
             var scoreValueTeam1 = $('input[name="score1"]').val().trim();
             var scoreValueTeam2 = $('input[name="score2"]').val().trim();
-
+            // 점수 NULLL 처리 & 유효성 검사
             if (scoreValueTeam1 === '' || scoreValueTeam2 === '') {
                 alert('모든 점수를 입력해 주세요.');
                 return;
             }
             var scoreTeam1 = parseInt(scoreValueTeam1, 10);
             var scoreTeam2 = parseInt(scoreValueTeam2, 10);
+            console.log('scoreTeam1', scoreTeam1);
+            console.log('scoreTeam2', scoreTeam2);
             if (isNaN(scoreTeam1) || isNaN(scoreTeam2)) {
                 alert('유효한 점수를 입력하세요.');
+            }
+            // 이미지 NULL 처리
+            if (!selectedFile){
+                alert('모든 점수를 입력해주세요.');
+                return;
             }
 
             const now = new Date();
@@ -317,7 +327,7 @@
                 String(now.getMinutes()).padStart(2, '0');
             // 경기 결과 기록 request dto
             var dataToSend = {
-                matchHistNo: 13,
+                matchHistNo: matchHistoryNo,
                 matchLoc : matchLoc,
                 teamANo : team1No,
                 scoreA : scoreValueTeam1,
@@ -343,10 +353,41 @@
                     console.error('Error occurred:', error);
                 }
             })
-            // 사용자가 속한 팀 식별
-            var userTeamNo = parseInt(localStorage.getItem("currentUserTeamNo"), 10); // 현재 사용자의 팀 번호
+            /*** call rating API ***/
+            var winTeamNo, winTeamScore;
+            var loseTeamNo, loseTeamScore;
+            if (scoreValueTeam1 >= scoreValueTeam2) {
+                winTeamNo = team1No;
+                winTeamScore = scoreValueTeam1;
+                loseTeamNo = team2No;
+                loseTeamScore = scoreValueTeam2;
+            } else if (scoreValueTeam1 < scoreValueTeam2){
+                loseTeamNo : team1No;
+                loseTeamScore = scoreValueTeam1
+                winTeamNo = team2No;
+                winTeamScore = scoreValueTeam2;
+            }
+            var updateRatingRequest = {
+                matchHistNo : matchHistoryNo,
+                winTeamNo : winTeamNo,
+                winTeamScore : winTeamScore,
+                loseTeamNo : loseTeamNo,
+                loseTeamScore : loseTeamScore
+            };
+            $.ajax({
+                url: 'https://www.h-club.site/comp/rating',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(updateRatingRequest),
+                success: function(response) {
+                    console.log('Server response:', response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error occurred:', error);
+                }
+            });
+            /*** end rating ***/
             var myTeamScore, opponentTeamScore;
-
             // 사용자의 팀에 따라 점수 할당
             if(userTeamNo === team1No) {
                 myTeamScore = scoreValueTeam1;
