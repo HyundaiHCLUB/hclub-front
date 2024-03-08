@@ -299,7 +299,7 @@
         $('.end-match-button').click(function() { // 경기종료버튼 리스너 등록
             var scoreValueTeam1 = $('input[name="score1"]').val().trim();
             var scoreValueTeam2 = $('input[name="score2"]').val().trim();
-
+            // 점수 NULLL 처리 & 유효성 검사
             if (scoreValueTeam1 === '' || scoreValueTeam2 === '') {
                 alert('모든 점수를 입력해 주세요.');
                 return;
@@ -310,6 +310,11 @@
             console.log('scoreTeam2', scoreTeam2);
             if (isNaN(scoreTeam1) || isNaN(scoreTeam2)) {
                 alert('유효한 점수를 입력하세요.');
+            }
+            // 이미지 NULL 처리
+            if (!selectedFile){
+                alert('모든 점수를 입력해주세요.');
+                return;
             }
 
             const now = new Date();
