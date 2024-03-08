@@ -348,6 +348,40 @@
                     console.error('Error occurred:', error);
                 }
             })
+            /*** call rating API ***/
+            var winTeamNo, winTeamScore;
+            var loseTeamNo, loseTeamScore;
+            if (scoreValueTeam1 >= scoreValueTeam2) {
+                winTeamNo = team1No;
+                winTeamScore = scoreValueTeam1;
+                loseTeamNo = team2No;
+                loseTeamScore = scoreValueTeam2;
+            } else if (scoreValueTeam1 < scoreValueTeam2){
+                loseTeamNo : team1No;
+                loseTeamScore = scoreValueTeam1
+                winTeamNo = team2No;
+                winTeamScore = scoreValueTeam2;
+            }
+            var updateRatingRequest = {
+                matchHistNo : matchHistoryNo,
+                winTeamNo : winTeamNo,
+                winTeamScore : winTeamScore,
+                loseTeamNo : loseTeamNo,
+                loseTeamScore : loseTeamScore
+            };
+            $.ajax({
+                url: 'https://www.h-club.site/comp/rating',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(updateRatingRequest),
+                success: function(response) {
+                    console.log('Server response:', response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error occurred:', error);
+                }
+            });
+            /*** end rating ***/
             var myTeamScore, opponentTeamScore;
             // 사용자의 팀에 따라 점수 할당
             if(userTeamNo === team1No) {

@@ -244,44 +244,69 @@
 	   
     tbody.append(tr); 
 }
- 
-function setupPagination() {
-    const totalPages = Math.ceil(rankListSize / itemsPerPage);
-    const paginationElement = document.getElementById('pagination');
-    paginationElement.innerHTML = '';
+ let pageRange = 10; // 페이지 범위의 크기
+ function setupPagination() {
+	    const totalPages = Math.ceil(rankListSize / itemsPerPage);
+	    const paginationElement = document.getElementById('pagination');
+	    paginationElement.innerHTML = '';
 
-    for (let i = 1; i <= totalPages; i++) {
-        const link = document.createElement('a');
-        link.href = '#';
-        link.textContent = i;
+	    const startIndex = Math.max(1, currentPage - Math.floor(pageRange / 2)); // 현재 페이지를 중심으로 한 범위의 시작 인덱스
+	    const endIndex = Math.min(totalPages, startIndex + pageRange - 1); // 시작 인덱스로부터 pageRange 개의 페이지까지만 표시
 
-        link.addEventListener('click', function(event) {
-           event.preventDefault();
-           currentPage = i;
-	            
-           //페이징 범위 계산
-           setClubStartIndex = (i-1) * itemsPerPage +1;
-           setClubEndIndex =  (i)* itemsPerPage;
-	                 
-           //랭크 리스트 재로딩
-           getRankingList()
-           highlightCurrentPage();
-        });
+	    if (startIndex > 1) {
+	        const prevLink = document.createElement('a');
+	        prevLink.href = '#';
+	        prevLink.textContent = 'Prev';
+	        prevLink.addEventListener('click', function(event) {
+	            event.preventDefault();
+	            currentPage = Math.max(1, startIndex - pageRange);
+	            setupPagination();
+	        });
+	        paginationElement.appendChild(prevLink);
+	    }
 
-        paginationElement.appendChild(link);
-    }
-    highlightCurrentPage();
-}
+	    for (let i = startIndex; i <= endIndex; i++) {
+	        const link = document.createElement('a');
+	        link.href = '#';
+	        link.textContent = i;
 
-function highlightCurrentPage() {
-    const paginationElement = document.getElementById('pagination');
-    const links = paginationElement.getElementsByTagName('a');
+	        link.addEventListener('click', function(event) {
+	            event.preventDefault();
+	            currentPage = i;
+	            setClubStartIndex = (i - 1) * itemsPerPage + 1;
+	            setClubEndIndex = i * itemsPerPage;
+	            getRankingList();
+	            highlightCurrentPage();
+	        });
 
-    for (let i = 0; i < links.length; i++) {
-        links[i].classList.remove('active');
-    }
-    links[currentPage - 1].classList.add('active');
-}
+	        paginationElement.appendChild(link);
+	    }
+
+	    // 'Next' 링크 추가
+	    if (endIndex < totalPages) {
+	        const nextLink = document.createElement('a');
+	        nextLink.href = '#';
+	        nextLink.textContent = 'Next';
+	        nextLink.addEventListener('click', function(event) {
+	            event.preventDefault();
+	            currentPage = Math.min(totalPages, endIndex + 1);
+	            setupPagination();
+	        });
+	        paginationElement.appendChild(nextLink);
+	    }
+
+	    highlightCurrentPage();
+	}
+
+	function highlightCurrentPage() {
+	    const paginationElement = document.getElementById('pagination');
+	    const links = paginationElement.getElementsByTagName('a');
+
+	    for (let i = 0; i < links.length; i++) {
+	        links[i].classList.remove('active');
+	    }
+	    links[currentPage - 1].classList.add('active');
+	}
 
 
  </script>
