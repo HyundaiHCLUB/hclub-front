@@ -103,7 +103,7 @@ public class CompController {
     public ModelAndView goTeamDetailPage(@PathVariable("teamNo") Long teamNo) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("teamNo", teamNo);
-        mav.setViewName("comp/teamDetail");
+        mav.setViewName("comp/teamDetailMatch");
         return mav;
     }
 
@@ -134,10 +134,16 @@ public class CompController {
 
     /* 승리팀 페이지 */
     @GetMapping("/winTeam")
-    public ModelAndView goWinTeamPage(){return new ModelAndView("comp/winTeamResult");}
+    public ModelAndView goWinTeamPage() {
+        return new ModelAndView("comp/winTeamResult");
+    }
+
     /* 무승부팀 페이지 */
     @GetMapping("/drawTeam")
-    public ModelAndView goDrawTeamPage() {return new ModelAndView("comp/drawTeamResult");}
+    public ModelAndView goDrawTeamPage() {
+        return new ModelAndView("comp/drawTeamResult");
+    }
+
     @GetMapping("/teamDetail/{teamNo}")
     public ModelAndView goTeamDetail(@PathVariable Long teamNo) {
         ModelAndView mav = new ModelAndView();
@@ -152,15 +158,17 @@ public class CompController {
     public ModelAndView gopaySuccessPage() {
         return new ModelAndView("comp/paySuccess");
     }
+
     /* 결제 실패 페이지*/
     @GetMapping("/payFail")
     public ModelAndView gopayFailPage() {
         return new ModelAndView("comp/payFail");
     }
+
     /* 결제 취소 페이지*/
     @GetMapping("/payCancel")
     public ModelAndView gopayCancelPage() {
         return new ModelAndView("comp/payCancel");
     }
-    
+
 }
