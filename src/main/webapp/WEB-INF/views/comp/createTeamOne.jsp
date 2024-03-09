@@ -543,16 +543,16 @@
                 alert('참여 인원을 선택해주세요')
                 return;
             }
-
+            if (selectedMembers.at(0).memberName != localStorage.getItem("name")) {
+                alert('팀장은 본인을 선택해야합니다');
+                return;
+            }
             // 선택된 멤버 수와 게임 유형 수 확인
             if (selectedMembers.length != selectedGameTypeNum) {
                 alert('팀원 수를 ' + selectedGameTypeNum + '명 선택해주세요');
                 return;
             }
-            if (selectedMembers.at(0).memberName != localStorage.getItem("name")) {
-                alert('팀장은 본인을 선택해야합니다');
-                return;
-            }
+
 
             // 모든 조건이 충족됐다면 페이지 이동 또는 다음 단계 진행
             window.location.href = '/competition/create/2';
