@@ -519,6 +519,43 @@
     document.addEventListener('DOMContentLoaded', function () {
         const goNextButton = document.getElementById('goNextButton');
         goNextButton.addEventListener('click', function () {
+            // 기존의 검증 로직 유지
+            var teamName = localStorage.getItem('teamName');
+            var selectedGameType = localStorage.getItem('gameType');
+            var multipartFile = localStorage.getItem('multipartFile');
+            var selectedMembers = JSON.parse(localStorage.getItem('selectedMembers')) || [];
+            var selectedGameTypeNum = localStorage.getItem('selectedGameTypeNum');
+
+            // 필수 요소 확인
+            if (!selectedGameType) {
+                alert('게임 종목을 선택해주세요');
+                return;
+            }
+            if (!teamName) {
+                alert('팀 이름을 입력해주세요');
+                return;
+            }
+
+            if (!multipartFile) {
+                alert('팀 사진을 넣어주세요');
+                return;
+            }
+            if (!selectedGameTypeNum) {
+                alert('참여 인원을 선택해주세요')
+                return;
+            }
+
+            // 선택된 멤버 수와 게임 유형 수 확인
+            if (selectedMembers.length != selectedGameTypeNum) {
+                alert('팀원 수를 ' + selectedGameTypeNum + '명 선택해주세요');
+                return;
+            }
+            if (selectedMembers.at(0).memberName != localStorage.getItem("name")) {
+                alert('팀장은 본인을 선택해야합니다');
+                return;
+            }
+
+            // 모든 조건이 충족됐다면 페이지 이동 또는 다음 단계 진행
             window.location.href = '/competition/create/2';
         });
     });

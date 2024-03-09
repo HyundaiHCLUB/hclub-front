@@ -26,7 +26,7 @@
         </div>
         <div class="team-captain-name">
 
-            <p>김동욱</p>
+            <p>팀장 이름</p>
             <div class="captain-caption">
                 <img src="/resources/image/comp/star.png" alt="">
                 <p>팀장</p>
@@ -180,6 +180,16 @@
     document.addEventListener('DOMContentLoaded', function () {
         var goNextButton = document.getElementById('goNextButton');
         goNextButton.addEventListener('click', function () {
+
+            let matchDate = localStorage.getItem("matchDate");
+            let matchTime = localStorage.getItem("matchDate");
+            let teamProduct = localStorage.getItem("teamProduct");
+            if (matchDate === '') {
+                alert('날짜를 입력해주세요');
+                return;
+            }
+
+
             window.location.href = '/competition/create/3';
         });
     });
@@ -197,7 +207,7 @@
 
     $('#timeSelectInput').timepicker({
         timeFormat: 'HH:mm',
-        interval: 30,
+        interval: 15,
         minTime: '00:00',
         maxTime: '23:30',
         defaultTime: '11',
