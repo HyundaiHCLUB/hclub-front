@@ -19,32 +19,40 @@
             border-radius: 5%;
             font-size: 36px;
         }
+
         .profile-pic {
             width: 250px;
             height: 250px;
             border: 8px solid #6FC173;
             border-radius: 50%;
             margin: auto 30px;
+            object-fit: cover;
         }
+
         .user-info {
             margin-left: 20px;
         }
+
         .user-info h3 {
             font-size: 1.2em;
             margin-bottom: 20px;
             font-weight: 500;
         }
+
         .user-info p {
             font-size: 1.1em;
             margin-top: 0;
         }
+
         #userName {
-           font-size: 1.8em;
+            font-size: 1.8em;
         }
+
         #userDept {
             font-size: 1em;
             margin-bottom: 30px;
         }
+
         .mypage-menus {
             margin: 0 auto;
             padding: 20px;
@@ -52,6 +60,7 @@
             background-color: #F1F5E8;
             border-radius: 30px;
         }
+
         .menu {
             display: flex;
             align-items: center;
@@ -63,6 +72,7 @@
             margin: 60px auto;
             font-size: 2.2em;
         }
+
         .menu span {
             margin-top: auto;
             margin-bottom: auto;
@@ -70,14 +80,17 @@
             font-weight: 500;
             font-size: 1.5em;
         }
+
         .fas fa-user-circle icon {
-            margin : auto 10px auto 30px;
+            margin: auto 10px auto 30px;
         }
+
         .user-rating {
             display: flex; /* Flexbox 레이아웃 사용 */
             align-items: center; /* 세로축(center)을 기준으로 자식 요소들을 가운데 정렬 */
             gap: 10px; /* 이미지와 텍스트 사이에 10px의 간격을 줌 */
         }
+
         .user-rating img {
             width: 40px;
             height: 40px;
@@ -92,6 +105,7 @@
             font-weight: 500;
             color: #0061f7;
         }
+
         .logout {
             width: 80%;
             height: 400px;
@@ -101,6 +115,7 @@
             border-radius: 5%;
             font-size: 36px;
         }
+
         .btn-logout {
             width: 100%;
             height: 150px;
@@ -125,7 +140,7 @@
             <p id="userDept"></p>
             <div class="user-rating">
                 <img src="/resources/image/comp/rating.svg"/>
-                <p style="margin-bottom: 0; margin-right: 10px;">레이팅  </p>
+                <p style="margin-bottom: 0; margin-right: 10px;">레이팅 </p>
                 <p id="userRating"></p>
             </div>
         </div>
@@ -158,14 +173,14 @@
 <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
 <script>
     /* 로그인 되어있지 않은 사용자 -> 홈으로 리다이렉트 */
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         let accessToken = localStorage.getItem("accessTokenInfo");
         if (!accessToken) {
             alert("로그인이 필요한 페이지입니다.");
             window.location.href = "/"; // 로그인 페이지 URL로 변경하세요.
         }
     });
-    $(document).ready(function() {
+    $(document).ready(function () {
         // 로컬 스토리지에서 JWT 가져오기
         let accessToken = localStorage.getItem("accessTokenInfo");
         let defaultImage = '/resources/image/default_image.png';
@@ -183,10 +198,12 @@
             console.error('사용자 정보 가져오기 실패:', error);
         });
     });
-	function logOut(){
-		localStorage.removeItem("accessTokenInfo")
-		location.href="https://www.h-club.site/login/loginView";
-	}
+
+    function logOut() {
+        localStorage.removeItem("accessTokenInfo")
+        location.href = "https://www.h-club.site/login/loginView";
+    }
+
     function getUserInfo(accessToken) {
         return new Promise((resolve, reject) => {
             $.ajax({
@@ -207,7 +224,8 @@
             });
         });
     }
-    document.querySelector('.btn-logout').addEventListener('click', function() {
+
+    document.querySelector('.btn-logout').addEventListener('click', function () {
         localStorage.clear();
 
         window.location.href = '/login/loginView'; // 예시: 로그인 페이지로 리다이렉트
