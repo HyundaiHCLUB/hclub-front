@@ -89,7 +89,9 @@
 </main>
 </body>
 <script>
-    var teamNo = ${teamNo}; // 컨트롤러에서 받은 팀 번호
+    let teamNo = ${teamNo}; // 컨트롤러에서 받은 팀 번호
+    let opponentMatchType = '';
+    let opponentTeamCapacity = '';
     console.log('teamNo : ' + teamNo);
 
     $(document).ready(function () {
@@ -110,7 +112,8 @@
                     $('.detail-component-rating p').text(response.data.teamRating + '점');
                     $('.detail-component-gametype p').text(response.data.teamCapacity);
                     $('.detail-component-goods p').text(response.data.teamGoods);
-
+                    opponentMatchType = response.data.matchKind;
+                    opponentTeamCapacity = response.data.teamCapacity;
                     // 팀원 정보를 업데이트합니다.
                     var teamMembers = response.data.memberList; // 'members' 는 팀원들의 배열을 포함하는 응답의 일부라고 가정합니다.
                     var teamMembersContainer = $('.detail-component-team-mate');
@@ -130,6 +133,8 @@
     let buttonNext = document.querySelector('.team-button');
     buttonNext.addEventListener('click', function () {
         localStorage.setItem("opponentTeamNo", teamNo);
+        localStorage.setItem("opponentMatchType", opponentMatchType);
+        localStorage.setItem("opponentTeamCapacity", opponentTeamCapacity);
         localStorage.setItem("initCreate", 'N');
         window.location.href = '/competition/create/1';
     })

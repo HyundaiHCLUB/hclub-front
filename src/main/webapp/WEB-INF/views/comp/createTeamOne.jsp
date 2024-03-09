@@ -99,6 +99,8 @@
     </div>
 </main>
 <script>
+
+
     $(document).ready(function () {
         // Assuming your existing code to generate game format options is here
         // ...
@@ -185,39 +187,34 @@
 
 
         function clearLocalStorageExceptAccessTokenInfo() {
-
             const keys = Object.keys(localStorage);
+            const retainKeys = ['accessTokenInfo', 'initCreate', 'name', 'dept', 'pos'];
 
+            // If 'initCreate' is 'N', add 'opponentTeamNo' to the retainKeys list
             if (localStorage.getItem('initCreate') === 'N') {
-                keys.forEach(function (key) {
-
-                    if (key !== 'accessTokenInfo' && key !== 'opponentTeamNo' && key !== 'initCreate' && key !== 'name' && key !== 'dept' && key !== 'pos') {
-
-                        localStorage.removeItem(key);
-                    }
-
-                });
-                return;
+                retainKeys.push('opponentTeamNo');
+                retainKeys.push('opponentMatchType');
+                retainKeys.push('opponentTeamCapacity');
             }
 
-            // N 일 경우
             keys.forEach(function (key) {
-                // Check if the current key is not accessTokenInfo
-                if (key !== 'accessTokenInfo' && key !== 'initCreate' && key !== 'name' && key !== 'dept' && key !== 'pos') {
+                // Check if the current key is not in the list of keys to retain
+                if (!retainKeys.includes(key)) {
                     // Remove the item from localStorage
                     localStorage.removeItem(key);
                 }
-
             });
         }
+
 
         // Call the function when the page loads
         clearLocalStorageExceptAccessTokenInfo();
 
-        // Your existing code...
+
     });
 
     document.addEventListener('DOMContentLoaded', function () {
+
 
         let gameType = '';
 
@@ -493,6 +490,8 @@
 
             console.log(files);
         });
+
+
     });
     // 장소 저장
 
