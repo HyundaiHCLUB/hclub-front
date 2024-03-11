@@ -356,16 +356,18 @@
             /*** call rating API ***/
             var winTeamNo, winTeamScore;
             var loseTeamNo, loseTeamScore;
-            if (scoreValueTeam1 >= scoreValueTeam2) {
+            var team1Score = parseInt(scoreValueTeam1, 10);
+            var team2Score = parseInt(scoreValueTeam2, 10);
+            if (team1Score >= team2Score) {
                 winTeamNo = team1No;
-                winTeamScore = scoreValueTeam1;
+                winTeamScore = team1Score;
                 loseTeamNo = team2No;
-                loseTeamScore = scoreValueTeam2;
+                loseTeamScore = team2Score;
             } else if (scoreValueTeam1 < scoreValueTeam2){
                 loseTeamNo : team1No;
-                loseTeamScore = scoreValueTeam1
+                loseTeamScore = team1Score;
                 winTeamNo = team2No;
-                winTeamScore = scoreValueTeam2;
+                winTeamScore = team2Score;
             }
             var updateRatingRequest = {
                 matchHistNo : matchHistoryNo,
