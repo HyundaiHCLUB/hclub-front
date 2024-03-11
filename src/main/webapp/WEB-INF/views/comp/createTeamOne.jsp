@@ -108,10 +108,14 @@
         // Function to update the selected game type number in localStorage
         function updateSelectedGameTypeNum(selectedFormat) {
             // Extract the first number from the format (e.g., "1 vs 1" becomes "1")
-            const num = selectedFormat.charAt(0);
+            const match = selectedFormat.match(/^\d+/);
 
-            // Save to localStorage
-            localStorage.setItem('selectedGameTypeNum', num);
+            if (match) {
+                const num = match[0]; // The first match contains the digits
+
+                // Save to localStorage
+                localStorage.setItem('selectedGameTypeNum', num);
+            }
         }
 
         // Attach click event listener to each game format option
