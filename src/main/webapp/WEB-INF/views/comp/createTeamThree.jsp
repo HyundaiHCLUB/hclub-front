@@ -85,12 +85,12 @@
 <script>
     // 데이터 로딩
     document.addEventListener('DOMContentLoaded', function () {
-        // Retrieve the Base64 image string from localStorage
+
         let base64ImageData = localStorage.getItem('multipartFile');
         if (base64ImageData) {
-            // Find the <img> tag within the .event-image container
+
             let imageElement = document.querySelector('.team-image img');
-            // Set the retrieved Base64 string as the src attribute of the <img> tag
+
             imageElement.src = base64ImageData;
         }
         // 종목
@@ -115,9 +115,9 @@
         // 팀 이름
         let teamName = localStorage.getItem('teamName');
         if (teamName) {
-            // Find the <h2> tag that should display the team name
+
             let h2Element = document.querySelector('.team-detail h2');
-            // Set the retrieved team name as the text content of the <h2> tag
+
             h2Element.textContent = teamName;
         }
         // 장소
@@ -152,20 +152,20 @@
         // 게임 종류
         let selectedGameTypeNum = localStorage.getItem("selectedGameTypeNum");
         if (selectedGameTypeNum) {
-            // Assuming you want to set this number to the <p> inside .detail-component-gametype
+
             let gameTypeElement = document.querySelector('.detail-component-gametype p');
             if (gameTypeElement) {
-                gameTypeElement.textContent = selectedGameTypeNum + ' vs ' + selectedGameTypeNum; // Or however you wish to format it
+                gameTypeElement.textContent = selectedGameTypeNum + ' vs ' + selectedGameTypeNum;
             }
         }
         // 상품
         let teamProductJSON = localStorage.getItem("teamProduct");
         if (teamProductJSON) {
             let teamProductArray = JSON.parse(teamProductJSON);
-            // Find the <p> tag within .detail-component-goods
+
             let goodsElement = document.querySelector('.detail-component-goods p');
             if (goodsElement) {
-                // Assuming you want to concatenate all product names separated by commas
+
 
                 goodsElement.textContent = teamProductArray.productName;
             }
@@ -176,14 +176,13 @@
         if (selectedMembersJSON) {
             let selectedMembers = JSON.parse(selectedMembersJSON);
 
-            // Find the .detail-component-team-mate container
+
             let teamMateContainer = document.querySelector('.detail-component-team-mate');
 
-            // Ensure the container is found and the selectedMembers array is not empty
+
             if (teamMateContainer && selectedMembers.length) {
 
 
-                // Create a new <p> tag for each member and append to the container
                 selectedMembers.forEach(member => {
                     let pTag = document.createElement('p');
                     pTag.textContent = member.memberName + ' ' + member.memberDept + ' ' + member.memberPosition; // Set text to memberName
@@ -201,19 +200,19 @@
 
     // 팀 생성 -> 매칭 하러가기 버튼
     document.addEventListener('DOMContentLoaded', function () {
-        // Select the button by its class name
+
         var button = document.querySelector('.team-button');
 
-        // Add an event listener to the button for its functionality
+
         button.addEventListener('click', function () {
-            button.remove(); // Remove the original button
+            button.remove();
 
             // Create a new "매칭하러가기" button
             let matchingButton = document.createElement('button');
             matchingButton.textContent = '매칭하러가기';
-            matchingButton.className = 'team-button'; // Assign any classes for styling
+            matchingButton.className = 'team-button';
 
-            // Event listener for the new matching button
+
             matchingButton.addEventListener('click', async function () {
                 let url = '';
                 let isInitCreate = localStorage.getItem("initCreate");
@@ -226,10 +225,10 @@
                     url = '/competition/matchDetail/' + matchNo;
                 }
 
-                window.location.href = url; // Redirect to the appropriate URL
+                window.location.href = url;
             });
 
-            // Add the new matching button to the container
+
             var buttonContainer = document.querySelector('.button-container');
             buttonContainer.appendChild(matchingButton);
         });
@@ -278,7 +277,7 @@
 
             var formattedMatchDate = '';
             if (matchDateParts) {
-                // Manually constructing the date string without template literals
+
                 formattedMatchDate = matchDateParts[1] + '-' +
                     (matchDateParts[2].length < 2 ? '0' : '') + matchDateParts[2] + '-' +
                     (matchDateParts[3].length < 2 ? '0' : '') + matchDateParts[3] +
@@ -336,14 +335,14 @@
     function setTeamCreateResponseToLocalStorage(data) {
 
         clearLocalStorageExceptAccessTokenInfo();
-        // Extract memberNo from each member and store it in an array
+
         let memberList = data.data.memberList.map(member => member.memberNo);
 
         localStorage.setItem("teamNo", data.data.teamNo.toString());
         localStorage.setItem("teamRating", data.data.teamRating.toString());
         localStorage.setItem("matchCapacity", data.data.matchCapacity.toString());
         localStorage.setItem("matchType", data.data.matchType);
-        localStorage.setItem("memberList", JSON.stringify(memberList)); // Convert array to JSON string
+        localStorage.setItem("memberList", JSON.stringify(memberList));
         localStorage.setItem("teamLoc", data.data.teamLoc);
         localStorage.setItem("teamName", data.data.teamName);
     }

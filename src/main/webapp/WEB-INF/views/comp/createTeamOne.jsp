@@ -99,6 +99,8 @@
     </div>
 </main>
 <script>
+
+
     $(document).ready(function () {
         // Assuming your existing code to generate game format options is here
         // ...
@@ -106,10 +108,14 @@
         // Function to update the selected game type number in localStorage
         function updateSelectedGameTypeNum(selectedFormat) {
             // Extract the first number from the format (e.g., "1 vs 1" becomes "1")
-            const num = selectedFormat.charAt(0);
+            const match = selectedFormat.match(/^\d+/);
 
-            // Save to localStorage
-            localStorage.setItem('selectedGameTypeNum', num);
+            if (match) {
+                const num = match[0]; // The first match contains the digits
+
+                // Save to localStorage
+                localStorage.setItem('selectedGameTypeNum', num);
+            }
         }
 
         // Attach click event listener to each game format option
@@ -122,19 +128,19 @@
             // Get the text of the clicked option
             const selectedFormat = $(this).text();
 
-            // Update the selected game type number in localStorage
+
             updateSelectedGameTypeNum(selectedFormat);
         });
 
-        // Load and set the selected game type number from localStorage on page load
+
         function setSelectedGameTypeNumFromLocalStorage() {
             const selectedNum = localStorage.getItem('selectedGameTypeNum');
             if (selectedNum) {
-                // Find the option that starts with the selected number and click it programmatically
+
                 $('.game-format-option').each(function () {
                     if ($(this).text().charAt(0) === selectedNum) {
                         $(this).click();
-                        return false; // break the loop
+                        return false;
                     }
                 });
             }
@@ -142,22 +148,22 @@
 
         setSelectedGameTypeNumFromLocalStorage();
 
-        // Your other JavaScript code...
+
     });
     $(document).ready(function () {
 
         function displaySavedMemberInfo() {
-            // Retrieve the individual pieces of data from localStorage
+
             let name = localStorage.getItem('name');
             let dept = localStorage.getItem('dept');
             let pos = localStorage.getItem('pos');
 
-            // Check if the information exists
+
             if (name && dept && pos) {
-                // Create the list item
+
                 let newListItem = $('<li></li>').text(name);
 
-                // Create the remove button as an img element
+
                 let removeBtn = $('<img>', {
                     src: '/resources/image/comp/member-cancel.png',
                     alt: 'Remove',
@@ -172,52 +178,47 @@
                     }
                 });
 
-                // Append the remove button to the list item
+
                 newListItem.append(removeBtn);
 
-                // Append the new list item to the teamMateList container
+
                 $('#teamMateList').append(newListItem);
             }
         }
 
-        // Call the function to display the saved member information
+
         displaySavedMemberInfo();
 
-        // Function to clear all localStorage items except for accessTokenInfo
+
         function clearLocalStorageExceptAccessTokenInfo() {
-            // Get all keys in localStorage
             const keys = Object.keys(localStorage);
+            const retainKeys = ['accessTokenInfo', 'initCreate', 'name', 'dept', 'pos'];
 
+            // If 'initCreate' is 'N', add 'opponentTeamNo' to the retainKeys list
             if (localStorage.getItem('initCreate') === 'N') {
-                keys.forEach(function (key) {
-                    // Check if the current key is not accessTokenInfo
-                    if (key !== 'accessTokenInfo' && key !== 'opponentTeamNo' && key !== 'initCreate' && key !== 'name' && key !== 'dept' && key !== 'pos') {
-                        // Remove the item from localStorage
-                        localStorage.removeItem(key);
-                    }
-
-                });
-                return;
+                retainKeys.push('opponentTeamNo');
+                retainKeys.push('opponentMatchType');
+                retainKeys.push('opponentTeamCapacity');
             }
 
-            // N 일 경우
             keys.forEach(function (key) {
-                // Check if the current key is not accessTokenInfo
-                if (key !== 'accessTokenInfo' && key !== 'initCreate' && key !== 'name' && key !== 'dept' && key !== 'pos') {
+                // Check if the current key is not in the list of keys to retain
+                if (!retainKeys.includes(key)) {
                     // Remove the item from localStorage
                     localStorage.removeItem(key);
                 }
-
             });
         }
+
 
         // Call the function when the page loads
         clearLocalStorageExceptAccessTokenInfo();
 
-        // Your existing code...
+
     });
 
     document.addEventListener('DOMContentLoaded', function () {
+
 
         let gameType = '';
 
@@ -355,9 +356,9 @@
                 // Initialize an array to hold the selected members
                 var selectedMembers = localStorage.getItem('selectedMembers') ? JSON.parse(localStorage.getItem('selectedMembers')) : [];
 
-                // Add the new member to the array
+
                 selectedMembers.push(member);
-                // Save the updated array back to localStorage
+
                 localStorage.setItem('selectedMembers', JSON.stringify(selectedMembers));
 
                 // Update the UI
@@ -366,26 +367,26 @@
 
             function updateTeamMateListUI() {
                 const teamMateList = document.getElementById('teamMateList');
-                teamMateList.innerHTML = ''; // Clear the list
+                teamMateList.innerHTML = '';
 
-                // Fetch selected members from localStorage
+
                 var selectedMembers = localStorage.getItem('selectedMembers') ? JSON.parse(localStorage.getItem('selectedMembers')) : [];
 
-                // Iterate over each member and create list items
+
                 selectedMembers.forEach((member, index) => {
                     const li = document.createElement('li');
 
-                    // Construct member details text
+
                     li.textContent = member.memberName + ' ' + member.memberDept + ' ' + member.memberPosition;
 
-                    // Create an image element for the remove button
+
                     const removeImg = document.createElement('img');
                     removeImg.src = '/resources/image/comp/member-cancel.png';
                     removeImg.alt = 'Remove';
                     removeImg.style.cursor = 'pointer';
                     removeImg.style.marginLeft = '30px';
 
-                    // Set the width and height of the image if necessary
+
                     removeImg.style.width = '50px';
                     removeImg.style.height = '50px';
 
@@ -394,55 +395,54 @@
                         removeTeamMember(index);
                     };
 
-                    // Append the image to the list item
+
                     li.appendChild(removeImg);
-                    // Append the list item to the list
+
                     teamMateList.appendChild(li);
                 });
             }
 
             function removeTeamMember(index) {
-                // Retrieve the current list of selected members from localStorage
+
                 var selectedMembers = JSON.parse(localStorage.getItem('selectedMembers'));
-                // Remove the member at the specified index
+
                 selectedMembers.splice(index, 1);
-                // Update localStorage with the new list of members
+
                 localStorage.setItem('selectedMembers', JSON.stringify(selectedMembers));
-                // Refresh the displayed list of members
+
                 updateTeamMateListUI();
             }
 
             $(document).ready(function () {
-                // Update the displayed list of team members when the page loads
+
                 updateTeamMateListUI();
             });
 
 
-            // Show the dropdown when the input field is focused
             memberSearchInput.focus(function () {
                 if (searchResultsDropdown.children().length > 0) {
                     searchResultsDropdown.show();
                 }
             });
 
-            // Hide the dropdown when clicking elsewhere, including a delay for blur
+
             $(document).click(function () {
                 searchResultsDropdown.hide();
             });
             memberSearchInput.click(function (event) {
-                event.stopPropagation(); // Prevent the document click event from hiding the dropdown immediately
+                event.stopPropagation();
             });
             searchResultsDropdown.click(function (event) {
-                event.stopPropagation(); // Prevent click inside the dropdown from propagating
+                event.stopPropagation();
             });
 
-            // Trigger search when typing
+
             memberSearchInput.on('input', function () {
                 var memberName = $(this).val();
-                if (memberName.length > 1) { // Prevent searching for too short strings
+                if (memberName.length > 1) {
                     searchMemberByName(memberName);
                 } else {
-                    searchResultsDropdown.empty().hide(); // Clear and hide the dropdown if input is cleared or too short
+                    searchResultsDropdown.empty().hide();
                 }
             });
         });
@@ -461,14 +461,14 @@
                 reader.onload = function (e) {
                     try {
                         let imgDataUrl = e.target.result;
-                        plusButton.style.display = 'none'; // Hide the plus button
+                        plusButton.style.display = 'none';
                         console.log(e.target)
                         let img = document.createElement("img");
                         img.setAttribute("src", imgDataUrl);
                         img.style.width = "500px";
                         img.style.height = "500px";
                         img.style.border = "none";
-                        img.style.objectFit="cover";
+                        img.style.objectFit = "cover";
                         img.style.borderRadius = "40%";
 
                         imageUploadContainer.appendChild(img);
@@ -489,22 +489,23 @@
         });
 
 
-        // Optional: Handle file selection
         fileInput.addEventListener('change', function () {
             var files = fileInput.files;
 
             console.log(files);
         });
+
+
     });
     // 장소 저장
 
     $(document).ready(function () {
-        // Event listener for the "Next" button click
+
         $('#goNextButton').click(function () {
-            // Retrieve the value from the location search input
+
             var locationInputValue = $('#locationSearchInput').val();
 
-            // Save the value to localStorage
+
             localStorage.setItem('teamLoc', locationInputValue);
 
         });
@@ -521,6 +522,43 @@
     document.addEventListener('DOMContentLoaded', function () {
         const goNextButton = document.getElementById('goNextButton');
         goNextButton.addEventListener('click', function () {
+            // 기존의 검증 로직 유지
+            var teamName = localStorage.getItem('teamName');
+            var selectedGameType = localStorage.getItem('gameType');
+            var multipartFile = localStorage.getItem('multipartFile');
+            var selectedMembers = JSON.parse(localStorage.getItem('selectedMembers')) || [];
+            var selectedGameTypeNum = localStorage.getItem('selectedGameTypeNum');
+
+            // 필수 요소 확인
+            if (!selectedGameType) {
+                alert('게임 종목을 선택해주세요');
+                return;
+            }
+            if (!teamName) {
+                alert('팀 이름을 입력해주세요');
+                return;
+            }
+
+            if (!multipartFile) {
+                alert('팀 사진을 넣어주세요');
+                return;
+            }
+            if (!selectedGameTypeNum) {
+                alert('참여 인원을 선택해주세요')
+                return;
+            }
+            if (selectedMembers.at(0).memberName != localStorage.getItem("name")) {
+                alert('팀장은 본인을 선택해야합니다');
+                return;
+            }
+            // 선택된 멤버 수와 게임 유형 수 확인
+            if (selectedMembers.length != selectedGameTypeNum) {
+                alert('팀원 수를 ' + selectedGameTypeNum + '명 선택해주세요');
+                return;
+            }
+
+
+            // 모든 조건이 충족됐다면 페이지 이동 또는 다음 단계 진행
             window.location.href = '/competition/create/2';
         });
     });
