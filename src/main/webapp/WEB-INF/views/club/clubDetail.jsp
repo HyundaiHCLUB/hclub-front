@@ -276,7 +276,7 @@
 
                     html += '<a href="#"><div class="grid-item" style="margin-left: 16px;">';
                     html += '<img class="circle_recommend" style="margin-left: 50px;" src="' + history.imageUrl + '" alt="Image">';
-                    html += '<div class="circle_content"><p class="circle_name">' + history.title + '</p></div>';
+                    html += '<div class="circle_content"><p class="circle_name" style="margin-left: 50px;">' + history.title + '</p></div>';
                     html += '</div></a>';
 
                     counter++;
@@ -339,9 +339,9 @@
                                 <path d="M28 22L28 34" stroke="#B31312" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
                                 <path d="M34 28L22 28" stroke="#B31312" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
                             </svg>
-                            <p style="font-size:36px;font-weight: 500;margin-left:20px">동아리 공지사항</p>
+                            <p style="font-size:44px;font-weight: 500;margin-left:20px">동아리 공지사항</p>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true" style="font-size:70px;">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body" style="padding: 0">
@@ -464,6 +464,11 @@
         <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" style="max-width: none" role="document">
                 <div class="modal-content" style="width: 900px;height: 1000px; margin-left: 44px">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="font-size:70px;">&times;</span>
+                        </button>
+                    </div>
                     <div class="modal-body" style="padding: 0">
                         <div class="input-group" style="margin-bottom: 10px;margin-left: 44px;">
                             <div id="noticeTitles" style="font-size: 60px; width: 90%;height: 50px;font-weight:500;margin-top: 40px;"></div>
