@@ -284,9 +284,8 @@
             text-align: center;
         }
         .dropdown {
-            position: relative;
             display: inline-block;
-            margin-left: 770px;
+            margin-left: 750px;
             margin-top: 50px;
             margin-bottom: 20px;
         }
@@ -294,7 +293,7 @@
         .dropbtn {
             color: #000000;
             padding: 10px;
-            font-size: 30px;
+            font-size: 32px;
             border: none;
             cursor: pointer;
             background-color:transparent;
@@ -319,7 +318,7 @@
             color: black;
             padding: 12px 16px;
             display: block;
-            font-size: 24px;
+            font-size: 35px;
             text-align: left;
             text-decoration: none;
         }
