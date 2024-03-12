@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 @Slf4j
@@ -21,18 +19,10 @@ import java.util.Locale;
 public class MainController {
     @GetMapping()
     public ModelAndView home(Locale locale, Model model) {
-        log.info("Welcome home! The client locale is {}.", locale);
         ModelAndView mav = new ModelAndView();
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-        String formattedDate = dateFormat.format(date);
         mav.setViewName("home/home");
-        model.addAttribute("serverTime", formattedDate);
-
         return mav;
     }
-
 
 
     /* 메인페이지 - 오늘의 TOP10 랭킹 페이지로 이동 */
@@ -67,28 +57,39 @@ public class MainController {
 
     /* 마이페이지 - 내 동아리 */
     @GetMapping("/mypage/myClubs")
-    public ModelAndView goMyClubsView() {return new ModelAndView("mypage/myClubs");}
+    public ModelAndView goMyClubsView() {
+        return new ModelAndView("mypage/myClubs");
+    }
 
     /* 마이페이지 - 받은 선물함 */
     @GetMapping("mypage/myGifts")
-    public ModelAndView goMyGiftsView() {return new ModelAndView("mypage/myPageGifts");}
+    public ModelAndView goMyGiftsView() {
+        return new ModelAndView("mypage/myPageGifts");
+    }
 
     /* 마이페이지 - 즐겨찾기 */
     @GetMapping("mypage/myFavorites")
-    public ModelAndView goMyFavoritesView() {return new ModelAndView("mypage/myFavorites");}
+    public ModelAndView goMyFavoritesView() {
+        return new ModelAndView("mypage/myFavorites");
+    }
 
     /* 마이페이지 - 진행중인 매치 */
     @GetMapping("mypage/myProceedingMatch")
-    public ModelAndView goMyProceedingMatchView () {return new ModelAndView("mypage/myProceedingMatch");}
+    public ModelAndView goMyProceedingMatchView() {
+        return new ModelAndView("mypage/myProceedingMatch");
+    }
 
     /* 마이페이지 -> 매치 히스토리 -> 상세정보 */
     @GetMapping("mypage/myMatchHistory/detail/{matchHistoryNo}")
-    public ModelAndView goMyMatchHistoryDetailView(@PathVariable("matchHistoryNo")Long matchHistoryNo) {
+    public ModelAndView goMyMatchHistoryDetailView(@PathVariable("matchHistoryNo") Long matchHistoryNo) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("matchHistoryNo", matchHistoryNo);
         mav.setViewName("mypage/myMatchHistoryDetail");
         return mav;
-    };
+    }
+
+    ;
+
     /***** end mypage *****/
     /* 로그인 페이지 이동*/
     @GetMapping("login/loginView")
@@ -125,32 +126,36 @@ public class MainController {
 
         return mav;
     }
+
     @GetMapping("dashboard/clubAdminPage")
-	 public ModelAndView clubAdminPage() {
-		   ModelAndView mv  = new ModelAndView();
-		   mv.setViewName("admin/adminView/clubAdminPage");
-		   
-		  return mv;
-	 }
-	 @GetMapping("dashboard/rankAdminPage")
-	 public ModelAndView rankAdminPage() {
-		   ModelAndView mv  = new ModelAndView();
-		   mv.setViewName("admin/adminView/rankAdminPage");
-		   
-		  return mv;
-	 }
-	 @GetMapping("dashboard/adminLoginPage")
-	 public ModelAndView loginPage() {
-		   ModelAndView mv  = new ModelAndView();
-		   mv.setViewName("admin/adminView/adminLoginPage");
-		   
-		  return mv;
-	 }
-	 @GetMapping("dashboard/confirmModal")
-	 public ModelAndView modal() {
-		   ModelAndView mv  = new ModelAndView();
-		   mv.setViewName("common/confirmModal");
-		   
-		  return mv;
-	 }
+    public ModelAndView clubAdminPage() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("admin/adminView/clubAdminPage");
+
+        return mv;
+    }
+
+    @GetMapping("dashboard/rankAdminPage")
+    public ModelAndView rankAdminPage() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("admin/adminView/rankAdminPage");
+
+        return mv;
+    }
+
+    @GetMapping("dashboard/adminLoginPage")
+    public ModelAndView loginPage() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("admin/adminView/adminLoginPage");
+
+        return mv;
+    }
+
+    @GetMapping("dashboard/confirmModal")
+    public ModelAndView modal() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("common/confirmModal");
+
+        return mv;
+    }
 }
