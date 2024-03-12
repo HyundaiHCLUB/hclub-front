@@ -1,11 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html>
 <head>
-    <link rel="stylesheet" href="/resources/css/club.css">
+    <link rel="stylesheet" href="/resources/css/club/club.css">
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/reset.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!--CDN 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -20,9 +21,11 @@
         });
 
         var currentCategoryId;
+
         function setCategoryId(categoryId) {
             currentCategoryId = categoryId;
         }
+
         function getCurrentSelectedCategoryId() {
             return currentCategoryId;
         }
@@ -32,45 +35,45 @@
             getClubList(categoryId);
         });
 
-            function getClubList(categoryId) {
-                $.ajax({
-                    url: "https://www.h-club.site/clubs/"+categoryId,
-                    method: "GET",
-                    success: function (response) {
-                        if (response.success) {
-                            var data = response.data;
-                            $(".clubs").empty();
-                            var clubList = document.getElementById("clubs");
+        function getClubList(categoryId) {
+            $.ajax({
+                url: "https://www.h-club.site/clubs/" + categoryId,
+                method: "GET",
+                success: function (response) {
+                    if (response.success) {
+                        var data = response.data;
+                        $(".clubs").empty();
+                        var clubList = document.getElementById("clubs");
 
-                            for (var i = 0; i < data.length; i += 2) {
-                                var group = data.slice(i, i + 2);
+                        for (var i = 0; i < data.length; i += 2) {
+                            var group = data.slice(i, i + 2);
 
-                                var clubHTML = '<div class="grid-container">';
-                                group.forEach(function (item) {
-                                    clubHTML += '<div class="grid-item"><div class="club-image-container">' +
-                                        '<img class="circle_recommend" src="' + item.clubImage + '">' +
-                                        '<span class="like-icon" data-club-id="' + item.clubNo + '"><i class="far fa-heart" style="color: #ffffff;"></i></span></div>' +
-                                        '<div class="circle_content">' +
-                                        '<a href="/club/detail/' + item.clubNo + '">' +
-                                        '<p class="circle_name">' + item.clubName + '</p>' +
-                                        '<a href="#" class="category_button">'+getCategoryName(item.categoryId)+'</a></a>' +
+                            var clubHTML = '<div class="grid-container">';
+                            group.forEach(function (item) {
+                                clubHTML += '<div class="grid-item"><div class="club-image-container">' +
+                                    '<img class="circle_recommend" src="' + item.clubImage + '">' +
+                                    '<span class="like-icon" data-club-id="' + item.clubNo + '"><i class="far fa-heart" style="color: #ffffff;"></i></span></div>' +
+                                    '<div class="circle_content">' +
+                                    '<a href="/club/detail/' + item.clubNo + '">' +
+                                    '<p class="circle_name">' + item.clubName + '</p>' +
+                                    '<a href="#" class="category_button">' + getCategoryName(item.categoryId) + '</a></a>' +
                                     '</div></div>';
-                                });
-                                clubHTML += '</div>';
-                                $(".clubs").append(clubHTML);
-                            }
-                            updateLikedClubs();
-                        } else {
-                            console.error("Error:", response.message);
+                            });
+                            clubHTML += '</div>';
+                            $(".clubs").append(clubHTML);
                         }
-                    },
-                    error: function (xhr, status, error) {
-                        console.error("Error fetching data:", error);
+                        updateLikedClubs();
+                    } else {
+                        console.error("Error:", response.message);
                     }
-                });
-            }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching data:", error);
+                }
+            });
+        }
 
-        function updateLikedClubs(){
+        function updateLikedClubs() {
             accessToken = localStorage.getItem("accessTokenInfo");
 
             $.ajax({
@@ -101,7 +104,7 @@
             });
         }
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             updateLikedClubs();
         });
 
@@ -124,7 +127,7 @@
 
             $.ajax({
                 //url: "http://localhost:8081/clubs/"+clubNo+"/like",
-                url: "https://www.h-club.site/clubs/"+clubNo+"/like",
+                url: "https://www.h-club.site/clubs/" + clubNo + "/like",
                 method: "POST",
                 headers: {
                     'accessTokenInfo': accessToken,
@@ -143,7 +146,7 @@
 
             $.ajax({
                 //url: "http://localhost:8081/clubs/"+clubNo+"/like",
-                url: "https://www.h-club.site/clubs/"+clubNo+"/like",
+                url: "https://www.h-club.site/clubs/" + clubNo + "/like",
                 method: "DELETE",
                 headers: {
                     'accessTokenInfo': accessToken,
@@ -162,7 +165,7 @@
             var isLiked = $(this).hasClass('liked') ? 'Y' : 'N';
 
             toggleLikeButton(clubNo, isLiked);
-            if(isLiked === 'Y'){
+            if (isLiked === 'Y') {
                 removeLike(clubNo)
             } else {
                 addLike(clubNo)
@@ -189,7 +192,7 @@
                                     '<span class="like-icon" data-club-id="' + item.clubNo + '"><i class="far fa-heart" style="color: #ffffff;"></i></span></div>' +
                                     '<div class="circle_content">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
-                                    '<a href="#" class="category_button">'+item.categoryName+'</a>' +
+                                    '<a href="#" class="category_button">' + item.categoryName + '</a>' +
                                     '</div></div>';
                             });
                             clubHTML += '</div>';
@@ -227,7 +230,7 @@
                                     '<span class="like-icon" data-club-id="' + item.clubNo + '"><i class="far fa-heart" style="color: #ffffff;"></i></span></div>' +
                                     '<div class="circle_content">' +
                                     '<p class="circle_name">' + item.clubName + '</p>' +
-                                    '<a href="#" class="category_button">'+item.categoryName+'</a>' +
+                                    '<a href="#" class="category_button">' + item.categoryName + '</a>' +
                                     '</div></div>';
                             });
                             clubHTML += '</div>';
@@ -283,6 +286,7 @@
             justify-content: space-around;
             text-align: center;
         }
+
         .dropdown {
             display: inline-block;
             margin-left: 750px;
@@ -296,7 +300,7 @@
             font-size: 32px;
             border: none;
             cursor: pointer;
-            background-color:transparent;
+            background-color: transparent;
         }
 
         .arrow-icon {
@@ -310,7 +314,7 @@
             position: absolute;
             background-color: #f9f9f9;
             min-width: 160px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
@@ -329,113 +333,111 @@
     </style>
 </head>
 <body>
-    <main class="main-container">
+<main class="main-container">
+    <div class="category">
+        <img id="total" src="/resources/image/category_total.png">
+        <div class="category-item" onclick="getClubList(1), setCategoryId(1)">
+            <img src="/resources/image/category_cooking.png">
+        </div>
+        <div class="category-item" onclick="getClubList(3), setCategoryId(3)">
+            <img src="/resources/image/category_activity.png">
+        </div>
+        <div class="category-item" onclick="getClubList(7), setCategoryId(7)">
+            <img src="/resources/image/category_travel.png">
+        </div>
+        <div class="category-item" onclick="getClubList(8), setCategoryId(8)">
+            <img src="/resources/image/category_self.png">
+        </div>
+    </div>
+    <ul id="hiddenList" class="totalList" style="display: none;">
         <div class="category">
-            <img id="total" src="/resources/image/category_total.png">
-            <div class="category-item" onclick="getClubList(1), setCategoryId(1)">
-                <img src="/resources/image/category_cooking.png">
+            <div class="category-item" onclick="getClubList(6), setCategoryId(6)">
+                <img src="/resources/image/category_foreign.png">
             </div>
-            <div class="category-item" onclick="getClubList(3), setCategoryId(3)">
-                <img src="/resources/image/category_activity.png">
+            <div class="category-item" onclick="getClubList(4), setCategoryId(4)">
+                <img src="/resources/image/category_game.png">
             </div>
-            <div class="category-item" onclick="getClubList(7), setCategoryId(7)">
-                <img src="/resources/image/category_travel.png">
+            <div class="category-item" onclick="getClubList(5), setCategoryId(5)">
+                <img src="/resources/image/category_culture.png">
             </div>
-            <div class="category-item" onclick="getClubList(8), setCategoryId(8)">
-                <img src="/resources/image/category_self.png">
-            </div>
-        </div>
-        <ul id="hiddenList" class="totalList" style="display: none;">
-                <div class="category">
-                    <div class="category-item" onclick="getClubList(6), setCategoryId(6)">
-                        <img src="/resources/image/category_foreign.png">
-                    </div>
-                    <div class="category-item" onclick="getClubList(4), setCategoryId(4)">
-                        <img src="/resources/image/category_game.png">
-                    </div>
-                    <div class="category-item" onclick="getClubList(5), setCategoryId(5)">
-                        <img src="/resources/image/category_culture.png">
-                    </div>
-                    <div class="category-item" onclick="getClubList(2), setCategoryId(2)">
-                        <img src="/resources/image/category_money.png">
-                    </div>
-                </div>
-            </ul>
-
-        <div class="dropdown">
-            <button class="dropbtn" id="filterButton">
-                기본순
-                <i class="arrow-icon fas fa-chevron-up"></i>
-            </button>
-
-            <div class="dropdown-content" id="filterOptions">
-                <a href="#" onclick="changeFilter('기본순')">기본순</a>
-                <a href="#" onclick="changeFilter('좋아요순')">좋아요순</a>
-                <a href="#" onclick="changeFilter('새로 열린순')">새로 열린순</a>
+            <div class="category-item" onclick="getClubList(2), setCategoryId(2)">
+                <img src="/resources/image/category_money.png">
             </div>
         </div>
+    </ul>
 
-        <script>
-            var currentFilter = '기본순';
+    <div class="dropdown">
+        <button class="dropbtn" id="filterButton">
+            기본순
+            <i class="arrow-icon fas fa-chevron-up"></i>
+        </button>
 
-            function changeFilter(filter) {
-                currentFilter = filter;
-                document.getElementById('filterButton').innerText = filter + ' ';
-                document.getElementById('filterButton').innerHTML +=
-                    '<i class="arrow-icon fas fa-chevron-up"></i>';
-                console.log(filter);
-                var categoryId = getCurrentSelectedCategoryId();
-                if(filter === '기본순'){
-                    getClubList(categoryId)
-                }
-                else if(filter === '좋아요순'){
-                    getClubLikeList(getCategoryName(categoryId));
-                }
-                else if(filter === '새로 열린순'){
-                    getClubRecentList(getCategoryName(categoryId));
-                }
+        <div class="dropdown-content" id="filterOptions">
+            <a href="#" onclick="changeFilter('기본순')">기본순</a>
+            <a href="#" onclick="changeFilter('좋아요순')">좋아요순</a>
+            <a href="#" onclick="changeFilter('새로 열린순')">새로 열린순</a>
+        </div>
+    </div>
+
+    <script>
+        var currentFilter = '기본순';
+
+        function changeFilter(filter) {
+            currentFilter = filter;
+            document.getElementById('filterButton').innerText = filter + ' ';
+            document.getElementById('filterButton').innerHTML +=
+                '<i class="arrow-icon fas fa-chevron-up"></i>';
+            console.log(filter);
+            var categoryId = getCurrentSelectedCategoryId();
+            if (filter === '기본순') {
+                getClubList(categoryId)
+            } else if (filter === '좋아요순') {
+                getClubLikeList(getCategoryName(categoryId));
+            } else if (filter === '새로 열린순') {
+                getClubRecentList(getCategoryName(categoryId));
             }
+        }
 
-            document.getElementById('filterButton').addEventListener('click', function() {
-                var dropdownContent = document.getElementById('filterOptions');
-                var arrowIcon = document.querySelector('.arrow-icon');
-                var dropdown = document.querySelector('.dropdown');
+        document.getElementById('filterButton').addEventListener('click', function () {
+            var dropdownContent = document.getElementById('filterOptions');
+            var arrowIcon = document.querySelector('.arrow-icon');
+            var dropdown = document.querySelector('.dropdown');
 
-                if (dropdownContent.style.display === 'block') {
-                    dropdownContent.style.display = 'none';
-                    dropdown.classList.remove('open');
-                } else {
-                    dropdownContent.style.display = 'block';
-                    dropdown.classList.add('open');
-                }
-            });
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.display = 'none';
+                dropdown.classList.remove('open');
+            } else {
+                dropdownContent.style.display = 'block';
+                dropdown.classList.add('open');
+            }
+        });
 
-            document.addEventListener('click', function(event) {
-                if (!event.target.matches('.dropbtn')) {
-                    var dropdowns = document.getElementsByClassName('dropdown-content');
-                    for (var i = 0; i < dropdowns.length; i++) {
-                        var openDropdown = dropdowns[i];
-                        if (openDropdown.style.display === 'block') {
-                            openDropdown.style.display = 'none';
-                            document.querySelector('.dropdown').classList.remove('open');
-                        }
+        document.addEventListener('click', function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName('dropdown-content');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === 'block') {
+                        openDropdown.style.display = 'none';
+                        document.querySelector('.dropdown').classList.remove('open');
                     }
                 }
-            });
-        </script>
+            }
+        });
+    </script>
 
-        <div class="clubs" id="clubs">
-        </div>
+    <div class="clubs" id="clubs">
+    </div>
 
-        <div class="plus-club">
-            <a href="/club/add">
-                <svg width="160" height="160" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
-                    <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-                    <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-                </svg>
-            </a>
-        </div>
-    </main>
+    <div class="plus-club">
+        <a href="/club/add">
+            <svg width="160" height="160" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="21" cy="21" r="20.25" fill="#46675C"/>
+                <path d="M21 12L21 30" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M30 21L12 21" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+        </a>
+    </div>
+</main>
 </body>
 </html>
