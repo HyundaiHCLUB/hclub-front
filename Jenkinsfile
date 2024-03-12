@@ -52,21 +52,5 @@ pipeline {
            
         }
     }
-     post {
-                success {
-                    discordSend description: "H-CLUB Front Build",
-                                footer: "H-CLUB 프론트엔드 빌드 완료",
-                                link: env.BUILD_URL, result: currentBuild.currentResult,
-                                title: "H-CLUB 프론트엔드 빌드 Success",
-                                webhookURL: env.WEBHOOK_URL
-                }
-                failure {
-                    discordSend description: "H-CLUB Front Build",
-                                footer: "H-CLUB 프론트엔드 빌드 실패",
-                                link: env.BUILD_URL, result: currentBuild.currentResult,
-                                title: "H-CLUB Front 빌드 Fail",
-                                webhookURL: env.WEBHOOK_URL
-                }
-            }
    
 }
