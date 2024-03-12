@@ -1,7 +1,14 @@
+# @author 김동욱
+# @description: H-CLUB Front Dockerfile
+ # ===========================
+ # 	   AUTHOR      NOTE
+ # ---------------------------
+ #    김동욱         최초생성
+ # ===========================
 
 FROM maven:3.6-jdk-11 as build
 
-# Copy the project files into the container
+
 COPY src /home/app/src
 COPY pom.xml /home/app
 
@@ -20,11 +27,6 @@ ENV TZ=Asia/Seoul
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Create directory structure to mimic Tomcat's layout
-# RUN mkdir -p /usr/local/tomcat/conf/
-
-# Copy your modified web.xml file into Tomcat's configuration directory
-# COPY web.xml /usr/local/tomcat/conf/web.xml
 
 COPY --from=build /home/app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 

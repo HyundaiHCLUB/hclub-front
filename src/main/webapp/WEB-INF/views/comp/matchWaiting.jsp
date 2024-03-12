@@ -1,9 +1,8 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="stylesheet" href="/resources/css/compCreateTeam.css">
+    <link rel="stylesheet" href="/resources/css/comp/compCreateTeam.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -19,6 +18,7 @@
         padding: 0;
 
     }
+
     main {
         display: flex;
         justify-content: center;
@@ -28,17 +28,23 @@
     }
 
     @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
     }
 
     .rotating-image {
         animation: spin 2s linear infinite;
     }
+
     .content {
         width: 60%;
         text-align: center;
     }
+
     profile-circle {
         width: 500px;
         height: 500px;
@@ -50,6 +56,7 @@
         background-color: transparent;
 
     }
+
     .profile-circle img {
         width: 100%;
         height: auto;
@@ -58,6 +65,7 @@
     .notice {
         margin-top: 150px;
     }
+
     .notice p {
         font-size: 2.6em;
     }
@@ -81,9 +89,9 @@
             <p>매칭이 완료되면 알려드릴게요!</p>
         </div>
 
-<%--        <div>--%>
-<%--            <button>경쟁 홈으로</button>--%>
-<%--        </div>--%>
+        <%--        <div>--%>
+        <%--            <button>경쟁 홈으로</button>--%>
+        <%--        </div>--%>
     </div>
 
 </main>
@@ -157,7 +165,7 @@
                 }),
                 success: function (response) {
                     console.log("AJAX 요청 성공", response.data);
-                    window.location.href = '/competition/success/'+response.data;
+                    window.location.href = '/competition/success/' + response.data;
                 },
                 error: function (error) {
                     console.error("AJAX 요청 실패", error);

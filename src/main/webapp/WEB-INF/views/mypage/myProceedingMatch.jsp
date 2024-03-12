@@ -5,7 +5,7 @@
     <title>H-Club</title>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/mypage.css">
-    <link rel="stylesheet" href="/resources/css/compMain.css">
+    <link rel="stylesheet" href="/resources/css/comp/compMain.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/5ba1c6c3a8.js" crossorigin="anonymous"></script> <!-- font awesome icons-->
@@ -13,23 +13,27 @@
         .rounded-shape {
             border-radius: 15px;
         }
+
         .middle-section p {
             font-size: 1.5em;
         }
+
         .mypage-header i {
-            color: #529863; /* Sets the color of the line */
-        ;
+            color: #529863; /* Sets the color of the line */;
         }
+
         .rounded-shape {
             height: 300px;
             border: 1px solid #0061f7;
             background: linear-gradient(to right, rgb(80, 122, 77) 25%, rgb(226, 243, 227) 15%, rgb(226, 243, 227) 100%);
         }
+
         .right-section {
             height: 100%;
             border-left: 1px solid #0061f7;
             padding-left: 20px;
         }
+
         .middle-section {
             padding-top: 20px;
             padding-bottom: 20px;
@@ -56,14 +60,14 @@
 </body>
 <script>
     /* 로그인 되어있지 않은 사용자 -> 홈으로 리다이렉트 */
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         let accessToken = localStorage.getItem("accessTokenInfo");
         if (!accessToken) {
             alert("로그인이 필요한 페이지입니다.");
             window.location.href = "/"; // 로그인 페이지 URL로 변경하세요.
         }
     });
-    $(document).ready(function() {
+    $(document).ready(function () {
         // 로컬 스토리지에서 JWT 가져오기
         let accessToken = localStorage.getItem("accessTokenInfo");
 
@@ -94,16 +98,17 @@
                     'Authorization': 'Bearer ' + accessToken,
                 },
                 success: function (response) {
-                    console.log('히스토리 가져오기 성공 -> ' , response);
+                    console.log('히스토리 가져오기 성공 -> ', response);
                     resolve(response); // 성공 시 response 객체를 resolve 합니다.
                 },
-                error: function (xhr, status, error){
+                error: function (xhr, status, error) {
                     console.error('히스토리 가져오기 실패:', error);
                     reject(error); // 실패 시 error 객체를 reject 합니다.
                 }
             });
         });
     }
+
     function displayMatches(matches) {
         const matchesContainer = $('.matches');
         matchesContainer.empty(); // 기존 매치 내용을 지웁니다.
@@ -111,23 +116,22 @@
         matches.forEach(match => {
             // 각 매치 정보로 HTML 요소 생성
             console.log("matchType -> ", match.matchType);
-            var matchElement = $('<div/>', { class: 'rounded-shape' }).append(
-                $('<div/>', { class: 'left-section' }).append(
-                    $('<img/>', { src: match.gameType}),
+            var matchElement = $('<div/>', {class: 'rounded-shape'}).append(
+                $('<div/>', {class: 'left-section'}).append(
+                    $('<img/>', {src: match.gameType}),
                     $('<p/>').text(match.matchCapacity)
                 ),
-                $('<div/>', { class: 'middle-section' }).append(
-                    $('<p/>', { style: 'color: blue;' }).text(match.myTeamName),
+                $('<div/>', {class: 'middle-section'}).append(
+                    $('<p/>', {style: 'color: blue;'}).text(match.myTeamName),
                     // $('<p/>', { style: 'color:' + scoreColor }).text(match.winTeamScoreAmount + ' vs ' + match.loseTeamScoreAmount)
-                    $('<p/>').text( ' vs ' ),
+                    $('<p/>').text(' vs '),
                     $('<p/>').text(match.opponentTeamName),
-
                 ),
-                $('<div/>', { class: 'right-section' }).append(
+                $('<div/>', {class: 'right-section'}).append(
                     $('<p/>').text(match.matchLoc),
                     $('<p/>').text(match.matchDate)
                 )
-            ).click(function() {
+            ).click(function () {
                 goMatchDetail(match.matchNo);
             });
 
@@ -160,7 +164,7 @@
     }
 
     // 각 매치별로 경기 상세정보 페이지로 이동 -> 경기번호 matchHistoryNo 로 받는다 가정 -> 각 매치별로 onclick 달아줘야됨(아직안함)
-    function goMatchDetail(matchNo){
+    function goMatchDetail(matchNo) {
         window.location.href = '/competition/matchDetail/' + matchNo;
     }
 </script>

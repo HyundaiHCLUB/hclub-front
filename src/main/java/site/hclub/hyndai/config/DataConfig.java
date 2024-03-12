@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -38,31 +36,7 @@ public class DataConfig {
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);
-
-        // Register type aliases
-        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
-        configuration.getTypeAliasRegistry().registerAlias("club", site.hclub.hyndai.domain.club.Club.class);
-        configuration.getTypeAliasRegistry().registerAlias("memberClub", site.hclub.hyndai.domain.club.MemberClub.class);
-        configuration.getTypeAliasRegistry().registerAlias("clubNotice", site.hclub.hyndai.domain.club.ClubNotice.class);
-        configuration.getTypeAliasRegistry().registerAlias("clubHistory", site.hclub.hyndai.domain.club.ClubHistory.class);
-        configuration.getTypeAliasRegistry().registerAlias("clubLike", site.hclub.hyndai.domain.club.ClubLike.class);
-
-
-        configuration.getTypeAliasRegistry().registerAlias("clubCreateRequest", site.hclub.hyndai.dto.request.ClubCreateRequest.class);
-        configuration.getTypeAliasRegistry().registerAlias("memberClubCreateRequest", site.hclub.hyndai.dto.request.MemberClubCreateRequest.class);
-        configuration.getTypeAliasRegistry().registerAlias("clubUpdateRequest", site.hclub.hyndai.dto.request.ClubUpdateRequest.class);
-        configuration.getTypeAliasRegistry().registerAlias("noticeCreateRequest", site.hclub.hyndai.dto.request.NoticeCreateRequest.class);
-        configuration.getTypeAliasRegistry().registerAlias("likeRequest", site.hclub.hyndai.dto.request.LikeRequest.class);
-
-        configuration.getTypeAliasRegistry().registerAlias("clubHistoryGetResponse", site.hclub.hyndai.dto.response.ClubHistoryGetResponse.class);
-        configuration.getTypeAliasRegistry().registerAlias("clubLikeResponse", site.hclub.hyndai.dto.response.ClubLikeResponse.class);
-
-
-        sessionFactoryBean.setConfiguration(configuration);
-
-//        Resource[] resources = new PathMatchingResourcePatternResolver()
-//                .getResources("classpath:mapper/*.xml");
-//        sessionFactoryBean.setMapperLocations(resources);
+        
         return sessionFactoryBean.getObject();
     }
 
