@@ -330,9 +330,9 @@
                 matchHistNo: matchHistoryNo,
                 matchLoc : matchLoc,
                 teamANo : team1No,
-                scoreA : scoreValueTeam1,
+                scoreA : scoreTeam1,
                 teamBNo : team2No,
-                scoreB : scoreValueTeam2,
+                scoreB : scoreTeam2,
                 matchDate: formattedMatchDate
             };
             console.log('dataToSend : ', dataToSend);
