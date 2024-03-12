@@ -168,6 +168,8 @@
 
         function showFailureMessage(message) {
             console.log("매치 실패!", message);
+            window.location.href = '/competition/fail';
+
         }
 
         connect();

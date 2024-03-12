@@ -171,4 +171,9 @@ public class CompController {
         return new ModelAndView("comp/payCancel");
     }
 
+    @GetMapping("/fail")
+    public ModelAndView matchFail() {
+
+        return new ModelAndView("comp/matchFail");
+    }
 }
