@@ -1,0 +1,221 @@
+/* 작성자 : 김동욱 */
+/* 팀생성 - 2 */
+
+.team-caption-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.team-caption-image {
+
+  img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 40%;
+  }
+
+
+}
+
+.team-captain-name {
+  display: flex;
+  justify-content: center; /* 기본적으로 중앙 정렬을 유지합니다 */
+  width: 100%; /* 부모 컨테이너의 전체 너비를 차지하도록 설정 */
+  position: relative; /* 포지셔닝 컨텍스트 설정 */
+  font-size: 60px;
+  margin-top: 50px;
+}
+
+.captain-caption {
+  margin-top: 10px;
+  padding-right: 20px;
+  position: absolute; /* 절대 위치 설정 */
+  right: 0; /* 오른쪽 정렬을 위해 */
+  display: flex;
+  align-items: center;
+  color: #EF7353;
+  font-weight: 500;
+
+  p {
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.team-border-line {
+  margin-top: 50px;
+  border: 4px solid #46675c;
+}
+
+/* 날짜, 시간 선택 */
+
+.select-match-date-container, .select-match-time-container {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 150px;
+
+  span {
+    font-size: 60px;
+    margin-left: 20px;
+    margin-top: 10px;
+
+  }
+}
+
+.select-option-container {
+  margin-bottom: 20px;
+
+  img {
+    margin-top: -30px;
+  }
+}
+
+.select-match-date input#dateSelectInput, .select-match-time input#timeSelectInput {
+  border: 4px solid #46675C; /* 테두리 색상과 두께 설정 */
+  border-radius: 10px;
+  width: 100%; /* 너비 설정 */
+  height: 70px;
+  padding: 8px; /* 내부 여백 추가 */
+  margin: 10px 0; /* 상하 마진 추가 */
+  box-sizing: border-box; /* 패딩과 테두리가 너비에 포함되도록 설정 */
+  font-size: 50px;
+
+
+}
+
+
+/* Increase the font size for the entire datepicker for larger text */
+.ui-datepicker {
+  font-size: 16px; /* Adjust this value as needed */
+}
+
+/* Adjust the table layout to accommodate larger text and padding */
+.ui-datepicker table {
+  width: 100%;
+}
+
+/* Increase the size of each date cell */
+.ui-datepicker td {
+  padding: 30px; /* Adjust padding for larger cells */
+}
+
+/* 날짜 텍스트의 크기를 조정합니다. */
+.ui-datepicker .ui-state-default {
+  font-size: 35px;
+  line-height: 40px; /* 텍스트를 셀 중앙에 위치시킵니다. */
+}
+
+/* Enlarge the header part */
+.ui-datepicker .ui-datepicker-header {
+  background-color: #46675c;
+  font-size: 50px; /* Larger text for the header */
+  padding: 10px 0; /* More padding around the header elements */
+  color: #FFFFFF;
+}
+
+/* Adjust the prev/next buttons if needed */
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+  cursor: pointer;
+  /* Adjust size, padding, or add custom icons as needed */
+}
+
+/* Customize the dropdown list of the timepicker */
+.ui-menu-item {
+  font-size: 35px; /* Increase font size for the list */
+
+}
+
+.ui-datepicker th {
+  font-size: 30px; /* 요일 이름의 텍스트 크기를 18px로 조정 */
+  padding: 5px 0; /* 상하 패딩 추가 */
+}
+
+.ui-timepicker-list li {
+  padding: 10px; /* Increase padding to make each item taller */
+  height: auto; /* Adjust height automatically based on padding and font size */
+}
+
+/* If you want to increase the space inside the input field as well */
+.ui-timepicker-input {
+  height: 200px; /* Example height, adjust as needed */
+  font-size: 200px; /* Match the font size with the dropdown */
+}
+
+
+/* 상품 선택 */
+
+.select-product-container {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 200px;
+
+  span {
+    font-size: 60px;
+    margin-left: 20px;
+
+  }
+}
+
+.products {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px; /* 상품 간의 간격을 조정하기 위해 추가 */
+}
+
+.product-item {
+
+}
+
+.product-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-basis: calc(50% - 20px); /* 한 줄에 3개씩 표시, gap으로 인한 너비 조정 */
+  text-align: center; /* 텍스트를 가운데 정렬 */
+  margin-bottom: 20px;
+  font-size: 33px;
+
+}
+
+.product-item label {
+  margin-left: 20px; /* Optionally add left margin to label if more spacing is needed */
+}
+
+[type="radio"] {
+  width: 35px;
+  height: 35px;
+  padding-right: 5px;
+
+}
+
+[type="radio"]:checked {
+  background-color: #46675c;
+}
+
+
+/* 이전 다음 버튼 */
+
+/* 이전 다음 버튼 */
+.team-create-button-container {
+  margin-top: 65px;
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    width: 385px;
+    height: 85px;
+    border-radius: 10px;
+    border: 3px solid #46675C;
+    background: #ffffff;
+    font-size: 35px;
+    color: #46675c;
+
+  }
+}

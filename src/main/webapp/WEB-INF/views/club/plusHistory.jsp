@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html>
 <head>
-    <link rel="stylesheet" href="/resources/css/club.css">
+    <link rel="stylesheet" href="/resources/css/club/club.css">
     <link rel="stylesheet" href="/resources/css/main.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!--CDN 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -14,7 +15,7 @@
     <script>
         var dropFile;
 
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             dropFile = new DropFile("drop-file", "files");
 
         });
@@ -47,7 +48,7 @@
 
                 const fileList = document.getElementById(fileListId);
                 if (fileList) {
-                    fileList.scrollTo({ top: fileList.scrollHeight });
+                    fileList.scrollTo({top: fileList.scrollHeight});
                 }
             }
 
@@ -113,10 +114,10 @@
                 var file = fileInput.files[0];
 
                 var formData = new FormData();
-                var historyInfo = JSON.stringify({ title: title });
+                var historyInfo = JSON.stringify({title: title});
 
                 formData.append('image', file);
-                formData.append('request', new Blob([historyInfo], { type: 'application/json' }));
+                formData.append('request', new Blob([historyInfo], {type: 'application/json'}));
 
                 $.ajax({
                     //url: 'http://localhost:8081/clubs/' + clubNo + '/history',
@@ -158,6 +159,7 @@
             flex-direction: row;
             margin-top: 30px;
         }
+
         .contents .upload-box {
             width: 100%;
             margin-right: 30px;
@@ -177,15 +179,19 @@
             align-items: center;
             border: 3px dashed #dbdbdb;
         }
+
         .contents .upload-box .drag-file.highlight {
             border: 3px dashed red;
         }
+
         .contents .upload-box .drag-file .image {
             width: 40px;
         }
+
         .contents .upload-box .drag-file .message {
             margin-bottom: 0;
         }
+
         .contents .upload-box .drag-file .preview {
             display: none;
             position: absolute;
@@ -193,6 +199,7 @@
             height: 800px;
             width: 100%;
         }
+
         .contents .upload-box .file-label {
             margin-top: 30px;
             text-size: 24px;
@@ -209,6 +216,7 @@
             align-items: center;
             justify-content: center;
         }
+
         .contents .upload-box .file {
             display: none;
         }
@@ -219,14 +227,17 @@
                 flex-direction: column;
                 margin-top: 30px;
             }
+
             .contents .upload-box {
                 width: 100%;
                 box-sizing: border-box;
                 margin-right: 0;
             }
+
             .contents .upload-box .drag-file {
                 height: 150px;
             }
+
             .contents .files {
                 width: 100%;
                 box-sizing: border-box;
@@ -240,24 +251,28 @@
 <body>
 <main class="main-container">
     <div style="display: flex">
-        <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;" onclick="history.back()" src="/resources/image/left-arrow.png">
+        <img style="height: 50px;width: 50px;color: #46675c;margin-top: 65px;" onclick="history.back()"
+             src="/resources/image/left-arrow.png">
         <p class="plus-title">추억 기록 📸✨</p>
     </div>
 
     <div class="input-group">
-        <input id="clubTitle" style="font-size: 36px; width: 90%;height: 50px;" name="boardSubject" type="text" placeholder="제목을 입력해 주세요.">
+        <input id="clubTitle" style="font-size: 36px; width: 90%;height: 50px;" name="boardSubject" type="text"
+               placeholder="제목을 입력해 주세요.">
     </div>
     <div id="root">
         <hr>
         <div class="contents">
             <div class="upload-box">
                 <div id="drop-file" class="drag-file">
-                    <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
+                    <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
                     <p class="message">이미지를 업로드 해주세요</p>
                     <img src="" alt="미리보기 이미지" class="preview">
                 </div>
-                <label class="file-label" for="chooseFile"><p style="font-weight: 500;font-size: 24px;color: white">이미지를 선택하세요</p></label>
-                <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
+                <label class="file-label" for="chooseFile"><p style="font-weight: 500;font-size: 24px;color: white">이미지를
+                    선택하세요</p></label>
+                <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)"
+                       accept="image/png, image/jpeg, image/gif">
                 <label class="file-label"><p style="font-weight: 500;font-size: 24px;color: white">업로드</p></label>
             </div>
 

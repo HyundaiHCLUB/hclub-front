@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="stylesheet" href="/resources/css/compCreateTeam.css">
+    <link rel="stylesheet" href="/resources/css/comp/compCreateTeam.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -43,11 +43,12 @@
             width: 70%;
         }
 
-       .confirmation-header img {
-           width: 180px;
-           height: 180px;
-           margin : 30px auto;
-       }
+        .confirmation-header img {
+            width: 180px;
+            height: 180px;
+            margin: 30px auto;
+        }
+
         .confirmation-message {
             text-align: center;
             color: green;
@@ -55,7 +56,7 @@
             margin-top: 20px;
         }
 
-        .match-name img{
+        .match-name img {
             width: 50px;
             height: 50px;
             margin-right: 20px;
@@ -71,10 +72,12 @@
             height: 50px;
             margin: auto 20px;
         }
+
         .confirmation-footer {
             width: 100%;
             margin-top: 100px;
         }
+
         .confirmation-button {
             background-color: #46675C; /* Green background */
             color: white;
@@ -97,26 +100,26 @@
 </head>
 <body>
 <main>
-        <div class="confirmation-header">
-            <img src="/resources/image/comp/comp_check_sample.svg"/>
-            <p class="confirmation-message">매칭이 완료되었습니다.</p>
-        </div>
+    <div class="confirmation-header">
+        <img src="/resources/image/comp/comp_check_sample.svg"/>
+        <p class="confirmation-message">매칭이 완료되었습니다.</p>
+    </div>
     <div class="confirmation-footer">
         <button class="confirmation-button">경기화면으로</button>
     </div>
 </main>
 </body>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         // Select the button by its class name
         var button = document.querySelector('.confirmation-button');
 
         var matchHistoryNo = <%= request.getAttribute("matchHistoryNo") %>;
 
         // Add a click event listener to the button
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             // Navigate to the /competition/matchDetail page
-            window.location.href = '/competition/matchDetail/'+matchHistoryNo;
+            window.location.href = '/competition/matchDetail/' + matchHistoryNo;
         });
     });
 </script>

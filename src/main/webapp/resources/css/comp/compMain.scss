@@ -1,0 +1,258 @@
+/* 작성자 : 김동욱 */
+/* 경쟁 메인 */
+
+.rounded-shape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(
+                  to right,
+                  rgba(70, 103, 92, 1) 25%,
+                  rgba(226, 243, 227, 1) 15%,
+                  rgba(226, 243, 227, 1) 100% //rgba(255, 255, 255, 1) 15%,
+    //rgba(255, 255, 255, 1) 100%
+  );
+  width: 800px;
+  height: 260px;
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: 30px;
+  border-radius: 30px;
+  box-sizing: border-box;
+
+  p {
+    margin: 5px 0;
+    color: #000000;
+    font-family: Pretendard-Regular;
+  }
+}
+
+.left-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.right-section {
+  p {
+    margin-right: 10px;
+    text-align: center;
+    font-size: 34px;
+    color: #000000;
+    margin-bottom: 5px;
+  }
+
+}
+
+.left-section {
+  p {
+    margin-right: 10px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 49px;
+  }
+
+}
+
+.left-section img {
+
+  width: 85px;
+  height: 85px;
+  margin-right: 10px;
+  margin-bottom: 10px; // Add some space below the icon
+}
+
+.middle-section {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  p {
+    font-size: 40px;
+    color: #000000;
+  }
+}
+
+.middle-section-up, .middle-section-down {
+  margin-bottom: 10px; /* 아래쪽 여백 추가 */
+
+}
+
+.middle-section-up {
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.middle-section-down {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.matches {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* To allow items to wrap to the next row if needed */
+}
+
+.add-button {
+  position: fixed;
+  display: flex;
+  bottom: 150px;
+  right: 23px;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.matches {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* To allow items to wrap to the next row if needed */
+}
+
+
+.matches {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* To allow items to wrap to the next row if needed */
+}
+
+
+/* 검색 바 CSS */
+
+.comp-select {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+
+
+  .comp-select-container {
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+
+    p {
+      text-align: center;
+      font-size: 40px;
+    }
+  }
+}
+
+.custom-select-container {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+
+
+}
+
+.half-screen-line {
+  width: 50vw; /* Sets the width to 50% of the viewport width */
+  height: 2px; /* Sets the thickness of the line */
+  background-color: #46675c; /* Sets the color of the line */
+  margin-top: 10px; /* Adds some space above the line */
+  margin-bottom: 50px; /* Adds some space below the line */
+  margin-left: 0; /* Centers the line by pushing it equally from both sides */
+  margin-right: auto;
+}
+
+.half-screen-line-reverse {
+  width: 50vw; /* Sets the width to 50% of the viewport width */
+  height: 2px; /* Sets the thickness of the line */
+  background-color: #46675c; /* Sets the color of the line */
+  margin-top: 10px; /* Adds some space above the line */
+  margin-bottom: 50px; /* Adds some space below the line */
+  margin-left: auto; /* Centers the line by pushing it equally from both sides */
+  margin-right: 0;
+}
+
+.sport-select, .date-select, .match-type-select {
+  margin: 0 50px 50px 0;
+  font-size: 35px;
+  color: #ffffff;
+  height: 60px;
+  background: #46675c;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.sport-select {
+  margin-left: 76px;
+}
+
+.match-type-select {
+  margin-right: 87px;
+}
+
+.order-select {
+  margin-left: 0px;
+  font-size: 35px;
+  color: #ffffff;
+  height: 60px;
+  background: #46675c;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.custom-select {
+  background-image: url('/resources/image/bottom-arrow.png');
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+
+select {
+  width: 200px;
+}
+
+.custom-search-container {
+  margin-top: -25px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 45px;
+}
+
+.search-input {
+  width: 470px;
+  padding: 30px;
+  height: 59px;
+  border: 1px solid #cccccc; /* Border color, adjust as needed */
+  border-radius: 40px; /* Rounded corners for the input field */
+  background-color: #DEDFE1; /* Background color of the input */
+  font-size: 33px; /* Adjust font size as needed */
+  color: #333333; /* Text color */
+  outline: none; /* Removes the outline to match the design */
+  margin-left: -166px;
+}
+
+.search-icon {
+  width: 79px;
+  height: auto;
+  cursor: pointer;
+  margin-left: -166px;
+  margin-top: -12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+
+

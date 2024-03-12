@@ -1,8 +1,10 @@
+<!-- 작성자 : 김동욱 -->
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="stylesheet" href="/resources/css/teamDetail.css">
+    <link rel="stylesheet" href="/resources/css/comp/teamDetail.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -96,14 +98,14 @@
 
     $(document).ready(function () {
         $(document).ready(function () {
-            // API 요청을 보냅니다.
+            // 경쟁 - 팀 상세보기
             $.ajax({
                 url: 'https://www.h-club.site/comp/' + teamNo,
                 type: 'GET',
                 dataType: 'json',
                 success: function (response) {
                     console.log(response);
-                    // 응답받은 데이터로 DOM을 업데이트합니다.
+                    // 응답받은 데이터로 상세보기 입력
                     $('.team-image img').attr('src', response.data.teamImage);
                     $('.team-detail img').attr('src', response.data.matchType);
                     $('.team-detail h2').text(response.data.teamName);
@@ -114,17 +116,17 @@
                     $('.detail-component-goods p').text(response.data.teamGoods);
                     opponentMatchType = response.data.matchKind;
                     opponentTeamCapacity = response.data.teamCapacity;
-                    // 팀원 정보를 업데이트합니다.
-                    var teamMembers = response.data.memberList; // 'members' 는 팀원들의 배열을 포함하는 응답의 일부라고 가정합니다.
+
+                    var teamMembers = response.data.memberList;
                     var teamMembersContainer = $('.detail-component-team-mate');
                     teamMembersContainer.find('p').remove(); // 기존의 팀원 목록을 제거합니다.
-                    // 새로운 팀원 목록을 추가합니다.
+
                     teamMembers.forEach(function (member) {
                         teamMembersContainer.append($('<p>').text(member.memberName + ' ' + member.memberDept + ' ' + member.memberPosition));
                     });
                 },
                 error: function (xhr, status, error) {
-                    // 오류 처리
+
                     console.error('팀 정보를 가져오는데 실패했습니다: ' + error);
                 }
             });

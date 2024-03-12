@@ -16,9 +16,7 @@
         <a href="/"><img src="/resources/image/hlogo.png" style="height: 100px;margin-top: -14px"></a>
     </div>
     <div class=" navbar_icons">
-        <%--        <li><i class="fa-solid fa-magnifying-glass fa-3x"></i></li>--%>
-        <%--        <li><i class="fa-regular fa-heart fa-3x"></i></li>--%>
-        <%--        <li><i class="fa-regular fa-bell fa-3x"></i></li>--%>
+
     </div>
 </nav>
 </body>

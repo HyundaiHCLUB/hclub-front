@@ -82,9 +82,12 @@
             box-shadow: 0 2px 15px rgba(0,0,0,0.2);
             background-color: white;
             border-radius: 20px;
-            padding: 20px;
+            padding-top: 200px;
+            padding-bottom: 200px;
+            margin-top: 50px;
+            margin-bottom: 50px;
             height: 25%;
-            width: 70%;
+            width: 60%;
             position: relative;
             overflow: hidden;
         }
@@ -153,7 +156,7 @@
         }
         .match-notice {
             font-size: 2.5em;
-            margin: 0 auto;
+            margin: 30px auto;
             text-align: center;
         }
         .highlighted-team {
@@ -330,9 +333,9 @@
                 matchHistNo: matchHistoryNo,
                 matchLoc : matchLoc,
                 teamANo : team1No,
-                scoreA : scoreValueTeam1,
+                scoreA : scoreTeam1,
                 teamBNo : team2No,
-                scoreB : scoreValueTeam2,
+                scoreB : scoreTeam2,
                 matchDate: formattedMatchDate
             };
             console.log('dataToSend : ', dataToSend);

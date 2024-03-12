@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 @Slf4j
@@ -20,51 +18,43 @@ import java.util.Locale;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class CompController {
 
+    /* 경쟁 메인 페이지 */
     @GetMapping()
     public ModelAndView compMain(Locale locale, Model model) {
-        log.info("Welcome home! The client locale is {}.", locale);
         ModelAndView mav = new ModelAndView();
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-        String formattedDate = dateFormat.format(date);
         mav.setViewName("comp/compMain");
-        model.addAttribute("serverTime", formattedDate);
-
         return mav;
     }
 
+    /* 경쟁 - 팀생성 1 */
     @GetMapping("/create/1")
     public ModelAndView createTeamOne(Locale locale, Model model) {
-        log.info("Create Team", locale);
+        log.info("Create Team 1", locale);
         ModelAndView mav = new ModelAndView();
         mav.setViewName("comp/createTeamOne");
 
         return mav;
     }
 
+    /* 경쟁 - 팀생성 2 */
     @GetMapping("/create/2")
     public ModelAndView createTeamTwo(Locale locale, Model model) {
-        log.info("Create Team", locale);
+        log.info("Create Team 2", locale);
         ModelAndView mav = new ModelAndView();
         mav.setViewName("comp/createTeamTwo");
 
         return mav;
     }
 
+    /* 경쟁 - 팀생성 3 */
     @GetMapping("/create/3")
     public ModelAndView createTeamThree() {
+        log.info("Create Team 3");
         ModelAndView mav = new ModelAndView();
         mav.setViewName("comp/createTeamThree");
         return mav;
     }
 
-    @GetMapping("/create/4")
-    public ModelAndView createTeamFour() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("comp/createTeamFour");
-        return mav;
-    }
 
     @GetMapping("/start")
     public ModelAndView goMatchStart() {
@@ -144,6 +134,7 @@ public class CompController {
         return new ModelAndView("comp/drawTeamResult");
     }
 
+    /* 팀 상세보기 페이지 */
     @GetMapping("/teamDetail/{teamNo}")
     public ModelAndView goTeamDetail(@PathVariable Long teamNo) {
         ModelAndView mav = new ModelAndView();
