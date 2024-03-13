@@ -119,6 +119,8 @@
             text-align: center;
             font-size: 100px;
             color: #000;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
         .end-match-button {
             background-color: #F86A6A;
