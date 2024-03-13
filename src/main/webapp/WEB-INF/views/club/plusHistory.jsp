@@ -1,6 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html>
+<%-- @author 이혜연--%>
+<%-- @description: 동아리 추억앨범 작성 페이지--%>
+<%-- ===========================--%>
+<%-- AUTHOR      NOTE--%>
+<%-- -----------------------------%>
+<%-- 이혜연       최초 생성--%>
+<%-- ===========================--%>
+
 <head>
     <link rel="stylesheet" href="/resources/css/club/club.css">
     <link rel="stylesheet" href="/resources/css/main.css">
@@ -54,7 +62,6 @@
 
             function handleFiles(files) {
                 files = [...files];
-                // files.forEach(uploadFile);
                 files.forEach(previewFile);
             }
 
@@ -87,8 +94,6 @@
             accessToken = localStorage.getItem("accessTokenInfo");
             var titleInput = document.getElementById('clubTitle');
             var title = titleInput.value;
-            console.log(accessToken)
-            console.log(title)
 
             var dropFile;
 
@@ -104,7 +109,6 @@
 
             titleInput.addEventListener('input', function () {
                 title = titleInput.value;
-                console.log(title);
             });
 
             document.querySelector('.file-label:last-of-type').addEventListener('click', function () {
@@ -120,7 +124,6 @@
                 formData.append('request', new Blob([historyInfo], {type: 'application/json'}));
 
                 $.ajax({
-                    //url: 'http://localhost:8081/clubs/' + clubNo + '/history',
                     url: 'https://www.h-club.site/clubs/' + clubNo + '/history',
                     type: 'POST',
                     headers: {

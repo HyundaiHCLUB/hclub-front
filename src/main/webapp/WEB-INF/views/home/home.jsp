@@ -1,6 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html>
+<%-- @author 이혜연--%>
+<%-- @description: 메인 - 투데이 페이지--%>
+<%-- ===========================--%>
+<%-- AUTHOR      NOTE--%>
+<%-- -----------------------------%>
+<%-- 이혜연       최초 생성--%>
+<%-- ===========================--%>
+
 <head>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/reset.css">
@@ -114,7 +122,6 @@
             return new Promise((resolve, reject) => {
                 $.ajax({
                     type: 'GET',
-                    // url: 'http://localhost:8080/auth/mypage/info',   // 로컬
                     url: 'https://www.h-club.site/auth/mypage/info', // 배포판
                     headers: {
                         'Authorization': 'Bearer ' + accessToken, // accessToken 사용
