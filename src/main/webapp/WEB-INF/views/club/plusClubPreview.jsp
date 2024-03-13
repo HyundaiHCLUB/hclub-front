@@ -77,6 +77,9 @@
                     success: function (response) {
                         console.log('통신 성공', response);
                         window.location.href = "/club/0";
+
+                        localStorage.removeItem('clubFile');
+                        localStorage.removeItem('clubFileName');
                     },
                     error: function (error) {
                         console.error('통신 실패', error);
