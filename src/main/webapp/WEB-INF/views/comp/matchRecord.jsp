@@ -83,8 +83,8 @@
             box-shadow: 0 2px 15px rgba(0,0,0,0.2);
             background-color: white;
             border-radius: 20px;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            padding-top: 150px;
+            padding-bottom: 150px;
             margin-top: 50px;
             margin-bottom: 50px;
             height: 25%;
@@ -99,6 +99,7 @@
             height: 100%;     /* 높이도 자동으로 설정되도록 하여 비율 유지 */
             object-fit: cover; /* 이미지가 div에 꽉 차게 하면서도 비율이 유지되도록 */
             object-position: center; /* 이미지가 div 중앙에 위치하도록 설정 */
+            display: block;
         }
         /*.match-image:before {*/
         /*    content: '';*/
@@ -427,6 +428,7 @@
         document.getElementById('fileUpload').click();
     }
     function handleFiles(files) {
+        var matchImageDiv = document.querySelector('.match-image');
         var preview = document.getElementById('preview-img');
         if (files.length > 0) {
             var file = files[0];
@@ -439,13 +441,19 @@
                 $('#preview-img').attr('src', e.target.result).show();
                 $('.add-button').hide(); // 추가 버튼 숨김
                 $('.match-image').css('border', 'none'); // match-image 테두리 제거
+                $('.match-image').css('padding-top', '0'); // match-image 테두리 제거
+                $('.match-image').css('padding-bottom', '0'); // match-image 테두리 제거
+                $('.match-image').css('height', '500px'); // match-image 테두리 제거
+                $('.match-image').css('min-height', '400px'); // match-image 테두리 제거
             };
-
             reader.readAsDataURL(file);
             console.log(files[0].name);
         } else {
             console.log("No files selected.");
             preview.style.display = 'none';
+            matchImageDiv.style.paddingTop = '150px'; // 원래 패딩으로 복구
+            matchImageDiv.style.paddingBottom = '150px'; // 원래 패딩으로 복구
+            matchImageDiv.style.height = '25%'; // 원래 높이로 복구
         }
     }
     document.getElementById('fileUpload').addEventListener('change', function() {
