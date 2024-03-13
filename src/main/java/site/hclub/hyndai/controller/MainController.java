@@ -118,6 +118,7 @@ public class MainController {
         return mav;
     }
 
+    /* 회원가입 두번째 페이지 이동*/
     @GetMapping(value = "/home/district")
     public ModelAndView getClubDistrict(Model model) {
         ModelAndView mav = new ModelAndView();
@@ -126,7 +127,7 @@ public class MainController {
 
         return mav;
     }
-
+    /* 동아리 관리페이지 이동*/
     @GetMapping("dashboard/clubAdminPage")
     public ModelAndView clubAdminPage() {
         ModelAndView mv = new ModelAndView();
@@ -134,7 +135,7 @@ public class MainController {
 
         return mv;
     }
-
+    /* 개인랭킹조회 관리페이지 이동*/
     @GetMapping("dashboard/rankAdminPage")
     public ModelAndView rankAdminPage() {
         ModelAndView mv = new ModelAndView();
@@ -142,7 +143,7 @@ public class MainController {
 
         return mv;
     }
-
+    /* 관리자 로그인 페이지 이동*/
     @GetMapping("dashboard/adminLoginPage")
     public ModelAndView loginPage() {
         ModelAndView mv = new ModelAndView();
@@ -150,7 +151,7 @@ public class MainController {
 
         return mv;
     }
-
+    /* 관리자 확인 모달*/
     @GetMapping("dashboard/confirmModal")
     public ModelAndView modal() {
         ModelAndView mv = new ModelAndView();

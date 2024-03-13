@@ -72,7 +72,7 @@
         }
 
         .details {
-            color: #555; /* Darker text color for contrast */
+            color: #555; 
             margin-bottom: 20px;
         }
 
@@ -98,21 +98,21 @@
         }
 
         .confirmation-button {
-            background-color: #46675C; /* Green background */
+            background-color: #46675C;
             color: white;
             border: none;
             padding: 20px 210px;
-            margin: 20px auto; /* Centering the button */
-            display: block; /* Center button */
+            margin: 20px auto; 
+            display: block;
             font-size: 3em;
             border-radius: 20px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            text-transform: uppercase; /* Makes text uppercase */
+            text-transform: uppercase; 
         }
 
         .confirmation-button:hover {
-            background-color: #367a36; /* Slightly darker green on hover */
+            background-color: #367a36; 
         }
     </style>
     </style>
@@ -142,15 +142,7 @@
                     <p class="detail-title" id="productAmount"></p>
                 </div>
             </div>
-
-            <!--   <div class="details">
-                  <div class="details-header">
-                      <p class="detail-icon">받는 사람</p>
-                  </div>
-                  <div class="details-content">
-                      <p class="detail-title">홍길동</p>
-                  </div>
-              </div> -->
+          
         </div>
 
     </div>
@@ -161,12 +153,9 @@
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Select the button by its class name
         var button = document.querySelector('.confirmation-button');
 
-        // Add a click event listener to the button
         button.addEventListener('click', function () {
-            // Navigate to the /competition/matchDetail page
             window.location.href = '/competition/';
         });
     });
@@ -195,10 +184,9 @@
 
         console.log(params);
 
-        //결제 결과 확인 로드시 결제테이블에 데이터 삽잉ㅂ
+        //결제 결과 확인 로드시 결제테이블에 데이터 삽입
         $.ajax({
             type: 'POST',
-            //url: '/compTest/comp/settle',
             url: 'https://www.h-club.site/comp/settle',
             contentType: 'application/json',
             data: JSON.stringify(params),

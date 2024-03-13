@@ -7,7 +7,7 @@
     /* 세팅해야될 데이터*/
     var matchHistNo = ${matchHistoryNo};
     console.log('matchHistoryNo from Controller => ' + matchHistNo);
-    var params = {}; // =>  settleName, settleAmount
+    var params = {}; 
     var settleName;
     var settleAmount;
     var productsNo;
@@ -17,8 +17,6 @@
     $(document).ready(function(){
          $.ajax({
              url: 'https://www.h-club.site/comp/settle/${matchHistoryNo}',
-             // url: 'https://www.h-club.site/comp/settle/12',
-             //url: '/compTest/comp/settle/50',
              type: 'GET',
              dataType: 'json',
              success: function(response) {
@@ -40,7 +38,6 @@
     });
  
 function pay(){
-	// //테스트용 데이터. 추후에 진짜 데이터 담기
     var params = {};
     params.settleName= settleName;
     params.settleAmount= settleAmount;
@@ -48,10 +45,9 @@ function pay(){
     $.ajax({
         type: 'POST',
         url: 'https://www.h-club.site/comp/kakaopay',
-        //url: '/compTest/comp/kakaopay',
         data: JSON.stringify(params),
         dataType: 'json',
-        contentType: 'application/json', // 추가: 요청의 Content-Type 설정
+        contentType: 'application/json', 
         success: function(response){
             if(response.success){
                 var returnData = JSON.parse(response.data);
@@ -70,8 +66,6 @@ function pay(){
 }
 
 function setLocalStorageInfo(){
-    <%--sessionStorage.setItem('matchHistNo', '${matchHistoryNo}');--%>
-    //sessionStorage.setItem('matchHistNo','50');
     localStorage.setItem('matchHistNo', ${matchHistoryNo});
     localStorage.setItem('settleAmount', settleAmount);
     localStorage.setItem('productsNo', productsNo);

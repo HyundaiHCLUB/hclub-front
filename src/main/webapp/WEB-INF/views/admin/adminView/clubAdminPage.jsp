@@ -246,6 +246,7 @@ function getClubSize(){
 		success: function(response) {
 	          
 	    clubListSize = response.data;
+	    console.log("동아리수: "+clubListSize);
 	    setupPagination();
 	           
 	  	},
@@ -319,6 +320,7 @@ function setupPagination() {
     const paginationElement = document.getElementById('pagination');
     paginationElement.innerHTML = '';
 
+    console.log("totalPages: "+totalPages);
     for (let i = 1; i <= totalPages; i++) {
         const link = document.createElement('a');
         link.href = '#';
