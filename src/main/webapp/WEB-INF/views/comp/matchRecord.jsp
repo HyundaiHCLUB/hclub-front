@@ -83,8 +83,8 @@
             box-shadow: 0 2px 15px rgba(0,0,0,0.2);
             background-color: white;
             border-radius: 20px;
-            padding-top: 200px;
-            padding-bottom: 200px;
+            padding-top: 20px;
+            padding-bottom: 20px;
             margin-top: 50px;
             margin-bottom: 50px;
             height: 25%;
