@@ -93,11 +93,16 @@
         matchesContainer.empty(); // 기존 매치 내용을 지웁니다.
 
         matches.forEach(match => {
-            // 각 매치 정보로 HTML 요소 생성
-            var scoreColor = match.teamNo === match.winTeamNo ? 'blue' : 'red';
+            // 각 매치 정보로 HTML 요소
+            var scoreColor = 'blue';
+            // var scoreColor = match.teamNo === match.winTeamNo ? 'red' : 'blue';
             if (match.winTeamScoreAmount == match.loseTeamScoreAmount) {
                 scoreColor = 'black'
             }
+            if (match.teamName === '백발백중') {
+                scoreColor = 'red';
+            }
+
             var matchElement = $('<div/>', {class: 'rounded-shape'}).append(
                 $('<div/>', {class: 'left-section'}).append(
                     $('<img/>', {src: '/resources/image/comp/' + match.matchType.toLowerCase() + '.png', alt: '이미지'}),
