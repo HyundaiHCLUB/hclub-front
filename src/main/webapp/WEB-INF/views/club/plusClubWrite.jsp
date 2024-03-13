@@ -1,6 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html>
+<%-- @author 이혜연--%>
+<%-- @description: 동아리 개설 - 동아리명/소개 작성 페이지--%>
+<%-- ===========================--%>
+<%-- AUTHOR      NOTE--%>
+<%-- -----------------------------%>
+<%-- 이혜연       최초 생성--%>
+<%-- ===========================--%>
+
 <head>
     <link rel="stylesheet" href="/resources/css/club/club.css">
     <link rel="stylesheet" href="/resources/css/main.css">
@@ -60,14 +68,11 @@
 
             fileInput.addEventListener('change', function () {
                 var files = fileInput.files;
-
-                console.log(files);
             });
 
         })
 
         function handleNextButtonClick() {
-            console.log('버튼 클릭');
             var clubTitleValue = document.getElementById('clubTitle').value;
             var clubInfoValue = document.getElementById('clubInfo').value;
             var fileInput = document.getElementById('file');

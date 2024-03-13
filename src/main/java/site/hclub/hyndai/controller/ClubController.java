@@ -12,6 +12,15 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * @author 이혜연
+ * @description: ClubController
+ * ===========================
+ * AUTHOR      NOTE
+ * ---------------------------
+ * 이혜연       최초 생성
+ * ===========================
+ */
 @Slf4j
 @Controller
 @RequestMapping("/club")

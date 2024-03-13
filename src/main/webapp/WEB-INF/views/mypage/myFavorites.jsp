@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <html>
+<%-- @author 송원선--%>
+<%-- @description: 내 모임 페이지--%>
+<%-- ===========================--%>
+<%-- AUTHOR      NOTE--%>
+<%-- -----------------------------%>
+<%-- 송원선       최초 생성--%>
+<%-- 이혜연       배너 추가--%>
+<%-- ===========================--%>
+
 <head>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/reset.css">

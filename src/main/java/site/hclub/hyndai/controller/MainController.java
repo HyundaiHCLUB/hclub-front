@@ -88,22 +88,28 @@ public class MainController {
         return mav;
     }
 
-    ;
-
-    /***** end mypage *****/
-    /* 로그인 페이지 이동*/
+    /**
+     * @author : 김은솔
+     * @description : 회원가입 로그인 페이지 이동
+     */
     @GetMapping("login/loginView")
     public ModelAndView goLoginView() {
         return new ModelAndView("auth/loginView");
     }
 
-    /* 회원가입 첫번째 페이지 이동*/
+    /**
+     * @author : 김은솔
+     * @description : 회원가입 첫번째 페이지 이동
+     */
     @GetMapping("login/registerViewFrst")
     public ModelAndView goRegisterFrstView() {
         return new ModelAndView("auth/registerViewFrst");
     }
 
-    /* 회원가입 두번째 페이지 이동*/
+    /**
+     * @author : 김은솔
+     * @description : 회원가입 두번째 페이지 이동
+     */
     @GetMapping("login/registerViewScnd")
     public ModelAndView goRegisterScndView() {
         return new ModelAndView("auth/registerViewScnd");
@@ -126,7 +132,10 @@ public class MainController {
 
         return mav;
     }
-
+    /**
+     * @author : 김은솔
+     * @description : 동아리 관리페이지 이동
+     */
     @GetMapping("dashboard/clubAdminPage")
     public ModelAndView clubAdminPage() {
         ModelAndView mv = new ModelAndView();
@@ -134,7 +143,11 @@ public class MainController {
 
         return mv;
     }
-
+    
+    /**
+     * @author : 김은솔
+     * @description :개인랭킹조회 관리페이지 이동
+     */
     @GetMapping("dashboard/rankAdminPage")
     public ModelAndView rankAdminPage() {
         ModelAndView mv = new ModelAndView();
@@ -143,6 +156,10 @@ public class MainController {
         return mv;
     }
 
+    /**
+     * @author : 김은솔
+     * @description : 관리자 로그인 페이지 이동
+     */
     @GetMapping("dashboard/adminLoginPage")
     public ModelAndView loginPage() {
         ModelAndView mv = new ModelAndView();
@@ -150,7 +167,10 @@ public class MainController {
 
         return mv;
     }
-
+    /**
+     * @author : 김은솔
+     * @description :관리자 모달 작성
+     */
     @GetMapping("dashboard/confirmModal")
     public ModelAndView modal() {
         ModelAndView mv = new ModelAndView();

@@ -107,7 +107,10 @@ public class CompController {
         return mav;
     }
 
-    /* 회원가입 두번째 페이지 이동*/
+    /**
+     * @author : 김은솔
+     * @description : 채팅페이지 이동
+     */
     @GetMapping("/chatPageView")
     public ModelAndView goChatPage() {
         return new ModelAndView("comp/chatPage");
@@ -144,19 +147,28 @@ public class CompController {
         return mav;
     }
 
-    /* 결제 성공페이지*/
+    /**
+     * @author : 김은솔
+     * @description : 결제 성공 페이지 이동
+     */
     @GetMapping("/paySuccess")
     public ModelAndView gopaySuccessPage() {
         return new ModelAndView("comp/paySuccess");
     }
-
-    /* 결제 실패 페이지*/
+    
+    /**
+     * @author : 김은솔
+     * @description : 결제 실패 페이지 이동
+     */
     @GetMapping("/payFail")
     public ModelAndView gopayFailPage() {
         return new ModelAndView("comp/payFail");
     }
 
-    /* 결제 취소 페이지*/
+    /**
+     * @author : 김은솔
+     * @description : 결제 취소 페이지 이동
+     */
     @GetMapping("/payCancel")
     public ModelAndView gopayCancelPage() {
         return new ModelAndView("comp/payCancel");

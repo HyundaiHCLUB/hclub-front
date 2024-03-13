@@ -1,6 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html>
+
+<%-- @author 이혜연--%>
+<%-- @description: 동아리 상세 페이지--%>
+<%-- ===========================--%>
+<%-- AUTHOR      NOTE--%>
+<%-- -----------------------------%>
+<%-- 이혜연       최초 생성--%>
+<%-- ===========================--%>
+
 <head>
     <link rel="stylesheet" href="/resources/css/club/club.css">
     <link rel="stylesheet" href="/resources/css/main.css">
@@ -53,7 +62,6 @@
         }
 
         var clubNo = <%= request.getAttribute("clubNo") %>;
-        console.log(clubNo);
         getClub(clubNo);
 
         function checkAndOpenModal() {
@@ -71,7 +79,6 @@
                     'accessTokenInfo': accessToken,
                 },
                 success: function (response) {
-                    console.log("개설자 유무");
                     if (response.success) {
                         if (response.data === 'Y') {
                             $('#myModal').modal('show');
@@ -98,7 +105,6 @@
             console.log("동아리회원 체크");
             $.ajax({
                 type: "GET",
-                //url: "http://localhost:8081/clubs/" + clubNo + "/member",
                 url: "https://www.h-club.site/clubs/" + clubNo + "/member",
                 headers: {
                     'accessTokenInfo': accessToken,

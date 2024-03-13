@@ -1,3 +1,4 @@
+<!-- 작성자 : 송원선 -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
@@ -82,8 +83,8 @@
             box-shadow: 0 2px 15px rgba(0,0,0,0.2);
             background-color: white;
             border-radius: 20px;
-            padding-top: 200px;
-            padding-bottom: 200px;
+            padding-top: 20px;
+            padding-bottom: 20px;
             margin-top: 50px;
             margin-bottom: 50px;
             height: 25%;

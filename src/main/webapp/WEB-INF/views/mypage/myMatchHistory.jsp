@@ -1,3 +1,4 @@
+<!-- 작성자 : 송원선 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -93,7 +94,7 @@
 
         matches.forEach(match => {
             // 각 매치 정보로 HTML 요소 생성
-            var scoreColor = match.teamNo === match.winTeamNo ? 'blue' : 'red';
+            var scoreColor = match.teamNo === match.winTeamNo ? 'red' : 'blue';
             if (match.winTeamScoreAmount == match.loseTeamScoreAmount) {
                 scoreColor = 'black'
             }

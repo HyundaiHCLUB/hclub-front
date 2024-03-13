@@ -2,6 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html>
+<%-- @author 이혜연--%>
+<%-- @description: footer --%>
+<%-- ===========================--%>
+<%-- AUTHOR      NOTE--%>
+<%-- -----------------------------%>
+<%-- 이혜연       최초 생성--%>
+<%-- ===========================--%>
 <head>
     <link rel="stylesheet" href="/resources/css/nav.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">

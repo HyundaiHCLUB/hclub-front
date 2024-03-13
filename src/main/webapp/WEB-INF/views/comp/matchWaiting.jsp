@@ -1,3 +1,4 @@
+<!-- 작성자 : 송원선, 이혜연 -->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -96,14 +97,19 @@
 
 </main>
 </body>
+
+
+
+
+<%-- @autor 이혜연--%>
+<%-- 실시간 매칭 WebSocket 연결--%>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var stompClient = null;
 
         function connect() {
-            console.log('연결 시도');
             var socket = new WebSocket('wss://www.h-club.site/ws');
-            //var socket = new WebSocket('ws://localhost:8082/ws');
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function (frame) {
                 console.log('Connected: ' + frame);
@@ -114,7 +120,6 @@
                     showFailureMessage(message.body);
                 });
 
-                // 연결 성공 후 addToQueue 호출
                 addToQueue();
             });
         }
@@ -126,12 +131,6 @@
             var matchCapacity = localStorage.getItem('matchCapacity');
             var teamRating = localStorage.getItem('teamRating');
 
-            console.log(teamNo);
-            console.log(teamMemberNo);
-            console.log(matchType);
-            console.log(matchCapacity);
-            console.log(teamRating);
-
             var matchingRequest = {
                 teamNo: teamNo,
                 teamMemberNo: teamMemberNo,
@@ -140,23 +139,18 @@
                 teamRating: teamRating
             };
 
-            // 웹소켓을 통해 데이터 전달
             stompClient.send("/app/addTeamToQueue", {}, JSON.stringify(matchingRequest));
         }
 
         function showMatchResult(matchResult) {
-            console.log("매치 성공!", matchResult);
             var teamNumbers = matchResult.split(',');
 
             var team1No = parseInt(teamNumbers[0].trim());
             var team2No = parseInt(teamNumbers[1].trim());
 
-            console.log("Team 1 No: " + team1No);
-            console.log("Team 2 No: " + team2No);
 
             $.ajax({
                 type: "POST",
-                //url: "http://localhost:8082/comp/match",
                 url: "https://www.h-club.site/comp/match",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -175,7 +169,6 @@
         }
 
         function showFailureMessage(message) {
-            console.log("매치 실패!", message);
             window.location.href = '/competition/fail';
 
         }

@@ -3,6 +3,14 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html>
+<%-- @author 이혜연--%>
+<%-- @description: 매치 실패 페이지--%>
+<%-- ===========================--%>
+<%-- AUTHOR      NOTE--%>
+<%-- -----------------------------%>
+<%-- 이혜연       최초 생성--%>
+<%-- ===========================--%>
+
 <head>
     <link rel="stylesheet" href="${path}/resources/css/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
