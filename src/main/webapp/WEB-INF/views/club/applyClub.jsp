@@ -104,7 +104,7 @@
         <p class="apply-check">동아리 이용 규칙을 지키겠습니다!</p>
     </a>
 
-    <a onclick="applyClub()" data-toggle="modal" data-target="#myModal">
+    <a onclick="applyClub()">
         <svg class="next_button" width="700" height="250" viewBox="0 0 350 50" fill="none"
              xmlns="http://www.w3.org/2000/svg">
             <rect width="350" height="50" rx="20" fill="#EF7353"/>
